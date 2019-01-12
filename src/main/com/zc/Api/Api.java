@@ -14,6 +14,7 @@ import flexjson.transformer.DateTransformer;
 import main.com.zc.allRegisterations.courseReg;
 import main.com.zc.allRegisterations.courseRegAppServiceImpl;
 import main.com.zc.allRegisterations.courseRegDao;
+import main.com.zc.loginNeeds.UserDataAppServiceImpl;
 @RestController
 @RequestMapping("/")
 public class Api {
@@ -21,6 +22,10 @@ public class Api {
 
 	@Inject
 	private courseRegAppServiceImpl courseFacade;
+	
+
+	@Inject
+	private UserDataAppServiceImpl userFacade;
 	
     @RequestMapping(value = "/")
     public ResponseEntity<String> getLogin() {
@@ -61,6 +66,16 @@ public class Api {
     	dataNew.setDate(String.valueOf(dao.getDate().getTimeInMillis()));
     	return new ResponseEntity<>(toJson(dataNew), HttpStatus.CREATED); 
     }
+    
+    @RequestMapping(value = "/userData",method = RequestMethod.POST)
+    public ResponseEntity<byte[]> getUserData(@RequestParam(value="id",required=false) Integer id) {
+    	if(id==null) {
+    		
+        	return null;
+    	}
+    	
+    	return new ResponseEntity<>(userFacade.getById(id).getImage(), HttpStatus.CREATED); 
+    }
 
 	public courseRegAppServiceImpl getCourseFacade() {
 		return courseFacade;
@@ -68,6 +83,15 @@ public class Api {
 
 	public void setCourseFacade(courseRegAppServiceImpl courseFacade) {
 		this.courseFacade = courseFacade;
+	}
+
+	
+	public UserDataAppServiceImpl getUserFacade() {
+		return userFacade;
+	}
+
+	public void setUserFacade(UserDataAppServiceImpl userFacade) {
+		this.userFacade = userFacade;
 	}
 
 	public String toJson(courseRegDao bean) { 

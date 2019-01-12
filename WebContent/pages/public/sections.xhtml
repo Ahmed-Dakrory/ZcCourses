@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main_template.xhtml">
+
+	<ui:define name="title">Zewail Sections</ui:define>
+
+
+	<ui:define name="content"> 
+
+	
+   <!--Start Content-->
+   <div class="container">
+        	
+            <div class="row">
+            <div class="col-md-12">
+                <div class="main-title" style="padding-top: 30px;">
+                    <h2 style="box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);"><span>Welcome to the </span>English program</h2>
+                </div>
+            </div>
+            </div>
+            
+            <div class="welcome-detail">
+            	<div class="row">
+                	
+                    <div class="col-md-5">
+                    	<h:graphicImage value="#{programsBean.theProgramSelected.getphoto()}" alt=""/>
+                    </div>
+                    
+                    <div class="col-md-7">
+                    	<div class="detail" >
+                        	<p style="text-align: left; font-style: initial;    font-family: initial;    font-size: 39px;    padding-top: 20px;">Description</p>
+                            <p style="padding-top: 19px; font-size: 21px;text-align: left;">
+                            #{programsBean.theProgramSelected.description}
+                            </p>
+                           
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+   <div class="content">
+		
+		<div class="news-posts">
+		
+			<div class="container">
+			
+				<div class="row">
+				<div class="col-md-12">
+            <div class="main-title" style="box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);">
+                <h2><span>All Sessions of </span> this program</h2>
+                <p>This is the most updated sessions</p>
+            </div>
+            </div>
+            
+            <ui:repeat var="o" value="#{programsBean.courses}" varStatus="status">
+	             
+                <div class="col-md-3">
+						<div class="product">
+									<div class="product-thumb">
+										<a><h:graphicImage style="    height: 193px;" value="#{o.getphoto()}" alt=""/></a>
+									</div>
+									<div class="product-description clearfix">
+										<h3><p:commandLink action="#{programsBean.goToSessionsForcoursePage(o.id)}">#{o.name}</p:commandLink></h3>
+										<p class="price"><u>$15.00</u> $17.00</p>
+										<span class="double-border"></span>
+										<p:outputPanel id="enrollmentPanel">
+														<p:commandLink style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(o.id,0)}" action="#{programsBean.enrollInCourse(o.id)}" class="product-cart-btn pull-left"><i class="icon-basket"></i>Enroll</p:commandLink>
+														<p:outputLabel style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(o.id,1)}" class="product-cart-btn pull-left">You are Enrolled</p:outputLabel>
+										</p:outputPanel>
+										<p:commandLink action="#{programsBean.goToSessionsForcoursePage(o.id)}" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</p:commandLink>
+									</div>
+								</div>
+								<br/>
+								<br/>
+					</div>
+            </ui:repeat>
+					
+					
+				
+					
+					
+					
+					
+					
+				</div>
+			</div>
+		</div>
+  
+  
+  
+   
+   </div>
+   
+   <!--End Content-->
+   
+<h:outputScript name="js/jquery.js"/>   
+
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

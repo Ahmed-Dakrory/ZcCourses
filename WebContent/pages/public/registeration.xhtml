@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main_template.xhtml">
+
+	<ui:define name="title">Zewail Registeration</ui:define>
+
+	<ui:define name="content">
+	
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+											
+    <link rel="stylesheet" href="#{resource['css:login.css']}" />
+
+
+
+
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		
+		
+		<div class="LoginPanel">
+		<div class="container">
+		
+    	<div class="row">
+    	
+			<div class="col-md-6 col-md-offset-2">
+				<div class="panel panel-login" style="width: 763px;">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-12">
+								<a href="#" class="active" id="register-form-link">Register</a>
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+							
+							
+								<h:form id="imageForm">
+        
+						        <h:panelGroup  id="img">
+						        <label for="imageForm:file-input_input">
+						        
+									<h:graphicImage value="#{loginBean.imageOfAccountUser}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{loginBean.imageUploadedVisib()};"  class="m--img-rounded m--marginless m--img-centered" alt=""/>
+									<h:graphicImage name="images/comment-img.jpg" style="   border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none; display: #{loginBean.imageUploadedVisibNot()};"  class="m--img-rounded m--marginless m--img-centered" alt=""/>
+									<h:graphicImage name="images/comment-img3.jpg" style="top:-30px;left:45px;position:relative;border-style: solid;border-color: #a5a1a1;border-width: 1px; width:36px;height:36px;pointer-events: none;  "  class="m--img-rounded m--marginless m--img-centered" alt=""/>
+								</label>
+								</h:panelGroup>
+								
+								<p:fileUpload  style="visibility:hidden; width:0; height:0" id="file-input"  label="Update Image" fileUploadListener="#{loginBean.previewImage}"
+									allowTypes="/(\.|\/)(png|jpg|bmp|gif\jpeg)$/" sizeLimit="500000" description="Attachment"
+									update="img" auto="true" mode="advanced" multiple="false" uploadLabel="Upload Attachment" />
+															 
+																   
+						        </h:form>
+								<h:form enctype="multipart/form-data" role="form" id="register-form" style="display: block;">
+									<div class="form-group">
+									
+									</div>
+									<div class="form-group">
+										<h:inputText type="text" id="firstname" tabindex="2" class="form-control" pt:placeholder="Full Name ( First - Middle - Last )" value="#{loginBean.theUserOfThisAccount.fullName}"/>
+									</div>
+									
+									
+									<div class="form-group">
+										<h:inputText type="text" id="nationalId" tabindex="2" class="form-control" pt:placeholder="For Outsider : National ID ( Last 7 Digits ) --- For ZC ( University ID )" value="#{loginBean.theUserOfThisAccount.nationalId}"/>
+									</div>
+									
+									<div class="form-group">
+										<h:inputText type="email" id="email" tabindex="1" class="form-control" pt:placeholder="Email Address" value="#{loginBean.theUserOfThisAccount.email}"/>
+									</div>
+									<div class="form-group">
+										<h:inputText type="password" id="password" tabindex="1" class="form-control" pt:placeholder="Password" value="#{loginBean.theUserOfThisAccount.password}"/>
+									</div>
+									<div class="form-group">
+										<h:inputText type="password" id="confirm-password" tabindex="2" class="form-control" pt:placeholder="Confirm Password" value="#{loginBean.passwordConfirm}"/>
+									</div>
+									<div class="form-group" style="height: 29px;">
+										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="Prefix" />
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.prefix}" >
+								            
+								            <f:selectItem itemLabel="*" itemValue="4" />
+								            <f:selectItem itemLabel="Mr" itemValue="0" />
+								            <f:selectItem itemLabel="Ms" itemValue="1" />
+								            <f:selectItem itemLabel="Dr" itemValue="2" />
+								            <f:selectItem itemLabel="Eng" itemValue="3" />
+								        </h:selectOneMenu>
+								        </h:panelGrid>
+									</div>
+									<div class="form-group" style="height: 29px;">
+										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="Gender" />
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.gender}" >
+								            
+								            <f:selectItem itemLabel="*" itemValue="2" />
+								            <f:selectItem itemLabel="Male" itemValue="0" />
+								            <f:selectItem itemLabel="Female" itemValue="1" />
+								        </h:selectOneMenu>
+								        </h:panelGrid>
+									</div>
+									<div class="form-group">
+										<h:inputText type="text" id="mobile" tabindex="2" class="form-control" pt:placeholder="Your mobile phone number" value="#{loginBean.theUserOfThisAccount.mobile}"/>
+									</div>
+									<div class="form-group" style="height: 29px;">
+										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="Your age" />
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.age}" >
+								            
+								            <f:selectItem itemLabel="*" itemValue="0" />
+								            <f:selectItem itemLabel="7" itemValue="7" />
+								            <f:selectItem itemLabel="8" itemValue="8" />
+								            <f:selectItem itemLabel="9" itemValue="9" />
+								            <f:selectItem itemLabel="10" itemValue="10" />
+								            <f:selectItem itemLabel="11" itemValue="11" />
+								            <f:selectItem itemLabel="12" itemValue="12" />
+								            <f:selectItem itemLabel="13" itemValue="13" />
+								            <f:selectItem itemLabel="14" itemValue="14" />
+								            <f:selectItem itemLabel="15" itemValue="15" />
+								            <f:selectItem itemLabel="16" itemValue="16" />
+								            <f:selectItem itemLabel="17" itemValue="17" />
+								            <f:selectItem itemLabel="18" itemValue="18" />
+								            <f:selectItem itemLabel="19" itemValue="19" />
+								            <f:selectItem itemLabel="20" itemValue="20" />
+								            <f:selectItem itemLabel="21" itemValue="21" />
+								            <f:selectItem itemLabel="22" itemValue="22" />
+								            <f:selectItem itemLabel="23" itemValue="23" />
+								            <f:selectItem itemLabel="24" itemValue="24" />
+								            <f:selectItem itemLabel="25" itemValue="25" />
+								            <f:selectItem itemLabel="26" itemValue="26" />
+								            <f:selectItem itemLabel="27" itemValue="27" />
+								            <f:selectItem itemLabel="28" itemValue="28" />
+								            <f:selectItem itemLabel="29" itemValue="29" />
+								            <f:selectItem itemLabel="30" itemValue="30" />
+								            <f:selectItem itemLabel="31" itemValue="31" />
+								            <f:selectItem itemLabel="32" itemValue="32" />
+								            <f:selectItem itemLabel="33" itemValue="33" />
+								            <f:selectItem itemLabel="34" itemValue="34" />
+								            <f:selectItem itemLabel="35" itemValue="35" />
+								            <f:selectItem itemLabel="36" itemValue="36" />
+								            <f:selectItem itemLabel="37" itemValue="37" />
+								            <f:selectItem itemLabel="38" itemValue="38" />
+								            <f:selectItem itemLabel="39" itemValue="39" />
+								            <f:selectItem itemLabel="40" itemValue="40" />
+								            <f:selectItem itemLabel="41" itemValue="41" />
+								            <f:selectItem itemLabel="42" itemValue="42" />
+								            <f:selectItem itemLabel="43" itemValue="43" />
+								            <f:selectItem itemLabel="44" itemValue="44" />
+								            <f:selectItem itemLabel="45" itemValue="45" />
+								            <f:selectItem itemLabel="46" itemValue="46" />
+								            <f:selectItem itemLabel="47" itemValue="47" />
+								            <f:selectItem itemLabel="48" itemValue="48" />
+								            <f:selectItem itemLabel="49" itemValue="49" />
+								            <f:selectItem itemLabel="50" itemValue="50" />
+								            <f:selectItem itemLabel="51" itemValue="51" />
+								            <f:selectItem itemLabel="52" itemValue="52" />
+								        </h:selectOneMenu>
+								        </h:panelGrid>
+									</div>
+									<div class="form-group" style="height: 29px;">
+										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="Study Year" />
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.study_year}" >
+								            
+								            <f:selectItem itemLabel="*" itemValue="0" />
+								            <f:selectItem itemLabel="first year" itemValue="1" />
+								            <f:selectItem itemLabel="second year" itemValue="2" />
+								            <f:selectItem itemLabel="third year" itemValue="3" />
+								            <f:selectItem itemLabel="year 4" itemValue="4" />
+								            <f:selectItem itemLabel="year 5" itemValue="5" />
+								            <f:selectItem itemLabel="year 6" itemValue="6" />
+								            <f:selectItem itemLabel="year 7" itemValue="7" />
+								        </h:selectOneMenu>
+								        </h:panelGrid>
+									</div>
+									<div class="form-group">
+										<h:inputText type="text" id="university" tabindex="2" class="form-control" pt:placeholder="University" value="#{loginBean.theUserOfThisAccount.university}"/>
+									</div>
+									<div class="form-group">
+										<h:inputText type="text" id="faculty" tabindex="2" class="form-control" pt:placeholder="Faculty" value="#{loginBean.theUserOfThisAccount.faculty}"/>
+									</div>
+									<div class="form-group">
+										<h:inputText type="text" id="major" tabindex="2" class="form-control" pt:placeholder="Major" value="#{loginBean.theUserOfThisAccount.major}"/>
+									</div>
+									
+									<div class="form-group" style="height: 29px;">
+									<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="If you are graduate .. How many years of experience do you have ?" />
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.graduation_experiences}" >
+								            
+								            <f:selectItem itemLabel="*" itemValue="999" />
+								            <f:selectItem itemLabel="0 years" itemValue="0" />
+								            <f:selectItem itemLabel="1 years" itemValue="1" />
+								            <f:selectItem itemLabel="2 years" itemValue="2" />
+								            <f:selectItem itemLabel="3 years" itemValue="3" />
+								            <f:selectItem itemLabel="4 years" itemValue="4" />
+								            <f:selectItem itemLabel="5 years" itemValue="5" />
+								            <f:selectItem itemLabel="6 years" itemValue="6" />
+								            <f:selectItem itemLabel="7 years" itemValue="7" />
+								            <f:selectItem itemLabel="8 years" itemValue="8" />
+								            <f:selectItem itemLabel="9 years" itemValue="9" />
+								            <f:selectItem itemLabel="More than 9 years" itemValue="1000" />
+								        </h:selectOneMenu>
+								        </h:panelGrid>
+									</div>
+									<div class="form-group">
+										<h:inputText type="text" id="work" tabindex="2" class="form-control" pt:placeholder="If you are graduate .. Where do you work ?" value="#{loginBean.theUserOfThisAccount.work}"/>
+									</div>
+									<div class="form-group">
+										<h:inputText type="text" id="homeGovernorate" tabindex="2" class="form-control" pt:placeholder="Home Governorate" value="#{loginBean.theUserOfThisAccount.homeGovernorate}"/>
+									</div>
+									<div class="form-group">
+										<h:inputText type="text" id="residenceGovernorate" tabindex="2" class="form-control" pt:placeholder="Residence Governorate" value="#{loginBean.theUserOfThisAccount.residenceGovernorate}"/>
+									</div>
+									<div class="form-group" style="height: 29px;">
+										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="How did you know about us ?" />
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.whereYknowAboutUs}" >
+								            
+								            <f:selectItem itemLabel="*" itemValue="5" />
+								            <f:selectItem itemLabel="Email" itemValue="0" />
+								            <f:selectItem itemLabel="Facebook" itemValue="1" />
+								            <f:selectItem itemLabel="LinedIn" itemValue="2" />
+								            <f:selectItem itemLabel="Friends" itemValue="3" />
+								            <f:selectItem itemLabel="Newsletter" itemValue="4" />
+								        </h:selectOneMenu>
+								        </h:panelGrid>
+									</div>
+									<div  class="form-group" style="height: 29px;">
+										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="3">
+											<p:outputLabel for="yesnoZewail" style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="Are you a zewail student?       " />
+									        <h:selectOneMenu id="yesnoZewail" dynamic="true" style="position:absolute;right:20px;width:125px; height: 31px;" value="#{loginBean.theUserOfThisAccount.zewailianeOrNot}" >
+									            
+									            <f:selectItem itemLabel="No" itemValue="1" />
+									            <f:selectItem itemLabel="Yes" itemValue="0" />
+									        </h:selectOneMenu>
+								        </h:panelGrid>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<h:commandButton action="#{loginBean.RegisterNewUser}" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now"/>
+											</div>
+										</div>
+									</div>
+								</h:form>
+								
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		</div>
+<h:outputScript name="js/login.js"/> 
+
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

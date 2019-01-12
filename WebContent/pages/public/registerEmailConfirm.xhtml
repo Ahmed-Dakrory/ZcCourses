@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/main_template.xhtml">
+
+	<ui:define name="title">Zewail Account Confirm</ui:define>
+
+
+	<ui:define name="content">
+		#{mainHomeBean.refreshPage()}
+	<div class="container">
+	<div class="time-table-sec">
+	<ul id="accordion2" class="accordion2">
+	<li>
+	<ul class="submenu time-table">
+	<li class="tit"><h5>Working Time</h5></li>
+	<li><span class="day">Monday - Friday</span> <span class="divider">-</span> <span class="time">8.00 - 16.00</span></li>
+	<li><span class="day">Saturday</span> <span class="divider">-</span> <span class="time">9.15 - 17.00</span></li>
+	<li><span class="day">Sunday</span> <span class="divider">-</span> <span class="time">9.45 - 15.00</span></li>
+	</ul>
+	<div class="link"><h:graphicImage class="time-tab" name="images/timetable-menu-dark.png" alt=""/></div>
+	
+	</li>
+	</ul>
+	</div>
+	</div>
+
+    
+	
+   <!--Start Banner-->
+   
+   <div class="tp-banner-container">
+		<div class="tp-banner" >
+			<ul>	<!-- SLIDE  -->
+            
+	<li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on"  data-title="Intro Slide">
+		<!-- MAIN IMAGE -->
+		<h:graphicImage name="images/slides/Elections.jpg" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"/>
+		<!-- LAYERS -->
+
+		
+
+		
+		
+		<div class="tp-caption black_thin_34 customin tp-resizeme rs-parallaxlevel-0"
+			data-x="center"
+			data-y="250" 
+			data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+			data-speed="500"
+			data-start="1400"
+			data-easing="Back.easeOut"
+			data-splitin="none"
+			data-splitout="none"
+			data-elementdelay="0.1"
+			data-endelementdelay="0.1"
+			style="z-index: 10; max-width: auto; max-height: auto; font-size: 52px; white-space: nowrap;">LEARNING 
+		</div>
+		
+		
+		<div class="tp-caption black_thin_34 black_thin_34_bold customin tp-resizeme rs-parallaxlevel-0"
+			data-x="center"
+			data-y="340" 
+			data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+			data-speed="500"
+			data-start="1400"
+			data-easing="Back.easeOut"
+			data-splitin="none"
+			data-splitout="none"
+			data-elementdelay="0.1"
+			data-endelementdelay="0.1"
+			style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap; font-size: 52px;">NEW COURSES
+			
+		</div>
+		<div class="tp-caption black_thin_34 customin tp-resizeme rs-parallaxlevel-0"
+			data-x="center"
+			data-y="450" 
+			data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+			data-speed="500"
+			data-start="1400"
+			data-easing="Back.easeOut"
+			data-splitin="none"
+			data-splitout="none"
+			data-elementdelay="0.1"
+			data-endelementdelay="0.1"
+			style="z-index: 10; background-color: #a6767624; max-height: auto;  ">
+		<p:commandLink action="#{menuBean.invertRemainMenus(2)}" value="enter now" style="height:25px;    font-size: 22px;"/>
+		
+		</div>
+		
+		
+		
+
+		
+
+		
+	</li>
+	
+	<li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on"  data-title="Intro Slide">
+		<!-- MAIN IMAGE -->
+		<h:graphicImage name="images/slides/banner-img8.jpg" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"/>
+		<!-- LAYERS -->
+
+		
+
+		
+		
+		<div class="tp-caption black_thin_34 customin tp-resizeme rs-parallaxlevel-0"
+			data-x="0"
+			data-y="250" 
+			data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+			data-speed="500"
+			data-start="1400"
+			data-easing="Back.easeOut"
+			data-splitin="none"
+			data-splitout="none"
+			data-elementdelay="0.1"
+			data-endelementdelay="0.1"
+			style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap; font-size: 52px;">IN BOTH
+		</div>
+		
+		
+		<div class="tp-caption black_thin_34 black_thin_34_bold customin tp-resizeme rs-parallaxlevel-0"
+			data-x="0"
+			data-y="340" 
+			data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+			data-speed="500"
+			data-start="1400"
+			data-easing="Back.easeOut"
+			data-splitin="none"
+			data-splitout="none"
+			data-elementdelay="0.1"
+			data-endelementdelay="0.1"
+			style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap; font-size: 52px;">SCIENCE and ENGINEERING
+		</div>
+		
+		
+
+		
+
+		
+	</li>
+    
+    <li data-transition="fade" data-slotamount="7" data-masterspeed="500"  data-saveperformance="on"  data-title="Intro Slide">
+		<!-- MAIN IMAGE -->
+		<h:graphicImage name="images/slides/teach-1820041_1280.jpg" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"/>
+		<!-- LAYERS -->
+
+		
+
+		
+		
+		<div class="tp-caption black_thin_34 customin tp-resizeme rs-parallaxlevel-0"
+			data-x="right"
+			data-y="250" 
+			data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+			data-speed="500"
+			data-start="1400"
+			data-easing="Back.easeOut"
+			data-splitin="none"
+			data-splitout="none"
+			data-elementdelay="0.1"
+			data-endelementdelay="0.1"
+			style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap; font-size: 52px;">TEACHING METHODS
+		</div>
+		
+		
+		<div class="tp-caption black_thin_34 black_thin_34_bold customin tp-resizeme rs-parallaxlevel-0"
+			data-x="right"
+			data-y="340" 
+			data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+			data-speed="500"
+			data-start="1400"
+			data-easing="Back.easeOut"
+			data-splitin="none"
+			data-splitout="none"
+			data-elementdelay="0.1"
+			data-endelementdelay="0.1"
+			style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap; font-size: 52px;">That You Can Trust
+		</div>
+		
+		
+
+		
+
+		
+	</li>
+    
+    <li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on"  data-title="Intro Slide">
+		<!-- MAIN IMAGE -->
+		<h:graphicImage name="images/slides/teach-1968076_1280.jpg" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"/>
+		<!-- LAYERS -->
+
+		
+
+		
+		
+		<div class="tp-caption black_thin_34 customin tp-resizeme rs-parallaxlevel-0"
+			data-x="center"
+			data-y="250" 
+			data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+			data-speed="500"
+			data-start="1400"
+			data-easing="Back.easeOut"
+			data-splitin="none"
+			data-splitout="none"
+			data-elementdelay="0.1"
+			data-endelementdelay="0.1"
+			style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap; font-size: 52px;">NEW METHODS
+		</div>
+		
+		
+		<div class="tp-caption black_thin_34 black_thin_34_bold customin tp-resizeme rs-parallaxlevel-0"
+			data-x="center"
+			data-y="340" 
+			data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+			data-speed="500"
+			data-start="1400"
+			data-easing="Back.easeOut"
+			data-splitin="none"
+			data-splitout="none"
+			data-elementdelay="0.1"
+			data-endelementdelay="0.1"
+			style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap; font-size: 52px;">Of Learning
+		</div>
+		
+		
+
+		
+
+		
+	</li>
+	
+    
+    
+</ul>
+<div class="tp-bannertimer"></div>	</div>
+</div>	
+   
+   <!--End Banner-->
+            
+   <!-- The start of Main Content -->
+   <div class="content">
+  
+  <p:outputLabel style="font-size: 35px;    padding: 131px;" value="Please check your Mail to verify your account"></p:outputLabel>
+   
+   </div>
+   <!-- The End of Main Content -->     
+       
+<h:outputScript name="js/jquery.js"/>    
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

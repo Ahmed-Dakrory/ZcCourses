@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" class="internal">
+	
+	
+	
+	
+<h:head>
+  <title><ui:insert name="title">Default title</ui:insert></title>
+  <meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	
+	<link rel="icon" type="image/png" href="#{resource['images:logoZc.png']}"/>
+	
+	<!--Login image-->
+    <link rel="stylesheet" href="#{resource['css:style.bundle.css']}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto:300,400,500,600,700" media="all"/>
+        
+	
+    <link rel="stylesheet" href="#{resource['css:popUpBox.css']}" />
+	
+	<!--Medical Guide Icons-->
+    <link rel="stylesheet" href="#{resource['css:medical-guide-icons.css']}" />
+	
+    <!--main file-->
+    <link rel="stylesheet" href="#{resource['css:medical-guide.css']}" />
+    
+    
+    <!-- Default Color-->
+    <link rel="stylesheet" href="#{resource['css:default-color.css']}" />
+
+    <!--bootstrap-->
+    <link rel="stylesheet" href="#{resource['css:bootstrap.css']}" />
+    
+    <!--Dropmenu-->
+    <link rel="stylesheet" href="#{resource['css:dropmenu.css']}" />
+    
+	<!--Sticky Header-->
+    <link rel="stylesheet" href="#{resource['css:sticky-header.css']}" />
+	
+	<!--revolution-->
+    <link rel="stylesheet" href="#{resource['css:style.css']}" />
+    <link rel="stylesheet" href="#{resource['css:settings.css']}" /> 
+    <link rel="stylesheet" href="#{resource['css:extralayers.css']}" />   
+   
+    <!--Accordion-->
+    <link rel="stylesheet" href="#{resource['css:accordion.css']}" />
+     
+    <!--tabs-->
+    <link rel="stylesheet" href="#{resource['css:tabs.css']}" />  
+   
+    <!--Owl Carousel--> 
+    <link rel="stylesheet" href="#{resource['css:owl.carousel.css']}" />  
+    
+   <!-- Mobile Menu -->
+    <link rel="stylesheet" href="#{resource['css:jquery.mmenu.all.css']}" />
+    <link rel="stylesheet" href="#{resource['css:demo.css']}" />
+   
+   <!--PreLoader-->
+    <link rel="stylesheet" href="#{resource['css:loader.css']}" />
+    <link rel="stylesheet" href="#{resource['css:jquery.fancybox.css']}" />
+</h:head>
+
+<h:body>
+<div align="center" id="header">
+    <ui:insert name="header">
+    	 <ui:include src="header2.xhtml"/> 
+    </ui:insert>
+</div>
+
+
+<div align="center" id="content">
+  <ui:insert name="content"> 
+    	 <ui:include src="content.xhtml"/> 
+  </ui:insert>
+  
+  
+  <!-- The Modal of LoginBox popUp-->
+  <div class="container">
+        	
+            
+            <div class="row">
+<div id="popUpBoxLogin" class="modal">
+
+  <!-- Modal content -->
+  <div class="containner modal-content" style="margin-top: 10%;">
+  <div class="row" style="    top: 1px;    position: absolute;    right: 26px;">
+    <span class="close">&times;</span>
+   </div>
+   <div class="row" style="align-self: baseline;">
+    <p>You have to login to enroll</p>
+    </div>
+    <div class="row">
+    <div class="col" style="margin-top:13px;">
+    	<p:commandButton value="Login" action="#{menuBean.invertRemainMenus(4)}"/>
+    </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+  <!-- The Modal of comfirm popUp-->
+  <div class="container">
+        	
+            
+            <div class="row">
+<div id="comfirmBox" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" style="margin-top: 10%;">
+  <div class="row" style="    top: 1px;    position: absolute;    right: 26px;">
+    <span class="close">&times;</span>
+  </div>
+  <div class="row" style="align-self: baseline;">
+    <p>Are You sure you want To Enroll in this Course?</p>
+  </div>
+  <div class="row">
+    <div class="col" style="margin-top:13px;">
+   
+    		<p:commandButton  value="Yes" action="#{programsBean.comfirmActionForEnrollment()}"/>
+    		
+    	</div>
+    	
+    	<div class="col" style="margin-top:13px;">
+   
+    		<p:commandButton  value="No" action="#{programsBean.dismissDialog()}"/>
+    		
+    	</div>
+    </div>
+	    	
+    	
+  </div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div align="center" id="footer">
+  <ui:insert name="footer">
+    	<ui:include src="footer2.xhtml"/>
+  </ui:insert>
+</div>
+
+
+
+<!-- SMOOTH SCROLL -->	
+<h:outputScript name="js/scroll-desktop.js"/>
+<h:outputScript name="js/scroll-desktop-smooth.js"/>
+
+<!-- START REVOLUTION SLIDER -->	
+<h:outputScript name="js/jquery.themepunch.revolution.min.js"/>
+<h:outputScript name="js/jquery.themepunch.tools.min.js"/>
+
+
+
+<!-- Date Picker and input hover -->
+<h:outputScript name="js/classie.js"/> 
+<h:outputScript name="js/jquery-ui-1.10.3.custom.js"/>
+
+
+
+
+<!-- Fun Facts Counter -->
+<h:outputScript name="js/counter.js"/> 
+
+
+<!-- Welcome Tabs -->	
+<h:outputScript name="js/tabs.js"/>
+
+<!-- Mobile Menu -->
+<h:outputScript name="js/jquery.mmenu.min.all.js"/>
+
+<!-- All Carousel -->
+<h:outputScript name="js/owl.carousel.js"/>
+
+
+<!-- All Scripts -->
+<h:outputScript name="js/custom.js"/>
+
+
+<!-- Easy responsive tabs -->
+<h:outputScript name="js/easy-responsive-tabs.js"/>
+
+
+<!-- RS slides -->
+<h:outputScript name="js/rs-slides.js"/>
+
+
+
+ <!--begin::Global Theme Bundle -->
+<h:outputScript name="js/scripts.bundle.js"/>
+<!--end::Global Theme Bundle -->
+
+
+        
+
+<!-- Date Picker and input hover -->
+<h:outputScript name="js/jquery.fancybox.js"/>
+<h:outputScript name="js/jquery.fancybox-media.js"/>
+
+
+
+<h:outputScript name="js/popUpBox.js"/>  
+
+ <script>
+	<!-- Fancybox -->	
+/*
+             *  Simple image gallery. Uses default settings
+             */
+    
+            $('.fancybox').fancybox();
+    
+            /*
+             *  Different effects
+             */
+    
+            $(document).ready(function() {
+			$('.fancybox-media').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+				helpers : {
+					media : {}
+				}
+			});
+			});
+</script>
+
+<script type="text/javascript">
+
+				jQuery(document).ready(function() {
+				
+					
+								
+					jQuery('.tp-banner').show().revolution(
+					{
+						dottedOverlay:"none",
+						delay:16000,
+						startwidth:1170,
+						startheight:750,
+						hideThumbs:200,
+						
+						thumbWidth:100,
+						thumbHeight:50,
+						thumbAmount:5,
+						
+						navigationType:"bullet",
+						navigationArrows:"solo",
+						navigationStyle:"preview4",
+						
+						touchenabled:"on",
+						onHoverStop:"off",
+						
+						swipe_velocity: 0.7,
+						swipe_min_touches: 1,
+						swipe_max_touches: 1,
+						drag_block_vertical: false,
+												
+												parallax:"mouse",
+						parallaxBgFreeze:"on",
+						parallaxLevels:[7,4,3,2,5,4,3,2,1,0],
+												
+						keyboardNavigation:"off",
+						
+						navigationHAlign:"center",
+						navigationVAlign:"bottom",
+						navigationHOffset:0,
+						navigationVOffset:20,
+
+						soloArrowLeftHalign:"left",
+						soloArrowLeftValign:"center",
+						soloArrowLeftHOffset:20,
+						soloArrowLeftVOffset:0,
+
+						soloArrowRightHalign:"right",
+						soloArrowRightValign:"center",
+						soloArrowRightHOffset:20,
+						soloArrowRightVOffset:0,
+								
+						shadow:0,
+						fullWidth:"on",
+						fullScreen:"off",
+
+						spinner:"spinner4",
+						
+						stopLoop:"off",
+						stopAfterLoops:-1,
+						stopAtSlide:-1,
+
+						shuffle:"off",
+						
+						autoHeight:"off",						
+						forceFullWidth:"off",						
+												
+												
+												
+						hideThumbsOnMobile:"off",
+						hideNavDelayOnMobile:1500,						
+						hideBulletsOnMobile:"off",
+						hideArrowsOnMobile:"off",
+						hideThumbsUnderResolution:0,
+						
+						hideSliderAtLimit:0,
+						hideCaptionAtLimit:0,
+						hideAllCaptionAtLilmit:0,
+						startWithSlide:0,
+						videoJsPath:"rs-plugin/videojs/",
+						fullScreenOffsetContainer: ""	
+					});
+					
+					
+					
+									
+				});	//ready
+				
+			</script>		
+	
+
+<script>
+(function () {
+			"use strict";
+
+			
+			
+			/* ------------------------------------------------------------------------ 
+			   ADD REVIEW CUSTOM SCRIPT [open/close]
+			------------------------------------------------------------------------ */
+			jQuery("#add-review-btn").click(function(){
+				jQuery("#add-review-form").slideDown();
+			});
+			jQuery("#review-form-close").click(function(){
+				jQuery("#add-review-form").slideUp();
+			});
+			
+			
+			
+			/* ------------------------------------------------------------------------ 
+			   PRODUCT DETAIL
+			------------------------------------------------------------------------ */
+			jQuery("#product-detail-slider").responsiveSlides({
+				maxwidth: 1000,
+				timeout: 3E3,
+				pager: true,
+				speed: 700
+			});
+			/* ------------------------------------------------------------------------ 
+			   VERTICAL TABS [with bordered nav]
+			------------------------------------------------------------------------ */
+			jQuery('.verticalTab').easyResponsiveTabs({
+				type: 'vertical',
+				width: 'auto',
+				fit: true
+			});
+			
+			
+			/* ------------------------------------------------------------------------ 
+			   ITEM COUNTER CUSTOM SCRIPT
+			------------------------------------------------------------------------ */
+			var itemcount= 0;
+
+			$('#pluss-item').on("click", function() { 
+				itemcount++;
+				$('#total-items').val(itemcount);
+				return false;
+			});
+
+			$('#less-item').on("click", function() { 
+				itemcount--;
+				$('#total-items').val(itemcount);
+				return false;
+			});
+			
+			$('.verticalTab').easyResponsiveTabs({
+				type: 'vertical',
+				width: 'auto',
+				fit: true
+			});
+			
+	
+	
+			})(jQuery);
+</script>
+</h:body>
+
+</html>

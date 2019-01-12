@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/templates/main_template.xhtml">
+
+	<ui:define name="title">Zc Courses</ui:define>
+
+	
+	<ui:define name="content">
+		<!-- /.nav-wrapper -->
+
+        <div id="mainCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
+                <ui:repeat var="o" value="#{mainHomeBean.courses}" varStatus="status">
+	              
+                <li data-target="#mainCarousel" ></li>
+                </ui:repeat>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+              
+                <div class="item active">
+                  <img src="http://placehold.it/1920x650/777/fff&amp;text=First+Slide" alt="..."/>
+                  <div class="carousel-caption">
+                    <h3>Slide Caption</h3>
+                  </div>
+                </div>
+                
+                <ui:repeat var="course" value="#{mainHomeBean.courses}" varStatus="status">
+	                <div class="item">
+	                <h:graphicImage value="#{course.getphoto()}"/>
+	                  <div class="carousel-caption">
+	                  </div>
+	                </div>
+                </ui:repeat>
+                
+              </div>
+
+              <!-- Controls -->
+              <a class="left carousel-control" href="#mainCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#mainCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+              </a>
+        </div>
+
+
+        <div class="container">
+
+            <div class="section">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="#" class="thumbnail">
+                            <img src="http://placehold.it/300x200" alt=""/>
+                        </a>
+                        <h3>Header One</h3>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="thumbnail">
+                            <img src="http://placehold.it/300x200" alt=""/>
+                        </a>
+                        <h3>Header Two</h3>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="thumbnail">
+                            <img src="http://placehold.it/300x200" alt=""/>
+                        </a>
+                        <h3>Header Three</h3>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="thumbnail">
+                            <img src="http://placehold.it/300x200" alt=""/>
+                        </a>
+                        <h3>Header Four</h3>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.section -->
+            
+            <hr/>
+
+            <div class="section">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>Font Awesome Is There</h1>
+                        <p>Font Awesome is included and from MaxCDN <span class="fa fa-heart"></span></p>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="http://placehold.it/450x200" class="img-responsive" alt=""/>
+                    </div>
+                </div>
+            </div>
+            <!-- /.section -->
+
+            <hr/>
+
+           
+
+        </div>
+        <!-- /.container -->
+        
+        <!-- jQuery -->
+    
+
+    <!-- Call functions on document ready -->
+    <script>
+        $(document).ready(function() {
+            // Call Functions Like
+            appMaster.aFunction();
+            // Call anotherFunction
+            appMaster.anotherFunction();
+        });
+    </script>   
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

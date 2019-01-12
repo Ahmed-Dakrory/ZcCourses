@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main_template.xhtml">
+
+	<ui:define name="title">Zewail #{programsBean.thecourseSelected.name}</ui:define>
+
+
+	<ui:define name="content"> 
+
+   <!--Start Content-->
+   <div class="content">
+   
+   
+  
+  <div class="services-content">
+   		<div class="container">
+        	
+            
+            <div class="row">
+					<div class="col-md-5">
+						<div class="product-detail-slider">
+							<div class="rslides" id="product-detail-slider">
+								<h:graphicImage value="#{programsBean.thecourseSelected.getphoto()}" alt=""/>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-7">
+						<div id="courseDetails" class="product-detail-description">
+						
+							<h2>#{programsBean.thecourseSelected.name}</h2>
+							
+							<p class="price big dark">&pound;#{programsBean.thecourseSelected.price}</p>
+							<p>#{programsBean.thecourseSelected.description} </p>
+							<p:outputPanel id="enrollmentPanel">
+							<p:commandLink style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(programsBean.thecourseSelected.id,0)}"  action="#{programsBean.enrollInCourse(programsBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Enroll me in the course</p:commandLink>
+							<p:outputLabel style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(programsBean.thecourseSelected.id,1)}">You are Enrolled</p:outputLabel>
+							</p:outputPanel>
+							<div class="clearfix"></div>
+							<br/>
+							<p><strong>Categories:</strong>  #{programsBean.thecourseSelected.categories}</p>
+							<ul class="boxed-social clearfix">
+								<li><a href="#." class="facebook"><i class="icon-euro"></i>Share On Facebook</a></li>
+								<li><a href="#." class="twitter"><i class="icon-twitter5"></i>Tweet This Product</a></li>
+								<li><a href="#." class="pinterest"><i class="icon-pinterest"></i>Pin This Product</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+
+ 
+				<div class="clearfix verticalTab" id="target">
+					<ul class="resp-tabs-list">
+						<li>Description</li>
+						<li>Additional Information</li>
+					</ul>
+					<div class="resp-tabs-container">
+						<div>
+							<h3>Description</h3>
+							<p>#{programsBean.thecourseSelected.description}</p>
+						</div>
+						<div>
+							<ul class="additional-detail list-unstyled">
+								<li>
+									<label>Weight</label> 	1.5 kg
+								</li>
+								<li>
+									<label>Dimensions</label> 	90 x 60 x 90 cm
+								</li>
+								<li>
+									<label>Composition</label> 	100% Cotton
+								</li>
+								<li>
+									<label>Size &amp; Fit</label>This style comes in a regular fit which fits true to size.
+								</li>
+								<li>
+									<label>Other Info</label> Machine wash according to instructions on care label
+								</li>
+								<li>
+									<label>Size</label>One Size Fits All, Extra Small, Small, Medium, Large, Extra Large
+								</li>
+								<li>
+									<label>Color</label> Black, Blue, Brown, White
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="shop">
+					<h2 class="light"><strong>Related</strong> Courses</h2>
+					<br/>
+					<ul class="shop full-width clearfix list-unstyled">
+						<li>
+							<div class="product">
+									<div class="product-thumb">
+										<a><p:graphicImage name="images/services/services1.jpg" alt=""/></a>
+									</div>
+									<div class="product-description clearfix">
+										<h3><a href="courseDetails.xhtml">Structure Engineering</a></h3>
+										<p class="price"><u>$15.00</u> $17.00</p>
+										<span class="double-border"></span>
+										<a href="#." class="product-cart-btn pull-left"><i class="icon-basket"></i>Enroll</a>
+										<a href="courseDetails.xhtml" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
+									</div>
+								</div>
+						</li>
+						<li>
+							<div class="product">
+									<div class="product-thumb">
+										<a><p:graphicImage name="images/services/services1.jpg" alt=""/></a>
+									</div>
+									<div class="product-description clearfix">
+										<h3><a href="courseDetails.xhtml">Structure Engineering</a></h3>
+										<p class="price"><u>$15.00</u> $17.00</p>
+										<span class="double-border"></span>
+										<a href="#." class="product-cart-btn pull-left"><i class="icon-basket"></i>Enroll</a>
+										<a href="courseDetails.xhtml" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
+									</div>
+								</div>
+						</li>
+						<li>
+							<div class="product">
+									<div class="product-thumb">
+										<a><p:graphicImage name="images/services/services1.jpg" alt=""/></a>
+									</div>
+									<div class="product-description clearfix">
+										<h3><a href="courseDetails.xhtml">Structure Engineering</a></h3>
+										<p class="price"><u>$15.00</u> $17.00</p>
+										<span class="double-border"></span>
+										<a href="#." class="product-cart-btn pull-left"><i class="icon-basket"></i>Enroll</a>
+										<a href="courseDetails.xhtml" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
+									</div>
+								</div>
+						</li>
+						<li>
+							<div class="product">
+									<div class="product-thumb">
+										<a><p:graphicImage name="images/services/services1.jpg" alt=""/></a>
+									</div>
+									<div class="product-description clearfix">
+										<h3><a href="courseDetails.xhtml">Structure Engineering</a></h3>
+										<p class="price"><u>$15.00</u> $17.00</p>
+										<span class="double-border"></span>
+										<a href="#." class="product-cart-btn pull-left"><i class="icon-basket"></i>Enroll</a>
+										<a href="courseDetails.xhtml" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
+									</div>
+								</div>
+						</li>
+					</ul>
+				</div>
+            
+            
+        </div>
+   </div>
+  
+   
+   </div>
+   
+  
+   <!--End Content-->
+   
+<h:outputScript name="js/jquery.js"/>    
+
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

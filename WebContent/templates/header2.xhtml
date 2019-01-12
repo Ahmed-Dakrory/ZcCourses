@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+  
+  <div id="wrap">
+   
+   
+   
+   
+	
+   <!--Start Header-->
+   
+   <div id="header-2">
+   
+   <header class="header header2">
+		<div class="container">
+   		
+   		
+        <div class="row">
+        	
+            <div class="col-md-1" style="align-self:center;">
+            	<a href="index.html" class="logo"><h:graphicImage name="images/logoZc.png" alt=""/></a>
+            </div>
+            
+            <div class="col-md-9" style="align-self:center;">
+            	
+                <h:form>
+                <nav class="menu-2">
+            	<ul class="nav wtf-menu">
+                	<li class=" parent" style="background: #{menuBean.menu[0]};"><h:commandLink   action="#{menuBean.invertRemainMenus(0)}">Home</h:commandLink>
+					
+					</li>
+					
+                    <li class="parent" style="background: #{menuBean.menu[1]};"><h:commandLink href="#."  action="#{menuBean.invertRemainMenus(1)}">About Us</h:commandLink>
+					
+					</li>
+					
+                    <li class="parent" style="background: #{menuBean.menu[2]};"><h:commandLink  action="#{menuBean.invertRemainMenus(2)}">Programes</h:commandLink>
+						
+					</li>
+                    
+					
+					<li class="parent"  style="background: #{menuBean.menu[3]};"><h:commandLink  action="#{menuBean.invertRemainMenus(3)}">Contact Us</h:commandLink>
+					
+					</li>
+					
+             
+			
+					
+				
+				
+					
+                </ul>
+                </nav>
+                </h:form>	
+            </div>	
+            
+            
+            <div class="d-none d-lg-block d-xl-block" style="align-self:center;">
+            	
+            			<li class="m-nav__item m-topbar__user-profile m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click" aria-expanded="true" >
+					        <h:form>   
+						<a href="#" class="m-nav__link m-dropdown__toggle">
+							<span class="m-topbar__userpic">
+								<h:graphicImage value="#{loginBean.imageOfAccountUser}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:60px;height:60px;display: #{loginBean.getTheStatueOfImageLoginMenu()};"  class="m--img-rounded m--marginless m--img-centered" alt=""/>
+								<h:graphicImage name="images/comment-img3.jpg" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:60px;height:60px; display: #{loginBean.getTheStatueOfImageMenu()};"  class="m--img-rounded m--marginless m--img-centered" alt=""/>
+							</span>
+							<span class="m-nav__link-icon m-topbar__usericon  m--hide">
+								<span class="m-nav__link-icon-wrapper"><i class="flaticon-user-ok"></i></span>
+							</span>
+							<span class="m-topbar__username m--hide">Nick</span>					
+						</a>
+						
+						
+						
+						<div class="m-dropdown__wrapper" style="z-index: 101;">
+							<span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 12.5px;"></span>
+							<div style="display: #{loginBean.getTheStatueOfLoginMenu()};" class="m-dropdown__inner">
+								<div class="m-dropdown__header m--align-center">
+									<div class="m-card-user m-card-user--skin-light">
+										<div class="m-card-user__pic">
+											<h:graphicImage style="width:65px;height:65px; border-style: solid;border-color: #a5a1a1;border-width: 1px; display: #{loginBean.getTheStatueOfImageLoginMenu()};" value="#{loginBean.imageOfAccountUser}" class="m--img-rounded m--marginless" alt=""/>
+											<h:graphicImage style="width:65px;height:65px; border-style: solid;border-color: #a5a1a1;border-width: 1px; display: #{loginBean.getTheStatueOfImageMenu()};" name="images/comment-img3.jpg" class="m--img-rounded m--marginless" alt=""/>
+										</div>
+										<div class="m-card-user__details">
+											<span class="m-card-user__name m--font-weight-500">#{loginBean.theUserOfThisAccount.fullName}</span>
+											<a href="" class="m-card-user__email m--font-weight-300 m-link">#{loginBean.theUserOfThisAccount.email}</a>
+										</div>
+									</div>
+								</div>
+								<div class="m-dropdown__body">
+									<div class="m-dropdown__content">
+										<ul class="m-nav m-nav--skin-light">
+											<li class="m-nav__section m--hide">
+												<span class="m-nav__section-text">Section</span>
+											</li>
+											<li class="m-nav__item">
+												<a href="?page=profile&amp;demo=demo11" class="m-nav__link">
+													<i class="m-nav__link-icon flaticon-profile-1"></i>
+													<span class="m-nav__link-title">  
+														<span class="m-nav__link-wrap">      
+															<span class="m-nav__link-text">My Profile</span>      
+															<span class="m-nav__link-badge"><span class="m-badge m-badge--success">2</span></span>  
+														</span>
+													</span>
+												</a>
+											</li>
+											<li class="m-nav__item">
+												<a href="?page=profile&amp;demo=demo11" class="m-nav__link">
+													<i class="m-nav__link-icon flaticon-share"></i>
+													<span class="m-nav__link-text">Activity</span>
+												</a>
+											</li>
+											<li class="m-nav__item">
+												<a href="?page=profile&amp;demo=demo11" class="m-nav__link">
+													<i class="m-nav__link-icon flaticon-chat-1"></i>
+													<span class="m-nav__link-text">Messages</span>
+												</a>
+											</li>
+											<li class="m-nav__separator m-nav__separator--fit">
+											</li>
+											<li class="m-nav__item">
+												<a href="?page=profile&amp;demo=demo11" class="m-nav__link">
+													<i class="m-nav__link-icon flaticon-info"></i>
+													<span class="m-nav__link-text">FAQ</span>
+												</a>
+											</li>
+											<li class="m-nav__item">
+												<a href="?page=profile&amp;demo=demo11" class="m-nav__link">
+													<i class="m-nav__link-icon flaticon-lifebuoy"></i>
+													<span class="m-nav__link-text">Support</span>
+												</a>
+											</li>
+											<li class="m-nav__separator m-nav__separator--fit">
+											</li>
+											<li class="m-nav__item">
+												<h:commandLink action="#{loginBean.logOut}" style="width:200px" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</h:commandLink>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							
+							
+							
+							
+							
+							
+							<div style="display: #{loginBean.getTheStatueMenuMain()};" class="m-dropdown__inner">
+								
+								<div class="m-dropdown__body">
+									<div class="m-dropdown__content">
+										<ul class="m-nav m-nav--skin-light">
+											
+											
+											<li class="m-nav__item">
+												<a href="?page=profile&amp;demo=demo11" class="m-nav__link">
+													<i class="m-nav__link-icon flaticon-info"></i>
+													<span class="m-nav__link-text">FAQ</span>
+												</a>
+											</li>
+											<li class="m-nav__item">
+												<a href="?page=profile&amp;demo=demo11" class="m-nav__link">
+													<i class="m-nav__link-icon flaticon-lifebuoy"></i>
+													<span class="m-nav__link-text">Support</span>
+												</a>
+											</li>
+											<li class="m-nav__separator m-nav__separator--fit">
+											</li>
+											<li class="m-nav__item">
+													<h:commandLink action="#{menuBean.invertRemainMenus(5)}" style="width:200px" class="m-nav__link">    
+													<i class="m-nav__link-icon flaticon-lifebuoy"></i>
+													<span class="m-nav__link-text">Register</span>
+													</h:commandLink>
+											</li>
+											<li class="m-nav__item">
+													<h:commandLink action="#{menuBean.invertRemainMenus(4)}" style="width:200px" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Login</h:commandLink>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							
+							
+							
+							
+							
+						</div>
+						</h:form>
+				</li>
+	       		
+            </div>
+            
+            
+            
+        </div>
+        
+        
+        
+        
+		</div>	
+    </header>
+	</div>
+	
+   <!--End Header-->
+   
+   
+   
+	<!-- Mobile Menu Start -->
+	<div class="container">
+    <div id="page">
+			<header class="header">
+				<a href="#menu"></a>
+				
+			</header>
+			<h:form>
+			<nav id="menu">
+				<ul>
+				
+					<li class="parent">
+						<a>
+										<div >
+											<h:panelGrid columns="2"  style="display:#{loginBean.getTheStatueOfLoginMenu()};" cellpadding = "10" cellspacing = "1">
+												<h:panelGroup>
+													<h:graphicImage style="width:65px;height:65px; border-style: solid;border-color: #a5a1a1;border-width: 1px; display: #{loginBean.getTheStatueOfImageLoginMenu()};" value="#{loginBean.imageOfAccountUser}" class="m--img-rounded m--marginless" alt=""/>
+													<h:graphicImage style="width:65px;height:65px; border-style: solid;border-color: #a5a1a1;border-width: 1px; display: #{loginBean.getTheStatueOfImageMenu()};" name="images/comment-img3.jpg" class="m--img-rounded m--marginless" alt=""/>
+											    </h:panelGroup>
+												<h:panelGroup>
+													<h:panelGrid columns="1">
+														<span class="m--font-weight-500" style="padding-left: 30px;">   #{loginBean.theUserOfThisAccount.fullName}</span>
+														<h:commandLink  class="m-card-user__email m--font-weight-300 m-link" style="padding-left: 30px;">#{loginBean.theUserOfThisAccount.email}</h:commandLink>
+													</h:panelGrid>
+												</h:panelGroup>
+												
+										</h:panelGrid>
+											
+										</div>
+									
+						</a>
+					</li>
+					<li class=" parent" style="background: #{menuBean.menu[0]};"><h:commandLink   action="#{menuBean.invertRemainMenus(0)}">Home</h:commandLink>
+					
+					</li>
+					
+                    <li class="parent" style="background: #{menuBean.menu[1]};"><h:commandLink href="#."  action="#{menuBean.invertRemainMenus(1)}">About Us</h:commandLink>
+					
+					</li>
+					
+                    <li class="parent" style="background: #{menuBean.menu[2]};"><h:commandLink  action="#{menuBean.invertRemainMenus(2)}">Programes</h:commandLink>
+						
+					</li>
+                    
+					
+					<li class="parent"  style="background: #{menuBean.menu[3]};"><h:commandLink  action="#{menuBean.invertRemainMenus(3)}">Contact Us</h:commandLink>
+					
+					</li>
+					
+					
+					
+				</ul>
+                
+                
+			</nav>
+			</h:form>
+		</div>
+		</div>
+    <!-- Mobile Menu End -->
+	
+	
+	
+   
+
+
+  </div>
+
+
+
+	<a href="#0" class="cd-top"></a>
+
+
+</html>

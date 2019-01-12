@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/main_template.xhtml">
+
+	<ui:define name="title">Zewail Programs</ui:define>
+
+
+	<ui:define name="content"> 
+
+	
+   <!--Start Content-->
+   #{programsBean.refreshPage()}
+   <div class="content">
+		
+		<div class="news-posts">
+		
+			<div class="container">
+			
+				<div class="row">
+				<div class="col-md-12">
+            <div class="main-title">
+                <h2><span>All Programs of </span> Zewail</h2>
+                <p>This is the most updated programs of zewail city.</p>
+            </div>
+            </div>
+            
+            <ui:repeat var="o" value="#{programsBean.listOfAllPrograms}" varStatus="status">
+	             
+                <div class="col-md-6">
+							<div class="news-sec">
+							<h:form>
+								<h:graphicImage style="    height: 355px;" value="#{o.getphoto()}" alt=""/>
+								<div class="detail">
+									<h3>#{o.name}</h3>
+									<p style="height: 65px;    line-height: 25px;    overflow: hidden;">#{o.description} </p>
+									<h:commandLink class="read-more" action="#{programsBean.goToSessionsForProgramPage(o.id)}">read more</h:commandLink>
+								</div>
+					</h:form> 
+							</div>
+					</div>
+            </ui:repeat>
+					
+					
+					
+					
+				</div>
+			</div>
+		</div>
+  
+  
+  
+   
+   </div>
+   
+   <!--End Content-->
+   
+<h:outputScript name="js/jquery.js"/>   
+
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

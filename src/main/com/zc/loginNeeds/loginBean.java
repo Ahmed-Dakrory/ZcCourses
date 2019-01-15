@@ -1,15 +1,16 @@
 package main.com.zc.loginNeeds;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -21,10 +22,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.event.FileUploadEvent;
 
-@Named
-@ApplicationScoped
-public class loginBean {
+
+@ManagedBean(name = "loginBean")
+@SessionScoped
+public class loginBean implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6715784400190397743L;
 	private boolean isLoggedIn;
 	private String emailOfUserLoggedIn;
 	private String passwordOfUserLoggedIn;
@@ -35,9 +41,11 @@ public class loginBean {
 	private byte[] imageOfReg;
 	private boolean imageUploaded;
 	
-	@Inject
+
+	@ManagedProperty(value = "#{UserDataFacadeImpl}")
 	private UserDataAppServiceImpl userDataFacede; 
 	 
+
 	private String passwordConfirm;
 	@PostConstruct
 	public void init() {
@@ -80,8 +88,8 @@ public class loginBean {
 		return "/pages/public/index.xhtml?faces-redirect=true";
 	}
 	public void login(){
-	
-		theUserOfThisAccount=userDataFacede.getByEmailAndPassword(emailOfUserLoggedIn, passwordOfUserLoggedIn);
+		theUserOfThisAccount = userDataFacede.getByEmailAndPassword(emailOfUserLoggedIn, passwordOfUserLoggedIn);
+
 		if(theUserOfThisAccount!=null){
 			isLoggedIn=true;
 			
@@ -435,6 +443,7 @@ public class loginBean {
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
 	}
+
 	
 	
 	

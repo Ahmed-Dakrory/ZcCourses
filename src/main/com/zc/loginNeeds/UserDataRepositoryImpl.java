@@ -120,4 +120,18 @@ public class UserDataRepositoryImpl implements UserDataRepository{
 		 }
 	}
 
+	@Override
+	public UserData getByEmail(String email) {
+		// TODO Auto-generated method stub
+		Query query 	=sessionFactory.getCurrentSession().getNamedQuery("UserData.getByEmail").setString("email",email);
+
+		 @SuppressWarnings("unchecked")
+		List<UserData> results=query.list();
+		 if(results.size()!=0){
+			 return results.get(0);
+		 }else{
+			 return null;
+		 }
+	}
+
 }

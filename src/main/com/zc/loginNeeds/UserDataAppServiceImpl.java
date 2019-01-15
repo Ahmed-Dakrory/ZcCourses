@@ -114,6 +114,22 @@ public class UserDataAppServiceImpl implements IUserDataAppService{
 						return null;
 					}
 	}
+
+
+
+	@Override
+	public UserData getByEmail(String email) {
+		try{
+			UserData so=userDataRepository.getByEmail(email);
+			
+			return so;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
+	}
 	
 }
 		

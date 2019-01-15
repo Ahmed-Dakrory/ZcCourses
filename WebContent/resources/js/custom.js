@@ -9,11 +9,11 @@ $("#menu").mmenu({
 },
 "footer": {
 "add": true,
-"title": "Copyrights 2015 Medical Guide. all rights reserved."
+"title": "Copyrights 2018 Zewail City Courses. all rights reserved."
 },
 
 "header": {
-"title": "Medical Guide",
+"title": "Zewail city Courses",
 "add": true,
 "update": true
 },

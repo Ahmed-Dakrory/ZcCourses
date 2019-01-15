@@ -1,11 +1,11 @@
 package main.com.zc.templateMains;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
 @Named
-@ApplicationScoped
+@SessionScoped
 public class menuBean {
 	private String menu[];
 	String menuLinks[]={

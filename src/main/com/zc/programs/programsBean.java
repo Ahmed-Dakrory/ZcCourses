@@ -1,14 +1,15 @@
 package main.com.zc.programs;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.PrimeFaces;
@@ -22,11 +23,17 @@ import main.com.zc.services.domain.courses.course;
 
 
 
-@Named
+@ManagedBean(name = "programsBean")
 @SessionScoped
-public class programsBean{
+public class programsBean implements Serializable{
 
-	@Inject
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7292135686409219607L;
+
+
+	@ManagedProperty(value = "#{loginBean}")
 	private loginBean loginBean;
 	
 	
@@ -34,10 +41,12 @@ public class programsBean{
 
 	
 
-	@Inject
+
+	@ManagedProperty(value = "#{ProgramDataFacadeImpl}")
 	private ProgramDataAppServiceImpl programDataFacede; 
 
-	@Inject
+
+	@ManagedProperty(value = "#{CourseFacadeImpl}")
 	private CourseAppServiceImpl courseFasade; 
 	private List<course> courses;
 
@@ -45,7 +54,8 @@ public class programsBean{
 	private course thecourseSelected;
 	private int selectedCourseId;
 	 
-	@Inject
+
+	@ManagedProperty(value = "#{courseRegFacadeImpl}")
 	private courseRegAppServiceImpl registerCourseFasade;
 	 
 	@PostConstruct

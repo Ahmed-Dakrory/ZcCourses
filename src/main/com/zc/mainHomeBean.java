@@ -5,26 +5,30 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 import main.com.zc.services.domain.courses.CourseAppServiceImpl;
 import main.com.zc.services.domain.courses.course;
 
 
 
-@Named
-@ApplicationScoped
+@ManagedBean(name = "mainHomeBean")
+@SessionScoped
 public class mainHomeBean implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8006657939592994747L;
+
+	/**
+	 * 
+	 */
 	private String homeSiteName;
 	
-	 @Inject
+	@ManagedProperty(value = "#{CourseFacadeImpl}")
 	 private CourseAppServiceImpl courseFasade; 
 	 private List<course> courses;
 	

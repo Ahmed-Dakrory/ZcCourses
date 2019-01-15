@@ -16,7 +16,7 @@ import main.com.zc.allRegisterations.courseRegAppServiceImpl;
 import main.com.zc.allRegisterations.courseRegDao;
 import main.com.zc.loginNeeds.UserDataAppServiceImpl;
 @RestController
-@RequestMapping("/")
+@RequestMapping("/Api")
 public class Api {
  
 

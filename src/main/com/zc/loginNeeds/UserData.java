@@ -30,6 +30,11 @@ import org.hibernate.annotations.NamedQuery;
 			)
 	
 	,
+	@NamedQuery(name="UserData.getByEmail",
+	query = "from UserData d where d.email = :email"
+			)
+	
+	,
 	@NamedQuery(name="UserData.getByMailAndPassword",
 	query = "from UserData d where d.email = :email and d.password = :password and active = :active"
 			)

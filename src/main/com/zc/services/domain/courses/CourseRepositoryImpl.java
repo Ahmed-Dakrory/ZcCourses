@@ -88,7 +88,11 @@ public class CourseRepositoryImpl implements CourseRepository{
 
 		 @SuppressWarnings("unchecked")
 		List<course> results=query.list();
-		   return results.get(0);
+		if(results.size()!=0){
+			 return results.get(0);
+		 }else{
+			 return null;
+		 }
 	}
 
 }

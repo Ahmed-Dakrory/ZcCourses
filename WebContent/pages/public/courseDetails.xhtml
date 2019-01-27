@@ -9,10 +9,11 @@
 
 <ui:composition template="/templates/main_template.xhtml">
 
-	<ui:define name="title">Zewail #{programsBean.thecourseSelected.name}</ui:define>
+	<ui:define name="title">Zewail #{courseBean.thecourseSelected.name}</ui:define>
 
 
-	<ui:define name="content"> 
+	<ui:define name="content">
+	#{courseBean.refreshPage()} 
 
    <!--Start Content-->
    <div class="content">
@@ -27,28 +28,26 @@
 					<div class="col-md-5">
 						<div class="product-detail-slider">
 							<div class="rslides" id="product-detail-slider">
-								<h:graphicImage value="#{programsBean.thecourseSelected.getphoto()}" alt=""/>
+								<h:graphicImage style="height:350px;" value="#{courseBean.thecourseSelected.getphoto()}" alt=""/>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-7">
 						<div id="courseDetails" class="product-detail-description">
 						
-							<h2>#{programsBean.thecourseSelected.name}</h2>
+							<h2>#{courseBean.thecourseSelected.name}</h2>
 							
-							<p class="price big dark">&pound;#{programsBean.thecourseSelected.price}</p>
-							<p>#{programsBean.thecourseSelected.description} </p>
+							<p class="price big dark">&pound;#{courseBean.thecourseSelected.price}</p>
+							<p>#{courseBean.thecourseSelected.description} </p>
 							<p:outputPanel id="enrollmentPanel">
-							<p:commandLink style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(programsBean.thecourseSelected.id,0)}"  action="#{programsBean.enrollInCourse(programsBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Enroll me in the course</p:commandLink>
-							<p:outputLabel style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(programsBean.thecourseSelected.id,1)}">You are Enrolled</p:outputLabel>
+							<p:commandLink style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,0)}"  action="#{courseBean.enrollInCourse(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Enroll me in the course</p:commandLink>
+							<p:outputLabel style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}">You are Enrolled</p:outputLabel>
 							</p:outputPanel>
 							<div class="clearfix"></div>
 							<br/>
-							<p><strong>Categories:</strong>  #{programsBean.thecourseSelected.categories}</p>
+							<p><strong>Categories:</strong>  #{courseBean.thecourseSelected.categories}</p>
 							<ul class="boxed-social clearfix">
-								<li><a href="#." class="facebook"><i class="icon-euro"></i>Share On Facebook</a></li>
-								<li><a href="#." class="twitter"><i class="icon-twitter5"></i>Tweet This Product</a></li>
-								<li><a href="#." class="pinterest"><i class="icon-pinterest"></i>Pin This Product</a></li>
+								<li style="float: none;"><a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:8080/ZcCourses/pages/public/courseDetails.xhtml?id=#{courseBean.thecourseSelected.id}" class="facebook"><i class="icon-euro"></i>Share On Facebook</a></li>
 							</ul>
 						</div>
 					</div>
@@ -59,37 +58,11 @@
 				<div class="clearfix verticalTab" id="target">
 					<ul class="resp-tabs-list">
 						<li>Description</li>
-						<li>Additional Information</li>
 					</ul>
 					<div class="resp-tabs-container">
 						<div>
 							<h3>Description</h3>
-							<p>#{programsBean.thecourseSelected.description}</p>
-						</div>
-						<div>
-							<ul class="additional-detail list-unstyled">
-								<li>
-									<label>Weight</label> 	1.5 kg
-								</li>
-								<li>
-									<label>Dimensions</label> 	90 x 60 x 90 cm
-								</li>
-								<li>
-									<label>Composition</label> 	100% Cotton
-								</li>
-								<li>
-									<label>Size &amp; Fit</label>This style comes in a regular fit which fits true to size.
-								</li>
-								<li>
-									<label>Other Info</label> Machine wash according to instructions on care label
-								</li>
-								<li>
-									<label>Size</label>One Size Fits All, Extra Small, Small, Medium, Large, Extra Large
-								</li>
-								<li>
-									<label>Color</label> Black, Blue, Brown, White
-								</li>
-							</ul>
+							<p>#{courseBean.thecourseSelected.description}</p>
 						</div>
 					</div>
 				</div>
@@ -99,62 +72,28 @@
 					<h2 class="light"><strong>Related</strong> Courses</h2>
 					<br/>
 					<ul class="shop full-width clearfix list-unstyled">
-						<li>
-							<div class="product">
-									<div class="product-thumb">
-										<a><p:graphicImage name="images/services/services1.jpg" alt=""/></a>
-									</div>
-									<div class="product-description clearfix">
-										<h3><a href="courseDetails.xhtml">Structure Engineering</a></h3>
-										<p class="price"><u>$15.00</u> $17.00</p>
-										<span class="double-border"></span>
-										<a href="#." class="product-cart-btn pull-left"><i class="icon-basket"></i>Enroll</a>
-										<a href="courseDetails.xhtml" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
-									</div>
+					 <ui:repeat var="o" value="#{courseBean.courses}" varStatus="status">
+	             
+			                <div class="col-md-3">
+									<div class="product">
+												<div class="product-thumb">
+													<a><h:graphicImage style="    height: 193px;" value="#{o.getphoto()}" alt=""/></a>
+												</div>
+												<div class="product-description clearfix">
+													<h3><a href="courseDetails.xhtml?id=#{o.id}">#{o.name}</a></h3>
+													<p class="price"> $#{o.price}</p>
+													<span class="double-border"></span>
+													<p:outputPanel id="enrollmentPanel">
+														<p:outputLabel style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(o.id,1)}" class="product-cart-btn pull-left">You are Enrolled</p:outputLabel>
+													</p:outputPanel>
+													<a href="courseDetails.xhtml?id=#{o.id}" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
+												</div>
+											</div>
+											<br/>
+											<br/>
 								</div>
-						</li>
-						<li>
-							<div class="product">
-									<div class="product-thumb">
-										<a><p:graphicImage name="images/services/services1.jpg" alt=""/></a>
-									</div>
-									<div class="product-description clearfix">
-										<h3><a href="courseDetails.xhtml">Structure Engineering</a></h3>
-										<p class="price"><u>$15.00</u> $17.00</p>
-										<span class="double-border"></span>
-										<a href="#." class="product-cart-btn pull-left"><i class="icon-basket"></i>Enroll</a>
-										<a href="courseDetails.xhtml" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
-									</div>
-								</div>
-						</li>
-						<li>
-							<div class="product">
-									<div class="product-thumb">
-										<a><p:graphicImage name="images/services/services1.jpg" alt=""/></a>
-									</div>
-									<div class="product-description clearfix">
-										<h3><a href="courseDetails.xhtml">Structure Engineering</a></h3>
-										<p class="price"><u>$15.00</u> $17.00</p>
-										<span class="double-border"></span>
-										<a href="#." class="product-cart-btn pull-left"><i class="icon-basket"></i>Enroll</a>
-										<a href="courseDetails.xhtml" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
-									</div>
-								</div>
-						</li>
-						<li>
-							<div class="product">
-									<div class="product-thumb">
-										<a><p:graphicImage name="images/services/services1.jpg" alt=""/></a>
-									</div>
-									<div class="product-description clearfix">
-										<h3><a href="courseDetails.xhtml">Structure Engineering</a></h3>
-										<p class="price"><u>$15.00</u> $17.00</p>
-										<span class="double-border"></span>
-										<a href="#." class="product-cart-btn pull-left"><i class="icon-basket"></i>Enroll</a>
-										<a href="courseDetails.xhtml" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
-									</div>
-								</div>
-						</li>
+			            </ui:repeat>
+					
 					</ul>
 				</div>
             

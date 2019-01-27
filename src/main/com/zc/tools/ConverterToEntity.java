@@ -1,5 +1,7 @@
 package main.com.zc.tools;
 
+import main.com.zc.allRegisterations.courseReg;
+import main.com.zc.allRegisterations.courseRegDao;
 import main.com.zc.loginNeeds.UserData;
 import main.com.zc.loginNeeds.UserDataDao;
 import main.com.zc.programs.ProgramDao;
@@ -55,6 +57,15 @@ public class ConverterToEntity {
 		dao.setDescription(program.getDescription());
 		dao.setImage(program.getphoto());
 		dao.setName(program.getName());
+		return dao;
+	}
+	
+	public static courseRegDao toDao(courseReg courseReg) {
+		courseRegDao dao=new courseRegDao();
+		dao.setId(courseReg.getId());
+		dao.setCourseId(courseReg.getCourseId());
+		dao.setDate(String.valueOf(courseReg.getDate().getTimeInMillis()));
+		dao.setStudentId(courseReg.getStudentId());
 		return dao;
 	}
 }

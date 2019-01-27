@@ -10,9 +10,9 @@ public class menuBean {
 	private String menu[];
 	String menuLinks[]={
 			"/pages/public/index.xhtml?faces-redirect=true",
-			"/pages/public/about_us.xhtml?faces-redirect=true",
+			"/pages/public/about.xhtml?faces-redirect=true",
 			"/pages/public/programs.xhtml?faces-redirect=true",
-			"/pages/public/contact_us.xhtml?faces-redirect=true",
+			"/pages/public/contactUs.xhtml?faces-redirect=true",
 			"/pages/public/login.xhtml?faces-redirect=true",
 			"/pages/public/registeration.xhtml?faces-redirect=true"
 			

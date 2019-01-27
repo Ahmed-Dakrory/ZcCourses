@@ -153,7 +153,7 @@ public class loginBean implements Serializable{
 		// TODO Auto-generated method stub
 		boolean ok=false;
 		
-		if(!theUserOfThisAccount2.getFullName().equals("") && theUserOfThisAccount2.getPassword().equals(passwordConfirm)){
+		if(!theUserOfThisAccount2.getFullName().equals("") &&!theUserOfThisAccount2.getPassword().equals("") &&!theUserOfThisAccount2.getEmail().equals("") && theUserOfThisAccount2.getPassword().equals(passwordConfirm)){
 			ok=true;
 		}
 		if(ok){

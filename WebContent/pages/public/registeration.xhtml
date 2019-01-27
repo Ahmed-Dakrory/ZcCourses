@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
@@ -68,22 +68,22 @@
 									
 									</div>
 									<div class="form-group">
-										<h:inputText type="text" id="firstname" tabindex="2" class="form-control" pt:placeholder="Full Name ( First - Middle - Last )" value="#{loginBean.theUserOfThisAccount.fullName}"/>
+										<p:inputText type="text" id="firstname" tabindex="1" class="form-control" required="true" pt:placeholder="Full Name ( First - Middle - Last )" value="#{loginBean.theUserOfThisAccount.fullName}"/>
 									</div>
 									
 									
 									<div class="form-group">
-										<h:inputText type="text" id="nationalId" tabindex="2" class="form-control" pt:placeholder="For Outsider : National ID ( Last 7 Digits ) --- For ZC ( University ID )" value="#{loginBean.theUserOfThisAccount.nationalId}"/>
+										<p:inputText type="text" id="nationalId" tabindex="1" class="form-control" required="true" pt:placeholder="For Outsider : National ID ( Last 7 Digits ) --- For ZC ( University ID )" value="#{loginBean.theUserOfThisAccount.nationalId}"/>
 									</div>
 									
 									<div class="form-group">
-										<h:inputText type="email" id="email" tabindex="1" class="form-control" pt:placeholder="Email Address" value="#{loginBean.theUserOfThisAccount.email}"/>
+										<p:inputText type="email" id="email" tabindex="1" class="form-control"  required="true" pt:placeholder="Email Address" value="#{loginBean.theUserOfThisAccount.email}"/>
 									</div>
 									<div class="form-group">
-										<h:inputText type="password" id="password" tabindex="1" class="form-control" pt:placeholder="Password" value="#{loginBean.theUserOfThisAccount.password}"/>
+										<p:inputText type="password" id="password" tabindex="1" class="form-control" required="true" pt:placeholder="Password" value="#{loginBean.theUserOfThisAccount.password}"/>
 									</div>
 									<div class="form-group">
-										<h:inputText type="password" id="confirm-password" tabindex="2" class="form-control" pt:placeholder="Confirm Password" value="#{loginBean.passwordConfirm}"/>
+										<p:inputText type="password" id="confirm-password" tabindex="1" class="form-control" required="true" pt:placeholder="Confirm Password" value="#{loginBean.passwordConfirm}"/>
 									</div>
 									<div class="form-group" style="height: 29px;">
 										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
@@ -110,7 +110,7 @@
 								        </h:panelGrid>
 									</div>
 									<div class="form-group">
-										<h:inputText type="text" id="mobile" tabindex="2" class="form-control" pt:placeholder="Your mobile phone number" value="#{loginBean.theUserOfThisAccount.mobile}"/>
+										<p:inputText type="text" id="mobile" tabindex="1" class="form-control" required="true" pt:placeholder="Your mobile phone number" value="#{loginBean.theUserOfThisAccount.mobile}"/>
 									</div>
 									<div class="form-group" style="height: 29px;">
 										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
@@ -184,13 +184,13 @@
 								        </h:panelGrid>
 									</div>
 									<div class="form-group">
-										<h:inputText type="text" id="university" tabindex="2" class="form-control" pt:placeholder="University" value="#{loginBean.theUserOfThisAccount.university}"/>
+										<p:inputText type="text" id="university" tabindex="1" class="form-control" pt:placeholder="University" value="#{loginBean.theUserOfThisAccount.university}"/>
 									</div>
 									<div class="form-group">
-										<h:inputText type="text" id="faculty" tabindex="2" class="form-control" pt:placeholder="Faculty" value="#{loginBean.theUserOfThisAccount.faculty}"/>
+										<p:inputText type="text" id="faculty" tabindex="1" class="form-control" pt:placeholder="Faculty" value="#{loginBean.theUserOfThisAccount.faculty}"/>
 									</div>
 									<div class="form-group">
-										<h:inputText type="text" id="major" tabindex="2" class="form-control" pt:placeholder="Major" value="#{loginBean.theUserOfThisAccount.major}"/>
+										<p:inputText type="text" id="major" tabindex="1" class="form-control" pt:placeholder="Major" value="#{loginBean.theUserOfThisAccount.major}"/>
 									</div>
 									
 									<div class="form-group" style="height: 29px;">
@@ -214,13 +214,13 @@
 								        </h:panelGrid>
 									</div>
 									<div class="form-group">
-										<h:inputText type="text" id="work" tabindex="2" class="form-control" pt:placeholder="If you are graduate .. Where do you work ?" value="#{loginBean.theUserOfThisAccount.work}"/>
+										<p:inputText type="text" id="work" tabindex="1" class="form-control" pt:placeholder="If you are graduate .. Where do you work ?" value="#{loginBean.theUserOfThisAccount.work}"/>
 									</div>
 									<div class="form-group">
-										<h:inputText type="text" id="homeGovernorate" tabindex="2" class="form-control" pt:placeholder="Home Governorate" value="#{loginBean.theUserOfThisAccount.homeGovernorate}"/>
+										<p:inputText type="text" id="homeGovernorate" tabindex="1" required="true" class="form-control" pt:placeholder="Home Governorate" value="#{loginBean.theUserOfThisAccount.homeGovernorate}"/>
 									</div>
 									<div class="form-group">
-										<h:inputText type="text" id="residenceGovernorate" tabindex="2" class="form-control" pt:placeholder="Residence Governorate" value="#{loginBean.theUserOfThisAccount.residenceGovernorate}"/>
+										<p:inputText type="text" id="residenceGovernorate" tabindex="1" required="true" class="form-control" pt:placeholder="Residence Governorate" value="#{loginBean.theUserOfThisAccount.residenceGovernorate}"/>
 									</div>
 									<div class="form-group" style="height: 29px;">
 										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">

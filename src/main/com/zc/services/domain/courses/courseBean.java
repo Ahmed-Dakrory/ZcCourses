@@ -1,7 +1,7 @@
-package main.com.zc.programs;
+package main.com.zc.services.domain.courses;
 
-import java.io.IOException;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -22,9 +22,9 @@ import main.com.zc.services.domain.courses.course;
 
 
 
-@ManagedBean(name = "programsBean")
+@ManagedBean(name = "courseBean")
 @SessionScoped
-public class programsBean implements Serializable{
+public class courseBean implements Serializable{
 
 	/**
 	 * 
@@ -36,20 +36,15 @@ public class programsBean implements Serializable{
 	private loginBean loginBean;
 	
 	
-	private List<ProgramData> listOfAllPrograms;
 
-	
-
-
-	@ManagedProperty(value = "#{ProgramDataFacadeImpl}")
-	private ProgramDataAppServiceImpl programDataFacede; 
 
 
 	@ManagedProperty(value = "#{CourseFacadeImpl}")
 	private CourseAppServiceImpl courseFasade; 
 	private List<course> courses;
 
-	private ProgramData theProgramSelected;
+	private course thecourseSelected;
+	private int selectedCourseId;
 	 
 
 	@ManagedProperty(value = "#{courseRegFacadeImpl}")
@@ -66,7 +61,15 @@ public class programsBean implements Serializable{
 		PrimeFaces.current().executeScript("dismiss();");
 	}
 	
-
+	public void enrollInCourse(int id){
+		selectedCourseId=id;
+		if(loginBean.isLoggedIn()){
+			PrimeFaces.current().executeScript("opencomfirmPopUpBox();");
+			
+		}else{
+			PrimeFaces.current().executeScript("openLoginPopUpBox();");
+		}
+	}
 	
 	public String getTheStateOfViewOfSelectedCourse(int courseId,int state){
 		if(loginBean.isLoggedIn()){
@@ -103,55 +106,58 @@ public class programsBean implements Serializable{
 		}
 	}
 	
-	public void goToSessionsForProgramPage(int idProgram){
+	public void comfirmActionForEnrollment() {
+		// TODO Auto-generated method stub
+		courseReg courseReg=new courseReg();
+		courseReg.setCourseId(selectedCourseId);
+		courseReg.setStudentId(loginBean.getTheUserOfThisAccount().getId());
+		courseReg.setDate(Calendar.getInstance());
+		
+		registerCourseFasade.addcourseReg(courseReg);
+		System.out.println("enrolled");
+		dismissDialog();
+		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("enrollmentPanel");
+		
+	}
+	
+	public void getCoursesRelatedToprogram(int idProgram){
 		try {
 	  		courses=courseFasade.getByIdCourse(idProgram);
-	  		theProgramSelected=programDataFacede.getById(idProgram);
-	  		try {
-	    		HttpServletRequest origRequest = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-	    		origRequest.getRequestURL();
-	    			FacesContext.getCurrentInstance().getExternalContext().redirect
-					("sections.xhtml");
-	    			
-	    			
-	    		
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
-
+	  	for(int i=0;i<courses.size();i++) {
+	  		if(courses.get(i).getId()==thecourseSelected.getId()) {
+	  			courses.remove(i);
+	  		}
+	  	}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	
 
 	public void refreshPage(){
-		listOfAllPrograms=programDataFacede.getAll();
-		if(loginBean.isLoggedIn()){
-			System.out.println("Logged in");
-		}else{
-			System.out.println("Logged out");
+		HttpServletRequest origRequest = (HttpServletRequest)FacesContext
+				.getCurrentInstance()
+				.getExternalContext()
+				.getRequest();
+		
+		try{
+			Integer id=Integer.parseInt(origRequest.getParameterValues("id")[0]);
+				if(id!=null){
+					thecourseSelected=courseFasade.getById(id);
+			  		selectedCourseId=thecourseSelected.getId();
+			  		getCoursesRelatedToprogram(thecourseSelected.getIdProgram());
+					
+				}
+			}
+		catch(Exception ex){
+			 
 		}
 	}
 
-	public List<ProgramData> getListOfAllPrograms() {
-		return listOfAllPrograms;
-	}
-
-	public void setListOfAllPrograms(List<ProgramData> listOfAllPrograms) {
-		this.listOfAllPrograms = listOfAllPrograms;
-	}
-
-	public ProgramDataAppServiceImpl getProgramDataFacede() {
-		return programDataFacede;
-	}
-
-	public void setProgramDataFacede(ProgramDataAppServiceImpl programDataFacede) {
-		this.programDataFacede = programDataFacede;
-	}
-
+	
+	
 	public CourseAppServiceImpl getCourseFasade() {
 		return courseFasade;
 	}
@@ -168,15 +174,15 @@ public class programsBean implements Serializable{
 		this.courses = courses;
 	}
 
-	public ProgramData getTheProgramSelected() {
-		return theProgramSelected;
-	}
-
-	public void setTheProgramSelected(ProgramData theProgramSelected) {
-		this.theProgramSelected = theProgramSelected;
-	}
-
 	
+
+	public course getThecourseSelected() {
+		return thecourseSelected;
+	}
+
+	public void setThecourseSelected(course thecourseSelected) {
+		this.thecourseSelected = thecourseSelected;
+	}
 
 	public loginBean getLoginBean() {
 		return loginBean;
@@ -194,7 +200,13 @@ public class programsBean implements Serializable{
 		this.registerCourseFasade = registerCourseFasade;
 	}
 
-	
+	public int getSelectedCourseId() {
+		return selectedCourseId;
+	}
+
+	public void setSelectedCourseId(int selectedCourseId) {
+		this.selectedCourseId = selectedCourseId;
+	}
 
 	
 	

@@ -271,14 +271,13 @@
 													<a><h:graphicImage style="    height: 193px;" value="#{o.getphoto()}" alt=""/></a>
 												</div>
 												<div class="product-description clearfix">
-													<h3><p:commandLink action="#{programsBean.goToSessionsForcoursePage(o.id)}">#{o.name}</p:commandLink></h3>
-													<p class="price"><u>$15.00</u> $17.00</p>
+													<h3><a href="courseDetails.xhtml?id=#{o.id}">#{o.name}</a></h3>
+													<p class="price"> $#{o.price}</p>
 													<span class="double-border"></span>
 													<p:outputPanel id="enrollmentPanel">
-														<p:commandLink style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(o.id,0)}" action="#{programsBean.enrollInCourse(o.id)}" class="product-cart-btn pull-left"><i class="icon-basket"></i>Enroll</p:commandLink>
 														<p:outputLabel style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(o.id,1)}" class="product-cart-btn pull-left">You are Enrolled</p:outputLabel>
 													</p:outputPanel>
-													<p:commandLink action="#{programsBean.goToSessionsForcoursePage(o.id)}" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</p:commandLink>
+													<a href="courseDetails.xhtml?id=#{o.id}" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
 												</div>
 											</div>
 											<br/>
@@ -297,13 +296,7 @@
 					
 					
 					
-					<div class="col-md-12">
-						<div class="paging">
-							<a href="#." class="selected">1</a>
-							<a href="#">2</a>
-							<a href="#">3</a>
-						</div>
-					</div>
+					
 					
 				</div>
 			</div>

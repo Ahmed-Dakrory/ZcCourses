@@ -1,6 +1,7 @@
 package main.com.zc.Api;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import flexjson.JSONSerializer;
+import main.com.zc.allRegisterations.courseReg;
+import main.com.zc.allRegisterations.courseRegAppServiceImpl;
+import main.com.zc.allRegisterations.courseRegDao;
 import main.com.zc.loginNeeds.UserData;
 import main.com.zc.loginNeeds.UserDataAppServiceImpl;
 import main.com.zc.loginNeeds.UserDataDao;
@@ -37,6 +41,9 @@ public class Api {
 
 	@Inject
 	private ProgramDataAppServiceImpl programFacade;
+	
+	@Inject
+	private courseRegAppServiceImpl courseRegFacade;
 	
     @RequestMapping(value = "/")
     public ResponseEntity<String> getLogin() {
@@ -80,6 +87,22 @@ public class Api {
     	return new ResponseEntity<>(serializeJson.serialize(courseDao), HttpStatus.CREATED); 
     }
     
+    @RequestMapping(value = "/program",method = RequestMethod.POST)
+    public ResponseEntity<String> getProgram(@RequestParam(value="id",required=false) Integer id) {
+    	if(id==null) {
+
+        	return new ResponseEntity<>(" ", HttpStatus.OK);
+    	}
+    	ProgramData program=programFacade.getById(Integer.parseInt(String.valueOf(id)));
+    	if(program==null) {
+
+        	return new ResponseEntity<>(" ", HttpStatus.BAD_REQUEST);
+    	}
+    	ProgramDao programDao=ConverterToEntity.toDao(program);
+    	JSONSerializer serializeJson=new JSONSerializer();
+    	
+    	return new ResponseEntity<>(serializeJson.serialize(programDao), HttpStatus.CREATED); 
+    }
     
     @RequestMapping(value = "/coursesbyProgramId",method = RequestMethod.POST)
     public ResponseEntity<String> getCourseByProgramId(@RequestParam(value="id",required=false) Integer id) {
@@ -126,19 +149,51 @@ public class Api {
     }
     
     @RequestMapping(value = "/userData",method = RequestMethod.POST)
-    public ResponseEntity<String> getUserData(@RequestParam(value="id",required=false) Integer id) {
-    	if(id==null) {
+    public ResponseEntity<String> getUserData(@RequestParam(value="email",required=false) String email,@RequestParam(value="password",required=false) String password) {
+    	if(email==null||password==null) {
     		
         	return null;
     	}
     	
-    	UserData userdata=userFacade.getById(Integer.parseInt(String.valueOf(id)));
+    	UserData userdata=userFacade.getByEmailAndPassword(email, password);
     	UserDataDao userDao=ConverterToEntity.toDao(userdata);
     	JSONSerializer serializeJson=new JSONSerializer();
     	
     	return new ResponseEntity<>(serializeJson.serialize(userDao), HttpStatus.CREATED); 
     }
+    
+    @RequestMapping(value = "/setcourseRegData",method = RequestMethod.POST)
+    public ResponseEntity<String> setUserDataOfThisCourse(@RequestParam(value="idUser",required=false) Integer id,@RequestParam(value="idCourse",required=false) Integer idCourse) {
+    	if(id==null||idCourse==null) {
+    		
+        	return null;
+    	}
+    	courseReg courseReg=new courseReg();
+    	courseReg.setCourseId(idCourse);
+    	courseReg.setDate(Calendar.getInstance());
+    	courseReg.setStudentId(id);
 
+    	courseRegFacade.addcourseReg(courseReg);
+    	
+    	return new ResponseEntity<>("{\"statue\":\"Ok\"}", HttpStatus.CREATED); 
+    }
+    
+    @RequestMapping(value = "/courseRegData",method = RequestMethod.POST)
+    public ResponseEntity<String> getUserDataOfThisCourse(@RequestParam(value="idUser",required=false) Integer id,@RequestParam(value="idCourse",required=false) Integer idCourse) {
+    	if(id==null||idCourse==null) {
+    		
+        	return null;
+    	}
+    	courseReg courseReg=new courseReg();
+
+    	courseReg=courseRegFacade.getByIdStudentandCourseId(id, idCourse);
+
+    	courseRegDao courseRegDao=ConverterToEntity.toDao(courseReg);
+    	JSONSerializer serializeJson=new JSONSerializer();
+    	return new ResponseEntity<>(serializeJson.serialize(courseRegDao), HttpStatus.CREATED); 
+    }
+
+    
 	public CourseAppServiceImpl getCourseFacade() {
 		return courseFacade;
 	}
@@ -162,6 +217,14 @@ public class Api {
 
 	public void setProgramFacade(ProgramDataAppServiceImpl programFacade) {
 		this.programFacade = programFacade;
+	}
+
+	public courseRegAppServiceImpl getCourseRegFacade() {
+		return courseRegFacade;
+	}
+
+	public void setCourseRegFacade(courseRegAppServiceImpl courseRegFacade) {
+		this.courseRegFacade = courseRegFacade;
 	}
 
 	

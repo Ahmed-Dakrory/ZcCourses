@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/main_template.xhtml">
+
+	<ui:define name="title">Zewail Courses</ui:define>
+
+
+	<ui:define name="content">
+	<h:form enctype="multipart/form-data"  id="mainForm">
+		#{mainHomeBean.refreshPage()}
+	<div class="container">
+	<div class="time-table-sec">
+	<ul id="accordion2" class="accordion2">
+	<li>
+	<ul class="submenu time-table">
+	<li class="tit"><h5>Working Time</h5></li>
+	<li><span class="day">Monday - Friday</span> <span class="divider">-</span> <span class="time">8.00 - 16.00</span></li>
+	<li><span class="day">Saturday</span> <span class="divider">-</span> <span class="time">9.15 - 17.00</span></li>
+	<li><span class="day">Sunday</span> <span class="divider">-</span> <span class="time">9.45 - 15.00</span></li>
+	</ul>
+	<div class="link"><h:graphicImage class="time-tab" name="images/timetable-menu-dark.png" alt=""/></div>
+	
+	</li>
+	</ul>
+	</div>
+	</div>
+
+    
+	
+            
+   <!-- The start of Main Content -->
+   <div class="content">
+   
+   
+  
+  <div class="gallery">
+   		<div class="container">
+            <div class="pannelWrapper">
+				<p:panel class="attendance">
+					<table>
+						<tr>
+							<td colspan="3"><h4>Import File</h4></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel value="Select File"/> &nbsp;&nbsp;</td>
+							<td>
+									<p:fileUpload mode="simple" skinSimple="true" value="#{RegUserListBean.file}" />
+									<h:message for="file" />
+								
+									<h:commandButton id="submit"  action="#{RegUserListBean.parseFile}" value="Upload File"
+									  styleClass="blueBtn" process="@form"/>
+									<h:outputText value="#{RegUserListBean.statusMessage}" rendered="#{not empty RegUserListBean.statusMessage}"/>
+								
+							</td>
+						</tr>
+					</table>
+					<h:outputLabel rendered="#{RegUserListBean.resultText}" id="resultText"
+					value="Result : #{RegUserListBean.list.size()} new user(s) of parsed file size #{RegUserListBean.list.size()} "/>
+					
+					<p:panel><h3>Imported Users</h3><br/></p:panel>
+					<h:form id="dataTable">
+						<p:dataTable var="row" value="#{RegUserListBean.list}"  rowKey="#{row.id}" sortMode="multiple" widgetVar="studentCourse" id="userDataTable" resizableColumns="true" rows="10" paginator="true"
+					 	paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="5,10,20,40,60,80,100" paginatorPosition="top" currentPageReportTemplate="Total No. Of Records : {totalRecords} | Page: {currentPage}/{totalPages}">
+							<p:column width="130" id="fullName" sortBy="#{row.fullName}" filterBy="#{row.fullName}">
+								<h:outputText value="#{row.fullName}" />
+								<p:watermark value="User" for=":mainForm:dataTable:userDataTable:fullName"/>
+							</p:column>
+							<p:column width="130" id="email" sortBy="#{row.email}" filterBy="#{row.email}">
+								<h:outputText value="#{row.email}" />
+								<p:watermark  for=":mainForm:dataTable:userDataTable:email"/>
+							</p:column>
+							<p:column width="130" id="mobile" sortBy="#{row.mobile}" filterBy="#{row.mobile}">
+								<h:outputText value="#{row.mobile}" />
+								<p:watermark  for=":mainForm:dataTable:userDataTable:mobile"/>
+							</p:column>
+							<p:column width="130" id="nationalId" sortBy="#{row.nationalId}" filterBy="#{row.nationalId}">
+								<h:outputText value="#{row.nationalId}" />
+								<p:watermark  for=":mainForm:dataTable:userDataTable:nationalId"/>
+							</p:column>
+						</p:dataTable>
+								<p:commandButton id="save"  actionListener="#{RegUserListBean.saveCourse}" value="Save New Users" 
+						update=":mainForm:dataTable:userDataTable" ajax="false" process="@form" rendered="#{RegUserListBean.resultText}"/>
+					</h:form>
+					</p:panel>
+					
+					
+			</div>
+		
+            
+        </div>
+   </div>
+  
+   
+   </div>
+   <!-- The End of Main Content -->     
+      
+<h:outputScript name="js/jquery.js"/>    
+</h:form>
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

@@ -101,8 +101,13 @@ public class loginBean implements Serializable{
 		if(isLoggedIn){
 			setImageDependOnLoginState();
 			try {
+				if(theUserOfThisAccount.getEmail().equals("lts-admin@zewailcity.edu.eg")) {
 				FacesContext.getCurrentInstance()
-				   .getExternalContext().redirect("index.xhtml");
+				   .getExternalContext().redirect("/ZcCourses/pages/secured/addListUser.xhtml");
+				}else {
+				FacesContext.getCurrentInstance()
+					   .getExternalContext().redirect("index.xhtml");
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

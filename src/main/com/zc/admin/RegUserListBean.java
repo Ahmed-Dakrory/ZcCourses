@@ -7,7 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -275,16 +274,17 @@ public class RegUserListBean {
 		}
 		if(list.size()!=0)
 		{
-
-			 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Message", list.size()+" user(s) has(have) been saved Successfully");
-	         
-		        PrimeFaces.current().dialog().showMessageDynamic(message);
-				System.out.println("Added List size is "+list.size());
+				String listSize=String.valueOf(list.size());
+	        PrimeFaces.current().executeScript("swal(\"Good job!\", \" "+listSize+" user(s) has(have) been saved Successfully\", \"success\");\r\n" + 
+					"");
+	        System.out.println("Added List size is "+list.size());
 
 				list=new ArrayList<UserData>();
 		}
 	}
 
+	
+	
 	public UploadedFile getFile() {
 		return file;
 	}

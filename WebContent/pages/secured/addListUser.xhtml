@@ -86,10 +86,16 @@
 							</p:column>
 						</p:dataTable>
 								<p:commandButton id="save"  actionListener="#{RegUserListBean.saveCourse}" value="Save New Users" 
-						update=":mainForm:dataTable:userDataTable" ajax="false" process="@form" rendered="#{RegUserListBean.resultText}"/>
+						update=":mainForm:dataTable:userDataTable" ajax="true" process="@form" rendered="#{RegUserListBean.resultText}">
+						
+      
+    
+						</p:commandButton>
 					</h:form>
-					</p:panel>
 					
+					
+					</p:panel>
+				
 					
 			</div>
 		
@@ -102,6 +108,9 @@
    <!-- The End of Main Content -->     
       
 <h:outputScript name="js/jquery.js"/>    
+</h:form>
+<h:form>     
+         
 </h:form>
 	</ui:define>
 	

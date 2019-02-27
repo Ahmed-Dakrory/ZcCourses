@@ -103,7 +103,7 @@ public class loginBean implements Serializable{
 			try {
 				if(theUserOfThisAccount.getEmail().equals("lts-admin@zewailcity.edu.eg")) {
 				FacesContext.getCurrentInstance()
-				   .getExternalContext().redirect("/ZcCourses/pages/secured/addListUser.xhtml");
+				   .getExternalContext().redirect("/ZcCourses/pages/secured/admin/addListUser.xhtml");
 				}else {
 				FacesContext.getCurrentInstance()
 					   .getExternalContext().redirect("index.xhtml");

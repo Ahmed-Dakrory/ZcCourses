@@ -1,4 +1,4 @@
-package main.com.zc.admin;
+package main.com.zc.admin.AddlistOfUsers;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,8 +43,16 @@ public class RegUserListBean {
 		selectedstudentCourseLst=new StudentCourseDTO();*/
 		
 	}
+	
+	public String parseFile1() {
+
+		System.out.println("Dakrory: Ahmed");
+		return "";
+	}
 	public String parseFile()
 	{
+		System.out.println("Dakrory: New");
+		if(file.getSize()!=0&&file!=null) {
 		 InputStream inputStream = null;
 		 try {
 			inputStream=file.getInputstream();
@@ -57,6 +65,7 @@ public class RegUserListBean {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
 		}
 		 return "";
 	}

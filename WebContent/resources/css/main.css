@@ -1,7 +1,46 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 body {
   font-family: 'Open Sans', Tahoma, Arial;
+  background-image:url("../resources/images/background.jpg");
 }
+
+.sidenav {
+	border-style: outset;
+    border-width: thin;
+  height: 100%;
+  position: fixed;
+  z-index: 1111111;
+  top: 0;
+  left: 0;
+  padding-top: 5%;
+  background-image:url("../resources/images/ahmedZewail.jpg");
+  background-color: #111;
+  overflow-x: hidden;
+}
+
+.sidenav a {
+  padding: 50px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #231829;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #808080;
+}
+
+.main {
+	
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  margin-left: 5px; /* Same as the width of the sidenav */
+}
+
+
+
 
 .nav-wrapper {
   position: absolute;

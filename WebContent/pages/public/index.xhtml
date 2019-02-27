@@ -31,9 +31,7 @@
 	</div>
 
     
-	
    <!--Start Banner-->
-   
    <div class="tp-banner-container">
 		<div class="tp-banner" >
 			<ul>	<!-- SLIDE  -->
@@ -242,73 +240,39 @@
 </div>	
    
    <!--End Banner-->
-            
-   <!-- The start of Main Content -->
-   <div class="content">
-   
-   
-  
-  <div class="gallery">
-   		<div class="container">
-        	
-            <div class="row">
-	        <div class="col-md-12">
-            <div class="main-title">
-                <h2><span>List of</span> Courses</h2>
-                <p>The most enrolled courses</p>
-            </div>
-            </div>
-            </div>
-            
-			<div class="row">
-				<div class="main-gallery">
-					
-					 <ui:repeat var="o" value="#{mainHomeBean.courses}" varStatus="status">
-	             
-			                <div class="col-md-3">
-									<div class="product">
-												<div class="product-thumb">
-													<a><h:graphicImage style="    height: 193px;" value="#{o.getphoto()}" alt=""/></a>
-												</div>
-												<div class="product-description clearfix">
-													<h3><a href="courseDetails.xhtml?id=#{o.id}">#{o.name}</a></h3>
-													<p class="price"> $#{o.price}</p>
-													<span class="double-border"></span>
-													<p:outputPanel id="enrollmentPanel">
-														<p:outputLabel style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(o.id,1)}" class="product-cart-btn pull-left">You are Enrolled</p:outputLabel>
-													</p:outputPanel>
-													<a href="courseDetails.xhtml?id=#{o.id}" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
-												</div>
-											</div>
-											<br/>
-											<br/>
-								</div>
-			            </ui:repeat>
-					
-					
-					
-					
-					
+              
 
-					
-					
-                    
-					
-					
-					
-					
-					
+
+<div id="fh5co-practice"  class="fh5co-bg-section item" data-aos="zoom-out" data-aos-duration="1000">
+		<div class="container">
+			<div class="row animate-box fadeInUp animated-fast">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>List Of Courses </h2>
+					<p>The most enrolled courses</p>
 				</div>
 			</div>
-            
-            
-        </div>
-   </div>
-  
-   
-   </div>
-   <!-- The End of Main Content -->     
-       
+			<div class="row">
+			 <ui:repeat var="o" value="#{mainHomeBean.courses}" varStatus="status">
+	             
+				<div  class="col-md-4 text-center " >
+					<div class="services item" data-aos="flip-right" data-aos-duration="1500">
+						<span class="icon">
+							<h:graphicImage value="#{o.getphoto()}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:135px;height:135px; "  class="m--img-rounded m--marginless m--img-centered" alt=""/>
+						</span>
+						<div class="desc">
+							<h3><a href="courseDetails.xhtml?id=#{o.id}">#{o.name}</a></h3>
+							<p> $#{o.price}</p>
+						</div>
+					</div>
+				</div>
+				</ui:repeat>
+				<div class="col-md-12 text-center animate-box fadeInUp animated-fast">
+					<p><a class="btn btn-primary btn-lg btn-learn" href="/ZcCourses/pages/public/programs.xhtml">View More</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	       
 <h:outputScript name="js/jquery.js"/>    
 	</ui:define>
 	

@@ -16,7 +16,7 @@
 
 	
    <!--Start Content-->
-   <div class="container">
+   <div class="container item" data-aos="zoom-out" data-aos-duration="1000">
         	
             <div class="row">
             <div class="col-md-12">
@@ -52,7 +52,7 @@
 		
 		<div class="news-posts">
 		
-			<div class="container">
+			<div class="container item" data-aos="zoom-out" data-aos-duration="1000">
 			
 				<div class="row">
 				<div class="col-md-12">
@@ -64,14 +64,14 @@
             
             <ui:repeat var="o" value="#{programsBean.courses}" varStatus="status">
 	             
-                <div class="col-md-3">
+                <div class="col-md-3 item" data-aos="flip-right" data-aos-duration="1000">
 						<div class="product">
 									<div class="product-thumb">
 										<a><h:graphicImage style="    height: 193px;" value="#{o.getphoto()}" alt=""/></a>
 									</div>
 									<div class="product-description clearfix">
 										<h3><a href="courseDetails.xhtml?id=#{o.id}">#{o.name}</a></h3>
-										<p class="price"><u>$15.00</u> $17.00</p>
+										<p class="price">$#{o.price}</p>
 										<span class="double-border"></span>
 										<p:outputPanel id="enrollmentPanel">
 														<p:outputLabel style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(o.id,1)}" class="product-cart-btn pull-left">You are Enrolled</p:outputLabel>

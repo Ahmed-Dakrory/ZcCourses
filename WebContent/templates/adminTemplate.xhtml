@@ -43,6 +43,7 @@
 
     <!--bootstrap-->
     <link rel="stylesheet" href="#{resource['css:bootstrap.css']}" />
+    <link rel="stylesheet" href="#{resource['css:bootstrap.min.css']}" />
     
     <!--Dropmenu-->
     <link rel="stylesheet" href="#{resource['css:dropmenu.css']}" />
@@ -74,87 +75,44 @@
 </h:head>
 
 <h:body>
-<div align="center" id="header">
-    <ui:insert name="header">
-    	 <ui:include src="header2.xhtml"/> 
-    </ui:insert>
-</div>
 
 
-<div align="center" id="content">
-  <ui:insert name="content"> 
+	
+	
+		
+	<div class="container" style="  width: 100%;">
+	<div class="row">
+	
+	
+	<div class="col-md-3">
+	
+ <div class="sidenav">
+	  <a href="../../public/index.xhtml"> Home</a>
+	  <a href="addListUser.xhtml">Manage Courses</a>
+	  <a href="addListUser.xhtml">Add List Of users</a>
+	  <a href="managePrograms.xhtml">Manage Programs</a>
+	</div>
+	</div>
+	
+	<div class="main col-md-11" style="    margin-left: 14%;">
+	
+  <ui:insert  name="content"> 
     	 <ui:include src="content.xhtml"/> 
   </ui:insert>
+	</div>
+	
+	
+	</div>
   
+
+    
+	
+ 
   
-  <!-- The Modal of LoginBox popUp-->
-  <div class="container">
-        	
-            
-            <div class="row">
-<div id="popUpBoxLogin" class="modal">
-
-  <!-- Modal content -->
-  <div class="containner modal-content" style="margin-top: 10%;">
-  <div class="row" style="    top: 1px;    position: absolute;    right: 26px;">
-    <span class="close">&times;</span>
-   </div>
-   <div class="row" style="align-self: baseline;">
-    <p>You have to login to enroll</p>
-    </div>
-    <div class="row">
-    <div class="col" style="margin-top:13px;">
-    	<p:commandButton value="Login" action="#{menuBean.invertRemainMenus(4)}"/>
-    </div>
-    </div>
-  </div>
-
-</div>
-</div>
+      
+<h:outputScript name="js/jquery.js"/>
 </div>
 
-  <!-- The Modal of comfirm popUp-->
-  <div class="container">
-        	
-            
-            <div class="row">
-<div id="comfirmBox" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content" style="margin-top: 10%;">
-  <div class="row" style="    top: 1px;    position: absolute;    right: 26px;">
-    <span class="close">&times;</span>
-  </div>
-  <div class="row" style="align-self: baseline;">
-    <p>Are You sure you want To Enroll in this Course?</p>
-  </div>
-  <div class="row">
-    <div class="col" style="margin-top:13px;">
-   
-    		<p:commandButton  value="Yes" action="#{programsBean.comfirmActionForEnrollment()}"/>
-    		
-    	</div>
-    	
-    	<div class="col" style="margin-top:13px;">
-   
-    		<p:commandButton  value="No" action="#{programsBean.dismissDialog()}"/>
-    		
-    	</div>
-    </div>
-	    	
-    	
-  </div>
-
-</div>
-</div>
-</div>
-</div>
-
-<div align="center" id="footer">
-  <ui:insert name="footer">
-    	<ui:include src="footer2.xhtml"/>
-  </ui:insert>
-</div>
 
 
 

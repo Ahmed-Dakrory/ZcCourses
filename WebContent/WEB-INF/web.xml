@@ -20,6 +20,13 @@
     <param-value>/WEB-INF/applicationContext.xml</param-value>
   </context-param>
   
+  
+  <context-param>
+    <param-name>primefaces.THEME</param-name>
+    <param-value>none</param-value>
+</context-param>
+  
+  
   <context-param>
     <param-name>javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
     <param-value>true</param-value>

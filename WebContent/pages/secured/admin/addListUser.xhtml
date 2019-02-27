@@ -6,7 +6,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<ui:composition template="/templates/main_template.xhtml">
+<ui:composition template="/templates/adminTemplate.xhtml">
 
 	<ui:define name="title">Zewail Courses</ui:define>
 
@@ -40,7 +40,7 @@
    
   
   <div class="gallery">
-   		<div class="container">
+   		<div class="container" style="    width: 100%;">
             <div class="pannelWrapper">
 				<p:panel class="attendance">
 					<table>
@@ -50,11 +50,11 @@
 						<tr>
 							<td><h:outputLabel value="Select File"/> &nbsp;&nbsp;</td>
 							<td>
-									<p:fileUpload mode="simple" skinSimple="true" value="#{RegUserListBean.file}" />
+									<p:fileUpload  style="font-size: 11px;" mode="simple" skinSimple="true" value="#{RegUserListBean.file}" />
 									<h:message for="file" />
 								
-									<h:commandButton id="submit"  action="#{RegUserListBean.parseFile}" value="Upload File"
-									  styleClass="blueBtn" process="@form"/>
+									<h:commandButton  id="submit" class="download"  action="#{RegUserListBean.parseFile}" value="Upload File"
+									   process="@form"/>
 									<h:outputText value="#{RegUserListBean.statusMessage}" rendered="#{not empty RegUserListBean.statusMessage}"/>
 								
 							</td>
@@ -68,24 +68,24 @@
 						<p:dataTable var="row" value="#{RegUserListBean.list}"  rowKey="#{row.id}" sortMode="multiple" widgetVar="studentCourse" id="userDataTable" resizableColumns="true" rows="10" paginator="true"
 					 	paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="5,10,20,40,60,80,100" paginatorPosition="top" currentPageReportTemplate="Total No. Of Records : {totalRecords} | Page: {currentPage}/{totalPages}">
-							<p:column width="130" id="fullName" sortBy="#{row.fullName}" filterBy="#{row.fullName}">
+							<p:column  id="fullName" sortBy="#{row.fullName}" filterBy="#{row.fullName}">
 								<h:outputText value="#{row.fullName}" />
 								<p:watermark value="User" for=":mainForm:dataTable:userDataTable:fullName"/>
 							</p:column>
-							<p:column width="130" id="email" sortBy="#{row.email}" filterBy="#{row.email}">
+							<p:column  id="email" sortBy="#{row.email}" filterBy="#{row.email}">
 								<h:outputText value="#{row.email}" />
 								<p:watermark  for=":mainForm:dataTable:userDataTable:email"/>
 							</p:column>
-							<p:column width="130" id="mobile" sortBy="#{row.mobile}" filterBy="#{row.mobile}">
+							<p:column  id="mobile" sortBy="#{row.mobile}" filterBy="#{row.mobile}">
 								<h:outputText value="#{row.mobile}" />
 								<p:watermark  for=":mainForm:dataTable:userDataTable:mobile"/>
 							</p:column>
-							<p:column width="130" id="nationalId" sortBy="#{row.nationalId}" filterBy="#{row.nationalId}">
+							<p:column id="nationalId" sortBy="#{row.nationalId}" filterBy="#{row.nationalId}">
 								<h:outputText value="#{row.nationalId}" />
 								<p:watermark  for=":mainForm:dataTable:userDataTable:nationalId"/>
 							</p:column>
 						</p:dataTable>
-								<p:commandButton id="save"  actionListener="#{RegUserListBean.saveCourse}" value="Save New Users" 
+								<p:commandButton id="save" class="download" actionListener="#{RegUserListBean.saveCourse}" value="Save New Users" 
 						update=":mainForm:dataTable:userDataTable" ajax="true" process="@form" rendered="#{RegUserListBean.resultText}">
 						
       

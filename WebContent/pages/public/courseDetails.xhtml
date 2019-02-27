@@ -21,7 +21,7 @@
    
   
   <div class="services-content">
-   		<div class="container">
+   		<div class="container item" data-aos="zoom-out" data-aos-duration="1000">
         	
             
             <div class="row">
@@ -55,7 +55,7 @@
 				
 
  
-				<div class="clearfix verticalTab" id="target">
+				<div class="clearfix verticalTab item" data-aos="flip-right" data-aos-duration="1000" id="target">
 					<ul class="resp-tabs-list">
 						<li>Description</li>
 					</ul>
@@ -68,13 +68,13 @@
 				</div>
 				
 				
-				<div class="shop">
+				<div class="shop item" data-aos="zoom-out" data-aos-duration="1000">
 					<h2 class="light"><strong>Related</strong> Courses</h2>
 					<br/>
 					<ul class="shop full-width clearfix list-unstyled">
 					 <ui:repeat var="o" value="#{courseBean.courses}" varStatus="status">
 	             
-			                <div class="col-md-3">
+			                <div class="col-md-3 item" data-aos="flip-right" data-aos-duration="1000">
 									<div class="product">
 												<div class="product-thumb">
 													<a><h:graphicImage style="    height: 193px;" value="#{o.getphoto()}" alt=""/></a>

@@ -7,8 +7,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import org.primefaces.PrimeFaces;
+import org.primefaces.event.FileUploadEvent;
+
 import main.com.zc.programs.ProgramData;
 import main.com.zc.programs.ProgramDataAppServiceImpl;
+import main.com.zc.services.domain.courses.CourseAppServiceImpl;
+import main.com.zc.services.domain.courses.course;
 
 
 @SessionScoped
@@ -26,9 +31,14 @@ public class manageProgramBean {
 	private ProgramDataAppServiceImpl programDataFacede; 
 	
 	
+	private ProgramData programNew;
+	@ManagedProperty(value = "#{CourseFacadeImpl}")
+	private CourseAppServiceImpl courseFasade; 
+	private List<course> courses;
+	
 	@PostConstruct
 	public void init() {
-
+		programNew=new ProgramData();
 		imageUploaded=false;
 		refreshPage();
 	}
@@ -42,8 +52,33 @@ public class manageProgramBean {
 	}
 	
 	
+	public void previewImage(FileUploadEvent event) {
+		/* FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+	        FacesContext.getCurrentInstance().addMessage(null, msg);
+		*/
+		this.imageOfProgrambyte = event.getFile().getContents();
+//Set The image to the object
+		programNew.setImg(imageOfProgrambyte);
+		
+		imageUploaded=true;
+		setImageDependOnRegisterationImageState();
+		System.out.println("File Uploaded");
+		
+	}
+	
+	void setImageDependOnRegisterationImageState(){
+		if(imageUploaded){
+			imageOfProgram=programNew.getphoto();
+		}else{
+			
+			imageOfProgram="images/comment-img3.jpg";
+		}
+	}
+	
 	public void addNewProgram() {
-		System.out.println("Add New Program with id: ");	
+
+		PrimeFaces.current().executeScript("openPopUpDialog();");
+		System.out.println("Add New Program with id: NewNEw");	
 		
 		
 		
@@ -57,6 +92,20 @@ public class manageProgramBean {
 		programs=programDataFacede.getAll();
 	}
 
+	
+	public String imageUploadedVisib(){
+		if(imageUploaded){
+			return "block";
+		}
+		return "none";
+	}
+	
+	public String imageUploadedVisibNot(){
+		if(!imageUploaded){
+			return "block";
+		}
+		return "none";
+	}
 	public String getImageOfProgram() {
 		return imageOfProgram;
 	}
@@ -95,6 +144,30 @@ public class manageProgramBean {
 
 	public void setProgramDataFacede(ProgramDataAppServiceImpl programDataFacede) {
 		this.programDataFacede = programDataFacede;
+	}
+
+	public ProgramData getProgramNew() {
+		return programNew;
+	}
+
+	public void setProgramNew(ProgramData programNew) {
+		this.programNew = programNew;
+	}
+
+	public CourseAppServiceImpl getCourseFasade() {
+		return courseFasade;
+	}
+
+	public void setCourseFasade(CourseAppServiceImpl courseFasade) {
+		this.courseFasade = courseFasade;
+	}
+
+	public List<course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<course> courses) {
+		this.courses = courses;
 	}
 	
 	

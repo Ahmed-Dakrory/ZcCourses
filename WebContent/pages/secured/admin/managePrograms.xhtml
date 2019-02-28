@@ -5,7 +5,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <ui:composition template="/templates/adminTemplate.xhtml">
 
 	<ui:define name="title">Zewail Courses</ui:define>
@@ -55,7 +56,7 @@
 								<p:commandButton class="buttonGreen" id="addNewProgram"  actionListener="#{manageProgramBean.addNewProgram()}" value="Add New Program" 
 						update=":mainForm:programDataTable" ajax="true" process="@form" >
 						
-      
+    
     
 						</p:commandButton>
 					
@@ -73,11 +74,75 @@
    
    </div>
    <!-- The End of Main Content -->     
-      
-<h:outputScript name="js/jquery.js"/>    
+       
+       
 </h:form>
+
+ <!-- The Modal of comfirm popUp-->
+    <button id="myBtn">Open Modal</button>
+            <!-- The Modal -->
+			<div id="myModal" class="modal">
+			
+			  <!-- Modal content -->
+			  <div class="modal-content">
+			    <span class="close">&times;</span>
+			    
+			    <h:form id="dialogForm">
+    <p:messages id="messages" showDetail="true"/>
+ 
+     <div class="containeer">
+     				<div class="row">
+     					<h:form id="imageForm">
+        
+						        <h:panelGroup  id="img">
+						        <label for="dialogForm:imageForm:file-input_input">
+						        
+									<h:graphicImage value="#{loginBean.imageOfAccountUser}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{loginBean.imageUploadedVisib()};"  class="m--img-rounded m--marginless m--img-centered" alt=""/>
+									<h:graphicImage name="images/comment-img.jpg" style="   border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none; display: #{loginBean.imageUploadedVisibNot()};"  class="m--img-rounded m--marginless m--img-centered" alt=""/>
+									<h:graphicImage name="images/comment-img3.jpg" style="top:-30px;left:45px;position:relative;border-style: solid;border-color: #a5a1a1;border-width: 1px; width:36px;height:36px;pointer-events: none;  "  class="m--img-rounded m--marginless m--img-centered" alt=""/>
+								</label>
+								</h:panelGroup>
+								
+								<p:fileUpload  style="visibility:hidden; width:0; height:0" id="file-input"  label="Update Image" fileUploadListener="#{loginBean.previewImage}"
+									allowTypes="/(\.|\/)(png|jpg|bmp|gif\jpeg)$/" sizeLimit="500000" description="Attachment"
+									update="img" auto="true" mode="advanced" multiple="false" uploadLabel="Upload Attachment" />
+															 
+																   
+						        </h:form>
+     				</div>
+			    	<div class="row">
+			    		<p:inputText type="text" required="true" class="dialogInputField" pt:placeholder="Please Enter the Program Name"/>
+					</div>
+					
+					<div class="row">
+			    		<p:inputText type="text" required="true" class="dialogInputField" pt:placeholder="Please Enter the Program Name"/>
+					</div>
+			    	
+			    	<div class="row">
+			    		<p:inputText type="text" required="true" class="dialogInputField" pt:placeholder="Please Enter the Program Name"/>
+					</div>
+					
+					<div class="row">
+			    		<p:inputText type="text" required="true" class="dialogInputField" pt:placeholder="Please Enter the Program Name"/>
+					</div>
+			    </div>
+ 
+   </h:form>
+			   
+			  </div>
+			
+			</div>
+	   
+ <!-- The End of Main Content -->
+ 
+<h:outputScript name="js/jquery.js"/>  
+<h:outputScript name="js/popUpDialog.js"/>  
+
+<link rel="stylesheet" href="#{resource['css:popUpDialog.css']}" /> 
 	</ui:define>
 	
 	
+
 </ui:composition>
+
 </html>

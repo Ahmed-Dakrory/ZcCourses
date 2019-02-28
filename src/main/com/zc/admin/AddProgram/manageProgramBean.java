@@ -53,6 +53,8 @@ public class manageProgramBean {
 	
 	
 	public void previewImage(FileUploadEvent event) {
+
+		System.out.println("Dakrory    :File");
 		/* FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 		*/

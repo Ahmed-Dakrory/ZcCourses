@@ -13,6 +13,9 @@
 
 
 	<ui:define name="content">
+	
+
+						        
 	<h:form enctype="multipart/form-data"  id="mainForm">
 		
     
@@ -21,7 +24,8 @@
    <!-- The start of Main Content -->
    <div class="content">
    
-   
+  
+						
   
   <div class="gallery">
    		<div class="container" style="    width: 100%;">
@@ -53,45 +57,48 @@
 							</p:column>
 							
 						</p:dataTable>
-								<p:commandButton class="buttonGreen" id="addNewProgram"  actionListener="#{manageProgramBean.addNewProgram()}" value="Add New Program" 
-						update=":mainForm:programDataTable" ajax="true" process="@form" >
 						
-    
-    
-						</p:commandButton>
 					
 					
 					
 					</p:panel>
 				
 					
-			</div>
+       	</div>
 		
-            
+           <p:commandButton style="margin-left: 70%; margin-top: 2%;" class="buttonGreen" id="addNewProgram"  actionListener="#{manageProgramBean.addNewProgram()}" value="Add New Program" 
+						 ajax="true" process="@form"/>
+		 
         </div>
+        
    </div>
   
    
    </div>
    <!-- The End of Main Content -->     
        
-       
 </h:form>
 
+
+
+								
  <!-- The Modal of comfirm popUp-->
-    <button id="myBtn">Open Modal</button>
+    
+						
             <!-- The Modal -->
 			<div id="myModal" class="modal">
 			
 			  <!-- Modal content -->
 			  <div class="modal-content">
 			    <span class="close">&times;</span>
-			    
+			   
+					
 			    <h:form id="dialogForm">
     <p:messages id="messages" showDetail="true"/>
  
      <div class="containeer">
      				<div class="row">
+     				<div class="imageOfDialog">
      					<h:form id="imageForm">
         
 						        <h:panelGroup  id="img">
@@ -109,22 +116,32 @@
 															 
 																   
 						        </h:form>
+						</div>		
+								
+     					
      				</div>
-			    	<div class="row">
+			    	<div class="row" style=" margin-top: 15%;">
 			    		<p:inputText type="text" required="true" class="dialogInputField" pt:placeholder="Please Enter the Program Name"/>
 					</div>
 					
 					<div class="row">
-			    		<p:inputText type="text" required="true" class="dialogInputField" pt:placeholder="Please Enter the Program Name"/>
+			    		<p:inputTextarea style="height:192px;" type="text" required="true" class="dialogInputField" pt:placeholder="Please Enter the Program Description"/>
 					</div>
+					
+					
+					<div class="row">
+					<div class="col-md-2">
+						<p:commandButton style="margin-left: 70%; margin-top: 2%;" class="buttonGreen"   value="oK" 
+												 ajax="true" process="@form"/>
+		 			</div>
+					<div class="col-md-2">
+					<p:commandButton style="margin-left: 70%; margin-top: 2%;" class="buttonRed" value="Cancel" 
+												 ajax="true" process="@form"/>
+		 			
+					</div>
+						
+		 			</div>
 			    	
-			    	<div class="row">
-			    		<p:inputText type="text" required="true" class="dialogInputField" pt:placeholder="Please Enter the Program Name"/>
-					</div>
-					
-					<div class="row">
-			    		<p:inputText type="text" required="true" class="dialogInputField" pt:placeholder="Please Enter the Program Name"/>
-					</div>
 			    </div>
  
    </h:form>
@@ -135,10 +152,10 @@
 	   
  <!-- The End of Main Content -->
  
-<h:outputScript name="js/jquery.js"/>  
 <h:outputScript name="js/popUpDialog.js"/>  
 
 <link rel="stylesheet" href="#{resource['css:popUpDialog.css']}" /> 
+
 	</ui:define>
 	
 	

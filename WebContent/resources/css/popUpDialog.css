@@ -30,7 +30,10 @@
   font-weight: bold;
 }
 
-
+.imageOfDialog{
+	position: absolute;
+    right: 46%;
+}
 
 .close:hover,
 .close:focus {
@@ -54,7 +57,7 @@
 
 .dialogInputField {
   width: 60%;
-    margin-left: 15%;
+    margin-left: 20%;
     height: 45px;
     font-size: 17px;
     font-family: -webkit-body;

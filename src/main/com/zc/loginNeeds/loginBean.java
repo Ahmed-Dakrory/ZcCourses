@@ -284,6 +284,9 @@ public class loginBean implements Serializable{
 		}catch(MessagingException e){
 			
 		}
+		theUserOfThisAccount=new UserData();
+		imageUploaded=false;
+		imageOfAccountUser=new String();
 	}
 	public String getTheStatueOfLoginMenu(){
 		if(isLoggedIn){

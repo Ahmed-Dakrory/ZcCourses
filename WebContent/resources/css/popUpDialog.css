@@ -32,7 +32,7 @@
 
 .imageOfDialog{
 	position: absolute;
-    right: 46%;
+    right: 40%;
 }
 
 .close:hover,
@@ -56,10 +56,11 @@
 }
 
 .dialogInputField {
-  width: 60%;
+	visibility: visible !important;
+    width: 60%;
     margin-left: 20%;
-    height: 45px;
-    font-size: 17px;
+    height: 29px;
+    font-size: 12px;
     font-family: -webkit-body;
-    margin-top: 2%;
+    margin-top: 8%;
 }

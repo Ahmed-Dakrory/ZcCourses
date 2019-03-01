@@ -110,7 +110,7 @@ public class Api {
 
         	return new ResponseEntity<>(" ", HttpStatus.OK);
     	}
-    	List<course> courses=courseFacade.getByIdCourse(Integer.parseInt(String.valueOf(id)));
+    	List<course> courses=courseFacade.getByIdProgram(Integer.parseInt(String.valueOf(id)));
     	if(courses==null) {
 
         	return new ResponseEntity<>(" ", HttpStatus.BAD_REQUEST);

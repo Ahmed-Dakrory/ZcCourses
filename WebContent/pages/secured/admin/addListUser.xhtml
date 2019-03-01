@@ -14,24 +14,7 @@
 	<ui:define name="content">
 	<h:form enctype="multipart/form-data"  id="mainForm">
 		#{mainHomeBean.refreshPage()}
-	<div class="container">
-	<div class="time-table-sec">
-	<ul id="accordion2" class="accordion2">
-	<li>
-	<ul class="submenu time-table">
-	<li class="tit"><h5>Working Time</h5></li>
-	<li><span class="day">Monday - Friday</span> <span class="divider">-</span> <span class="time">8.00 - 16.00</span></li>
-	<li><span class="day">Saturday</span> <span class="divider">-</span> <span class="time">9.15 - 17.00</span></li>
-	<li><span class="day">Sunday</span> <span class="divider">-</span> <span class="time">9.45 - 15.00</span></li>
-	</ul>
-	<div class="link"><h:graphicImage class="time-tab" name="images/timetable-menu-dark.png" alt=""/></div>
 	
-	</li>
-	</ul>
-	</div>
-	</div>
-
-    
 	
             
    <!-- The start of Main Content -->
@@ -39,7 +22,7 @@
    
    
   
-  <div class="gallery">
+  <div class="gallery" style="padding: 10px 0;">
    		<div class="container" style="    width: 100%;">
             <div class="pannelWrapper">
 				<p:panel class="attendance">
@@ -107,13 +90,16 @@
    </div>
    <!-- The End of Main Content -->     
       
-<h:outputScript name="js/jquery.js"/>    
+<h:outputScript name="js/jquery.js"/>  
+  
 </h:form>
 <h:form>     
          
 </h:form>
+
 	</ui:define>
 	
 	
 </ui:composition>
+
 </html>

@@ -122,7 +122,7 @@ public class courseBean implements Serializable{
 	
 	public void getCoursesRelatedToprogram(int idProgram){
 		try {
-	  		courses=courseFasade.getByIdCourse(idProgram);
+	  		courses=courseFasade.getByIdProgram(idProgram);
 	  	for(int i=0;i<courses.size();i++) {
 	  		if(courses.get(i).getId()==thecourseSelected.getId()) {
 	  			courses.remove(i);

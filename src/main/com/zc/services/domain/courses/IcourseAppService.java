@@ -12,7 +12,7 @@ import java.util.List;
 public interface IcourseAppService {
 
 	public List<course> getAll();
-	public List<course> getByIdCourse(int id);
+	public List<course> getByIdProgram(int id);
 	public course addCourse(course so);
 	public course getById(int id);
 	public boolean delete(course so);

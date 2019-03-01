@@ -4,26 +4,75 @@ body {
   background-image:url("../resources/images/background.jpg");
 }
 
+#divForTable {
+    padding: 2%;
+	box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+	border-radius: 21px;
+}
+#divForTable .ui-widget-header {
+    background: #d5e0e1;
+}
+
+#divForTable .ui-widget-header a{
+    color: #64686c;
+}
+#divForTable .ui-datatable thead th,#divForTable .ui-datatable tbody td,#divForTable .ui-datatable tfoot td,#divForTable .ui-datatable tfoot th{
+	background: none;
+    box-shadow: none;
+    border-style: groove;
+}
+#textHead {
+	padding-left: 5%;
+    padding-top: 3%;
+font-family: initial;
+color: #395464;
+letter-spacing: .1em;
+text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5), 9px -5px 7px rgba(81,86,73,0.41), 9px -5px 7px rgba(81,86,73,0.41);
+}
 .sidenav {
 	border-style: outset;
     border-width: thin;
-  height: 100%;
+  height: -webkit-fill-available;
   position: fixed;
   z-index: 111;
   top: 0;
   left: 0;
-  padding-top: 5%;
-  background-image:url("../resources/images/ahmedZewail.jpg");
-  background-color: #111;
+  padding-top: 3%;
+background-color: #f1f1f1;
   overflow-x: hidden;
 }
 
-.sidenav a {
-  padding: 50px 6px 6px 32px;
+.manageTableRow {
+	border-style: outset;
+    border-width: thin;
+  height: -webkit-fill-available;
+  top: 0;
+  left: 0;
+  padding-top: 3%;
+background-color: #f1f1f1;
+  overflow-x: hidden;
+}
+
+.circularImage {
+	border-style: solid;
+    border-color: #a5a1a1;
+    border-width: 1px;
+    border-radius:50%;
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+
+.sidenav>ul>li{
+  padding: 2px 6px 6px 0px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 15px;
   color: #231829;
   display: block;
+}
+
+.sidenav>ul>li>a{
+      color: #585f66;
 }
 
 .sidenav a:hover {

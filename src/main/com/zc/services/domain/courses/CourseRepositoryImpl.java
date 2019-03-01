@@ -56,8 +56,8 @@ public class CourseRepositoryImpl implements CourseRepository{
 	}
 	
 	@Override
-	public List<course> getByIdCourse(int idCourse) {
-				 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("course.getByIdProgram").setInteger("idProgram", idCourse);
+	public List<course> getByIdProgram(int idprogram) {
+				 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("course.getByIdProgram").setInteger("idProgram", idprogram);
 
 				 @SuppressWarnings("unchecked")
 				List<course> results=query.list();

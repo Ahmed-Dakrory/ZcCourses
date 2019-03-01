@@ -105,7 +105,7 @@ public class programsBean implements Serializable{
 	
 	public void goToSessionsForProgramPage(int idProgram){
 		try {
-	  		courses=courseFasade.getByIdCourse(idProgram);
+	  		courses=courseFasade.getByIdProgram(idProgram);
 	  		theProgramSelected=programDataFacede.getById(idProgram);
 	  		try {
 	    		HttpServletRequest origRequest = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();

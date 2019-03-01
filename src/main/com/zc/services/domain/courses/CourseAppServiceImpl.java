@@ -37,9 +37,9 @@ public class CourseAppServiceImpl implements IcourseAppService{
 	}
 	
 	@Override
-	public List<course> getByIdCourse(int id) {
+	public List<course> getByIdProgram(int id) {
 		try{
-			List<course> course=courseRepository.getByIdCourse(id);
+			List<course> course=courseRepository.getByIdProgram(id);
 			
 			return course;
 			}

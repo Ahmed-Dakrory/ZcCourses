@@ -13,13 +13,13 @@
   <title><ui:insert name="title">Default title</ui:insert></title>
   <meta name="keywords" content=""/>
 	<meta name="description" content=""/>
+  
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	
 	<link rel="icon" type="image/png" href="#{resource['images:logoZc.png']}"/>
 	
 	<!--Login image-->
-    <link rel="stylesheet" href="#{resource['css:style.bundle.css']}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto:300,400,500,600,700" media="all"/>
         
 	
@@ -71,47 +71,56 @@
    <!--PreLoader-->
     <link rel="stylesheet" href="#{resource['css:loader.css']}" />
     <link rel="stylesheet" href="#{resource['css:jquery.fancybox.css']}" />
+    
 </h:head>
 
 <h:body>
 
 
-	
-	
-		
-	<div class="container" style="  width: 100%;">
-	<div class="row">
-	
-	
-	<div class="col-md-3">
-	
- <div class="sidenav">
-	  <a href="../../public/index.xhtml"> Home</a>
-	  <a href="addListUser.xhtml">Manage Courses</a>
-	  <a href="addListUser.xhtml">Add List Of users</a>
-	  <a href="managePrograms.xhtml">Manage Programs</a>
-	</div>
-	</div>
-	
-	<div class="main col-md-11" style="    margin-left: 14%;">
-	
-  <ui:insert  name="content"> 
-    	 <ui:include src="content.xhtml"/> 
-  </ui:insert>
-	</div>
-	
-	
-	</div>
-  
 
-    
-	
- 
-  
+	<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <ul id="ulDiv" class="nav nav-pills nav-stacked" style="display: block;">
+        <li class="menuParam active"><a href="adminController.xhtml"> Home</a></li>
+        <li class="menuParam"><a href="addListUser.xhtml">Manage Courses</a></li>
+        <li class="menuParam"><a href="addListUser.xhtml">Add List Of users</a></li>
+        <li class="menuParam"><a href="managePrograms.xhtml">Manage Programs</a></li>
+      </ul>
+    </div>
+
+    <div class="col-sm-9">
+       <ui:insert  name="content"> 
+    	 <ui:include src="content.xhtml"/> 
+  	   </ui:insert>
       
+    </div>
+  </div>
 </div>
 
+<script>
+// Add active class to the current button (highlight it)
+var header = document.getElementById("ulDiv");
+var menuElements = header.getElementsByClassName("menuParam");
 
+var current = document.getElementsByClassName("menuParam active");
+
+current[0].className = current[0].className.replace(" active", "");
+
+var path = window.location.pathname;
+var page = path.split("/").pop();
+
+if(page=='adminController.xhtml'){
+	menuElements[0].className += " active";
+}else if(page=="addListUser.xhtml"){
+	menuElements[2].className += " active";
+}else if(page=="managePrograms.xhtml"){
+	menuElements[3].className += " active";
+}
+
+  
+
+</script>
 
 
 <!-- SMOOTH SCROLL -->	

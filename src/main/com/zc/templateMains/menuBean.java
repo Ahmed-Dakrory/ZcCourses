@@ -1,32 +1,33 @@
 package main.com.zc.templateMains;
 
+import java.io.IOException;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 @Named
 @SessionScoped
 public class menuBean {
 	private String menu[];
-	String menuLinks[]={
-			"/pages/public/index.xhtml?faces-redirect=true",
-			"/pages/public/about.xhtml?faces-redirect=true",
-			"/pages/public/programs.xhtml?faces-redirect=true",
-			"/pages/public/contactUs.xhtml?faces-redirect=true",
-			"/pages/public/login.xhtml?faces-redirect=true",
-			"/pages/public/registeration.xhtml?faces-redirect=true"
+	private String menuLinks[]={
+			"/ZcCourses",
+			"/ZcCourses/pages/public/about.xhtml?faces-redirect=true",
+			"/ZcCourses/pages/public/programs.xhtml?faces-redirect=true",
+			"/ZcCourses/pages/public/contactUs.xhtml?faces-redirect=true",
+			"/ZcCourses/pages/public/login.xhtml?faces-redirect=true",
+			"/ZcCourses/pages/public/registeration.xhtml?faces-redirect=true"
 			
 	};
 	
 	@PostConstruct
 	public void init() {
 		menu=new String[6];
-		invertRemainMenus("0");
+		//invertRemainMenus("0");
 	}
-	
-	public String invertRemainMenus(String n){
-		int index=Integer.valueOf(n);
-		System.out.println(menuLinks[index]);
+	public void goToLink(int index) {
+		System.out.println("Dakrory : Index ");
 		for(int i=0;i<menu.length;i++){
 			if(index==i){
 				menu[i]="#7d818c";
@@ -34,9 +35,14 @@ public class menuBean {
 				menu[i]="none";
 			}
 		}
-		return menuLinks[index];
+		try {
+			FacesContext.getCurrentInstance()
+			   .getExternalContext().redirect(menuLinks[index]);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 	
 	
 	public String[] getMenu() {
@@ -45,6 +51,12 @@ public class menuBean {
 
 	public void setMenu(String[] menu) {
 		this.menu = menu;
+	}
+	public String[] getMenuLinks() {
+		return menuLinks;
+	}
+	public void setMenuLinks(String[] menuLinks) {
+		this.menuLinks = menuLinks;
 	}
 
 	

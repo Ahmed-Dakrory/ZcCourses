@@ -5,6 +5,18 @@
 		xmlns:f="http://java.sun.com/jsf/core"
 		xmlns:p="http://primefaces.org/ui">
   
+  
+  <!--Start PreLoader-->
+   <div id="preloader">
+		<div id="status"></div>
+		<div class="loader">
+			<h1>Loading...</h1>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!--End PreLoader--> 
   <div id="wrap">
    
    
@@ -30,20 +42,20 @@
                 <h:form>
                 <nav class="menu-2">
             	<ul class="nav wtf-menu">
-                	<li class=" parent" style="background: #{menuBean.menu[0]};"><h:commandLink   action="#{menuBean.invertRemainMenus(0)}">Home</h:commandLink>
+                	<li class=" parent" style="background: #{menuBean.menu[0]};"><p:commandLink  action="#{menuBean.goToLink(0)}" >Home</p:commandLink >
 					
 					</li>
 					
-                    <li class="parent" style="background: #{menuBean.menu[1]};"><h:commandLink href="#."  action="#{menuBean.invertRemainMenus(1)}">About Us</h:commandLink>
+                    <li class="parent" style="background: #{menuBean.menu[1]};"><p:commandLink  action="#{menuBean.goToLink(1)}">About Us</p:commandLink>
 					
 					</li>
 					
-                    <li class="parent" style="background: #{menuBean.menu[2]};"><h:commandLink  action="#{menuBean.invertRemainMenus(2)}">Programes</h:commandLink>
+                    <li class="parent" style="background: #{menuBean.menu[2]};"><p:commandLink  action="#{menuBean.goToLink(2)}">Programes</p:commandLink>
 						
 					</li>
                     
 					
-					<li class="parent"  style="background: #{menuBean.menu[3]};"><h:commandLink  action="#{menuBean.invertRemainMenus(3)}">Contact Us</h:commandLink>
+					<li class="parent"  style="background: #{menuBean.menu[3]};"><p:commandLink  action="#{menuBean.goToLink(3)}">Contact Us</p:commandLink>
 					
 					</li>
 					
@@ -127,13 +139,13 @@
 											
 				
 											<li class="m-nav__item">
-													<h:commandLink action="#{menuBean.invertRemainMenus(5)}" style="width:200px" class="m-nav__link">    
+													<p:commandLink action="#{menuBean.goToLink(5)}" style="width:200px" class="m-nav__link">    
 													<i class="m-nav__link-icon flaticon-lifebuoy"></i>
 													<span class="m-nav__link-text">Register</span>
-													</h:commandLink>
+													</p:commandLink>
 											</li>
 											<li class="m-nav__item">
-													<h:commandLink action="#{menuBean.invertRemainMenus(4)}" style="width:200px" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Login</h:commandLink>
+													<p:commandLink action="#{menuBean.goToLink(4)}" style="width:200px" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Login</p:commandLink>
 											</li>
 										</ul>
 									</div>
@@ -197,24 +209,24 @@
 									
 						</a>
 					</li>
-					<li class=" parent" style="background: #{menuBean.menu[0]};"><h:commandLink   action="#{menuBean.invertRemainMenus(0)}">Home</h:commandLink>
+					<li class=" parent" style="background: #{menuBean.menu[0]};"><a   href="#{menuBean.menuLinks[0]}">Home</a>
 					
 					</li>
 					
-                    <li class="parent" style="background: #{menuBean.menu[1]};"><h:commandLink href="#."  action="#{menuBean.invertRemainMenus(1)}">About Us</h:commandLink>
+                    <li class="parent" style="background: #{menuBean.menu[1]};"><a   href="#{menuBean.menuLinks[1]}">About Us</a>
 					
 					</li>
 					
-                    <li class="parent" style="background: #{menuBean.menu[2]};"><h:commandLink  action="#{menuBean.invertRemainMenus(2)}">Programes</h:commandLink>
+                    <li class="parent" style="background: #{menuBean.menu[2]};"><a   href="#{menuBean.menuLinks[2]}">Programes</a>
 						
 					</li>
                     
 					
-					<li class="parent"  style="background: #{menuBean.menu[3]};"><h:commandLink  action="#{menuBean.invertRemainMenus(3)}">Contact Us</h:commandLink>
+					<li class="parent"  style="background: #{menuBean.menu[3]};"><a   href="#{menuBean.menuLinks[3]}">Contact Us</a>
 					
 					</li>
 					
-					<li class="parent"  style="background: #{menuBean.menu[4]};display:#{loginBean.getTheStatueMenuMain()};"><h:commandLink  action="#{menuBean.invertRemainMenus(4)}">Login</h:commandLink>
+					<li class="parent"  style="background: #{menuBean.menu[4]};display:#{loginBean.getTheStatueMenuMain()};"><a   href="#{menuBean.menuLinks[4]}">Login</a>
 					
 					</li>
 					

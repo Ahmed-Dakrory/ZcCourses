@@ -86,7 +86,7 @@
 			data-elementdelay="0.1"
 			data-endelementdelay="0.1"
 			style="z-index: 10; background-color: #a6767624; max-height: auto;  ">
-		<p:commandLink action="#{menuBean.invertRemainMenus(2)}" value="enter now" style="height:25px;    font-size: 22px;"/>
+		<p:commandLink action="#{menuBean.goToLink(2)}" value="enter now" style="height:25px;    font-size: 22px;"/>
 		
 		</div>
 		
@@ -260,7 +260,7 @@
 							<h:graphicImage value="#{o.getphoto()}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:135px;height:135px; "  class="m--img-rounded m--marginless m--img-centered" alt=""/>
 						</span>
 						<div class="desc">
-							<h3><a href="courseDetails.xhtml?id=#{o.id}">#{o.name}</a></h3>
+							<h3><a href="/ZcCourses/pages/public/courseDetails.xhtml?id=#{o.id}">#{o.name}</a></h3>
 							<p> $#{o.price}</p>
 						</div>
 					</div>

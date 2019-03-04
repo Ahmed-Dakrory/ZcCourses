@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.event.FileUploadEvent;
 
+import main.com.zc.security.AuthenticationService;
+
 
 @ManagedBean(name = "loginBean")
 @SessionScoped
@@ -46,6 +48,11 @@ public class loginBean implements Serializable{
 	private UserDataAppServiceImpl userDataFacede; 
 	 
 
+	private Boolean rememberMe;
+	@ManagedProperty(value = "#{authenticationService}")
+	private AuthenticationService authenticationService;
+	
+	
 	private String passwordConfirm;
 	@PostConstruct
 	public void init() {
@@ -100,18 +107,30 @@ public class loginBean implements Serializable{
 		}
 		if(isLoggedIn){
 			setImageDependOnLoginState();
+			
+			
+			
+						boolean success = authenticationService.login(theUserOfThisAccount.getEmail(), theUserOfThisAccount.getPassword());
+						if (success) {
+
+							 System.out.println("Dakrory HI >>>>> ");
+								FacesContext.getCurrentInstance().getExternalContext()
+											.getSessionMap().put("resetMenu", true);
+									
+
 			try {
 				if(theUserOfThisAccount.getEmail().equals("lts-admin@zewailcity.edu.eg")) {
 				FacesContext.getCurrentInstance()
 				   .getExternalContext().redirect("/ZcCourses/pages/secured/admin/addListUser.xhtml");
 				}else {
 				FacesContext.getCurrentInstance()
-					   .getExternalContext().redirect("index.xhtml");
+					   .getExternalContext().redirect("/ZcCourses");
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+							}
 		}else{
 			
 
@@ -450,6 +469,26 @@ public class loginBean implements Serializable{
 
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
+	}
+
+	public Boolean getRememberMe() {
+		return rememberMe;
+	}
+
+	public void setRememberMe(Boolean rememberMe) {
+		this.rememberMe = rememberMe;
+	}
+
+	public AuthenticationService getAuthenticationService() {
+		return authenticationService;
+	}
+
+	public void setAuthenticationService(AuthenticationService authenticationService) {
+		this.authenticationService = authenticationService;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	

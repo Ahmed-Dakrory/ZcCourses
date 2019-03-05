@@ -40,15 +40,14 @@
   <!-- Spring security configurations -->
 
 
-	<sec:http auto-config="true" use-expressions="true" >
-		<sec:form-login login-page="/pages/public/login.xhtml" authentication-failure-url="/accessDenied.xhtml"
+	<sec:http auto-config="true" access-denied-page="/pages/errors/403.html" >
+		<sec:form-login login-page="/pages/public/login.xhtml" authentication-failure-url="/pages/errors/403.html"
 			default-target-url="/pages/public/index.xhtml" />
-		<sec:intercept-url pattern="/pages/secured/**" access="Admin" />
-	    <sec:intercept-url pattern="/pages/public/**" access="permitAll" />
+		<sec:intercept-url pattern="/pages/secured/admin/**"
+			access="ROLE_ADMIN" />
 			
 	<sec:remember-me key="LTSApp"   />
 	
-<sec:custom-filter ref="profileCustomFilter" after="LAST"  />
 	
 	</sec:http>
     
@@ -63,7 +62,7 @@
 	<sec:authentication-manager alias="authenticationManager">
 		<sec:authentication-provider 
 			user-service-ref="userDetailsService" >
-			<sec:password-encoder  hash="plaintext">
+			<sec:password-encoder  hash="md5">
 			    <sec:salt-source user-property="username"/>
 			</sec:password-encoder>
 		</sec:authentication-provider>
@@ -85,8 +84,6 @@
   <beans:property name="userDetailsService" ref="userDetailsService"/>
   <beans:property name="key" value="LTSApp"/>
 </beans:bean>
-<beans:bean id="profileCustomFilter" class="main.com.zc.security.impl.ProfileCustomFilter">
- </beans:bean>
 
 
 	

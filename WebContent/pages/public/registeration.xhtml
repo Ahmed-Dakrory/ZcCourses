@@ -24,8 +24,9 @@
 
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 		
-		
+		#{loginBean.emptyFieldsOFRegisteration()}
 		<div class="LoginPanel">
+		
 		<div class="container">
 		
     	<div class="row">
@@ -51,14 +52,14 @@
 						        <h:panelGroup  id="img">
 						        <label for="imageForm:file-input_input">
 						        
-									<h:graphicImage value="#{loginBean.imageOfAccountUser}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{loginBean.imageUploadedVisib()};"  class="m--img-rounded m--marginless m--img-centered" alt=""/>
-									<h:graphicImage name="images/comment-img.jpg" style="   border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none; display: #{loginBean.imageUploadedVisibNot()};"  class="m--img-rounded m--marginless m--img-centered" alt=""/>
+									<h:graphicImage value="#{loginBean.imageOfAccountUser_reg}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{loginBean.imageUploadedVisib_reg()};"  class="m--img-rounded m--marginless m--img-centered" alt=""/>
+									<h:graphicImage name="images/comment-img.jpg" style="   border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none; display: #{loginBean.imageUploadedVisibNot_reg()};"  class="m--img-rounded m--marginless m--img-centered" alt=""/>
 									<h:graphicImage name="images/comment-img3.jpg" style="top:-30px;left:45px;position:relative;border-style: solid;border-color: #a5a1a1;border-width: 1px; width:36px;height:36px;pointer-events: none;  "  class="m--img-rounded m--marginless m--img-centered" alt=""/>
 								</label>
 								</h:panelGroup>
 								
-								<p:fileUpload  style="visibility:hidden; width:0; height:0" id="file-input"  label="Update Image" fileUploadListener="#{loginBean.previewImage}"
-									allowTypes="/(\.|\/)(png|jpg|bmp|gif\jpeg)$/" sizeLimit="500000" description="Attachment"
+								<p:fileUpload  style="visibility:hidden; width:0; height:0" id="file-input"  label="Update Image" fileUploadListener="#{loginBean.previewImage_reg}"
+									allowTypes="/(\.|\/)(png|jfif|jpg|bmp|gif\jpeg)$/" sizeLimit="5000000" description="Attachment"
 									update="img" auto="true" mode="advanced" multiple="false" uploadLabel="Upload Attachment" />
 															 
 																   
@@ -68,27 +69,27 @@
 									
 									</div>
 									<div class="form-group">
-										<p:inputText type="text" id="firstname" tabindex="1" class="form-control" required="true" pt:placeholder="Full Name ( First - Middle - Last )" value="#{loginBean.theUserOfThisAccount.fullName}"/>
+										<p:inputText type="text" id="firstname"  class="form-control" required="true" pt:placeholder="Full Name ( First - Middle - Last ) *" value="#{loginBean.theUserOfThisRegisteration.fullName}"/>
 									</div>
 									
 									
 									<div class="form-group">
-										<p:inputText type="text" id="nationalId" tabindex="1" class="form-control" required="true" pt:placeholder="For Outsider : National ID ( Last 7 Digits ) --- For ZC ( University ID )" value="#{loginBean.theUserOfThisAccount.nationalId}"/>
+										<p:inputText type="text" id="nationalId"  class="form-control" required="true" pt:placeholder="For Outsider : National ID ( Last 7 Digits ) --- For ZC ( University ID ) *" value="#{loginBean.theUserOfThisRegisteration.nationalId}"/>
 									</div>
 									
 									<div class="form-group">
-										<p:inputText type="email" id="email" tabindex="1" class="form-control"  required="true" pt:placeholder="Email Address" value="#{loginBean.theUserOfThisAccount.email}"/>
+										<p:inputText type="email" id="email"  class="form-control"  required="true" pt:placeholder="Email Address *" value="#{loginBean.theUserOfThisRegisteration.email}"/>
 									</div>
 									<div class="form-group">
-										<p:inputText type="password" id="password" tabindex="1" class="form-control" required="true" pt:placeholder="Password" value="#{loginBean.theUserOfThisAccount.password}"/>
+										<p:inputText type="password" id="password"  class="form-control" required="true" pt:placeholder="Password *" value="#{loginBean.passwordOfRegisteration}"/>
 									</div>
 									<div class="form-group">
-										<p:inputText type="password" id="confirm-password" tabindex="1" class="form-control" required="true" pt:placeholder="Confirm Password" value="#{loginBean.passwordConfirm}"/>
+										<p:inputText type="password" id="confirm-password"  class="form-control" required="true" pt:placeholder="Confirm Password *" value="#{loginBean.passwordConfirm}"/>
 									</div>
 									<div class="form-group" style="height: 29px;">
 										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="Prefix" />
-								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.prefix}" >
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisRegisteration.prefix}" >
 								            
 								            <f:selectItem itemLabel="*" itemValue="4" />
 								            <f:selectItem itemLabel="Mr" itemValue="0" />
@@ -101,7 +102,7 @@
 									<div class="form-group" style="height: 29px;">
 										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="Gender" />
-								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.gender}" >
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisRegisteration.gender}" >
 								            
 								            <f:selectItem itemLabel="*" itemValue="2" />
 								            <f:selectItem itemLabel="Male" itemValue="0" />
@@ -110,12 +111,12 @@
 								        </h:panelGrid>
 									</div>
 									<div class="form-group">
-										<p:inputText type="text" id="mobile" tabindex="1" class="form-control" required="true" pt:placeholder="Your mobile phone number" value="#{loginBean.theUserOfThisAccount.mobile}"/>
+										<p:inputText type="text" id="mobile"  class="form-control" required="true" pt:placeholder="Your mobile phone number *" value="#{loginBean.theUserOfThisRegisteration.mobile}"/>
 									</div>
 									<div class="form-group" style="height: 29px;">
 										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="Your age" />
-								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.age}" >
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisRegisteration.age}" >
 								            
 								            <f:selectItem itemLabel="*" itemValue="0" />
 								            <f:selectItem itemLabel="7" itemValue="7" />
@@ -170,7 +171,7 @@
 									<div class="form-group" style="height: 29px;">
 										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="Study Year" />
-								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.study_year}" >
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisRegisteration.study_year}" >
 								            
 								            <f:selectItem itemLabel="*" itemValue="0" />
 								            <f:selectItem itemLabel="first year" itemValue="1" />
@@ -184,19 +185,19 @@
 								        </h:panelGrid>
 									</div>
 									<div class="form-group">
-										<p:inputText type="text" id="university" tabindex="1" class="form-control" pt:placeholder="University" value="#{loginBean.theUserOfThisAccount.university}"/>
+										<p:inputText type="text" id="university"  class="form-control" pt:placeholder="University" value="#{loginBean.theUserOfThisRegisteration.university}"/>
 									</div>
 									<div class="form-group">
-										<p:inputText type="text" id="faculty" tabindex="1" class="form-control" pt:placeholder="Faculty" value="#{loginBean.theUserOfThisAccount.faculty}"/>
+										<p:inputText type="text" id="faculty"  class="form-control" pt:placeholder="Faculty" value="#{loginBean.theUserOfThisRegisteration.faculty}"/>
 									</div>
 									<div class="form-group">
-										<p:inputText type="text" id="major" tabindex="1" class="form-control" pt:placeholder="Major" value="#{loginBean.theUserOfThisAccount.major}"/>
+										<p:inputText type="text" id="major"  class="form-control" pt:placeholder="Major" value="#{loginBean.theUserOfThisRegisteration.major}"/>
 									</div>
 									
 									<div class="form-group" style="height: 29px;">
 									<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="If you are graduate .. How many years of experience do you have ?" />
-								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.graduation_experiences}" >
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisRegisteration.graduation_experiences}" >
 								            
 								            <f:selectItem itemLabel="*" itemValue="999" />
 								            <f:selectItem itemLabel="0 years" itemValue="0" />
@@ -214,18 +215,18 @@
 								        </h:panelGrid>
 									</div>
 									<div class="form-group">
-										<p:inputText type="text" id="work" tabindex="1" class="form-control" pt:placeholder="If you are graduate .. Where do you work ?" value="#{loginBean.theUserOfThisAccount.work}"/>
+										<p:inputText type="text" id="work"  class="form-control" pt:placeholder="If you are graduate .. Where do you work ?" value="#{loginBean.theUserOfThisRegisteration.work}"/>
 									</div>
 									<div class="form-group">
-										<p:inputText type="text" id="homeGovernorate" tabindex="1" required="true" class="form-control" pt:placeholder="Home Governorate" value="#{loginBean.theUserOfThisAccount.homeGovernorate}"/>
+										<p:inputText type="text" id="homeGovernorate"  required="true" class="form-control" pt:placeholder="Home Governorate *" value="#{loginBean.theUserOfThisRegisteration.homeGovernorate}"/>
 									</div>
 									<div class="form-group">
-										<p:inputText type="text" id="residenceGovernorate" tabindex="1" required="true" class="form-control" pt:placeholder="Residence Governorate" value="#{loginBean.theUserOfThisAccount.residenceGovernorate}"/>
+										<p:inputText type="text" id="residenceGovernorate"  required="true" class="form-control" pt:placeholder="Residence Governorate *" value="#{loginBean.theUserOfThisRegisteration.residenceGovernorate}"/>
 									</div>
 									<div class="form-group" style="height: 29px;">
 										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 										<p:outputLabel style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="How did you know about us ?" />
-								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisAccount.whereYknowAboutUs}" >
+								        <h:selectOneMenu  style="position:absolute;right:20px;width: 100px;height: 31px;" value="#{loginBean.theUserOfThisRegisteration.whereYknowAboutUs}" >
 								            
 								            <f:selectItem itemLabel="*" itemValue="5" />
 								            <f:selectItem itemLabel="Email" itemValue="0" />
@@ -239,7 +240,7 @@
 									<div  class="form-group" style="height: 29px;">
 										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="3">
 											<p:outputLabel for="yesnoZewail" style="position:absolute;left:20px;font-size: 18px;  font-weight: 500;    color: #a19595;" value="Are you a zewail student?       " />
-									        <h:selectOneMenu id="yesnoZewail" dynamic="true" style="position:absolute;right:20px;width:125px; height: 31px;" value="#{loginBean.theUserOfThisAccount.zewailianeOrNot}" >
+									        <h:selectOneMenu id="yesnoZewail" dynamic="true" style="position:absolute;right:20px;width:125px; height: 31px;" value="#{loginBean.theUserOfThisRegisteration.zewailianeOrNot}" >
 									            
 									            <f:selectItem itemLabel="No" itemValue="1" />
 									            <f:selectItem itemLabel="Yes" itemValue="0" />
@@ -249,7 +250,9 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3">
-												<h:commandButton action="#{loginBean.RegisterNewUser}" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now"/>
+												<p:commandButton oncomplete="dismissLoading()" onclick="showLoading()" action="#{loginBean.RegisterNewUser()}" name="register-submit" id="register-submit"  class="form-control btn btn-register" value="Register Now">
+												<f:ajax execute="@all" render="register-form" />
+												</p:commandButton>
 											</div>
 										</div>
 									</div>
@@ -265,7 +268,15 @@
 	</div>
 		</div>
 <h:outputScript name="js/login.js"/> 
+<script>
+function showLoading(){
+	document.getElementById("fullScreenLoader").style.display = "block";
+}
 
+function dismissLoading(){
+	document.getElementById("fullScreenLoader").style.display = "none";
+}
+</script>
 
 <h:outputScript name="js/jquery2.js"/> 
 	</ui:define>

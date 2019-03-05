@@ -54,6 +54,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 			securityContext = securityContextRepository.loadContext(holder);
 			SecurityContextHolder.setContext(securityContext);
 
+			System.out.println("Dakrory: "+holder.getRequest());
 			usernamePasswordAuthenticationFilter.setUsernameParameter("Mail");
 			usernamePasswordAuthenticationFilter
 					.setPasswordParameter("Password");

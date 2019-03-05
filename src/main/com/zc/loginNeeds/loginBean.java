@@ -212,7 +212,6 @@ public class loginBean implements Serializable{
 				"  icon: \"warning\",\r\n" + 
 				"})\r\n" + 
 				";");
-		PrimeFaces.current().executeScript("dismissLoading()");
 		}else {
 		validateUser(theUserOfThisRegisteration);
 		
@@ -234,11 +233,9 @@ public class loginBean implements Serializable{
 			
 			completeRegisteration();
 
-			PrimeFaces.current().executeScript("dismissLoading()");
 			
 		}else{
 			pleaseCheck();
-			PrimeFaces.current().executeScript("dismissLoading()");
 			
 		}
 	}

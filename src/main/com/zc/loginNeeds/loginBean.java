@@ -376,7 +376,7 @@ public class loginBean implements Serializable{
 	}
 	public String getTheStatueOfLoginMenu(){
 		if(isLoggedIn){
-			return "block";
+			return "inherit";
 		}
 		return "none";
 	}
@@ -387,14 +387,14 @@ public class loginBean implements Serializable{
 		}else if(isLoggedIn){
 			return "none";
 		}
-		return "block";
+		return "inherit";
 	}
 	
 	public String getTheStatueOfImageLoginMenu(){
 		if(isLoggedIn&&theUserOfThisAccount.getImage()==null){
 			return "none";
 		}else if(isLoggedIn){
-			return "block";
+			return "inherit";
 		}
 		return "none";
 	}

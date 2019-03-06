@@ -126,7 +126,7 @@ if(imageUploaded) {
 		imageOfProgram=new String();
 		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("dialogForm");
 		
-		PrimeFaces.current().executeScript("openPopUpDialog();");
+		PrimeFaces.current().executeScript("$(\"#dialogOfSelectPhoto\").removeAttr(\"style\").show();");
 		System.out.println("Add New Program with id: NewNEw");	
 		
 		programs=programDataFacede.getAll();

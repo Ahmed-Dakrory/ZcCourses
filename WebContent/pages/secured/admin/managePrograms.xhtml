@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-<ui:composition template="/templates/adminTemplate.xhtml">
+<ui:composition template="/templates/dashboard.xhtml">
 
 	<ui:define name="title">Zewail Courses</ui:define>
 
@@ -130,7 +130,7 @@
        	</div>
 		
            <p:commandButton style="margin-left: 70%; margin-top: 2%;" class="buttonGreen" id="addNewProgram"  actionListener="#{manageProgramBean.addNewProgram()}" value="Add New Program" 
-						 ajax="true" process="@form"/>
+						 ajax="true" process="@form" />
 		 
         </div>
         
@@ -151,7 +151,7 @@
     
 						
             <!-- The Modal -->
-			<div id="myModal" class="modal">
+			<div id="dialogOfSelectPhoto" class="modal">
 			
 			  <!-- Modal content -->
 			  <div class="modal-content">
@@ -175,7 +175,7 @@
 								</h:panelGroup>
 								
 								<p:fileUpload  style="visibility:hidden; width:0; height:0" id="file-input"  label="Update Image" fileUploadListener="#{manageProgramBean.previewImage}"
-									allowTypes="/(\.|\/)(png|jpg|bmp|gif\jpeg)$/" sizeLimit="500000" description="Attachment"
+									allowTypes="/(\.|\/)(png|jfif|jpg|bmp|gif\jpeg)$/" sizeLimit="5000000" description="Attachment"
 									update="img" auto="true" mode="advanced" multiple="false" uploadLabel="Upload Attachment" />
 															 
 																   

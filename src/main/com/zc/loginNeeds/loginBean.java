@@ -257,6 +257,7 @@ public class loginBean implements Serializable{
 		theUserOfThisRegisteration.setPassword(new  Md5PasswordEncoder().encodePassword(passwordOfRegisteration,theUserOfThisRegisteration.getEmail()));
 		theUserOfThisRegisteration.setImage(imageOfReg_reg);
 		theUserOfThisRegisteration.setActive(0);
+		theUserOfThisRegisteration.setMode(1);
 		userDataFacede.addUserData(theUserOfThisRegisteration);
 		
 		

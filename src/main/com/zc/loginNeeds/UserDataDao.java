@@ -77,6 +77,9 @@ public class UserDataDao {
 
 
 	private Integer active;
+	
+
+	private Integer mode;
 	private String image;
 	public Integer getId() {
 		return id;
@@ -203,6 +206,12 @@ public class UserDataDao {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public Integer getMode() {
+		return mode;
+	}
+	public void setMode(Integer mode) {
+		this.mode = mode;
 	}
 	
 	

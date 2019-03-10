@@ -17,13 +17,14 @@ public class menuBean {
 			"/ZcCourses/pages/public/programs.xhtml?faces-redirect=true",
 			"/ZcCourses/pages/public/contactUs.xhtml?faces-redirect=true",
 			"/ZcCourses/pages/public/login.xhtml?faces-redirect=true",
-			"/ZcCourses/pages/public/registeration.xhtml?faces-redirect=true"
+			"/ZcCourses/pages/public/registeration.xhtml?faces-redirect=true",
+			"/ZcCourses/pages/secured/admin/adminController.xhtml?faces-redirect=true"
 			
 	};
 	
 	@PostConstruct
 	public void init() {
-		menu=new String[6];
+		menu=new String[7];
 		//invertRemainMenus("0");
 	}
 	public void goToLink(int index) {

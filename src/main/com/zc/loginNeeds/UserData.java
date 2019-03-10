@@ -144,6 +144,12 @@ public class UserData {
 
 	@Column(name = "active")
 	private Integer active;
+	/*
+	 * Mode Admin 0
+	 * Mode User 1
+	 */
+	@Column(name = "mode")
+	private Integer mode;
 	
 	public Integer getId() {
 		return id;
@@ -356,6 +362,17 @@ public class UserData {
 
 	public void setActive(Integer active) {
 		this.active = active;
+	}
+
+
+	
+	public Integer getMode() {
+		return mode;
+	}
+
+
+	public void setMode(Integer mode) {
+		this.mode = mode;
 	}
 
 

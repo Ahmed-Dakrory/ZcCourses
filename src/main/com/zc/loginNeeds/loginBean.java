@@ -50,6 +50,7 @@ public class loginBean implements Serializable{
 	private byte[] imageOfReg_reg;
 	private boolean imageUploaded_reg;
 	
+	
 
 	@ManagedProperty(value = "#{UserDataFacadeImpl}")
 	private UserDataAppServiceImpl userDataFacede; 
@@ -459,6 +460,19 @@ public class loginBean implements Serializable{
 		
 	}
 
+	public String getTheVisibityOfAdmin() {
+		if(theUserOfThisAccount!=null&&theUserOfThisAccount.getMode()!=null) {
+			if(theUserOfThisAccount.getMode()==0) {
+				
+				return "inherit";
+			}else {
+				return "hidden";
+			}
+		}else {
+			return "hidden";
+		}
+		
+	}
 	/*
 	 * the start of getting and setting method
 	 */
@@ -614,6 +628,7 @@ public class loginBean implements Serializable{
 	public void setImageUploaded_reg(boolean imageUploaded_reg) {
 		this.imageUploaded_reg = imageUploaded_reg;
 	}
+
 
 	
 	

@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<ui:composition template="/templates/dashboard.xhtml">
+
+	<ui:define name="title">Zewail Courses</ui:define>
+
+
+	<ui:define name="content">
+	
+<style type="text/css">
+    .ui-datatable .ui-datatable-header {
+        text-align: right !important;
+    }
+     
+    .ui-button-text-only .ui-button-text {
+        padding: 0.3em 0.4em;
+    }
+     
+    .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
+        visibility: hidden;
+    }
+     
+    .ui-filter-column .ui-column-customfilter .custom-filter {
+        width: 100%;
+        box-sizing: border-box;
+    }
+     
+    .year-spinner input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+</style>
+		
+		  
+
+					 
+   <h:form>
+			<p:remoteCommand name="makeTheActionOfDelete" actionListener="#{manageCourseBean.deletecourse()}"  />
+			</h:form>
+					  		 
+   
+		<script>
+		function deleteWithConfirm(id){
+			//alert(id);
+			swal({
+				  title: "Are you sure?",
+				  text: "Once deleted, you will not be able to recover this course data!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if (willDelete) {
+					 
+					  
+					  makeTheActionOfDelete([{"name":"id","value":id}]);
+				  } 
+				});
+			
+			
+		}
+			
+		</script>	
+		
+		 
+	<h:form id="mainForm">
+		
+    
+	
+            
+   <!-- The start of Main Content -->
+   <div class="content">
+ 		       
+						
+  
+  <div class="gallery" style="padding: 10px 0;">
+   		<div class="container" style="    width: 100%;">
+            <div id="divForTable">
+					
+					<h3 id="textHead" >Imported courses</h3><br/>
+						<p:dataTable var="row" value="#{manageCourseBean.courses}" rows="#{manageCourseBean.numShownRows}" widgetVar="courseDataTable"    id="courseDataTableId" 
+						multiViewState="true"  paginator="true" sortMode="multiple"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="1,2,5,25,50,100,500"
+                 selectionMode="single" selection="#{manageCourseBean.selectedcourse}" rowKey="#{row.id}"
+                 emptyMessage="No cars found with given criteria" filteredValue="#{manageCourseBean.filteredcourses}" >
+							
+							<p:column class="manageTableRow" width="100" id="id" sortBy="#{row.id}" filterBy="#{row.id}">
+								<f:facet name="header">
+					                <h:outputText value="id" />
+					            </f:facet>
+								<h:outputText value="#{row.id}" />
+								<p:watermark for="id" value="Search with a keyword" id="watermark" />
+							</p:column>
+							
+							<p:column class="manageTableRow" id="name" sortBy="#{row.name}" filterBy="#{row.name}">
+								<f:facet name="header">
+					                <h:outputText value="course Name" />
+					            </f:facet>
+								<h:outputText value="#{row.name}" />
+								<p:watermark value="course Name" for='name'/>
+							</p:column>
+							
+							<p:column class="manageTableRow" id="image" headerText="course Image" >
+							
+								<h:graphicImage value="#{row.getphoto()}" style="margin-left:35%;"  class="circularImage" alt=""/>
+							</p:column>
+							
+							<p:column class="manageTableRow" headerText="Action" >
+					            
+								<p:commandButton  class="buttonRed" id="delete"  onclick="deleteWithConfirm(#{row.id})" value=" Delete course" 
+								  />
+						
+							</p:column>
+							
+						</p:dataTable>
+						
+					
+					
+					
+				
+					
+       	</div>
+		
+           <p:commandButton style="margin-left: 70%; margin-top: 2%;" class="buttonGreen" id="addNewcourse"  actionListener="#{manageCourseBean.addNewcourse()}" value="Add New course" 
+						 ajax="true" process="@form" />
+		 
+        </div>
+        
+   </div>
+  
+   
+   </div>
+   <!-- The End of Main Content --> 
+
+      
+     
+</h:form>
+
+
+
+								
+ <!-- The Modal of comfirm popUp-->
+    
+						
+            <!-- The Modal -->
+			<div id="dialogOfSelectPhoto" class="modal">
+			
+			  <!-- Modal content -->
+			  <div class="modal-content">
+			    <span class="close">&times;</span>
+			   
+					
+ 
+			    <h:form enctype="multipart/form-data" role="form"  id="dialogForm">
+     <div class="containeer">
+     				<div class="row">
+     				<div class="imageOfDialog">
+     					<h:form id="imageForm">
+        
+						        <h:panelGroup  id="img">
+						        <label for="dialogForm:imageForm:file-input_input">
+						        
+									<h:graphicImage value="#{manageCourseBean.imageOfCourse}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{manageCourseBean.imageUploadedVisib()};"  class="circularImage" alt=""/>
+									<h:graphicImage name="images/uploadButton.png" style="   border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none; display: #{manageCourseBean.imageUploadedVisibNot()};"  class="circularImage" alt=""/>
+									<h:graphicImage name="images/uploadButton.png" style="top:-30px;left:45px;position:relative;border-style: solid;border-color: #a5a1a1;border-width: 1px; width:36px;height:36px;pointer-events: none;  "  class=" circularImage" alt=""/>
+								</label>
+								</h:panelGroup>
+								
+								<p:fileUpload  style="visibility:hidden; width:0; height:0" id="file-input"  label="Update Image" fileUploadListener="#{manageCourseBean.previewImage}"
+									allowTypes="/(\.|\/)(png|jfif|jpg|bmp|gif\jpeg)$/" sizeLimit="5000000" description="Attachment"
+									update="img" auto="true" mode="advanced" multiple="false" uploadLabel="Upload Attachment" />
+															 
+																   
+						        </h:form>
+						</div>		
+								
+     					
+     				</div>
+     				
+     				
+			    	<div class="row" style=" margin-top: 15%;">
+			    		<p:inputText  type="text" required="true" value="#{manageCourseBean.courseNew.name}" class="dialogInputField" pt:placeholder="Please Enter the course Name"/>
+					</div>
+					
+					<div class="row">
+			    		<p:inputText  type="text" required="true" value="#{manageCourseBean.courseNew.price}" class="dialogInputField" pt:placeholder="Please Enter the course price"/>
+					</div>
+					
+					<div class="row">
+			    		<p:inputText  type="text" required="true" value="#{manageCourseBean.courseNew.categories}" class="dialogInputField" pt:placeholder="Please Enter the course categories"/>
+					</div>
+					
+					<div class="row">
+						<p:selectOneMenu id="program" class="styled-select slate" value="#{manageCourseBean.courseNew.idProgram}">
+				            <f:selectItem itemLabel="Select One" itemValue="0" />
+				            <f:selectItems value="#{manageProgramBean.programs}" var="var" itemLabel="#{var.name}" itemValue="#{var.id}"/>
+				        </p:selectOneMenu>
+						
+			    	</div>
+					
+					
+					<div class="row" >
+					<p:inputTextarea maxlength="510" counter="display" counterTemplate="{0} characters remaining." autoResize="false" style="height: 134px;margin-top: 1%;padding: 6px;" value="#{manageCourseBean.courseNew.description}"  height="100" class="dialogInputField" pt:placeholder="Please Enter the course Description">
+				        <f:facet name="toolbar">
+				             <span class="ql-formats">
+				            </span>
+				            <span class="ql-formats">
+				            </span>
+				        </f:facet>
+				    </p:inputTextarea>  
+				    <br />
+   					 <h:outputText class="dialogInputField" id="display" /> 
+					
+			    	</div>
+					
+					
+					<div class="row" style="    margin-top: 3%;">
+					<div class="col-md-2" style="margin-left: 10%;">
+						<h:commandButton style="width: 90px; height: 40px; " class="buttonDialogComfirm"   value="oK" 
+												 action="#{manageCourseBean.savecourse()}">
+												 
+												 
+												<f:ajax execute="@form" render=":dialogForm" />
+												</h:commandButton>
+		 			</div>
+					<div class="col-md-2" style="margin-left: 43%;">
+					<h:commandButton style="width: 90px; height: 40px; " class="buttonDialogComfirm"   value="Cancel" 
+												action="#{manageCourseBean.closeDialog()}">
+												
+												<f:ajax execute="@form" render=":dialogForm" />
+												</h:commandButton>
+		 			
+					</div>
+						
+		 			</div>
+			    </div>
+ 
+			   
+			    	</h:form>
+			  </div>
+			
+			</div>
+	   
+ <!-- The End of Main Content -->
+ 
+<h:outputScript name="js/popUpDialog.js"/>  
+
+<link rel="stylesheet" href="#{resource['css:popUpDialog.css']}" /> 
+
+	</ui:define>
+	
+	
+
+</ui:composition>
+
+</html>

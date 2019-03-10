@@ -30,6 +30,16 @@
   font-weight: bold;
 }
 
+.ui-selectonemenu-panel .ui-selectonemenu-items-wrapper {
+    background: white;
+}
+#dialogFormprogram{
+	margin-left: 20%;
+    font-size: 12px;
+    font-family: -webkit-body;
+    margin-top: 1%;
+    border: outset;
+}
 .imageOfDialog{
 	position: absolute;
     right: 40%;
@@ -62,5 +72,48 @@
     height: 29px;
     font-size: 12px;
     font-family: -webkit-body;
-    margin-top: 8%;
+    margin-top: 1%;
 }
+
+
+
+
+
+
+.styled-select {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+}
+
+.styled-select.slate {
+	    margin-left: 20%;
+    font-size: 16px;
+    font-family: -webkit-body;
+    margin-top: 1%;
+    border: 1px solid #ccc;
+    background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+    height: 34px;
+    width: 60%;
+}
+
+.styled-select.slate select {
+   border: 1px solid #ccc;
+   font-size: 16px;
+   height: 34px;
+   width: 268px;
+}
+
+
+
+

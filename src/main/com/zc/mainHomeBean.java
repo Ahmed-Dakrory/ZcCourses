@@ -39,6 +39,8 @@ public class mainHomeBean implements Serializable {
 	private UserDataAppServiceImpl userDataFacede; 
 	private List<UserData> userdata;
 	
+	private String dataName;
+	
 	@PostConstruct
 	public void init() {
 		refreshPage();
@@ -46,10 +48,14 @@ public class mainHomeBean implements Serializable {
 	}
 	
 	public void refreshPage(){
-		
+		dataName="ahmed";
 		homeSiteName="Zewail Courses";
 		courses=courseFasade.getAll();
 		userdata=userDataFacede.getAll();
+	}
+	
+	public void run() {
+		System.out.println("Data: "+dataName);
 	}
 	
 	public String getHomeSiteName() {
@@ -98,6 +104,14 @@ public class mainHomeBean implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getDataName() {
+		return dataName;
+	}
+
+	public void setDataName(String dataName) {
+		this.dataName = dataName;
 	}
 
 	

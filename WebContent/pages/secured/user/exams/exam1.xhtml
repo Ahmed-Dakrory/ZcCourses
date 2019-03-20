@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition template="/templates/main_template.xhtml">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	  
+	  
+	<ui:define name="title">Zewail Account Confirm</ui:define>
+
+
+	<ui:define name="content">
+		#{examBean.refreshPage()}
+	<div class="container">
+	<div class="time-table-sec">
+	<ul id="accordion2" class="accordion2">
+	<li>
+	<ul class="submenu time-table">
+	<li class="tit"><h5>Working Time</h5></li>
+	<li><span class="day">Monday - Friday</span> <span class="divider">-</span> <span class="time">8.00 - 16.00</span></li>
+	<li><span class="day">Saturday</span> <span class="divider">-</span> <span class="time">9.15 - 17.00</span></li>
+	<li><span class="day">Sunday</span> <span class="divider">-</span> <span class="time">9.45 - 15.00</span></li>
+	</ul>
+	<div class="link"><h:graphicImage class="time-tab" name="images/timetable-menu-dark.png" alt=""/></div>
+	
+	</li>
+	</ul>
+	</div>
+	</div>
+	
+	  
+    <style type="text/css">
+    
+    .runButton{
+	background: url(/ZcCourses/resources/images/play_button_gray.png) no-repeat scroll -4px -3px;
+    width: 41px;
+    height: 41px;
+    background-size: 121%;
+    outline: none;
+    border-radius: 50%;
+  }
+  .container_audio{
+	background: #ccc5bd;
+    width: 33%;
+    padding: 12px;
+    border-radius: 24px;
+  }
+  
+  .ProgressBar{
+	    height: 5px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+  }
+  
+  
+.radioAllSelect{
+    margin: 2%;
+    font-size: 21px;
+}
+
+.itemSelect{
+color:"red";
+}
+
+.examBox{
+	margin: 9%;
+    border-radius: 25px;
+    background: white;
+}
+.c21 {
+    -webkit-text-decoration-skip: none;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+}
+.c3 {
+    vertical-align: baseline;
+    font-family: "Book Antiqua";
+    font-weight: 700;
+}
+.c28 {
+    color: #000000;
+    font-size: 14pt;
+    font-style: normal;
+}
+.c9 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.0;
+    orphans: 2;
+    widows: 2;
+    text-align: center;
+}
+.c19 {
+    color: #000000;
+    text-decoration: none;
+    font-size: 44pt;
+    font-style: normal;
+}
+.c6 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.0;
+    orphans: 2;
+    widows: 2;
+    text-align: center;
+    height: 12pt;
+}
+.c25 {
+    color: #000000;
+    text-decoration: none;
+    font-size: 24pt;
+    font-style: normal;
+}
+
+p {
+    margin: 0;
+    color: #000000;
+    font-size: 12pt;
+    font-family: "Times New Roman";
+}
+
+ol.lst-kix_list_5-0.start {
+
+	margin-left: 19%;
+    margin-top: 2%;
+    counter-reset: lst-ctn-kix_list_5-0 0;
+}
+ol.lst-kix_list_5-0 {
+    list-style-type: none;
+}
+.c2 {
+    padding: 0;
+    margin: 0;
+}
+ol {
+    margin: 0;
+    padding: 0;
+}
+user agent stylesheet
+ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.lst-kix_list_5-0>li:before {
+    content: "" counter(lst-ctn-kix_list_5-0,decimal) ". ";
+}
+.lst-kix_list_5-0>li {
+    counter-increment: lst-ctn-kix_list_5-0;
+}
+.c0 {
+    font-size: 30px;
+    margin-left: 36pt;
+    padding-top: 0pt;
+    padding-left: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.0;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+}
+li {
+    color: #000000;
+    font-size: 12pt;
+    font-family: "Times New Roman";
+}
+.boxOFChoose{
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
+    margin: 3%;
+    margin-left: -14%;
+    padding: 1%;
+    border-radius: 14px;
+    width: 82%;
+}
+.Part{
+box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
+    margin: 5%;
+    border-radius:25px;
+}
+</style>
+            
+   <!-- The start of Main Content -->
+   <div class="content">
+  <div class="frame">
+
+                <div class="row">
+					<h:form class="col-12">
+						<div class="examBox">
+						
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c9">
+							<span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 376.00px; height: 105.00px;">
+							<img alt="" src="/ZcCourses/javax.faces.resource/images/zewailOutReach.png.xhtml" style="width: 376.00px; height: 105.00px; margin-left: -0.00px; margin-top: -0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+							</span>
+							</p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c9"><span class="c3 c25">Zewail City of Science and Technology </span></p>
+							
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c9"><span class="c19 c3">Placement Test</span></p>
+							
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c9"><span class="c3 c21 c28">Placement Test Part I</span></p>
+							
+							
+							 <!-- First Part  -->
+							 <div class="Part">
+							<p class="c6"><span class="c20 c12"></span></p>
+							<p class="c9"><span class="c3 c21">VOCABULARY AND EXPRESSION</span></p>
+							<p class="c6"><span class="c10"></span></p>
+							<p class="c8"><span class="c3 c21 c38">Please choose the correct answer:</span></p>
+							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
+							
+							
+
+
+							<ol class="c2 lst-kix_list_5-0 start" start="1">
+							
+							<ui:repeat var="o" value="#{examBean.listOfVocQuestions}" varStatus="status">
+								<li class="c0 boxOFChoose">
+									<span class="c3">#{o.question}</span>
+									<span class="c12"><br/>
+										<h:selectOneRadio class="radioAllSelect"  value = "#{examBean.listOfVocAnswers[status.index].ans}"> 
+										   <f:selectItem class="itemSelect" itemValue = "1" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans1} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "2" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans2} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "3" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans3} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										</h:selectOneRadio>
+									</span>
+								</li>
+							</ui:repeat>
+							
+							
+							
+							</ol>
+							
+							
+							<p class="c6"></p>
+							<p class="c6"></p>
+							 </div>
+							 
+							 
+						    <!-- Second Part  -->
+						     <div class="Part">
+						    <p class="c6"></p>
+							<p class="c6"></p>
+							
+							<p class="c6"><span class="c20 c12"></span></p>
+							<p class="c9"><span class="c3 c21">GRAMMAR</span></p>
+							<p class="c6"><span class="c10"></span></p>
+							<p class="c8"><span class="c3 c21 c38">Please choose the correct answer:</span></p>
+							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
+							
+							
+							<ol class="c2 lst-kix_list_5-0 start" start="1">
+							
+							<ui:repeat var="o" value="#{examBean.listOfGramQuestions}" varStatus="status">
+								<li class="c0 boxOFChoose">
+									<span class="c3">#{o.question}</span>
+									<span class="c12"><br/>
+										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.listOfGramAnswers[status.index].ans}"> 
+										   <f:selectItem class="itemSelect" itemValue = "1" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans1} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "2" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans2} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "3" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans3} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										</h:selectOneRadio>
+									</span>
+								</li>
+							</ui:repeat>
+							
+							
+							</ol>
+							 
+							 <p class="c6"></p>
+							<p class="c6"></p>
+						    
+						    </div>
+						    
+						    <!-- Third Part -->
+						     <div class="Part">
+						    <p class="c6"></p>
+							<p class="c6"></p>
+							
+							<p class="c6"><span class="c20 c12"></span></p>
+							<p class="c9"><span class="c3 c21">LISTENING</span></p>
+							<p class="c6"><span class="c10"></span></p>
+							<p class="c8"><span class="c3 c21 c38">( Listening One )Please choose the correct answer:</span></p>
+							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
+							
+							<div class="container">
+							  <p>Note you will hear for one time only </p> 
+							  
+								<div class="container_audio">
+								<table style="width:100%">
+								  <tr>
+									<th><input type="button"  id="runButton1" class="runButton" onclick="play1()"/></th>
+									<th><span id="timer1"> 10:30</span></th> 
+								  </tr>
+								 </table>
+							
+							  <audio ontimeupdate="updateTime1(this.currentTime,this.duration)" id="audio1" class="sound">
+							        <source src="/ZcCourses/javax.faces.resource/sounds/sound1.mp3.xhtml" type="audio/mpeg"/>
+							    </audio>
+								
+							  <div class="progress ProgressBar" style="    height: 5px;">
+							    <div id ="tracktime1" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+							     
+							    </div>
+							  </div>
+							  
+								</div>
+							</div>
+							
+							<ol class="c2 lst-kix_list_5-0 start" start="1">
+							
+							<ui:repeat var="o" value="#{examBean.listOfListQuestions1}" varStatus="status">
+								<li class="c0 boxOFChoose">
+									<span class="c3">#{o.question}</span>
+									<span class="c12"><br/>
+										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.listOfListAnswers1[status.index].ans}"> 
+										   <f:selectItem class="itemSelect" itemValue = "1" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans1} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "2" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans2} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "3" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans3} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										</h:selectOneRadio>
+									</span>
+								</li>
+							</ui:repeat>
+							
+							
+							</ol>
+							 
+							 <p class="c6"></p>
+							<p class="c6"></p>
+							 </div>
+							 
+							 
+							 <!-- Fourth Part -->
+						    <div class="Part">
+						    <p class="c6"></p>
+							<p class="c6"></p>
+							
+							<p class="c6"><span class="c20 c12"></span></p>
+							<p class="c9"><span class="c3 c21">LISTENING</span></p>
+							<p class="c6"><span class="c10"></span></p>
+							<p class="c8"><span class="c3 c21 c38">( Listening Two )Please choose the correct answer:</span></p>
+							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
+							
+							<div class="container">
+							  <p>Note you will hear for one time only </p> 
+							  
+								<div class="container_audio">
+								<table style="width:100%">
+								  <tr>
+									<th><input type="button"  id="runButton2" class="runButton" onclick="play2()"/></th>
+									<th><span id="timer2"> 10:30</span></th> 
+								  </tr>
+								 </table>
+							
+							  <audio ontimeupdate="updateTime2(this.currentTime,this.duration)" id="audio2" class="sound">
+							        <source src="/ZcCourses/javax.faces.resource/sounds/sound1.mp3.xhtml" type="audio/mpeg"/>
+							    </audio>
+								
+							  <div class="progress ProgressBar" style="    height: 5px;">
+							    <div id ="tracktime2" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+							     
+							    </div>
+							  </div>
+							  
+								</div>
+							</div>
+							
+							<ol class="c2 lst-kix_list_5-0 start" start="1">
+							
+							<ui:repeat var="o" value="#{examBean.listOfListQuestions2}" varStatus="status">
+								<li class="c0 boxOFChoose">
+									<span class="c3">#{o.question}</span>
+									<span class="c12"><br/>
+										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.listOfListAnswers2[status.index].ans}"> 
+										   <f:selectItem class="itemSelect" itemValue = "1" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans1} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "2" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans2} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "3" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans3} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										</h:selectOneRadio>
+									</span>
+								</li>
+							</ui:repeat>
+							
+							
+							</ol>
+							 
+						    
+						    <p class="c6"></p>
+							<p class="c6"></p>
+						    </div>
+						    
+						    
+						    
+						    
+						     <!-- six Part -->
+						    <div class="Part">
+						    <p class="c6"></p>
+							<p class="c6"></p>
+							
+							<p class="c6"><span class="c20 c12"></span></p>
+							<p class="c9"><span class="c3 c21">READING</span></p>
+							<p class="c6"><span class="c10"></span></p>
+							<p class="c8"><span class="c3 c21 c38">( READING Two )Please choose the correct answer:</span></p>
+							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
+							
+							<div class="container">
+							  <p>#{examBean.paragraph2}</p> 
+							  
+							</div>
+							
+							<ol class="c2 lst-kix_list_5-0 start" start="1">
+							
+							<ui:repeat var="o" value="#{examBean.listOfReadQuestions2}" varStatus="status">
+								<li class="c0 boxOFChoose">
+									<span class="c3">#{o.question}</span>
+									<span class="c12"><br/>
+										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.listOfReadAnswers2[status.index].ans}"> 
+										   <f:selectItem class="itemSelect" itemValue = "1" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans1} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "2" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans2} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "3" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans3} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										</h:selectOneRadio>
+									</span>
+								</li>
+							</ui:repeat>
+							
+							
+							</ol>
+							 
+						    
+						    <p class="c6"></p>
+							<p class="c6"></p>
+						    </div>
+						    
+						    
+						    
+						    <!-- FiFth Part -->
+						    <div class="Part">
+						    <p class="c6"></p>
+							<p class="c6"></p>
+							
+							<p class="c6"><span class="c20 c12"></span></p>
+							<p class="c9"><span class="c3 c21">READING</span></p>
+							<p class="c6"><span class="c10"></span></p>
+							<p class="c8"><span class="c3 c21 c38">( READING One )Please choose the correct answer:</span></p>
+							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
+							
+							<div class="container">
+							  <p>#{examBean.paragraph1}</p> 
+							  
+							</div>
+							
+							<ol class="c2 lst-kix_list_5-0 start" start="1">
+							
+							<ui:repeat var="o" value="#{examBean.listOfReadQuestions1}" varStatus="status">
+								<li class="c0 boxOFChoose">
+									<span class="c3">#{o.question}</span>
+									<span class="c12"><br/>
+										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.listOfReadAnswers1[status.index].ans}"> 
+										   <f:selectItem class="itemSelect" itemValue = "1" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans1} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "2" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans2} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "3" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans3} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										</h:selectOneRadio>
+									</span>
+								</li>
+							</ui:repeat>
+							
+							
+							</ol>
+							 
+						    
+						    <p class="c6"></p>
+							<p class="c6"></p>
+						    </div>
+						    
+						    <p class="c6"></p>
+							<p class="c6"></p>
+						</div>
+						
+						<p:commandButton action="#{examBean.readAllAnswers}">Run</p:commandButton>
+						
+					 </h:form>
+                </div>
+
+            </div>
+   </div>
+   <!-- The End of Main Content -->     
+       
+<h:outputScript name="js/jquery.js"/>  
+
+<script>
+ 
+       
+	  
+document.getElementById('timer1').innerHTML = '00:00:00';
+document.getElementById('timer2').innerHTML = '00:00:00';
+	
+	function play1(){
+		   var audio = document.getElementById("audio1");
+	       audio.play();
+		   document.getElementById("runButton1").disabled = true;
+	                 }
+					 
+		function updateTime1(now,total){
+		document.getElementById('timer1').innerHTML = sToTime(now) + ' / ' + sToTime(total);
+		document.getElementById('tracktime1').style.width = (now/total*100)+"%";
+		}
+		
+		
+		function play2(){
+			   var audio = document.getElementById("audio2");
+		       audio.play();
+			   document.getElementById("runButton2").disabled = true;
+		                 }
+						 
+			function updateTime2(now,total){
+			document.getElementById('timer2').innerHTML = sToTime(now) + ' / ' + sToTime(total);
+			document.getElementById('tracktime2').style.width = (now/total*100)+"%";
+			}
+			
+			
+			
+	function sToTime(t) {
+	  return padZero(parseInt((t / (60 * 60)) % 24)) + ":" +
+			 padZero(parseInt((t / (60)) % 60)) + ":" + 
+			 padZero(parseInt((t) % 60));
+	}
+	
+	function padZero(v) {
+	  return (v &lt; 10) ? "0" + v : v;
+	}
+   </script>
+     
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

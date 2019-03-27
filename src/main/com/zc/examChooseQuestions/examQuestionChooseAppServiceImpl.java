@@ -69,33 +69,7 @@ public class examQuestionChooseAppServiceImpl implements IExamQuestionChooseAppS
 			}
 	}
 
-	@Override
-	public List<examQuestionChoose> getAllVocabSecNumb(int examNum, int vocId) {
-		try{
-			List<examQuestionChoose> data=examQuestionChooseRepository.getAllVocabSecNumb(examNum, vocId);
-			
-			return data;
-			}
-			catch(Exception ex)
-			{
-				ex.printStackTrace();
-				return null;
-			}
-	}
-
-	@Override
-	public List<examQuestionChoose> getAllGrammerSecNumb(int examNum, int gramId) {
-		try{
-			List<examQuestionChoose> data=examQuestionChooseRepository.getAllGrammerSecNumb(examNum, gramId);
-			
-			return data;
-			}
-			catch(Exception ex)
-			{
-				ex.printStackTrace();
-				return null;
-			}
-	}
+	
 
 	@Override
 	public List<examQuestionChoose> getAllListeningSecNumb(int examNum, int listId) {
@@ -150,6 +124,63 @@ public class examQuestionChooseAppServiceImpl implements IExamQuestionChooseAppS
 						ex.printStackTrace();
 						return false;
 					}
+	}
+
+
+
+
+
+
+	@Override
+	public List<examQuestionChoose> getAllWritingSecNumb(int examNum, int writingId) {
+		try{
+			List<examQuestionChoose> data=examQuestionChooseRepository.getAllWritingSecNumb(examNum, writingId);
+			
+			return data;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
+	}
+
+
+
+
+
+
+	@Override
+	public List<examQuestionChoose> getAllSpeakingSecNumb(int examNum, int speakingId) {
+		try{
+			List<examQuestionChoose> data=examQuestionChooseRepository.getAllSpeakingSecNumb(examNum, speakingId);
+			
+			return data;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
+	}
+
+
+
+
+
+
+	@Override
+	public List<examQuestionChoose> getAllChooseSecNumb(int examNum, int chooseId) {
+		try{
+			List<examQuestionChoose> data=examQuestionChooseRepository.getAllChooseSecNumb(examNum, chooseId);
+			
+			return data;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
 	}
 	
 }

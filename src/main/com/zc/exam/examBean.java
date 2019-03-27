@@ -1,6 +1,7 @@
 package main.com.zc.exam;
 
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +10,13 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import main.com.zc.examChooseAnswers.examAnswersChoose;
+import main.com.zc.examChooseAnswers.examAnswersChooseAppServiceImpl;
 import main.com.zc.examChooseQuestions.examQuestionChoose;
 import main.com.zc.examChooseQuestions.examQuestionChooseAppServiceImpl;
+import main.com.zc.loginNeeds.loginBean;
 
 
 
@@ -34,34 +38,59 @@ public class examBean implements Serializable {
 	
 	
 	@ManagedProperty(value = "#{examQuestionChooseFacadeImpl}")
-	private examQuestionChooseAppServiceImpl chooseQuesFacede; 
-	private List<examQuestionChoose> listOfVocQuestions;
-	private List<examQuestionChoose> listOfGramQuestions;
+	private examQuestionChooseAppServiceImpl chooseQuesFacede;
+	
+	@ManagedProperty(value = "#{examAnswersChooseFacadeImpl}")
+	private examAnswersChooseAppServiceImpl ansFacede;
+	
+	
+	private List<examQuestionChoose> listOfChooseQuestions;
 	private List<examQuestionChoose> listOfListQuestions1;
 	private List<examQuestionChoose> listOfListQuestions2;
 	private List<examQuestionChoose> listOfReadQuestions1;
 	private List<examQuestionChoose> listOfReadQuestions2;
+	private List<examQuestionChoose> listOfWritingQuestions;
+	
+
+	private List<examQuestionChoose> listOfSpeakingQuestions;
 	
 	
 
-	private List<examAnswersChoose> listOfVocAnswers;
-	private List<examAnswersChoose> listOfGramAnswers;
+	private List<examAnswersChoose> listOfChooseAnswers;
 	private List<examAnswersChoose> listOfListAnswers1;
 	private List<examAnswersChoose> listOfListAnswers2;
 	private List<examAnswersChoose> listOfReadAnswers1;
 	private List<examAnswersChoose> listOfReadAnswers2;
 	
+
+	private List<examAnswersChoose> listOfWritingAnswers;
+	
+
+	private List<examAnswersChoose> listOfSpeakingAnswers;
+	
 	private int examNum;
 	
-	private int sizeOfVoc;
-	private int sizeOfGram;
+	private int sizeOfChoose;
+	
 	private int sizeOfList1;
 	private int sizeOfList2;
+	
 	private int sizeOfRead1;
 	private int sizeOfRead2;
+	
+	
+
+	private int sizeOfSpeaking;
 
 	private String paragraph1;
 	private String paragraph2;
+
+	private int selectedParagraph;
+	private String writingParagraphAns;
+	private String speakingUrlAns;
+	
+	@ManagedProperty(value = "#{loginBean}")
+	private loginBean loginBean;
 	
 	@PostConstruct
 	public void init() {
@@ -71,21 +100,26 @@ public class examBean implements Serializable {
 	}
 	
 	public void refreshPage(){
-		listOfVocAnswers=new ArrayList<examAnswersChoose>();
-		listOfGramAnswers=new ArrayList<examAnswersChoose>();
+		listOfChooseAnswers=new ArrayList<examAnswersChoose>();
 		listOfListAnswers1=new ArrayList<examAnswersChoose>();
 		listOfListAnswers2=new ArrayList<examAnswersChoose>();
 		listOfReadAnswers1=new ArrayList<examAnswersChoose>();
 		listOfReadAnswers2=new ArrayList<examAnswersChoose>();
+		listOfWritingAnswers=new ArrayList<examAnswersChoose>();
+		listOfSpeakingAnswers=new ArrayList<examAnswersChoose>();
 		
 		
 		
-		listOfVocQuestions=chooseQuesFacede.getAllVocabSecNumb(examNum, 1);
-		listOfGramQuestions=chooseQuesFacede.getAllGrammerSecNumb(examNum, 1);
+		listOfChooseQuestions=chooseQuesFacede.getAllChooseSecNumb(examNum, 1);
 		listOfListQuestions1=chooseQuesFacede.getAllListeningSecNumb(examNum, 1);
 		listOfListQuestions2=chooseQuesFacede.getAllListeningSecNumb(examNum, 2);
 		listOfReadQuestions1=chooseQuesFacede.getAllReadSecNumb(examNum, 1);
 		listOfReadQuestions2=chooseQuesFacede.getAllReadSecNumb(examNum, 2);
+		listOfWritingQuestions=chooseQuesFacede.getAllWritingSecNumb(examNum, 1);
+		listOfSpeakingQuestions=chooseQuesFacede.getAllSpeakingSecNumb(examNum, 1);
+		
+
+		selectedParagraph=listOfWritingQuestions.get(0).getId();
 		
 		InitializeTheAnsList();
 
@@ -95,33 +129,31 @@ public class examBean implements Serializable {
 
 	private void InitializeTheAnsList() {
 		// TODO Auto-generated method stub
-		sizeOfVoc=listOfVocQuestions.size();
-		sizeOfGram=listOfGramQuestions.size();
+		sizeOfChoose=listOfChooseQuestions.size();
 		sizeOfList1=listOfListQuestions1.size();
 		sizeOfList2=listOfListQuestions2.size();
 		sizeOfRead1=listOfReadQuestions1.size();
 		sizeOfRead2=listOfReadQuestions2.size();
 		
+
+		sizeOfSpeaking=listOfSpeakingQuestions.size();
 		
 		
-		for(int i=0;i<sizeOfVoc;i++) {
-			examAnswersChoose ansVoc=new examAnswersChoose();
-			ansVoc.setAns(1);
-			ansVoc.setQuestion(listOfVocQuestions.get(i));
-			listOfVocAnswers.add(ansVoc);
+		
+		for(int i=0;i<sizeOfChoose;i++) {
+			examAnswersChoose ansChoose=new examAnswersChoose();
+			ansChoose.setAns(1);
+			ansChoose.setQuestion(listOfChooseQuestions.get(i));
+			ansChoose.setStudent(loginBean.getTheUserOfThisAccount());
+			listOfChooseAnswers.add(ansChoose);
 		}
 
-		for(int i=0;i<sizeOfGram;i++) {
-			examAnswersChoose ansGram=new examAnswersChoose();
-			ansGram.setAns(1);
-			ansGram.setQuestion(listOfGramQuestions.get(i));
-			listOfGramAnswers.add(ansGram);
-		}
 		
 		for(int i=0;i<sizeOfList1;i++) {
 			examAnswersChoose ansList1=new examAnswersChoose();
 			ansList1.setAns(1);
 			ansList1.setQuestion(listOfListQuestions1.get(i));
+			ansList1.setStudent(loginBean.getTheUserOfThisAccount());
 			listOfListAnswers1.add(ansList1);
 		}
 		
@@ -129,6 +161,7 @@ public class examBean implements Serializable {
 			examAnswersChoose ansList2=new examAnswersChoose();
 			ansList2.setAns(1);
 			ansList2.setQuestion(listOfListQuestions2.get(i));
+			ansList2.setStudent(loginBean.getTheUserOfThisAccount());
 			listOfListAnswers2.add(ansList2);
 		}
 		
@@ -136,6 +169,7 @@ public class examBean implements Serializable {
 			examAnswersChoose ansRead1=new examAnswersChoose();
 			ansRead1.setAns(1);
 			ansRead1.setQuestion(listOfReadQuestions1.get(i));
+			ansRead1.setStudent(loginBean.getTheUserOfThisAccount());
 			listOfReadAnswers1.add(ansRead1);
 		}
 		
@@ -143,28 +177,139 @@ public class examBean implements Serializable {
 			examAnswersChoose ansRead2=new examAnswersChoose();
 			ansRead2.setAns(1);
 			ansRead2.setQuestion(listOfReadQuestions2.get(i));
+			ansRead2.setStudent(loginBean.getTheUserOfThisAccount());
 			listOfReadAnswers2.add(ansRead2);
+		}
+		
+		
+	
+		
+		
+		for(int i=0;i<sizeOfSpeaking;i++) {
+			examAnswersChoose ansSpeak=new examAnswersChoose();
+			ansSpeak.setAns(1);
+			ansSpeak.setQuestion(listOfSpeakingQuestions.get(i));
+			ansSpeak.setStudent(loginBean.getTheUserOfThisAccount());
+			listOfSpeakingAnswers.add(ansSpeak);
 		}
 		
 	}
 
-	public void readAllAnswers() {
-		for(int i=0;i<listOfVocAnswers.size();i++) {
-			System.out.println("Answer Voc: "+String.valueOf(listOfVocAnswers.get(i).getAns()));
+	public void submitChooseAndProceed() {
+		//Grade the Choose list first
+		grade(listOfChooseAnswers,listOfChooseQuestions);
+		
+		//Submit the list of chooses
+		for(int i=0;i<listOfChooseAnswers.size();i++) {
+			ansFacede.addExamAnswersChoose(listOfChooseAnswers.get(i));
 		}
 		
-		for(int i=0;i<listOfGramAnswers.size();i++) {
-			System.out.println("Answer Gram: "+String.valueOf(listOfGramAnswers.get(i).getAns()));
+		try {
+			FacesContext.getCurrentInstance()
+			   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examListening.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void submitListAndProceed() {
+		//Grade the Listening list first
+				grade(listOfListAnswers1,listOfListQuestions1);
+				grade(listOfListAnswers2,listOfListQuestions2);
+					
+				//Submit the list of listening
+				for(int i=0;i<listOfListAnswers1.size();i++) {
+					ansFacede.addExamAnswersChoose(listOfListAnswers1.get(i));
+				}
+				for(int i=0;i<listOfListAnswers2.size();i++) {
+					ansFacede.addExamAnswersChoose(listOfListAnswers2.get(i));
+				}
+				
+				try {
+					FacesContext.getCurrentInstance()
+					   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examReading.xhtml");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}		
+		
+	}
+	
+	public void submitReadAndProceed() {
+		
+		//Grade the Reading list first
+		grade(listOfReadAnswers1,listOfReadQuestions1);
+		grade(listOfReadAnswers2,listOfReadQuestions2);
+				
+		
+		
+
+		//Submit the list of Reading
+		for(int i=0;i<listOfReadAnswers1.size();i++) {
+			ansFacede.addExamAnswersChoose(listOfReadAnswers1.get(i));
+		}
+		for(int i=0;i<listOfReadAnswers2.size();i++) {
+			ansFacede.addExamAnswersChoose(listOfReadAnswers2.get(i));
 		}
 		
-		for(int i=0;i<listOfListAnswers1.size();i++) {
-			System.out.println("Answer Gram: "+String.valueOf(listOfListAnswers1.get(i).getAns()));
+					try {
+						FacesContext.getCurrentInstance()
+						   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examWriting.xhtml");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}		
+			
 		}
+	
+	public void submitWritingAndProceed() {
 		
-		for(int i=0;i<listOfListAnswers2.size();i++) {
-			System.out.println("Answer Gram: "+String.valueOf(listOfListAnswers2.get(i).getAns()));
+		//Submit the writing answer
+				examAnswersChoose newansWriting = new examAnswersChoose();
+				newansWriting.setWriting_ans(writingParagraphAns);
+				newansWriting.setAns(1);
+				newansWriting.setQuestion(chooseQuesFacede.getById(selectedParagraph));
+				newansWriting.setStudent(loginBean.getTheUserOfThisAccount());
+				ansFacede.addExamAnswersChoose(newansWriting);
+				
+		
+					try {
+						FacesContext.getCurrentInstance()
+						   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examSpeaking.xhtml");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}		
+			
 		}
+	
+	public void endOfExam() {
 		
+		
+		//Submit the speaking url 
+		examAnswersChoose newansSpeaking = listOfSpeakingAnswers.get(0);
+		newansSpeaking.setWriting_ans(speakingUrlAns);
+		ansFacede.addExamAnswersChoose(newansSpeaking);
+		
+	}
+
+	private void grade(List<examAnswersChoose> lcAns, List<examQuestionChoose> lcQues) {
+		// TODO Auto-generated method stub
+		for(int i=0;i<lcAns.size();i++) {
+			if(lcAns.get(i).getAns()-lcQues.get(i).getExact_ans()==0) {
+				examAnswersChoose newOne=new examAnswersChoose();
+				newOne=lcAns.get(i);
+				newOne.setGrade(1);
+				lcAns.set(i, newOne);
+			}else {
+				examAnswersChoose newOne=new examAnswersChoose();
+				newOne=lcAns.get(i);
+				newOne.setGrade(0);
+				lcAns.set(i, newOne);
+			}
+		}
 	}
 
 	/*
@@ -183,21 +328,7 @@ public class examBean implements Serializable {
 		this.chooseQuesFacede = chooseQuesFacede;
 	}
 
-	public List<examQuestionChoose> getListOfVocQuestions() {
-		return listOfVocQuestions;
-	}
-
-	public void setListOfVocQuestions(List<examQuestionChoose> listOfVocQuestions) {
-		this.listOfVocQuestions = listOfVocQuestions;
-	}
-
-	public List<examQuestionChoose> getListOfGramQuestions() {
-		return listOfGramQuestions;
-	}
-
-	public void setListOfGramQuestions(List<examQuestionChoose> listOfGramQuestions) {
-		this.listOfGramQuestions = listOfGramQuestions;
-	}
+	
 
 	public List<examQuestionChoose> getListOfListQuestions1() {
 		return listOfListQuestions1;
@@ -243,21 +374,7 @@ public class examBean implements Serializable {
 		this.examNum = examNum;
 	}
 
-	public List<examAnswersChoose> getListOfVocAnswers() {
-		return listOfVocAnswers;
-	}
-
-	public void setListOfVocAnswers(List<examAnswersChoose> listOfVocAnswers) {
-		this.listOfVocAnswers = listOfVocAnswers;
-	}
-
-	public List<examAnswersChoose> getListOfGramAnswers() {
-		return listOfGramAnswers;
-	}
-
-	public void setListOfGramAnswers(List<examAnswersChoose> listOfGramAnswers) {
-		this.listOfGramAnswers = listOfGramAnswers;
-	}
+	
 
 	public List<examAnswersChoose> getListOfListAnswers1() {
 		return listOfListAnswers1;
@@ -291,22 +408,7 @@ public class examBean implements Serializable {
 		this.listOfReadAnswers2 = listOfReadAnswers2;
 	}
 
-	public int getSizeOfVoc() {
-		return sizeOfVoc;
-	}
-
-	public void setSizeOfVoc(int sizeOfVoc) {
-		this.sizeOfVoc = sizeOfVoc;
-	}
-
-	public int getSizeOfGram() {
-		return sizeOfGram;
-	}
-
-	public void setSizeOfGram(int sizeOfGram) {
-		this.sizeOfGram = sizeOfGram;
-	}
-
+	
 	public int getSizeOfList1() {
 		return sizeOfList1;
 	}
@@ -356,6 +458,111 @@ public class examBean implements Serializable {
 	}
 
 	
+
+	public int getSelectedParagraph() {
+		return selectedParagraph;
+	}
+
+	public void setSelectedParagraph(int selectedParagraph) {
+		this.selectedParagraph = selectedParagraph;
+	}
+
+	public List<examQuestionChoose> getListOfSpeakingQuestions() {
+		return listOfSpeakingQuestions;
+	}
+
+	public void setListOfSpeakingQuestions(List<examQuestionChoose> listOfSpeakingQuestions) {
+		this.listOfSpeakingQuestions = listOfSpeakingQuestions;
+	}
+
+	public List<examAnswersChoose> getListOfSpeakingAnswers() {
+		return listOfSpeakingAnswers;
+	}
+
+	public void setListOfSpeakingAnswers(List<examAnswersChoose> listOfSpeakingAnswers) {
+		this.listOfSpeakingAnswers = listOfSpeakingAnswers;
+	}
+
+	public int getSizeOfSpeaking() {
+		return sizeOfSpeaking;
+	}
+
+	public void setSizeOfSpeaking(int sizeOfSpeaking) {
+		this.sizeOfSpeaking = sizeOfSpeaking;
+	}
+
+	public List<examQuestionChoose> getListOfChooseQuestions() {
+		return listOfChooseQuestions;
+	}
+
+	public void setListOfChooseQuestions(List<examQuestionChoose> listOfChooseQuestions) {
+		this.listOfChooseQuestions = listOfChooseQuestions;
+	}
+
+	public List<examAnswersChoose> getListOfChooseAnswers() {
+		return listOfChooseAnswers;
+	}
+
+	public void setListOfChooseAnswers(List<examAnswersChoose> listOfChooseAnswers) {
+		this.listOfChooseAnswers = listOfChooseAnswers;
+	}
+
+	public int getSizeOfChoose() {
+		return sizeOfChoose;
+	}
+
+	public void setSizeOfChoose(int sizeOfChoose) {
+		this.sizeOfChoose = sizeOfChoose;
+	}
+
+	public loginBean getLoginBean() {
+		return loginBean;
+	}
+
+	public void setLoginBean(loginBean loginBean) {
+		this.loginBean = loginBean;
+	}
+
+	public examAnswersChooseAppServiceImpl getAnsFacede() {
+		return ansFacede;
+	}
+
+	public void setAnsFacede(examAnswersChooseAppServiceImpl ansFacede) {
+		this.ansFacede = ansFacede;
+	}
+
+	public String getWritingParagraphAns() {
+		return writingParagraphAns;
+	}
+
+	public void setWritingParagraphAns(String writingParagraphAns) {
+		this.writingParagraphAns = writingParagraphAns;
+	}
+
+	public String getSpeakingUrlAns() {
+		return speakingUrlAns;
+	}
+
+	public void setSpeakingUrlAns(String speakingUrlAns) {
+		this.speakingUrlAns = speakingUrlAns;
+	}
+
+	public List<examAnswersChoose> getListOfWritingAnswers() {
+		return listOfWritingAnswers;
+	}
+
+	public void setListOfWritingAnswers(List<examAnswersChoose> listOfWritingAnswers) {
+		this.listOfWritingAnswers = listOfWritingAnswers;
+	}
+
+	public List<examQuestionChoose> getListOfWritingQuestions() {
+		return listOfWritingQuestions;
+	}
+
+	public void setListOfWritingQuestions(List<examQuestionChoose> listOfWritingQuestions) {
+		this.listOfWritingQuestions = listOfWritingQuestions;
+	}
+
 	
 	
 	

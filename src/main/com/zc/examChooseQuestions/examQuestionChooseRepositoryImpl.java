@@ -52,33 +52,14 @@ public class examQuestionChooseRepositoryImpl implements examQuestionChooseRepos
 	@Override
 	public List<examQuestionChoose> getAllExamQuestion(int examNum) {
 		// TODO Auto-generated method stub
-				 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examQuestionChoose.getAllVocabSecNumb").setInteger("examNumb",examNum);
+				 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examQuestionChoose.getAllExamQuestion").setInteger("examNumb",examNum);
 
 				 @SuppressWarnings("unchecked")
 				List<examQuestionChoose> results=query.list();
 				return results;
 	}
 
-	@Override
-	public List<examQuestionChoose> getAllVocabSecNumb(int examNum, int vocId) {
-		// TODO Auto-generated method stub
-		 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examQuestionChoose.getAllVocabSecNumb").setInteger("examNumb",examNum).setInteger("id_vocab", vocId);
-
-		 @SuppressWarnings("unchecked")
-		List<examQuestionChoose> results=query.list();
-		return results;
-		
-	}
-
-	@Override
-	public List<examQuestionChoose> getAllGrammerSecNumb(int examNum, int gramId) {
-		// TODO Auto-generated method stub
-				 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examQuestionChoose.getAllGrammerSecNumb").setInteger("examNumb",examNum).setInteger("id_grammer", gramId);
-
-				 @SuppressWarnings("unchecked")
-				List<examQuestionChoose> results=query.list();
-				return results;
-	}
+	
 
 	@Override
 	public List<examQuestionChoose> getAllListeningSecNumb(int examNum, int listId) {
@@ -134,6 +115,39 @@ public class examQuestionChooseRepositoryImpl implements examQuestionChooseRepos
 			ex.printStackTrace();
 			return false;
 		}
+	}
+
+
+	@Override
+	public List<examQuestionChoose> getAllWritingSecNumb(int examNum, int writingId) {
+		// TODO Auto-generated method stub
+		 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examQuestionChoose.getAllWritingSecNumb").setInteger("examNumb",examNum).setInteger("id_writing",writingId);
+
+		 @SuppressWarnings("unchecked")
+		List<examQuestionChoose> results=query.list();
+		return results;
+	}
+
+
+	@Override
+	public List<examQuestionChoose> getAllSpeakingSecNumb(int examNum, int speakingId) {
+		// TODO Auto-generated method stub
+				 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examQuestionChoose.getAllSpeakingSecNumb").setInteger("examNumb",examNum).setInteger("id_speaking", speakingId);
+
+				 @SuppressWarnings("unchecked")
+				List<examQuestionChoose> results=query.list();
+				return results;
+	}
+
+
+	@Override
+	public List<examQuestionChoose> getAllChooseSecNumb(int examNum, int chooseId) {
+		// TODO Auto-generated method stub
+				 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examQuestionChoose.getAllChooseSecNumb").setInteger("examNumb",examNum).setInteger("id_choose", chooseId);
+
+				 @SuppressWarnings("unchecked")
+				List<examQuestionChoose> results=query.list();
+				return results;
 	}
 
 }

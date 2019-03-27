@@ -66,8 +66,16 @@ public class examAnswersChoose {
 	@JoinColumn(name = "questionId")
 	private examQuestionChoose question;
 	
+	@Column(name = "grade")
+	private Integer grade;
+	
+	
 	@Column(name = "ans")
 	private Integer ans;
+	
+	
+	@Column(name = "writing_ans")
+	private String writing_ans;
 
 	public Integer getId() {
 		return id;
@@ -99,6 +107,22 @@ public class examAnswersChoose {
 
 	public void setAns(Integer ans) {
 		this.ans = ans;
+	}
+
+	public Integer getGrade() {
+		return grade;
+	}
+
+	public void setGrade(Integer grade) {
+		this.grade = grade;
+	}
+
+	public String getWriting_ans() {
+		return writing_ans;
+	}
+
+	public void setWriting_ans(String writing_ans) {
+		this.writing_ans = writing_ans;
 	}
 
 	

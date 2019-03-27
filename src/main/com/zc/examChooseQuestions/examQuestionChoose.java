@@ -34,12 +34,8 @@ import org.hibernate.annotations.NamedQuery;
 			)
 	,
 	
-	@NamedQuery(name="examQuestionChoose.getAllVocabSecNumb",
-	query = "from examQuestionChoose d where d.examNumb = :examNumb and d.id_vocab = :id_vocab"
-			)
-	,
-	@NamedQuery(name="examQuestionChoose.getAllGrammerSecNumb",
-	query = "from examQuestionChoose d where d.examNumb = :examNumb and d.id_grammer = :id_grammer"
+	@NamedQuery(name="examQuestionChoose.getAllChooseSecNumb",
+	query = "from examQuestionChoose d where d.examNumb = :examNumb and d.id_choose = :id_choose"
 			)
 	
 	,
@@ -51,6 +47,16 @@ import org.hibernate.annotations.NamedQuery;
 	@NamedQuery(name="examQuestionChoose.getAllReadSecNumb",
 	query = "from examQuestionChoose d where d.examNumb = :examNumb and d.id_reading = :id_reading"
 			)
+	
+	,
+	@NamedQuery(name="examQuestionChoose.getAllWritingSecNumb",
+	query = "from examQuestionChoose d where d.examNumb = :examNumb and d.id_writing = :id_writing"
+			)
+	,
+	@NamedQuery(name="examQuestionChoose.getAllSpeakingSecNumb",
+	query = "from examQuestionChoose d where d.examNumb = :examNumb and d.id_speaking = :id_speaking"
+			)
+	
 	
 })
 
@@ -89,13 +95,16 @@ public class examQuestionChoose {
 	@Column(name = "id_listening")
 	private Integer id_listening;
 	
-	@Column(name = "id_vocab")
-	private Integer id_vocab;
+	@Column(name = "id_choose")
+	private Integer id_choose;
 	
-	@Column(name = "id_grammer")
-	private Integer id_grammer;
+	
+	@Column(name = "id_writing")
+	private Integer id_writing;
+	
+	@Column(name = "id_speaking")
+	private Integer id_speaking;
 
-	
 	@Column(name = "reading_paragraph")
 	private String reading_paragraph;
 	
@@ -171,28 +180,37 @@ public class examQuestionChoose {
 		this.id_listening = id_listening;
 	}
 
-	public Integer getId_vocab() {
-		return id_vocab;
-	}
-
-	public void setId_vocab(Integer id_vocab) {
-		this.id_vocab = id_vocab;
-	}
-
-	public Integer getId_grammer() {
-		return id_grammer;
-	}
-
-	public void setId_grammer(Integer id_grammer) {
-		this.id_grammer = id_grammer;
-	}
-
+	
 	public String getReading_paragraph() {
 		return reading_paragraph;
 	}
 
 	public void setReading_paragraph(String reading_paragraph) {
 		this.reading_paragraph = reading_paragraph;
+	}
+
+	public Integer getId_writing() {
+		return id_writing;
+	}
+
+	public void setId_writing(Integer id_writing) {
+		this.id_writing = id_writing;
+	}
+
+	public Integer getId_speaking() {
+		return id_speaking;
+	}
+
+	public void setId_speaking(Integer id_speaking) {
+		this.id_speaking = id_speaking;
+	}
+
+	public Integer getId_choose() {
+		return id_choose;
+	}
+
+	public void setId_choose(Integer id_choose) {
+		this.id_choose = id_choose;
 	}
 	
 	

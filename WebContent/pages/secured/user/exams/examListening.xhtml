@@ -17,7 +17,7 @@
 	<ui:define name="title">Zewail Account Confirm</ui:define>
 
 
-	<ui:define name="content" >
+	<ui:define name="content">
 	<div class="container">
 	<div class="time-table-sec">
 	<ul id="accordion2" class="accordion2">
@@ -198,20 +198,18 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
 </style>
             
    <!-- The start of Main Content -->
-   <div class="content" id="mainExam" style="overflow: scroll;">
-   
-  
+   <div class="content" style="overflow: scroll;" id="mainExam">
   <div class="frame">
-    
+
                 <div class="row">
-					<h:form class="col-12" >
-					
-							
+					<h:form class="col-12">
 						<div class="examBox">
+						
 						
 						<div class="col-md-12 text-center animate-box fadeInUp animated-fast">
 								<p><a onclick="changeState();" style="background-color: #a7a7a7;" class="btn " >Fullscreen </a></p>
 							</div>
+							
 							
 							<p class="c6"></p>
 							<p class="c6"></p>
@@ -234,17 +232,12 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
 							<p class="c6"></p>
 							<p class="c6"></p>
 							<p class="c6"></p>
-							<p class="c9"><span class="c3 c21 c28">Placement Test Part I</span></p>
-							
-							
-							
-							
-							
-							
-							
-							 <!-- First Part  -->
-							
+							<p class="c9"><span class="c3 c21 c28">Placement Test Listening</span></p>
+						    
+						    <!-- Listening Part -->
 						     <div class="Part">
+						     
+						     
 						     
 						     <p class="c9">
 							<span class="c3 c21 c28">
@@ -257,23 +250,48 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
 							</span>
 							</p>
 							
+							
+							
 						    <p class="c6"></p>
 							<p class="c6"></p>
 							
 							<p class="c6"><span class="c20 c12"></span></p>
-							<p class="c9"><span class="c3 c21">Choose</span></p>
+							<p class="c9"><span class="c3 c21">LISTENING</span></p>
 							<p class="c6"><span class="c10"></span></p>
-							<p class="c8"><span class="c3 c21 c38">Please choose the correct answer:</span></p>
+							<p class="c8"><span class="c3 c21 c38">( Listening One )Please choose the correct answer:</span></p>
 							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
 							
+							<div class="container">
+							  <p>Note you will hear for one time only </p> 
+							  
+								<div class="container_audio">
+								<table style="width:100%">
+								  <tr>
+									<th><input type="button"  id="runButton1" class="runButton" onclick="play1()"/></th>
+									<th><span id="timer1"> 10:30</span></th> 
+								  </tr>
+								 </table>
+							
+							  <audio ontimeupdate="updateTime1(this.currentTime,this.duration)" id="audio1" class="sound">
+							        <source src="/ZcCourses/javax.faces.resource/sounds/sound1.mp3.xhtml" type="audio/mpeg"/>
+							    </audio>
+								
+							  <div class="progress ProgressBar" style="    height: 5px;">
+							    <div id ="tracktime1" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+							     
+							    </div>
+							  </div>
+							  
+								</div>
+							</div>
 							
 							<ol class="c2 lst-kix_list_5-0 start" start="1">
 							
-							<ui:repeat var="o" value="#{examBean.listOfChooseQuestions}" varStatus="status">
+							<ui:repeat var="o" value="#{examBean.listOfListQuestions1}" varStatus="status">
 								<li class="c0 boxOFChoose">
 									<span class="c3">#{o.question}</span>
 									<span class="c12"><br/>
-										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.listOfChooseAnswers[status.index].ans}"> 
+										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.listOfListAnswers1[status.index].ans}"> 
 										   <f:selectItem class="itemSelect" itemValue = "1" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans1} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
 										   <f:selectItem class="itemSelect" itemValue = "2" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans2} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
 										   <f:selectItem class="itemSelect" itemValue = "3" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans3} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
@@ -287,20 +305,69 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
 							 
 							 <p class="c6"></p>
 							<p class="c6"></p>
+							 </div>
+							 
+							 
+							 <!-- Fourth Part -->
+						    <div class="Part">
+						    <p class="c6"></p>
+							<p class="c6"></p>
+							
+							<p class="c6"><span class="c20 c12"></span></p>
+							<p class="c9"><span class="c3 c21">LISTENING</span></p>
+							<p class="c6"><span class="c10"></span></p>
+							<p class="c8"><span class="c3 c21 c38">( Listening Two )Please choose the correct answer:</span></p>
+							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
+							
+							<div class="container">
+							  <p>Note you will hear for one time only </p> 
+							  
+								<div class="container_audio">
+								<table style="width:100%">
+								  <tr>
+									<th><input type="button"  id="runButton2" class="runButton" onclick="play2()"/></th>
+									<th><span id="timer2"> 10:30</span></th> 
+								  </tr>
+								 </table>
+							
+							  <audio ontimeupdate="updateTime2(this.currentTime,this.duration)" id="audio2" class="sound">
+							        <source src="/ZcCourses/javax.faces.resource/sounds/sound1.mp3.xhtml" type="audio/mpeg"/>
+							    </audio>
+								
+							  <div class="progress ProgressBar" style="    height: 5px;">
+							    <div id ="tracktime2" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+							     
+							    </div>
+							  </div>
+							  
+								</div>
+							</div>
+							
+							<ol class="c2 lst-kix_list_5-0 start" start="1">
+							
+							<ui:repeat var="o" value="#{examBean.listOfListQuestions2}" varStatus="status">
+								<li class="c0 boxOFChoose">
+									<span class="c3">#{o.question}</span>
+									<span class="c12"><br/>
+										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.listOfListAnswers2[status.index].ans}"> 
+										   <f:selectItem class="itemSelect" itemValue = "1" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans1} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "2" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans2} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "3" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans3} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										</h:selectOneRadio>
+									</span>
+								</li>
+							</ui:repeat>
+							
+							
+							</ol>
+							 
 						    
+						    <p class="c6"></p>
+							<p class="c6"></p>
 						    </div>
 						    
-						  
 						    
-						    
-						    
-						 
-						    
-						    
-						    
-						   <p:commandButton style="background-color: #5f8c2e;"  value="Next Section" class="btn btn-primary btn-lg btn-learn col-md-12 text-center animate-box fadeInUp animated-fast" action="#{examBean.submitChooseAndProceed}"/>
-						
-						    
+						   <p:commandButton style="background-color: #5f8c2e;"  value="Next Section" class="btn btn-primary btn-lg btn-learn col-md-12 text-center animate-box fadeInUp animated-fast" action="#{examBean.submitListAndProceed}"/>
 						
 						   
 						    
@@ -308,6 +375,7 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
 						    <p class="c6"></p>
 							<p class="c6"></p>
 						</div>
+						
 						
 					 </h:form>
                 </div>
@@ -365,6 +433,8 @@ function closeFullscreen() {
 	    document.msExitFullscreen();
 	  }
 	}
+       
+	  
 document.getElementById('timer1').innerHTML = '00:00:00';
 document.getElementById('timer2').innerHTML = '00:00:00';
 	
@@ -403,7 +473,7 @@ document.getElementById('timer2').innerHTML = '00:00:00';
 	  return (v &lt; 10) ? "0" + v : v;
 	}
 	
-	
+
    </script>
      
 	</ui:define>

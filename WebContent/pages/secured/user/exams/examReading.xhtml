@@ -17,7 +17,7 @@
 	<ui:define name="title">Zewail Account Confirm</ui:define>
 
 
-	<ui:define name="content" >
+	<ui:define name="content">
 	<div class="container">
 	<div class="time-table-sec">
 	<ul id="accordion2" class="accordion2">
@@ -198,20 +198,17 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
 </style>
             
    <!-- The start of Main Content -->
-   <div class="content" id="mainExam" style="overflow: scroll;">
-   
-  
+   <div class="content" style="overflow: scroll;" id="mainExam">
   <div class="frame">
-    
+
                 <div class="row">
-					<h:form class="col-12" >
-					
-							
+					<h:form class="col-12">
 						<div class="examBox">
 						
 						<div class="col-md-12 text-center animate-box fadeInUp animated-fast">
 								<p><a onclick="changeState();" style="background-color: #a7a7a7;" class="btn " >Fullscreen </a></p>
 							</div>
+							
 							
 							<p class="c6"></p>
 							<p class="c6"></p>
@@ -234,46 +231,45 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
 							<p class="c6"></p>
 							<p class="c6"></p>
 							<p class="c6"></p>
-							<p class="c9"><span class="c3 c21 c28">Placement Test Part I</span></p>
+							<p class="c9"><span class="c3 c21 c28">Placement Test Reading</span></p>
 							
 							
 							
+							 
+						  
+						   
 							
-							
-							
-							
-							 <!-- First Part  -->
-							
-						     <div class="Part">
-						     
-						     <p class="c9">
-							<span class="c3 c21 c28">
-							<p style="text-align: justify; line-height: 13.0pt; margin: 1.45pt 0in .0001pt 23.2pt;">&nbsp;</p>
-<p style="text-align: justify; line-height: 13.0pt; margin: 1.45pt 0in .0001pt 23.2pt;">&nbsp;</p>
-<p style="text-align: justify; line-height: 13.0pt; margin: 1.45pt 0in .0001pt 23.2pt;">&nbsp;</p>
-<p style="text-align: justify; line-height: 13.0pt; margin: 1.45pt 0in .0001pt 23.2pt;"><span style="font-size: 14pt;"><span style="position: relative; top: 0.5pt;">Kindly Note that </span><strong><em><u><span style="position: relative; top: 0.5pt;">&ldquo;CHEATING&rdquo;</span></u></em></strong><span style="position: relative; top: 0.5pt;">&nbsp;or </span><strong><em><u><span style="position: relative; top: 0.5pt;">&ldquo;GETTING HELP&rdquo;</span></u></em></strong><span style="position: relative; top: 0.5pt;">&nbsp;from another person during this Test is prohibited and will result in allocating you in the </span><strong><em><u><span style="position: relative; top: 0.5pt;">wrong</span></u></em></strong><span style="position: relative; top: 0.5pt;">&nbsp;English Level.</span></span></p>
-<p style="text-align: justify; line-height: 13.0pt; margin: 1.45pt 0in .0001pt 23.2pt;"><span style="font-size: 14pt;"><strong><span style="position: relative; top: 0.5pt;">Zewail City</span></strong><span style="position: relative; top: 0.5pt;">&nbsp;has the right to </span><strong><span style="position: relative; top: 0.5pt;">re-allocate</span></strong><span style="position: relative; top: 0.5pt;">&nbsp;you in a </span><strong><span style="position: relative; top: 0.5pt;">different level</span></strong><span style="position: relative; top: 0.5pt;">&nbsp;if the </span><strong><span style="position: relative; top: 0.5pt;">Course Instructor</span></strong><span style="position: relative; top: 0.5pt;">&nbsp;reported that your language capabilities do not match your results. </span></span></p>
-<p style="text-align: justify; line-height: 13.0pt; margin: 1.45pt 0in .0001pt 23.2pt;"><span style="font-size: 14pt; position: relative; top: 0.5pt;">So please answer this Test based on your own knowledge only.</span></p>
-							</span>
-							</p>
-							
+						    
+						    
+						    
+						    
+						  
+						    
+						    
+						    
+						    <!-- FiFth Part -->
+						    <div class="Part">
 						    <p class="c6"></p>
 							<p class="c6"></p>
 							
 							<p class="c6"><span class="c20 c12"></span></p>
-							<p class="c9"><span class="c3 c21">Choose</span></p>
+							<p class="c9"><span class="c3 c21">READING</span></p>
 							<p class="c6"><span class="c10"></span></p>
-							<p class="c8"><span class="c3 c21 c38">Please choose the correct answer:</span></p>
+							<p class="c8"><span class="c3 c21 c38">( READING One )Please choose the correct answer:</span></p>
 							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
 							
+							<div class="container">
+							  <p>#{examBean.paragraph1}</p> 
+							  
+							</div>
 							
 							<ol class="c2 lst-kix_list_5-0 start" start="1">
 							
-							<ui:repeat var="o" value="#{examBean.listOfChooseQuestions}" varStatus="status">
+							<ui:repeat var="o" value="#{examBean.listOfReadQuestions1}" varStatus="status">
 								<li class="c0 boxOFChoose">
 									<span class="c3">#{o.question}</span>
 									<span class="c12"><br/>
-										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.listOfChooseAnswers[status.index].ans}"> 
+										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.listOfReadAnswers1[status.index].ans}"> 
 										   <f:selectItem class="itemSelect" itemValue = "1" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans1} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
 										   <f:selectItem class="itemSelect" itemValue = "2" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans2} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
 										   <f:selectItem class="itemSelect" itemValue = "3" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans3} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
@@ -285,22 +281,54 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
 							
 							</ol>
 							 
-							 <p class="c6"></p>
-							<p class="c6"></p>
 						    
+						    <p class="c6"></p>
+							<p class="c6"></p>
 						    </div>
 						    
-						  
 						    
 						    
+						       <!-- six Part -->
+						    <div class="Part">
+						    <p class="c6"></p>
+							<p class="c6"></p>
+							
+							<p class="c6"><span class="c20 c12"></span></p>
+							<p class="c9"><span class="c3 c21">READING</span></p>
+							<p class="c6"><span class="c10"></span></p>
+							<p class="c8"><span class="c3 c21 c38">( READING Two )Please choose the correct answer:</span></p>
+							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
+							
+							<div class="container">
+							  <p>#{examBean.paragraph2}</p> 
+							  
+							</div>
+							
+							<ol class="c2 lst-kix_list_5-0 start" start="1">
+							
+							<ui:repeat var="o" value="#{examBean.listOfReadQuestions2}" varStatus="status">
+								<li class="c0 boxOFChoose">
+									<span class="c3">#{o.question}</span>
+									<span class="c12"><br/>
+										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.listOfReadAnswers2[status.index].ans}"> 
+										   <f:selectItem class="itemSelect" itemValue = "1" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans1} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "2" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans2} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										   <f:selectItem class="itemSelect" itemValue = "3" itemLabel = "&nbsp;&nbsp;&nbsp; #{o.ans3} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" /> 
+										</h:selectOneRadio>
+									</span>
+								</li>
+							</ui:repeat>
+							
+							
+							</ol>
+							 
 						    
-						 
+						    <p class="c6"></p>
+							<p class="c6"></p>
+						    </div>
 						    
 						    
-						    
-						   <p:commandButton style="background-color: #5f8c2e;"  value="Next Section" class="btn btn-primary btn-lg btn-learn col-md-12 text-center animate-box fadeInUp animated-fast" action="#{examBean.submitChooseAndProceed}"/>
-						
-						    
+						    <p:commandButton style="background-color: #5f8c2e;"  value="Next Section" class="btn btn-primary btn-lg btn-learn col-md-12 text-center animate-box fadeInUp animated-fast" action="#{examBean.submitReadAndProceed}"/>
 						
 						   
 						    
@@ -365,6 +393,7 @@ function closeFullscreen() {
 	    document.msExitFullscreen();
 	  }
 	}
+
 document.getElementById('timer1').innerHTML = '00:00:00';
 document.getElementById('timer2').innerHTML = '00:00:00';
 	
@@ -402,8 +431,6 @@ document.getElementById('timer2').innerHTML = '00:00:00';
 	function padZero(v) {
 	  return (v &lt; 10) ? "0" + v : v;
 	}
-	
-	
    </script>
      
 	</ui:define>

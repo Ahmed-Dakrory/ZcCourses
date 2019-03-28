@@ -45,9 +45,10 @@
 			default-target-url="/pages/public/index.xhtml" />
 		<sec:intercept-url pattern="/pages/secured/admin/**"
 			access="ROLE_ADMIN" />
+		<sec:intercept-url pattern="/pages/secured/user/**"
+			access="ROLE_USER,ROLE_ADMIN" />
 			
-	<sec:remember-me key="LTSApp"   />
-	
+	<sec:custom-filter ref="profileCustomFilter" after="LAST"  />
 	
 	</sec:http>
     
@@ -73,20 +74,8 @@
 
 
 
-	<beans:bean id="rememberMeFilter" class=
- "org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter">
-  <beans:property name="rememberMeServices" ref="rememberMeServices"/>
-  <beans:property name="authenticationManager" ref="authenticationManager" />
-</beans:bean>
-
-<beans:bean id="rememberMeServices" class=
- "org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices">
-  <beans:property name="userDetailsService" ref="userDetailsService"/>
-  <beans:property name="key" value="LTSApp"/>
-</beans:bean>
-
-
-	
+	<beans:bean id="profileCustomFilter" class="main.com.zc.security.impl.ProfileCustomFilter">
+ </beans:bean>
 	
 
 

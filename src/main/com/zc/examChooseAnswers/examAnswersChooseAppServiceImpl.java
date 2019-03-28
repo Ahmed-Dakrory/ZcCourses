@@ -166,6 +166,155 @@ public class examAnswersChooseAppServiceImpl implements IExamAnswersChooseAppSer
 
 
 
+
+
+	@Override
+	public List<examAnswersChoose> getAllAnswersForExam(int examNum) {
+		try{
+			List<examAnswersChoose> data=examAnswersChooseRepository.getAllAnswersForExam(examNum);
+			
+			return data;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
+	}
+
+
+
+
+
+
+
+
+	@Override
+	public List<examAnswersChoose> getAllStudents(int examNum) {
+		try{
+			List<examAnswersChoose> data=examAnswersChooseRepository.getAllStudents(examNum);
+			
+			return data;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
+	}
+
+
+
+
+
+
+
+
+	@Override
+	public List<examAnswersChoose> getAllstudentAnswerForExamForChooseId(int id_Student, int examNum, int id_choose) {
+		try{
+			List<examAnswersChoose> data=examAnswersChooseRepository.getAllstudentAnswerForExamForChooseId(id_Student, examNum, id_choose);
+			
+			return data;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
+	}
+
+
+
+
+
+
+
+
+	@Override
+	public List<examAnswersChoose> getAllstudentAnswerForExamForListeningId(int id_Student, int examNum,
+			int id_listening) {
+		try{
+			List<examAnswersChoose> data=examAnswersChooseRepository.getAllstudentAnswerForExamForListeningId(id_Student, examNum, id_listening);
+			
+			return data;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
+	}
+
+
+
+
+
+
+
+
+	@Override
+	public List<examAnswersChoose> getAllstudentAnswerForExamForReadingId(int id_Student, int examNum, int id_reading) {
+		try{
+			List<examAnswersChoose> data=examAnswersChooseRepository.getAllstudentAnswerForExamForReadingId(id_Student, examNum, id_reading);
+			
+			return data;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
+	}
+
+
+
+
+
+
+
+
+	@Override
+	public List<examAnswersChoose> getAllstudentAnswerForExamForWritingId(int id_Student, int examNum, int id_writing) {
+		try{
+			List<examAnswersChoose> data=examAnswersChooseRepository.getAllstudentAnswerForExamForWritingId(id_Student, examNum, id_writing);
+			
+			return data;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
+	}
+
+
+
+
+
+
+
+
+	@Override
+	public List<examAnswersChoose> getAllstudentAnswerForExamForSpeakingId(int id_Student, int examNum,
+			int id_speaking) {
+		try{
+			List<examAnswersChoose> data=examAnswersChooseRepository.getAllstudentAnswerForExamForSpeakingId(id_Student, examNum, id_speaking);
+			
+			return data;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
+	}
+
+
+
+
+
+
 	
 }
 		

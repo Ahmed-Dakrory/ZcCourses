@@ -35,7 +35,7 @@ ul.wtf-menu li{
 	border-bottom: 1px solid #eee;
 	text-transform: none;
 	padding: 0 !important;
-	background:#fff;
+	background:#494d56;
 	
 	
 }
@@ -3574,7 +3574,7 @@ ul.wtf-menu ul li.parent:after{
 
 
 
-.header2 .wtf-menu ul.submenu{	top: 98px;	padding-top: 0;	/* 	Dropdown shadow */}
+.header2 .wtf-menu ul.submenu{	top: 31px;	padding-top: 0;	/* 	Dropdown shadow */}
 .header2 .nav li.parent .submenu a {  padding:12px 24px;}
 .header2 .wtf-menu ul.submenu ul.submenu{ top:0px;}
 .header2 .submenu .parent i{ top:11px;}

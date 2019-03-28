@@ -4,6 +4,7 @@ package main.com.zc.exam;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -92,14 +93,47 @@ public class examBean implements Serializable {
 	@ManagedProperty(value = "#{loginBean}")
 	private loginBean loginBean;
 	
+	
+	private int timeForTheExam;
+	private String timeInString;
+	
+	private int examState;
 	@PostConstruct
 	public void init() {
-		examNum=1;
-		refreshPage();
+		
+		//refreshPage();
 		
 	}
 	
 	public void refreshPage(){
+		
+		examNum=1;
+		timeForTheExam=0;
+		
+		/*
+		 * 0 for first chooses ques
+		 * 1 for list chooses ques
+		 * 2 for reading ques
+		 * 3 for writing ques
+		 * 4 for speaking ques
+		 */
+		examState=0;
+		
+		
+		List<examAnswersChoose> studentAnswersLast=ansFacede.getAllstudentAnswerForExam(loginBean.getTheUserOfThisAccount().getId(), examNum);
+		if(studentAnswersLast.size()>0) {
+			try {
+				FacesContext.getCurrentInstance()
+				   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examAnotherTime.xhtml");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+		}else {
+		
+		
+		
+		
 		listOfChooseAnswers=new ArrayList<examAnswersChoose>();
 		listOfListAnswers1=new ArrayList<examAnswersChoose>();
 		listOfListAnswers2=new ArrayList<examAnswersChoose>();
@@ -125,6 +159,7 @@ public class examBean implements Serializable {
 
 		paragraph1=listOfReadQuestions1.get(0).getReading_paragraph();
 		paragraph2=listOfReadQuestions2.get(0).getReading_paragraph();
+		}
 	}
 
 	private void InitializeTheAnsList() {
@@ -143,6 +178,7 @@ public class examBean implements Serializable {
 		for(int i=0;i<sizeOfChoose;i++) {
 			examAnswersChoose ansChoose=new examAnswersChoose();
 			ansChoose.setAns(1);
+			ansChoose.setDate(Calendar.getInstance());
 			ansChoose.setQuestion(listOfChooseQuestions.get(i));
 			ansChoose.setStudent(loginBean.getTheUserOfThisAccount());
 			listOfChooseAnswers.add(ansChoose);
@@ -152,6 +188,7 @@ public class examBean implements Serializable {
 		for(int i=0;i<sizeOfList1;i++) {
 			examAnswersChoose ansList1=new examAnswersChoose();
 			ansList1.setAns(1);
+			ansList1.setDate(Calendar.getInstance());
 			ansList1.setQuestion(listOfListQuestions1.get(i));
 			ansList1.setStudent(loginBean.getTheUserOfThisAccount());
 			listOfListAnswers1.add(ansList1);
@@ -160,6 +197,7 @@ public class examBean implements Serializable {
 		for(int i=0;i<sizeOfList2;i++) {
 			examAnswersChoose ansList2=new examAnswersChoose();
 			ansList2.setAns(1);
+			ansList2.setDate(Calendar.getInstance());
 			ansList2.setQuestion(listOfListQuestions2.get(i));
 			ansList2.setStudent(loginBean.getTheUserOfThisAccount());
 			listOfListAnswers2.add(ansList2);
@@ -168,6 +206,7 @@ public class examBean implements Serializable {
 		for(int i=0;i<sizeOfRead1;i++) {
 			examAnswersChoose ansRead1=new examAnswersChoose();
 			ansRead1.setAns(1);
+			ansRead1.setDate(Calendar.getInstance());
 			ansRead1.setQuestion(listOfReadQuestions1.get(i));
 			ansRead1.setStudent(loginBean.getTheUserOfThisAccount());
 			listOfReadAnswers1.add(ansRead1);
@@ -176,6 +215,7 @@ public class examBean implements Serializable {
 		for(int i=0;i<sizeOfRead2;i++) {
 			examAnswersChoose ansRead2=new examAnswersChoose();
 			ansRead2.setAns(1);
+			ansRead2.setDate(Calendar.getInstance());
 			ansRead2.setQuestion(listOfReadQuestions2.get(i));
 			ansRead2.setStudent(loginBean.getTheUserOfThisAccount());
 			listOfReadAnswers2.add(ansRead2);
@@ -188,6 +228,7 @@ public class examBean implements Serializable {
 		for(int i=0;i<sizeOfSpeaking;i++) {
 			examAnswersChoose ansSpeak=new examAnswersChoose();
 			ansSpeak.setAns(1);
+			ansSpeak.setDate(Calendar.getInstance());
 			ansSpeak.setQuestion(listOfSpeakingQuestions.get(i));
 			ansSpeak.setStudent(loginBean.getTheUserOfThisAccount());
 			listOfSpeakingAnswers.add(ansSpeak);
@@ -195,15 +236,52 @@ public class examBean implements Serializable {
 		
 	}
 
-	public void submitChooseAndProceed() {
+	
+	
+	
+	
+	public void increment() {
+        timeForTheExam++;
+        
+        int minutes = timeForTheExam / 60;
+        int seconds = timeForTheExam % 60;
+        if(minutes<1) minutes=0;
+        timeInString=String.valueOf(minutes)+" : "+String.valueOf(seconds);
+        
+        if(minutes==50) {
+        	if(examState==0) {
+        		presubmitChooseAndProceed();
+            	presubmitListAndProceed();
+            	presubmitReadAndProceed();
+            	presubmitWritingAndProceed();
+        	}else if(examState==1) {
+        		presubmitListAndProceed();
+            	presubmitReadAndProceed();
+            	presubmitWritingAndProceed();
+        	}else if(examState==2) {
+            	presubmitReadAndProceed();
+            	presubmitWritingAndProceed();
+            	
+        	}else if(examState==3) {
+            	presubmitWritingAndProceed();
+            	examState=4;
+        	}
+        	
+        }
+    }
+	
+	public void presubmitChooseAndProceed() {
 		//Grade the Choose list first
-		grade(listOfChooseAnswers,listOfChooseQuestions);
-		
-		//Submit the list of chooses
-		for(int i=0;i<listOfChooseAnswers.size();i++) {
-			ansFacede.addExamAnswersChoose(listOfChooseAnswers.get(i));
-		}
-		
+				grade(listOfChooseAnswers,listOfChooseQuestions);
+				
+				//Submit the list of chooses
+				for(int i=0;i<listOfChooseAnswers.size();i++) {
+					ansFacede.addExamAnswersChoose(listOfChooseAnswers.get(i));
+				}
+	}
+	public void submitChooseAndProceed() {
+		presubmitChooseAndProceed();
+		examState=1;
 		try {
 			FacesContext.getCurrentInstance()
 			   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examListening.xhtml");
@@ -213,20 +291,23 @@ public class examBean implements Serializable {
 		}
 	}
 	
-	
-	public void submitListAndProceed() {
+	public void presubmitListAndProceed() {
 		//Grade the Listening list first
-				grade(listOfListAnswers1,listOfListQuestions1);
-				grade(listOfListAnswers2,listOfListQuestions2);
-					
-				//Submit the list of listening
-				for(int i=0;i<listOfListAnswers1.size();i++) {
-					ansFacede.addExamAnswersChoose(listOfListAnswers1.get(i));
-				}
-				for(int i=0;i<listOfListAnswers2.size();i++) {
-					ansFacede.addExamAnswersChoose(listOfListAnswers2.get(i));
-				}
-				
+		grade(listOfListAnswers1,listOfListQuestions1);
+		grade(listOfListAnswers2,listOfListQuestions2);
+			
+		//Submit the list of listening
+		for(int i=0;i<listOfListAnswers1.size();i++) {
+			ansFacede.addExamAnswersChoose(listOfListAnswers1.get(i));
+		}
+		for(int i=0;i<listOfListAnswers2.size();i++) {
+			ansFacede.addExamAnswersChoose(listOfListAnswers2.get(i));
+		}
+		
+	}
+	public void submitListAndProceed() {
+		presubmitListAndProceed();
+		examState=2;
 				try {
 					FacesContext.getCurrentInstance()
 					   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examReading.xhtml");
@@ -237,23 +318,28 @@ public class examBean implements Serializable {
 		
 	}
 	
+	
+	public void presubmitReadAndProceed() {
+		//Grade the Reading list first
+				grade(listOfReadAnswers1,listOfReadQuestions1);
+				grade(listOfReadAnswers2,listOfReadQuestions2);
+						
+				
+				
+
+				//Submit the list of Reading
+				for(int i=0;i<listOfReadAnswers1.size();i++) {
+					ansFacede.addExamAnswersChoose(listOfReadAnswers1.get(i));
+				}
+				for(int i=0;i<listOfReadAnswers2.size();i++) {
+					ansFacede.addExamAnswersChoose(listOfReadAnswers2.get(i));
+				}
+				
+	}
 	public void submitReadAndProceed() {
 		
-		//Grade the Reading list first
-		grade(listOfReadAnswers1,listOfReadQuestions1);
-		grade(listOfReadAnswers2,listOfReadQuestions2);
-				
-		
-		
-
-		//Submit the list of Reading
-		for(int i=0;i<listOfReadAnswers1.size();i++) {
-			ansFacede.addExamAnswersChoose(listOfReadAnswers1.get(i));
-		}
-		for(int i=0;i<listOfReadAnswers2.size();i++) {
-			ansFacede.addExamAnswersChoose(listOfReadAnswers2.get(i));
-		}
-		
+		 presubmitReadAndProceed();
+		 examState=3;
 					try {
 						FacesContext.getCurrentInstance()
 						   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examWriting.xhtml");
@@ -264,17 +350,23 @@ public class examBean implements Serializable {
 			
 		}
 	
+	
+	public void presubmitWritingAndProceed() {
+		//Submit the writing answer
+		examAnswersChoose newansWriting = new examAnswersChoose();
+		newansWriting.setWriting_ans(writingParagraphAns);
+		newansWriting.setAns(1);
+		newansWriting.setDate(Calendar.getInstance());
+		newansWriting.setQuestion(chooseQuesFacede.getById(selectedParagraph));
+		newansWriting.setStudent(loginBean.getTheUserOfThisAccount());
+		ansFacede.addExamAnswersChoose(newansWriting);
+		
+
+	}
 	public void submitWritingAndProceed() {
 		
-		//Submit the writing answer
-				examAnswersChoose newansWriting = new examAnswersChoose();
-				newansWriting.setWriting_ans(writingParagraphAns);
-				newansWriting.setAns(1);
-				newansWriting.setQuestion(chooseQuesFacede.getById(selectedParagraph));
-				newansWriting.setStudent(loginBean.getTheUserOfThisAccount());
-				ansFacede.addExamAnswersChoose(newansWriting);
-				
-		
+		presubmitWritingAndProceed();
+		examState=4;
 					try {
 						FacesContext.getCurrentInstance()
 						   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examSpeaking.xhtml");
@@ -291,8 +383,16 @@ public class examBean implements Serializable {
 		//Submit the speaking url 
 		examAnswersChoose newansSpeaking = listOfSpeakingAnswers.get(0);
 		newansSpeaking.setWriting_ans(speakingUrlAns);
+		newansSpeaking.setDate(Calendar.getInstance());
 		ansFacede.addExamAnswersChoose(newansSpeaking);
 		
+		try {
+			FacesContext.getCurrentInstance()
+			   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examEnd.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 
 	private void grade(List<examAnswersChoose> lcAns, List<examQuestionChoose> lcQues) {
@@ -561,6 +661,22 @@ public class examBean implements Serializable {
 
 	public void setListOfWritingQuestions(List<examQuestionChoose> listOfWritingQuestions) {
 		this.listOfWritingQuestions = listOfWritingQuestions;
+	}
+
+	public int getTimeForTheExam() {
+		return timeForTheExam;
+	}
+
+	public void setTimeForTheExam(int timeForTheExam) {
+		this.timeForTheExam = timeForTheExam;
+	}
+
+	public String getTimeInString() {
+		return timeInString;
+	}
+
+	public void setTimeInString(String timeInString) {
+		this.timeInString = timeInString;
 	}
 
 	

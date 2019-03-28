@@ -184,7 +184,7 @@ img:hover {transition: background-color 0.5s ease; }
 .header .nav li{ float:left;} 
 .header .nav li a{ color:#333; font-family: 'Raleway', sans-serif; font-size: 16px; padding:12px 24px !important; }
 .header .nav li.parent:hover a{ color:#fff;}
-.header .nav li.parent .submenu a{ color:#222;}
+.header .nav li.parent .submenu a{ color:#eae2e2;}
 .header .nav li.parent .submenu a:hover{ color:#fff;}
 .header .nav li.item-select{ color: #fff;  border-radius: 5px; padding: 11px 0;}
 .header .nav li.item-select a{color: #fff;  padding:10px 24px;}

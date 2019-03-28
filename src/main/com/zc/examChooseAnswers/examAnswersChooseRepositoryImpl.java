@@ -127,4 +127,78 @@ public class examAnswersChooseRepositoryImpl implements examAnswersChooseReposit
 		return results;
 	}
 
+
+	@Override
+	public List<examAnswersChoose> getAllAnswersForExam(int examNum) {
+		// TODO Auto-generated method stub
+		 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examAnswersChoose.getAllAnswerForExam").setInteger("examNum", examNum);
+
+		 @SuppressWarnings("unchecked")
+		List<examAnswersChoose> results=query.list();
+		return results;
+	}
+
+
+	@Override
+	public List<examAnswersChoose> getAllStudents(int examNum) {
+		// TODO Auto-generated method stub
+				 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examAnswersChoose.getAllstudent").setInteger("examNum", examNum);
+
+				 @SuppressWarnings("unchecked")
+				List<examAnswersChoose> results=query.list();
+				return results;
+	}
+
+
+	@Override
+	public List<examAnswersChoose> getAllstudentAnswerForExamForChooseId(int id_Student, int examNum, int id_choose) {
+		 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examAnswersChoose.getstudentAnswerForExamWithChooseId").setInteger("id_choose", id_choose).setInteger("id_Student", id_Student).setInteger("examNum", examNum);
+
+		 @SuppressWarnings("unchecked")
+		List<examAnswersChoose> results=query.list();
+		return results;
+	}
+
+
+	@Override
+	public List<examAnswersChoose> getAllstudentAnswerForExamForListeningId(int id_Student, int examNum,
+			int id_listening) {
+		 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examAnswersChoose.getstudentAnswerForExamWithListId").setInteger("id_listening", id_listening).setInteger("id_Student", id_Student).setInteger("examNum", examNum);
+
+		 @SuppressWarnings("unchecked")
+		List<examAnswersChoose> results=query.list();
+		return results;
+	}
+
+
+	@Override
+	public List<examAnswersChoose> getAllstudentAnswerForExamForReadingId(int id_Student, int examNum, int id_reading) {
+		 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examAnswersChoose.getstudentAnswerForExamWithReadId").setInteger("id_reading", id_reading).setInteger("id_Student", id_Student).setInteger("examNum", examNum);
+
+		 @SuppressWarnings("unchecked")
+		List<examAnswersChoose> results=query.list();
+		return results;
+	}
+
+
+	@Override
+	public List<examAnswersChoose> getAllstudentAnswerForExamForWritingId(int id_Student, int examNum, int id_writing) {
+		 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examAnswersChoose.getstudentAnswerForExamWithWritingId").setInteger("id_writing", id_writing).setInteger("id_Student", id_Student).setInteger("examNum", examNum);
+
+		 @SuppressWarnings("unchecked")
+		List<examAnswersChoose> results=query.list();
+		return results;
+	}
+
+
+	@Override
+	public List<examAnswersChoose> getAllstudentAnswerForExamForSpeakingId(int id_Student, int examNum,
+			int id_speaking) {
+		 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("examAnswersChoose.getstudentAnswerForExamWithSpeakingId").setInteger("id_speaking", id_speaking).setInteger("id_Student", id_Student).setInteger("examNum", examNum);
+
+		 @SuppressWarnings("unchecked")
+		List<examAnswersChoose> results=query.list();
+		return results;
+	}
+
 }

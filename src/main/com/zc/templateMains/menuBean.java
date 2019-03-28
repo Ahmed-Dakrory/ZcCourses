@@ -18,17 +18,17 @@ public class menuBean {
 			"/ZcCourses/pages/public/contactUs.xhtml?faces-redirect=true",
 			"/ZcCourses/pages/public/login.xhtml?faces-redirect=true",
 			"/ZcCourses/pages/public/registeration.xhtml?faces-redirect=true",
-			"/ZcCourses/pages/secured/admin/adminController.xhtml?faces-redirect=true"
+			"/ZcCourses/pages/secured/admin/adminController.xhtml?faces-redirect=true",
+			"#"
 			
 	};
 	
 	@PostConstruct
 	public void init() {
-		menu=new String[7];
+		menu=new String[8];
 		//invertRemainMenus("0");
 	}
 	public void goToLink(int index) {
-		System.out.println("Dakrory : Index ");
 		for(int i=0;i<menu.length;i++){
 			if(index==i){
 				menu[i]="#7d818c";

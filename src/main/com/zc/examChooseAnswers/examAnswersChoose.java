@@ -4,6 +4,8 @@ package main.com.zc.examChooseAnswers;
  */
 
 
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,12 +41,48 @@ import main.com.zc.loginNeeds.UserData;
 			)
 	,
 	
+	@NamedQuery(name="examAnswersChoose.getAllstudent",
+	query = "from examAnswersChoose as d where d.question.examNumb = :examNum GROUP BY d.student"
+			)
+	,
+	
 	@NamedQuery(name="examAnswersChoose.getAllstudentAnswerForExam",
 	query = "from examAnswersChoose d where d.student.id = :id_Student and d.question.examNumb = :examNum"
 			)
 	,
+	@NamedQuery(name="examAnswersChoose.getAllAnswerForExam",
+	query = "from examAnswersChoose d where d.question.examNumb = :examNum"
+			)
+	,
 	@NamedQuery(name="examAnswersChoose.getstudentAnswerForExamWithQuestionId",
 	query = "from examAnswersChoose d where d.student.id = :id_Student and d.question.id = :questionId"
+			)
+	
+	
+	
+	,
+	@NamedQuery(name="examAnswersChoose.getstudentAnswerForExamWithChooseId",
+	query = "from examAnswersChoose d where d.student.id = :id_Student and d.question.examNumb = :examNum and d.question.id_choose = :id_choose"
+			)
+	
+	,
+	@NamedQuery(name="examAnswersChoose.getstudentAnswerForExamWithListId",
+	query = "from examAnswersChoose d where d.student.id = :id_Student and d.question.examNumb = :examNum and d.question.id_listening = :id_listening"
+			)
+	
+	,
+	@NamedQuery(name="examAnswersChoose.getstudentAnswerForExamWithReadId",
+	query = "from examAnswersChoose d where d.student.id = :id_Student and d.question.examNumb = :examNum and d.question.id_reading = :id_reading"
+			)
+	
+	,
+	@NamedQuery(name="examAnswersChoose.getstudentAnswerForExamWithWritingId",
+	query = "from examAnswersChoose d where d.student.id = :id_Student and d.question.examNumb = :examNum and d.question.id_writing = :id_writing"
+			)
+	
+	,
+	@NamedQuery(name="examAnswersChoose.getstudentAnswerForExamWithSpeakingId",
+	query = "from examAnswersChoose d where d.student.id = :id_Student and d.question.examNumb = :examNum and d.question.id_speaking = :id_speaking"
 			)
 	
 })
@@ -76,6 +114,9 @@ public class examAnswersChoose {
 	
 	@Column(name = "writing_ans")
 	private String writing_ans;
+	
+	@Column(name = "date")
+	private Calendar date;
 
 	public Integer getId() {
 		return id;
@@ -123,6 +164,14 @@ public class examAnswersChoose {
 
 	public void setWriting_ans(String writing_ans) {
 		this.writing_ans = writing_ans;
+	}
+
+	public Calendar getDate() {
+		return date;
+	}
+
+	public void setDate(Calendar date) {
+		this.date = date;
 	}
 
 	

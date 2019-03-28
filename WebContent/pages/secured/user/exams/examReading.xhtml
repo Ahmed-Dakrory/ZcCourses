@@ -195,10 +195,30 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
     border-inline-end: none!important;
 
 }
+
+#timer {
+
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
+    border-radius: 25px;
+    font-size: 36px;
+    position: fixed;
+    top: 117px;
+    right: 24px;
+    background: #8c8d90;
+    z-index: 999;
+    color: #f9f9f9;
+    width: 8%;
+    font-family: monospace;
+    text-shadow: 2px 0px 2px rgba(56,133,164,0.94);
+}
 </style>
             
    <!-- The start of Main Content -->
    <div class="content" style="overflow: scroll;" id="mainExam">
+   <h:form id="timer">
+    <h:outputText id="txt_count"  value="#{examBean.timeInString}" />
+    <p:poll interval="1" listener="#{examBean.increment}" update="txt_count"  />
+</h:form>
   <div class="frame">
 
                 <div class="row">

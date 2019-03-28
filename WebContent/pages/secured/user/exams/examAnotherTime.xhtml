@@ -196,38 +196,27 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
 
 }
 
-#timer {
 
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
-    border-radius: 25px;
-    font-size: 36px;
-    position: fixed;
-    top: 117px;
-    right: 24px;
-    background: #8c8d90;
-    z-index: 999;
-    color: #f9f9f9;
-    width: 8%;
-    font-family: monospace;
-    text-shadow: 2px 0px 2px rgba(56,133,164,0.94);
+#demotext {
+text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC, 3px 4px 1px #EEEEEE, 5px 4px 1px #CCCCCC, 4px 5px 1px #EEEEEE, 6px 5px 1px #CCCCCC, 5px 6px 1px #EEEEEE, 7px 6px 1px #CCCCCC, 28px -2px 6px rgba(28,110,164,0.02);
+color: #444444;
+background: #FFFFFF;
+    font-size: 533%;
+    margin-left: 7%;
+    margin-right: 7%;
+    line-height: 154%;
 }
 </style>
             
    <!-- The start of Main Content -->
-   <div class="content" style="overflow: scroll;" id="mainExam" oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false" >
- 
- <h:form id="timer">
-    <h:outputText id="txt_count"  value="#{examBean.timeInString}" />
-    <p:poll interval="1" listener="#{examBean.increment}" update="txt_count"  />
-</h:form>
+   <div class="content" id="mainExam" style="overflow: scroll;" oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false" >
   <div class="frame">
 
                 <div class="row">
 					<h:form class="col-12">
 						<div class="examBox">
-						<div class="col-md-12 text-center animate-box fadeInUp animated-fast">
-								<p><a onclick="changeState();" style="background-color: #a7a7a7;" class="btn " >Fullscreen </a></p>
-							</div>
+						
+					
 							<p class="c6"></p>
 							<p class="c6"></p>
 							<p class="c6"></p>
@@ -243,95 +232,47 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
 							
 							<p class="c6"></p>
 							<p class="c6"></p>
-							<p class="c9"><span class="c19 c3">Placement Test</span></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<p class="c6"></p>
+							<div class="Part">
+							<p class="c9" style="padding: 4%;"><span id="demotext" class="c19 c3">You cannot take it now please<br></br> send us in our email<br></br> in the contact 
+							<br></br>
+							
+							</span></p>
+							</div>
 							
 							<p class="c6"></p>
 							<p class="c6"></p>
 							<p class="c6"></p>
-							<p class="c6"></p>
-							<p class="c9"><span class="c3 c21 c28">Placement Test Writing</span></p>
-						    
-						    
-						    
-						    
+							
 						    
 						    
 						    <!-- 6 Part -->
 						    <div class="Part">
-						    <p class="c6"></p>
-							<p class="c6"></p>
-							
-							<p class="c6"><span class="c20 c12"></span></p>
-							<p class="c9"><span class="c3 c21">Writing</span></p>
-							<p class="c6"><span class="c10"></span></p>
-							<p class="c8"><span class="c3 c21 c38">Choose ONE of these topics and write about it.</span></p>
-							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
-							
-							<ui:repeat var="o" value="#{examBean.listOfWritingQuestions}" varStatus="status">
-							<div class="container">
-							 
-							  <p:textEditor value="#{o.question}" readonly="true">
-							  	 <f:facet name="toolbar">
-						             <span class="ql-formats">
-						            </span>
-						            <span class="ql-formats">
-						               
-						            </span>
-						        </f:facet>
-							  </p:textEditor>  
-							  
-							 </div>
-							
-							</ui:repeat>
-							 
-						    
-					
-						    
-						    <p class="c6"></p>
-							<p class="c6"></p>
-							
+						   
 							
 						
 						    </div>
 						    
 						    
-						    <div class="Part">
-									<span class="c3">Please Select the paragraph which you want to write about<br></br>
-									(hint: if you don't select the right paragraph your grade will regarded as wrong)</span>
-									<span class="c10"><br/>
-										<h:selectOneRadio class="radioAllSelect" value = "#{examBean.selectedParagraph}"> 
-										
-										<f:selectItems class="itemSelect" var="o" value="#{examBean.listOfWritingQuestions}" varStatus="status"
-   			itemLabel = "&nbsp;&nbsp;&nbsp; Paragraph #{o.ans1} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;" itemValue = "#{o.id}"/>
-										   
-										</h:selectOneRadio>
-									</span>
-								</div>
-						    
-							<ol class="c2 lst-kix_list_5-0" >
-									<h:form >    
-   
-									    <h3>Writing Part</h3>
-									    <p:inputTextarea value="#{examBean.writingParagraphAns}" rows="30" cols="100" counter="display" maxlength="2000" counterTemplate="{0} characters remaining." autoResize="false" />
-									    <br />
-									    <h:outputText id="display" />
-									</h:form>
 						
-							
-							
-							</ol>
-							 
-						    
 						    <p class="c6"></p>
 							<p class="c6"></p>
-						    
-						    <p:commandButton style="background-color: #5f8c2e;"  value="Next Section" class="btn btn-primary btn-lg btn-learn col-md-12 text-center animate-box fadeInUp animated-fast" action="#{examBean.submitWritingAndProceed}"/>
-						
-							
+						  
 						    <p class="c6"></p>
 							<p class="c6"></p>
+							
 						</div>
-						
 						
 					 </h:form>
                 </div>
@@ -349,84 +290,7 @@ $(document).ready(function () {
         window.location.hash = "nbb";
     };
 });
-var elem = document.getElementById("mainExam");
-var full=false;
 
-
-function changeState(){
-	
-	if(full){
-		closeFullscreen();
-	}else{
-		openFullscreen();
-	}
-	
-	full=!full;
-}
-function openFullscreen() {
-	
-	
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.mozRequestFullScreen) { /* Firefox */
-    elem.mozRequestFullScreen();
-  } else if (elem.webkitRequestFullscreen) { 
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE/Edge */
-    elem.msRequestFullscreen();
-  }
-}
-     
-
-function closeFullscreen() {
-	  if (document.exitFullscreen) {
-	    document.exitFullscreen();
-	  } else if (document.mozCancelFullScreen) { /* Firefox */
-	    document.mozCancelFullScreen();
-	  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-	    document.webkitExitFullscreen();
-	  } else if (document.msExitFullscreen) { /* IE/Edge */
-	    document.msExitFullscreen();
-	  }
-	}
-
-document.getElementById('timer1').innerHTML = '00:00:00';
-document.getElementById('timer2').innerHTML = '00:00:00';
-	
-	function play1(){
-		   var audio = document.getElementById("audio1");
-	       audio.play();
-		   document.getElementById("runButton1").disabled = true;
-	                 }
-					 
-		function updateTime1(now,total){
-		document.getElementById('timer1').innerHTML = sToTime(now) + ' / ' + sToTime(total);
-		document.getElementById('tracktime1').style.width = (now/total*100)+"%";
-		}
-		
-		
-		function play2(){
-			   var audio = document.getElementById("audio2");
-		       audio.play();
-			   document.getElementById("runButton2").disabled = true;
-		                 }
-						 
-			function updateTime2(now,total){
-			document.getElementById('timer2').innerHTML = sToTime(now) + ' / ' + sToTime(total);
-			document.getElementById('tracktime2').style.width = (now/total*100)+"%";
-			}
-			
-			
-			
-	function sToTime(t) {
-	  return padZero(parseInt((t / (60 * 60)) % 24)) + ":" +
-			 padZero(parseInt((t / (60)) % 60)) + ":" + 
-			 padZero(parseInt((t) % 60));
-	}
-	
-	function padZero(v) {
-	  return (v &lt; 10) ? "0" + v : v;
-	}
    </script>
      
 	</ui:define>

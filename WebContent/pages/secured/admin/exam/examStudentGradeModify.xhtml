@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/dashboard.xhtml">
+
+	<ui:define name="title">Zewail Courses</ui:define>
+
+
+	<ui:define name="content">
+	<!-- Data table area Start-->
+            <div class="admin-dashone-data-table-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sparkline8-list shadow-reset">
+                            
+                            <div class="col-md-12 text-center animate-box fadeInUp animated-fast">
+								
+								  <div class="income-rate-total">
+                                        <div class="price-adminpro-rate">
+                                            <h3>Grade For Choose Answers: <span class="counter">#{examAdminBean.totalChooseGrade}</span></h3>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="income-rate-total">
+                                        <div class="price-adminpro-rate">
+                                            <h3>Grade For Listening Answers: <span class="counter">#{examAdminBean.totalListGrade}</span></h3>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="income-rate-total">
+                                        <div class="price-adminpro-rate">
+                                            <h3>Grade For Reading Answers: <span class="counter">#{examAdminBean.totalReadGrade}</span></h3>
+                                        </div>
+                                    </div>
+							</div>
+							
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Data table area End-->
+	
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

@@ -324,7 +324,7 @@ public class loginBean implements Serializable{
 		UserData userdata=userDataFacede.getByEmailAndPasswordNotActivated(userdata1.getEmail(), userdata1.getPassword());
 		
 		
-		 String from = "LearningTechnologies@zewailcity.edu.eg";
+		 String from = "learningtechnologies@zewailcity.edu.eg";
 	        String pass = "zcltinfo";
 	        String[] to = { theUserOfThisRegisteration.getEmail() }; // list of recipient email addresses
 	        String subject = "A Comfirmation Email for your Account";
@@ -332,13 +332,12 @@ public class loginBean implements Serializable{
 					+ "<ul style=margin:0;padding:0;>"
 					+ "<li style=list-style:none;float:left;width:700px;margin:0;>"
 					+ "	<ul style=margin:0;padding:0;width:700px;margin-top:18px;>"
-					+ "<li style=list-style:none;float:left;width:260px;padding:0;><img src=\"http://zclt.info/ZCTestMail/university_logo.png\" alt=Zewail City of Science and Technology /></li>"
-					+ "<li style=list-style:none;float:right;width:121px;padding:0;><img src=\"http://zclt.info/ZCTestMail/LT_logo_l.png\" alt=Center for Learning Technologies style=margin-top:4px; /></li>"
+					+ "<li style=list-style:none;float:left;width:260px;padding:0;><img src=\\\"http://outreach.zclt.info/ZcCourses/javax.faces.resource/images/logoZc.png.xhtml\\\" style=\\\"width: 15%;\\\" alt=Zewail City of Science and Technology /></li>"
 					+ "</ul>"
 					+ "</li>"
 					+ "<li style=list-style:none;float:left;width:700px;background:#f1f2f2;margin:15px 0 24px 0;padding:1px 0;>&nbsp;</li>"
 					+ "<li style=list-style:none;float:left;width:700px;margin-bottom:24px;padding-left:24px;>"
-					+ "<h2 style=margin:0;padding:0;color:#404040 !important;>Learning Technologies Services</h2>"
+					+ "<h2 style=margin:0;padding:0;color:#404040 !important;>Outreach and Engagment</h2>"
 					+ "</li>"
 					+ "<li style=list-style:none;float:left;width:700px;marin:0;background:#f2f0f0;>"
 					+ "<div style=padding:24px 36px;color:#676767 !important;>"
@@ -348,17 +347,17 @@ public class loginBean implements Serializable{
 					+ "<span style=color:#676767>please click this link to activate account "+"http://outreach.zclt.info/ZcCourses/pages/public/login.xhtml?id="+userdata.getId()+"</span><br/><br/><br/>"
 					+ "</span><br/><br/>"
 					+ "<span style=color:#676767>Thank you, </span><br/><br/>"
-					+ "<span style=color:#676767>Center for Learning Technologies</span>"
+					+ "<span style=color:#676767>Outreach and Engagment</span>"
 					+ "</div>"
 					+ "</li>"
 					+ "<li style=list-style:none;float:left;width:700px;margin-bottom:4px;background:#ececec;>"
 					+ "<ul style=margin:0;padding:0;>"
 					+ "<li style=list-style:none;float:left;width:134px;margin:0;padding:18px 36px !important;color:#717070;>"
-					+ "<a href=http://www.zclt.info/ title=Center for Learning Technologies><img src=\"http://zclt.info/ZCTestMail/LT_logo_s.png\"  alt=Center for Learning Technologies /></a><br/>"
+					+ "<a href=http://outreach.zclt.info/ZcCourses title=Center for Learning Technologies><img src=\\\"http://outreach.zclt.info/ZcCourses/javax.faces.resource/images/logoZc.png.xhtml\\\" style=\\\"width: 15%;\\\" alt=Center for Learning Technologies /></a><br/>"
 					+ "<span style=color:#404040;font-size:11px;>Giving Fuel to Innovation</span>"
 					+ "</li>"
 					+ "<li style=list-style:none;float:right;width:59px;margin:0;padding:18px 36px !important;color:#717070;>"
-					+ "<a href=http://www.zewailcity.edu.eg/ title=Zewail City of Science and Technology><img src=\"http://zclt.info/ZCTestMail/ZC_logo.png\"  alt=Zewail City of Science and Technology /></a>"
+					+ "<a href=http://outreach.zclt.info/ZcCourses title=Zewail City of Science and Technology><img src=\\\"http://outreach.zclt.info/ZcCourses/javax.faces.resource/images/logoZc.png.xhtml\\\" style=\\\"width: 15%;\\\"  alt=Zewail City of Science and Technology /></a>"
 					+ "</li>"
 					+ "</ul>"
 					+ "</li>"

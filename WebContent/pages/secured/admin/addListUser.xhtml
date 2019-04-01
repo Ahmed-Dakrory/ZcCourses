@@ -63,10 +63,7 @@
 								<h:outputText value="#{row.mobile}" />
 								<p:watermark  for=":mainForm:dataTable:userDataTable:mobile"/>
 							</p:column>
-							<p:column id="nationalId" sortBy="#{row.nationalId}" filterBy="#{row.nationalId}">
-								<h:outputText value="#{row.nationalId}" />
-								<p:watermark  for=":mainForm:dataTable:userDataTable:nationalId"/>
-							</p:column>
+							
 						</p:dataTable>
 								<p:commandButton id="save" class="download" actionListener="#{RegUserListBean.saveCourse}" value="Save New Users" 
 						update=":mainForm:dataTable:userDataTable" ajax="true" process="@form" rendered="#{RegUserListBean.resultText}">

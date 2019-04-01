@@ -12,6 +12,12 @@
 
 
 	<ui:define name="content">
+	<style>
+	th, td {
+  padding: 15px;
+  text-align:center;
+}
+	</style>
 	<!-- Data table area Start-->
             <div class="admin-dashone-data-table-area">
                 <div class="container-fluid">
@@ -49,8 +55,8 @@
                                                     <th data-field="name" data-editable="false">Full Name</th>
                                                     <th data-field="email" data-editable="false">Email</th>
                                                     <th data-field="phone" data-editable="false">Mobile</th>
-                                                    <th data-field="company" data-editable="false">NationalId</th>
-                                                    <th data-field="task" data-editable="false">University</th>
+                                                <!--     <th data-field="company" data-editable="false">NationalId</th>
+                                                    <th data-field="task" data-editable="false">University</th> -->
                                                     <th data-field="action">Action</th>
                                                 </tr>
                                             </thead>
@@ -63,8 +69,8 @@
                                                     <td>#{var.student.fullName}</td>
                                                     <td>#{var.student.email}</td>
                                                     <td>+#{var.student.mobile}</td>
-                                                    <td>#{var.student.nationalId}</td>
-                                                    <td>#{var.student.university}</td>
+                                                  <!--   <td>#{var.student.nationalId}</td>
+                                                    <td>#{var.student.university}</td> -->
                                                     <td class="datatable-ct">
 														
 														<p:commandButton style="background-color: #5f8c2e;"  value="Next Section" class="btn btn-primary btn-lg btn-learn col-md-12 text-center animate-box fadeInUp animated-fast" action="#{examAdminBean.openStudentCorrectionPage(var.student.id)}"/>

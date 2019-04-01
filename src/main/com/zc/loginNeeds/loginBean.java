@@ -244,7 +244,7 @@ public class loginBean implements Serializable{
 	private void pleaseCheck() {
 		// TODO Auto-generated method stub
 		PrimeFaces.current().executeScript("swal({\r\n" + 
-				"  title: \"You Don't Upload Image for the Account or there is any missing data\",\r\n" + 
+				"  title: \"Check this \",\r\n" + 
 				"  text: \"Please Make sure that you upload your photo and the Passwords are the same!\",\r\n" + 
 				"  icon: \"warning\",\r\n" + 
 				"})\r\n" + 
@@ -327,7 +327,7 @@ public class loginBean implements Serializable{
 		 String from = "LearningTechnologies@zewailcity.edu.eg";
 	        String pass = "zcltinfo";
 	        String[] to = { theUserOfThisRegisteration.getEmail() }; // list of recipient email addresses
-	        String subject = "Java send mail example";
+	        String subject = "A Comfirmation Email for your Account";
 	        String htmlText = "<div style=width:700px;margin:0 auto;font:normal 13px/30px Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana, sans-serif !important;>"
 					+ "<ul style=margin:0;padding:0;>"
 					+ "<li style=list-style:none;float:left;width:700px;margin:0;>"
@@ -345,7 +345,7 @@ public class loginBean implements Serializable{
 					+ "<span style=color:#676767>Dear "
 					+ userdata.getFullName()
 					+ ",</span><br/><br/><br/>"
-					+ "<span style=color:#676767>please click this link to activate account "+"http://localhost:8080/ZcCourses/pages/public/login.xhtml?id="+userdata.getId()+"</span><br/><br/><br/>"
+					+ "<span style=color:#676767>please click this link to activate account "+"http://outreach.zclt.info/ZcCourses/pages/public/login.xhtml?id="+userdata.getId()+"</span><br/><br/><br/>"
 					+ "</span><br/><br/>"
 					+ "<span style=color:#676767>Thank you, </span><br/><br/>"
 					+ "<span style=color:#676767>Center for Learning Technologies</span>"

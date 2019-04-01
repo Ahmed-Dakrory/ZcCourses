@@ -12,36 +12,182 @@
 
 
 	<ui:define name="content">
+	<style>
+	
+	.Part{
+box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
+    padding-bottom: 3%;
+    padding-top: 3%;
+    border-radius:25px;
+}
+
+.ui-editor-toolbar{
+    border-block-start: none!important;
+    border-inline-start: none!important;
+    border-inline-end: none!important;
+
+}
+.boxOFChoose{
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
+    margin: 3%;
+    margin-left: 28%;
+    border-radius: 14px;
+    width: 48%;
+}
+
+th, td {
+  padding: 12px;
+    font-size: 15px;
+    font-family: inherit;
+}
+	</style>
 	<!-- Data table area Start-->
             <div class="admin-dashone-data-table-area">
                 <div class="container-fluid">
                     <div class="row">
+                   			 <div class="boxOFChoose">
+                                    <table style="width:100%">
+									  <tr>
+									    <th>Student Name:</th>
+									    <th>#{examAdminBean.selectedStudent.fullName}</th> 
+									  </tr>
+									  <tr>
+									    <td>Student Phone:</td>
+									    <td>#{examAdminBean.selectedStudent.mobile}</td> 
+									  </tr>
+									  <tr>
+									    <td>Student Email:</td>
+									    <td>#{examAdminBean.selectedStudent.email}</td> 
+									  </tr>
+									</table>
+								</div>
+						<h:form>		
                         <div class="col-lg-12">
                             <div class="sparkline8-list shadow-reset">
                             
                             <div class="col-md-12 text-center animate-box fadeInUp animated-fast">
 								
-								  <div class="income-rate-total">
+								  <div class="income-rate-total boxOFChoose">
                                         <div class="price-adminpro-rate">
                                             <h3>Grade For Choose Answers: <span class="counter">#{examAdminBean.totalChooseGrade}</span></h3>
                                         </div>
                                     </div>
                                     
-                                    <div class="income-rate-total">
+                                    <div class="income-rate-total boxOFChoose">
                                         <div class="price-adminpro-rate">
                                             <h3>Grade For Listening Answers: <span class="counter">#{examAdminBean.totalListGrade}</span></h3>
                                         </div>
                                     </div>
                                     
-                                    <div class="income-rate-total">
+                                    <div class="income-rate-total boxOFChoose">
                                         <div class="price-adminpro-rate">
                                             <h3>Grade For Reading Answers: <span class="counter">#{examAdminBean.totalReadGrade}</span></h3>
                                         </div>
                                     </div>
+                                    
+                                    <div class="income-rate-total boxOFChoose">
+                                        <div class="price-adminpro-rate">
+                                            <h3>Grade For Writing Answers: <span class="counter">#{examAdminBean.totalWritingGrade}</span></h3>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="income-rate-total boxOFChoose">
+                                        <div class="price-adminpro-rate">
+                                            <h3>Grade For Speaking Answers: <span class="counter">#{examAdminBean.totalSpeakingGrade}</span></h3>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="income-rate-total boxOFChoose">
+                                        <div class="price-adminpro-rate">
+                                            <h3>Grade For All Exam: <span class="counter">#{examAdminBean.theTotalForThisStudent}  </span> / <span>#{examAdminBean.theTotalCorrect}</span></h3>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="Part">
+                                    <div class="container" style="width:100%;">
+								 <h1>Writing</h1>
+									  <p:textEditor value="#{examAdminBean.selectedStudentParagraphQues}" readonly="true">
+									  	 <f:facet name="toolbar">
+								             <span class="ql-formats">
+								            </span>
+								            <span class="ql-formats">
+								               
+								            </span>
+								        </f:facet>
+									  </p:textEditor>  
+									  
+									 </div>
+									 <h3>The Answer of writing</h3>
+									  <div class="container" style="width:100%;">
+							 
+									  <p:textEditor value="#{examAdminBean.selectedStudentParagraphAns}" readonly="true">
+									  	 <f:facet name="toolbar">
+								             <span class="ql-formats">
+								            </span>
+								            <span class="ql-formats">
+								               
+								            </span>
+								        </f:facet>
+									  </p:textEditor>  
+									  
+									 </div>
+									 <div class="boxOFChoose">
+									 	<h1>Grade: </h1>
+									 	<p:inputNumber value="#{examAdminBean.totalWritingGrade}"></p:inputNumber>
+									 	<br></br>
+									 	<br></br>
+									 </div>
+								</div>
+								
+								<br></br>
+								<br></br>
+								 <div class="Part">
+                                    <div class="container" style="width:100%;">
+								 <h1>Speaking</h1>
+									  <p:textEditor value="#{examAdminBean.listOfSpeakingAnswers[0].question.question}" readonly="true">
+									  	 <f:facet name="toolbar">
+								             <span class="ql-formats">
+								            </span>
+								            <span class="ql-formats">
+								               
+								            </span>
+								        </f:facet>
+									  </p:textEditor>  
+									  
+									 </div>
+									 <h3>The Link of Speaking</h3>
+									  <div class="container" style="width:100%;">
+							 
+									  <p:textEditor value="#{examAdminBean.selectedStudentLink}" readonly="true">
+									  	 <f:facet name="toolbar">
+								             <span class="ql-formats">
+								            </span>
+								            <span class="ql-formats">
+								               
+								            </span>
+								        </f:facet>
+									  </p:textEditor>  
+									  
+									 </div>
+									 
+									 <div class="boxOFChoose">
+									 	<h1>Grade: </h1>
+									 	<p:inputNumber value="#{examAdminBean.totalSpeakingGrade}"></p:inputNumber>
+									 	<br></br>
+									 	<br></br>
+									 </div>
+									 
+								</div>
 							</div>
 							
                             </div>
                         </div>
+                        
+                        
+                         <p:commandButton style="background-color: #5f8c2e;"  value="Submit the Grade" class="btn btn-primary btn-lg btn-learn col-md-12 text-center animate-box fadeInUp animated-fast" action="#{examAdminBean.submitAndGoBack()}"/>
+						
+                        
+                        </h:form>
                     </div>
                 </div>
             </div>

@@ -66,6 +66,9 @@ public class course {
 	@Column(name = "categories")
 	private String categories;
 	
+	@Column(name = "payLink")
+	private String payLink;
+	
 	
 	public Integer getId() {
 		return id;
@@ -124,6 +127,15 @@ public class course {
 
 	public void setCategories(String categories) {
 		this.categories = categories;
+	}
+
+	
+	public String getPayLink() {
+		return payLink;
+	}
+
+	public void setPayLink(String payLink) {
+		this.payLink = payLink;
 	}
 
 	public String getphoto() {

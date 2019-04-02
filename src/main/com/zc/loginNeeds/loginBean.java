@@ -224,7 +224,7 @@ public class loginBean implements Serializable{
 		boolean ok=false;
 
 			
-		if(!imageOfAccountUser_reg.contains("images/comment-img.jpg") && passwordOfRegisteration.equals(passwordConfirm)){
+		if(passwordOfRegisteration.equals(passwordConfirm)){
 			ok=true;
 		}
 		
@@ -245,7 +245,7 @@ public class loginBean implements Serializable{
 		// TODO Auto-generated method stub
 		PrimeFaces.current().executeScript("swal({\r\n" + 
 				"  title: \"Check this \",\r\n" + 
-				"  text: \"Please Make sure that you upload your photo and the Passwords are the same!\",\r\n" + 
+				"  text: \"Please Make sure that the Passwords are the same!\",\r\n" + 
 				"  icon: \"warning\",\r\n" + 
 				"})\r\n" + 
 				";");

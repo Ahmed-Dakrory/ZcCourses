@@ -124,7 +124,7 @@ public class examBean implements Serializable {
 		if(studentAnswersLast.size()>0) {
 			try {
 				FacesContext.getCurrentInstance()
-				   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examAnotherTime.xhtml");
+				   .getExternalContext().redirect("/pages/secured/user/exams/examAnotherTime.xhtml");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -284,7 +284,7 @@ public class examBean implements Serializable {
 		examState=1;
 		try {
 			FacesContext.getCurrentInstance()
-			   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examListening.xhtml");
+			   .getExternalContext().redirect("/pages/secured/user/exams/examListening.xhtml");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -310,7 +310,7 @@ public class examBean implements Serializable {
 		examState=2;
 				try {
 					FacesContext.getCurrentInstance()
-					   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examReading.xhtml");
+					   .getExternalContext().redirect("/pages/secured/user/exams/examReading.xhtml");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -342,7 +342,7 @@ public class examBean implements Serializable {
 		 examState=3;
 					try {
 						FacesContext.getCurrentInstance()
-						   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examWriting.xhtml");
+						   .getExternalContext().redirect("/pages/secured/user/exams/examWriting.xhtml");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -369,7 +369,7 @@ public class examBean implements Serializable {
 		examState=4;
 					try {
 						FacesContext.getCurrentInstance()
-						   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examSpeaking.xhtml");
+						   .getExternalContext().redirect("/pages/secured/user/exams/examSpeaking.xhtml");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -388,7 +388,7 @@ public class examBean implements Serializable {
 		
 		try {
 			FacesContext.getCurrentInstance()
-			   .getExternalContext().redirect("/ZcCourses/pages/secured/user/exams/examEnd.xhtml");
+			   .getExternalContext().redirect("/pages/secured/user/exams/examEnd.xhtml");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

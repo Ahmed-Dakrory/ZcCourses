@@ -59,20 +59,19 @@
         	
             
             <div class="row">
-					<div class="col-md-5">
+					<div class="col-md-6">
 						<div class="product-detail-slider">
 							<div class="rslides" id="product-detail-slider">
 								<h:graphicImage style="height:350px;" value="#{courseBean.thecourseSelected.getphoto()}" alt=""/>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-7">
+					<div class="col-md-6">
 						<div id="courseDetails" class="product-detail-description">
 						
 							<h2>#{courseBean.thecourseSelected.name}</h2>
 							
 							<p class="price big dark">#{courseBean.thecourseSelected.price} LE</p>
-							<p>#{courseBean.thecourseSelected.description} </p>
 							<p:outputPanel id="enrollmentPanel">
 							<p:commandLink style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,0)}"  action="#{courseBean.enrollInCourse(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Enroll me in the course</p:commandLink>
 							<p:outputLabel style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}">You are Enrolled</p:outputLabel>
@@ -88,7 +87,7 @@
 							<br/>
 							<p><strong>Categories:</strong>  #{courseBean.thecourseSelected.categories}</p>
 							<ul class="boxed-social clearfix">
-								<li style="float: none;"><a href="https://www.facebook.com/sharer/sharer.php?u=http://outreach.zclt.info/ZcCourses/pages/public/courseDetails.xhtml?id=#{courseBean.thecourseSelected.id}" class="facebook"><i class="icon-euro"></i>Share On Facebook</a></li>
+								<li style="float: none;"><a href="https://www.facebook.com/sharer/sharer.php?u=http://outreach.zclt.info/pages/public/courseDetails.xhtml?id=#{courseBean.thecourseSelected.id}" class="facebook"><i class="icon-euro"></i><p style="width: 135%;">Share On Facebook</p></a></li>
 							</ul>
 						</div>
 					</div>

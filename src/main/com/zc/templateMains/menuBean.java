@@ -12,13 +12,13 @@ import javax.inject.Named;
 public class menuBean {
 	private String menu[];
 	private String menuLinks[]={
-			"/ZcCourses",
-			"/ZcCourses/pages/public/about.xhtml?faces-redirect=true",
-			"/ZcCourses/pages/public/programs.xhtml?faces-redirect=true",
-			"/ZcCourses/pages/public/contactUs.xhtml?faces-redirect=true",
-			"/ZcCourses/pages/public/login.xhtml?faces-redirect=true",
-			"/ZcCourses/pages/public/registeration.xhtml?faces-redirect=true",
-			"/ZcCourses/pages/secured/admin/adminController.xhtml?faces-redirect=true",
+			"/",
+			"/pages/public/about.xhtml?faces-redirect=true",
+			"/pages/public/programs.xhtml?faces-redirect=true",
+			"/pages/public/contactUs.xhtml?faces-redirect=true",
+			"/pages/public/login.xhtml?faces-redirect=true",
+			"/pages/public/registeration.xhtml?faces-redirect=true",
+			"/pages/secured/admin/adminController.xhtml?faces-redirect=true",
 			"#"
 			
 	};

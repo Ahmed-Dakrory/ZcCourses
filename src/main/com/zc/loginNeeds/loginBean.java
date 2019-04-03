@@ -144,10 +144,10 @@ public class loginBean implements Serializable{
 			try {
 				if(theUserOfThisAccount.getEmail().equals("lts-admin@zewailcity.edu.eg")) {
 				FacesContext.getCurrentInstance()
-				   .getExternalContext().redirect("/ZcCourses/pages/secured/admin/adminController.xhtml");
+				   .getExternalContext().redirect("/pages/secured/admin/adminController.xhtml");
 				}else {
 				FacesContext.getCurrentInstance()
-					   .getExternalContext().redirect("/ZcCourses");
+					   .getExternalContext().redirect("/");
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -332,7 +332,7 @@ public class loginBean implements Serializable{
 					+ "<ul style=margin:0;padding:0;>"
 					+ "<li style=list-style:none;float:left;width:700px;margin:0;>"
 					+ "	<ul style=margin:0;padding:0;width:700px;margin-top:18px;>"
-					+ "<li style=list-style:none;float:left;width:260px;padding:0;><img src=\\\"http://outreach.zclt.info/ZcCourses/javax.faces.resource/images/logoZc.png.xhtml\\\" style=\\\"width: 15%;\\\" alt=Zewail City of Science and Technology /></li>"
+					+ "<li style=list-style:none;float:left;width:260px;padding:0;><img src=\\\"http://outreach.zclt.info/javax.faces.resource/images/logoZc.png.xhtml\\\" style=\\\"width: 15%;\\\" alt=Zewail City of Science and Technology /></li>"
 					+ "</ul>"
 					+ "</li>"
 					+ "<li style=list-style:none;float:left;width:700px;background:#f1f2f2;margin:15px 0 24px 0;padding:1px 0;>&nbsp;</li>"
@@ -344,7 +344,7 @@ public class loginBean implements Serializable{
 					+ "<span style=color:#676767>Dear "
 					+ userdata.getFullName()
 					+ ",</span><br/><br/><br/>"
-					+ "<span style=color:#676767>please click this link to activate account "+"http://outreach.zclt.info/ZcCourses/pages/public/login.xhtml?id="+userdata.getId()+"</span><br/><br/><br/>"
+					+ "<span style=color:#676767>please click this link to activate account "+"http://outreach.zclt.info/pages/public/login.xhtml?id="+userdata.getId()+"</span><br/><br/><br/>"
 					+ "</span><br/><br/>"
 					+ "<span style=color:#676767>Thank you, </span><br/><br/>"
 					+ "<span style=color:#676767>Outreach and Engagment</span>"
@@ -353,11 +353,11 @@ public class loginBean implements Serializable{
 					+ "<li style=list-style:none;float:left;width:700px;margin-bottom:4px;background:#ececec;>"
 					+ "<ul style=margin:0;padding:0;>"
 					+ "<li style=list-style:none;float:left;width:134px;margin:0;padding:18px 36px !important;color:#717070;>"
-					+ "<a href=http://outreach.zclt.info/ZcCourses title=Center for Learning Technologies><img src=\\\"http://outreach.zclt.info/ZcCourses/javax.faces.resource/images/logoZc.png.xhtml\\\" style=\\\"width: 15%;\\\" alt=Center for Learning Technologies /></a><br/>"
+					+ "<a href=http://outreach.zclt.info title=Center for Learning Technologies><img src=\\\"http://outreach.zclt.info/javax.faces.resource/images/logoZc.png.xhtml\\\" style=\\\"width: 15%;\\\" alt=Center for Learning Technologies /></a><br/>"
 					+ "<span style=color:#404040;font-size:11px;>Giving Fuel to Innovation</span>"
 					+ "</li>"
 					+ "<li style=list-style:none;float:right;width:59px;margin:0;padding:18px 36px !important;color:#717070;>"
-					+ "<a href=http://outreach.zclt.info/ZcCourses title=Zewail City of Science and Technology><img src=\\\"http://outreach.zclt.info/ZcCourses/javax.faces.resource/images/logoZc.png.xhtml\\\" style=\\\"width: 15%;\\\"  alt=Zewail City of Science and Technology /></a>"
+					+ "<a href=http://outreach.zclt.info title=Zewail City of Science and Technology><img src=\\\"http://outreach.zclt.info/javax.faces.resource/images/logoZc.png.xhtml\\\" style=\\\"width: 15%;\\\"  alt=Zewail City of Science and Technology /></a>"
 					+ "</li>"
 					+ "</ul>"
 					+ "</li>"

@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'medical-guide-icons';
-	src:url('/ZcCourses/resources/fonts/medical-guide-icons.eot?z74vbr');
-	src:url('/ZcCourses/resources/fonts/medical-guide-icons.eot?#iefixz74vbr') format('embedded-opentype'),
-		url('/ZcCourses/resources/fonts/medical-guide-icons.ttf?z74vbr') format('truetype'),
-		url('/ZcCourses/resources/fonts/medical-guide-icons.woff?z74vbr') format('woff'),
-		url('/ZcCourses/resources/fonts/medical-guide-icons.svg?z74vbr#icomoon') format('svg');
+	src:url('/resources/fonts/medical-guide-icons.eot?z74vbr');
+	src:url('/resources/fonts/medical-guide-icons.eot?#iefixz74vbr') format('embedded-opentype'),
+		url('/resources/fonts/medical-guide-icons.ttf?z74vbr') format('truetype'),
+		url('/resources/fonts/medical-guide-icons.woff?z74vbr') format('woff'),
+		url('/resources/fonts/medical-guide-icons.svg?z74vbr#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

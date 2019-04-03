@@ -113,7 +113,7 @@ public class examAdminBean implements Serializable {
 		fillTheStudentAnsLists();
 		try {
 			FacesContext.getCurrentInstance()
-			   .getExternalContext().redirect("/ZcCourses/pages/secured/admin/exam/examStudentGradeModify.xhtml");
+			   .getExternalContext().redirect("/pages/secured/admin/exam/examStudentGradeModify.xhtml");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -145,7 +145,7 @@ public class examAdminBean implements Serializable {
 		fillTheStudentAnsLists();
 		try {
 			FacesContext.getCurrentInstance()
-			   .getExternalContext().redirect("/ZcCourses/pages/secured/admin/exam/examStudentsDetails.xhtml");
+			   .getExternalContext().redirect("/pages/secured/admin/exam/examStudentsDetails.xhtml");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -164,7 +164,7 @@ public class examAdminBean implements Serializable {
 					+ "<ul style=margin:0;padding:0;>"
 					+ "<li style=list-style:none;float:left;width:700px;margin:0;>"
 					+ "	<ul style=margin:0;padding:0;width:700px;margin-top:18px;>"
-					+ "<li style=list-style:none;float:left;width:260px;padding:0;><img src=\"http://outreach.zclt.info/ZcCourses/javax.faces.resource/images/logoZc.png.xhtml\" style=\"width: 15%;\" alt=Zewail City of Science and Technology /></li>"
+					+ "<li style=list-style:none;float:left;width:260px;padding:0;><img src=\"http://outreach.zclt.info/javax.faces.resource/images/logoZc.png.xhtml\" style=\"width: 15%;\" alt=Zewail City of Science and Technology /></li>"
 					+ "</ul>"
 					+ "</li>"
 					+ "<li style=list-style:none;float:left;width:700px;background:#f1f2f2;margin:15px 0 24px 0;padding:1px 0;>&nbsp;</li>"
@@ -185,11 +185,11 @@ public class examAdminBean implements Serializable {
 					+ "<li style=list-style:none;float:left;width:700px;margin-bottom:4px;background:#ececec;>"
 					+ "<ul style=margin:0;padding:0;>"
 					+ "<li style=list-style:none;float:left;width:134px;margin:0;padding:18px 36px !important;color:#717070;>"
-					+ "<a href=http://outreach.zclt.info/ZcCourses title=Center for Learning Technologies><img src=\"http://outreach.zclt.info/ZcCourses/javax.faces.resource/images/logoZc.png.xhtml\" style=\"width: 15%;\" alt=Center for Learning Technologies /></a><br/>"
+					+ "<a href=http://outreach.zclt.info title=Center for Learning Technologies><img src=\"http://outreach.zclt.info/javax.faces.resource/images/logoZc.png.xhtml\" style=\"width: 15%;\" alt=Center for Learning Technologies /></a><br/>"
 					+ "<span style=color:#404040;font-size:11px;>Giving Fuel to Innovation</span>"
 					+ "</li>"
 					+ "<li style=list-style:none;float:right;width:59px;margin:0;padding:18px 36px !important;color:#717070;>"
-					+ "<a href=http://outreach.zclt.info/ZcCourses title=Zewail City of Science and Technology><img src=\"http://outreach.zclt.info/ZcCourses/javax.faces.resource/images/logoZc.png.xhtml\" style=\"width: 15%;\" alt=Zewail City of Science and Technology /></a>"
+					+ "<a href=http://outreach.zclt.info title=Zewail City of Science and Technology><img src=\"http://outreach.zclt.info/javax.faces.resource/images/logoZc.png.xhtml\" style=\"width: 15%;\" alt=Zewail City of Science and Technology /></a>"
 					+ "</li>"
 					+ "</ul>"
 					+ "</li>"

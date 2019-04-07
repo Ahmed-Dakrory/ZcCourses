@@ -47,20 +47,29 @@ public class manageRegisterationCoursesBean implements Serializable{
 	
 	private int selectedCourseId;
 	
+	private courseReg selectedRegisterationForm;
+	
 	@PostConstruct
 	public void init() {
 		
 		refreshPage();
-		
+		specCourseRegisterations=registerCourseFasade.getAll();
 	}
 	
 	public void refreshPage() {
 		courses=courseFasade.getAll();
-		specCourseRegisterations=registerCourseFasade.getAll();
+		if(selectedCourseId==0) {
+			specCourseRegisterations=registerCourseFasade.getAll();
+		}else {
+			specCourseRegisterations=registerCourseFasade.getByIdCourse(selectedCourseId);
+		}
+		
 	}
 	
 	
-	
+	public void submitTheFormData() {
+		registerCourseFasade.addcourseReg(selectedRegisterationForm);
+	}
 	
 	public void filterRegisterationsToCourse() {
 
@@ -82,6 +91,20 @@ public class manageRegisterationCoursesBean implements Serializable{
 	public void reload() throws IOException {
 	    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 	    ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+	}
+	
+	
+	
+	public void openStudentRegisterationPage(int id) {
+		selectedRegisterationForm=registerCourseFasade.getById(id);
+		
+		try {
+			FacesContext.getCurrentInstance()
+			   .getExternalContext().redirect("/pages/secured/admin/registeredCoursesStudentDetails.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public CourseAppServiceImpl getCourseFasade() {
@@ -126,6 +149,14 @@ public class manageRegisterationCoursesBean implements Serializable{
 
 	public void setSelectedCourseId(int selectedCourseId) {
 		this.selectedCourseId = selectedCourseId;
+	}
+
+	public courseReg getSelectedRegisterationForm() {
+		return selectedRegisterationForm;
+	}
+
+	public void setSelectedRegisterationForm(courseReg selectedRegisterationForm) {
+		this.selectedRegisterationForm = selectedRegisterationForm;
 	}
 	
 

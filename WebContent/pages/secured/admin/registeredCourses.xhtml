@@ -12,11 +12,22 @@
 
 
 	<ui:define name="content">
-	
-
+	#{manageRegisterationCoursesBean.refreshPage()}
 
 	<!-- Data table area Start-->
-	
+	<style>
+	.styled-select.slate2 {
+    min-width: 1px !important;
+    margin-left: 20%;
+    font-size: 16px;
+    font-family: -webkit-body;
+    margin-top: 1%;
+    border: 1px solid #ccc;
+    background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+    height: 34px;
+    width: 74%;
+}
+	</style>
                 <h:form id="theMainForm">
             <div class="admin-dashone-data-table-area">
                 <div class="container-fluid">
@@ -44,6 +55,7 @@
                                         </div>
                                     </div>
                                 </div>
+                               
                                 <div class="sparkline8-graph">
                                     <div class="datatable-dashv1-list custom-datatable-overright">
                                         <div id="toolbar">
@@ -63,6 +75,8 @@
                                                     <th data-field="phone" data-editable="false">Mobile</th>
                                                     <th data-field="course" data-editable="false">Course</th>
                                                     <th data-field="date" data-editable="false">Date</th>
+                                                    <th data-field="formstate" data-editable="false">Form State</th>
+                                                    <th data-field="action" >Action</th>
                                                    <!--  <th data-field="company" data-editable="false">NationalId</th>
                                                     <th data-field="task" data-editable="false">University</th>
                                                     <th data-field="action">Action</th> -->
@@ -79,6 +93,11 @@
                                                     <td>+#{var.studentId.mobile}</td>
                                                     <td>#{var.courseId.name}</td>
                                                     <td>#{var.date.time}</td>
+                                                    <td>#{var.getTheStatuesOfForm()}</td>
+                                                    <td class="datatable-ct">
+														<p:commandButton style="background-color: #8c9285; width: 77%;padding-left: 10px !important;font-size: 13px;margin-left: 12%;border-radius: 26px;"  value="Show more details" class="btn btn-primary btn-lg btn-learn col-md-12 text-center animate-box fadeInUp animated-fast" action="#{manageRegisterationCoursesBean.openStudentRegisterationPage(var.id)}"/>
+						
+													</td>
                                                  <!--    <td>#{var.nationalId}</td>
                                                     <td>#{var.university}</td>
                                                     <td class="datatable-ct"><i class="fa fa-check"></i>

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/dashboard.xhtml">
+
+	<ui:define name="title">Zewail Courses</ui:define>
+
+
+	<ui:define name="content">
+	
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 50%;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+#buttonBack {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+#stateOfUser {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #b39452;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+}
+
+
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+	<h:form id="formProfile">
+	<div class="allCard" style="position: relative;left: -2%;">
+	<h2 style="text-align:center">User data</h2>
+
+<div class="card">
+<h:graphicImage value="#{manageRegisterationCoursesBean.selectedRegisterationForm.studentId.getphoto()}" alt="John" style="width:100%"/>
+  <h1>#{manageRegisterationCoursesBean.selectedRegisterationForm.studentId.fullName}</h1>
+  <p class="title">#{manageRegisterationCoursesBean.selectedRegisterationForm.studentId.email}</p>
+  <p>#{manageRegisterationCoursesBean.selectedRegisterationForm.studentId.mobile}</p>
+  
+  
+  <div class="card">
+<br></br>
+<h2 style="text-align:center">Course data</h2>
+<h1>#{manageRegisterationCoursesBean.selectedRegisterationForm.courseId.name}</h1>
+  <p>#{manageRegisterationCoursesBean.selectedRegisterationForm.courseId.price} LE</p>
+  <div id="stateOfUser">#{manageRegisterationCoursesBean.selectedRegisterationForm.getTheStatuesOfForm()}</div>
+  
+</div>
+
+<br></br>
+
+  <p:selectOneMenu style="margin-left: 0%;" id="program" class="styled-select slate" value="#{manageRegisterationCoursesBean.selectedRegisterationForm.state}">
+  <p:ajax update="formProfile" listener="#{manageRegisterationCoursesBean.submitTheFormData}"/>
+		<f:selectItem itemLabel="Registered but not pay" itemValue="0" />
+		<f:selectItem itemLabel="Pay the deposite fees" itemValue="1" />
+		<f:selectItem itemLabel="Pay the total Fees" itemValue="2" />
+		<f:selectItem itemLabel="Take the course and finish it" itemValue="3" />
+  </p:selectOneMenu>
+<br></br>
+<br></br>
+
+
+  <p><a id="buttonBack" href="/pages/secured/admin/registeredCourses.xhtml">Go Back</a></p>
+</div>
+
+</div>
+</h:form>
+	
+<link rel="stylesheet" href="#{resource['css:popUpDialog.css']}" /> 
+	</ui:define>
+	
+	
+</ui:composition>
+</html>

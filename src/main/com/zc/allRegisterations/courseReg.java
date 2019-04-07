@@ -74,6 +74,15 @@ public class courseReg {
 	@Column(name = "date")
 	private Calendar date;
 
+	/*
+	 * 0 register but not pay the first fees
+	 * 1 pay the first fees
+	 * 2 pay the final fees
+	 * 3 take the course and finish
+	 */
+	@Column(name = "state")
+	private Integer state;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -106,7 +115,42 @@ public class courseReg {
 	public void setDate(Calendar date) {
 		this.date = date;
 	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
 	
-	
+	public String getTheStatuesOfForm() {
+		String statueString="";
+		
+		switch(state) {
+		case 0:
+			statueString="Registered but not pay";
+			break;
+			
+		case 1:
+			statueString="Pay the deposite fees";
+			break;
+			
+		case 2:
+			statueString="Pay the total Fees";
+			break;
+			
+		case 3:
+			statueString="Take the course and finish it";
+			break;
+			
+		default:
+			statueString="Registered but not pay";
+			break;
+				
+		}
+		return statueString;
+		
+	}
 	
 }

@@ -63,9 +63,9 @@ public class ConverterToEntity {
 	public static courseRegDao toDao(courseReg courseReg) {
 		courseRegDao dao=new courseRegDao();
 		dao.setId(courseReg.getId());
-		dao.setCourseId(courseReg.getCourseId());
+		dao.setCourseId(courseReg.getCourseId().getId());
 		dao.setDate(String.valueOf(courseReg.getDate().getTimeInMillis()));
-		dao.setStudentId(courseReg.getStudentId());
+		dao.setStudentId(courseReg.getStudentId().getId());
 		return dao;
 	}
 }

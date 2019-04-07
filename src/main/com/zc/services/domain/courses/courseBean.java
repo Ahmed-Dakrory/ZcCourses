@@ -109,8 +109,8 @@ public class courseBean implements Serializable{
 	public void comfirmActionForEnrollment() {
 		// TODO Auto-generated method stub
 		courseReg courseReg=new courseReg();
-		courseReg.setCourseId(selectedCourseId);
-		courseReg.setStudentId(loginBean.getTheUserOfThisAccount().getId());
+		courseReg.setCourseId(courseFasade.getById(selectedCourseId));
+		courseReg.setStudentId(loginBean.getTheUserOfThisAccount());
 		courseReg.setDate(Calendar.getInstance());
 		
 		registerCourseFasade.addcourseReg(courseReg);

@@ -10,9 +10,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
+
+import main.com.zc.loginNeeds.UserData;
+import main.com.zc.services.domain.courses.course;
 
 /**
  * @author dakrory
@@ -55,12 +60,16 @@ public class courseReg {
 	@Column(name = "id")
 	private Integer id;
 	
+	@ManyToOne
+	@JoinColumn(name = "courseId")
+	private course courseId;
 	
-	@Column(name = "courseId")
-	private Integer courseId;
 	
-	@Column(name = "studentId")
-	private Integer studentId;
+	@ManyToOne
+	@JoinColumn(name = "studentId")
+	private UserData studentId;
+	
+	
 	
 	@Column(name = "date")
 	private Calendar date;
@@ -73,19 +82,20 @@ public class courseReg {
 		this.id = id;
 	}
 
-	public Integer getCourseId() {
+	
+	public course getCourseId() {
 		return courseId;
 	}
 
-	public void setCourseId(Integer courseId) {
+	public void setCourseId(course courseId) {
 		this.courseId = courseId;
 	}
 
-	public Integer getStudentId() {
+	public UserData getStudentId() {
 		return studentId;
 	}
 
-	public void setStudentId(Integer studentId) {
+	public void setStudentId(UserData studentId) {
 		this.studentId = studentId;
 	}
 

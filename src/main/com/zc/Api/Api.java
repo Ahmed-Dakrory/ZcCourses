@@ -169,9 +169,9 @@ public class Api {
         	return null;
     	}
     	courseReg courseReg=new courseReg();
-    	courseReg.setCourseId(idCourse);
+    	courseReg.setCourseId(courseFacade.getById(idCourse));
     	courseReg.setDate(Calendar.getInstance());
-    	courseReg.setStudentId(id);
+    	courseReg.setStudentId(userFacade.getById(id));
 
     	courseRegFacade.addcourseReg(courseReg);
     	

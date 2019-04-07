@@ -1,17 +1,13 @@
 package main.com.zc.Api;
 
 
-import java.util.Calendar;
 
-import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import main.com.zc.allRegisterations.courseReg;
-import main.com.zc.allRegisterations.courseRegAppServiceImpl;
 
 
 
@@ -21,8 +17,6 @@ import main.com.zc.allRegisterations.courseRegAppServiceImpl;
  */
 @Path(value="/emailReg")
 public class EmailApiReg {
-	@Inject
-	 private courseRegAppServiceImpl courseRegFasade; 
 	
     public EmailApiReg() {
     	
@@ -40,13 +34,8 @@ public class EmailApiReg {
     @GET
     @Produces(value="text/plain")
     public String getList() {
-    	courseReg course=new courseReg();
-     	course.setStudentId(3);
-     	course.setDate(Calendar.getInstance());
-     	course.setCourseId(2);
-     	
-    	courseRegFasade.addcourseReg(course);
     	
+     	
 /*
 
     	 AnnotationConfiguration cfg = new AnnotationConfiguration();

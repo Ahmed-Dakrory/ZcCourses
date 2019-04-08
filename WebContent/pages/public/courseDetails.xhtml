@@ -49,6 +49,7 @@
   text-decoration: none;
 }
 </style>
+
    <!--Start Content-->
    <div class="content">
    
@@ -148,7 +149,13 @@
    <!--End Content-->
    
 <h:outputScript name="js/jquery.js"/>    
+<script>
 
+if(performance.navigation.type == 2){
+	   location.reload(true);
+	}
+
+</script>
 	</ui:define>
 	
 	

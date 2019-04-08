@@ -112,9 +112,9 @@ public class courseBean implements Serializable{
 		courseReg.setCourseId(courseFasade.getById(selectedCourseId));
 		courseReg.setStudentId(loginBean.getTheUserOfThisAccount());
 		courseReg.setDate(Calendar.getInstance());
+		courseReg.setState(0);
 		
 		registerCourseFasade.addcourseReg(courseReg);
-		System.out.println("enrolled");
 		dismissDialog();
 		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("enrollmentPanel");
 		
@@ -137,6 +137,7 @@ public class courseBean implements Serializable{
 	
 
 	public void refreshPage(){
+		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("enrollmentPanel");
 		HttpServletRequest origRequest = (HttpServletRequest)FacesContext
 				.getCurrentInstance()
 				.getExternalContext()

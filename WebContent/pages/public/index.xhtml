@@ -17,14 +17,14 @@
 	<style>
 
 .cardImage{
-  height: 79%;
-    width: 137%;
-    margin-left: -27%;
+  height: 55%;
+    width: 124%;
+    margin-left: -9%;
 }
 
 .card {
           position: relative;
-    background: #95999a;
+    background: #eaeaea;
     width: 79%;
     height: 448px;
     border-radius: 15px;
@@ -34,9 +34,9 @@
 }
 
 .coursedetails{
-        position: absolute;
-    top: 70%;
-    left: 26%;
+      position: relative;
+    top: 13%;
+    left: 1%;
 }
 	
 	</style>
@@ -243,19 +243,19 @@
 	             
 				<div  class="col-md-4 text-center " >
 				
-				<div class=" containerForCard">
+				<div class=" containerForCard" data-aos="flip-right" data-aos-duration="1500">
 					  <div class="card">
 					     		<h:graphicImage class="cardImage" value="#{o.getphoto()}" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"/>
-					    <svg class="lineCard" viewBox="10 120 100 500" style="    position: absolute;    width: 100%;">
+					     <svg class="lineCard" viewBox="300 1 450 600" style="    position: absolute;    width: 100%;">
 					
 					      <g class="currentLayer" style="">
-							<path fill="#eaeaea" fill-opacity="1" stroke="#b4b9c1" stroke-opacity="1" stroke-width=".15" stroke-dasharray="none" stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start="" marker-mid="" marker-end="" id="svg_3" d="M1.43017185062392,163.61291219689497 C1.43017185062392,163.61291219689497 280.75048068421717,319.0967879478943 280.6360045400669,318.7096774193548 C280.75048068421717,319.0967879478943 281.40462660654407,450.06453391242906 281.29015044226986,449.6774193548387 C281.40462660654407,450.06453391242906 -0.5322659163568361,450.7096952225992 -0.5322659163568361,450.06453391242906 C-0.5322659163568361,449.41937260225893 0.7760259282970011,168.77420267825596 0.7760259282970011,168.77420267825596 C0.7760259282970011,168.77420267825596 1.43017185062392,163.61291219689497 1.43017185062392,163.61291219689497 z" style="color: #eaeaea;" class="selected"></path>
-					      </g>
+					      	<path  d="M-1.6261818382519404,155.16427348400399 C751.8379276002718,471.57544938232536 775.9312566811544,480.79130887450975 775.9312566811544,480.79130887450975 C775.9312566811544,480.79130887450975 -1.6261818382519404,477.71935571044816 -1.6261818382519404,477.71935571044816 "  fill="#eaeaea" fill-opacity="1" stroke="#eaeaea" stroke-opacity="1" stroke-width="2" stroke-dasharray="none" stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start="" marker-mid="" marker-end="" id="svg_10" ></path>
+						</g>
 					     </svg>
 					    
 					    
 					     <div class="coursedetails">
-					       <h3><a href="/pages/public/courseDetails.xhtml?id=#{o.id}" style="font-family: serif;font-stretch: expanded;color: #686f6d;font-weight: bold;">#{o.name}</a></h3>
+					       <h3><a href="/pages/public/courseDetails.xhtml?id=#{o.id}" style="font-family: cursive; font-stretch: expanded; color: #686f6d;font-weight: bold;font-size: large;">#{o.name}</a></h3>
 					    	<p style="    color: #757777;    font-size: 117%;    font-weight: 1000;">Price: #{o.price} LE</p>
 					    
 					     </div>

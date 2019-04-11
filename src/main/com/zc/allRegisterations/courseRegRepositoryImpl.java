@@ -88,7 +88,7 @@ public class courseRegRepositoryImpl implements courseRegRepository{
 
 		 @SuppressWarnings("unchecked")
 		List<courseReg> results=query.list();
-		   return results.get(0);
+		   return results.get(results.size()-1);
 	}
 
 	@Override
@@ -111,7 +111,7 @@ public class courseRegRepositoryImpl implements courseRegRepository{
 					return null;
 				}else{
 
-					   return results.get(0);
+					   return results.get(results.size()-1);
 				}
 	}
 

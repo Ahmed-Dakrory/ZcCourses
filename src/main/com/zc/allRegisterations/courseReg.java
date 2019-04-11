@@ -79,6 +79,7 @@ public class courseReg {
 	 * 1 pay the first fees
 	 * 2 pay the final fees
 	 * 3 take the course and finish
+	 * 4 cancel the enrollment
 	 */
 	@Column(name = "state")
 	private Integer state;
@@ -142,6 +143,10 @@ public class courseReg {
 			
 		case 3:
 			statueString="Take the course and finish it";
+			break;
+			
+		case 4:
+			statueString="Cancel the enrollment";
 			break;
 			
 		default:

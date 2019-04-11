@@ -71,18 +71,30 @@ public class courseBean implements Serializable{
 		}
 	}
 	
+	
+	
+	public void cancelTheEnroll(int courseId) {
+		courseReg courseReg = registerCourseFasade.getByIdStudentandCourseId(loginBean.getTheUserOfThisAccount().getId(), courseId);
+		courseReg.setState(4);
+		registerCourseFasade.addcourseReg(courseReg);
+		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("enrollmentPanel");
+	}
+	
+	
 	public String getTheStateOfViewOfSelectedCourse(int courseId,int state){
 		if(loginBean.isLoggedIn()){
+			
+			
 			courseReg courseReg = registerCourseFasade.getByIdStudentandCourseId(loginBean.getTheUserOfThisAccount().getId(), courseId);
 			if(state==0){
-				if(courseReg!=null){
+				if(courseReg!=null&&courseReg.getState()!=4){
 					//He is registered
 					return "none";
 				}else{
 					return "block";
 				}
 			}else if(state == 1){
-				if(courseReg!=null){
+				if(courseReg!=null&&courseReg.getState()!=4){
 					//He is registered
 					return "block";
 				}else{
@@ -91,6 +103,8 @@ public class courseBean implements Serializable{
 			}else{
 				return "block";
 			}
+			
+			
 		}else{
 		
 			if(state==0){

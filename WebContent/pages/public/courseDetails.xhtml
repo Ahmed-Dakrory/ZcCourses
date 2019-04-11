@@ -75,13 +75,19 @@
 							<p class="price big dark">#{courseBean.thecourseSelected.price} LE</p>
 							<p:outputPanel id="enrollmentPanel">
 							<p:commandLink style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,0)}"  action="#{courseBean.enrollInCourse(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Enroll me in the course</p:commandLink>
+							
 							<p:outputLabel style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}">You are Enrolled</p:outputLabel>
+							
+							
 							<div class="boxOFChoose" style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}">
-							<p:outputLabel>Please note that your registeration is not confirmed until you finalize your payment on the following link</p:outputLabel>
+							<p:outputLabel>Please note that your registeration is not confirmed until you pay the deposite on the following link</p:outputLabel>
 							<br></br>
 							<br></br>
 							<a class="paybutn" href="#{courseBean.thecourseSelected.payLink}">Pay now</a>
 							</div>
+							
+							<p:commandLink style="background-color: #e06b6b;display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}"  action="#{courseBean.cancelTheEnroll(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Cancel the enrollment</p:commandLink>
+							
 							
 							</p:outputPanel>
 							<div class="clearfix"></div>

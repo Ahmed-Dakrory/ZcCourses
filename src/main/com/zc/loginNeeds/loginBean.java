@@ -384,7 +384,7 @@ public class loginBean implements Serializable{
 	
 	public String getTheStatueOfImageMenu(){
 		if(isLoggedIn&&theUserOfThisAccount.getImage()==null){
-			return "block";
+			return "inherit";
 		}else if(isLoggedIn){
 			return "none";
 		}

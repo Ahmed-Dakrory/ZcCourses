@@ -139,9 +139,16 @@ public class course {
 	}
 
 	public String getphoto() {
-		String imageString= new String(Base64.encodeBase64(image));
+		if(image!=null){
 
-		return "data:image/png;base64, "+imageString;
+			String imageString= new String(Base64.encodeBase64(image));
+
+			return "data:image/png;base64, "+imageString;
+		}else{
+			
+			String imageString="images/comment-img.jpg";
+			return imageString;
+		}
 		
 	}
 	

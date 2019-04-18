@@ -93,6 +93,21 @@ public class manageRegisterationCoursesBean implements Serializable{
 	    ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
 	}
 	
+	public String getTheStatueOfImageMenu(){
+		if(selectedRegisterationForm.getStudentId().getImage()==null){
+			return "inherit";
+		}else {
+			return "none";
+		}
+	}
+	
+	public String getTheStatueOfImageLoginMenu(){
+		if(selectedRegisterationForm.getStudentId().getImage()==null){
+			return "none";
+		}else {
+			return "inherit";
+		}
+	}
 	
 	
 	public void openStudentRegisterationPage(int id) {

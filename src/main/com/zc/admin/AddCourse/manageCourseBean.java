@@ -49,10 +49,16 @@ public class manageCourseBean implements Serializable{
 	
 	private course courseNew;
 	
+	private course selectedCourse;
+	private String imageOfCourseSelected;
+	private byte[] imageOfCoursebyteSelected;
+	private boolean imageUploadedSelected;
+	
 	
 	@PostConstruct
 	public void init() {
 		courseNew=new course();
+		selectedCourse=new course();
 		imageUploaded=false;
 		refreshPage();
 	}
@@ -86,6 +92,22 @@ public class manageCourseBean implements Serializable{
 		
 	}
 	
+	public void previewImageSelected(FileUploadEvent event) {
+
+		System.out.println("Dakrory    :File");
+		/* FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+	        FacesContext.getCurrentInstance().addMessage(null, msg);
+		*/
+		this.imageOfCoursebyteSelected = event.getFile().getContents();
+//Set The image to the object
+		selectedCourse.setImage(imageOfCoursebyteSelected);
+		
+		imageUploadedSelected=true;
+		setImageDependOnRegisterationImageStateSelected();
+		System.out.println("File Uploaded");
+		
+	}
+	
 	void setImageDependOnRegisterationImageState(){
 		if(imageUploaded){
 			imageOfCourse=courseNew.getphoto();
@@ -95,32 +117,41 @@ public class manageCourseBean implements Serializable{
 		}
 	}
 	
+	void setImageDependOnRegisterationImageStateSelected(){
+		if(imageUploadedSelected){
+			imageOfCourseSelected=selectedCourse.getphoto();
+		}else{
+			
+			imageOfCourseSelected="images/uploadButton.png";
+		}
+	}
+	
 	
 	
 	public void closeDialog() {
 		System.out.println("Dakrory: play with me");
 		PrimeFaces.current().executeScript("dismissDialog();");
 	}
-	public void savecourse() {
+public void savecourse() {
 		
 		if(courseNew.getIdProgram()!=0) {
-if(imageUploaded) {
-		System.out.println("Dakrory: yes play with me");
-		courseDataFacede.addCourse(courseNew);
-		courses=courseDataFacede.getAll();
-
-		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("mainForm");
-		PrimeFaces.current().executeScript("swal(\"Good job!\", \" "+courseNew.getName()+" has(have) been saved Successfully\", \"success\");\r\n" + 
-				"");
-		PrimeFaces.current().executeScript("dismissDialog();");
-}else {
-	PrimeFaces.current().executeScript("swal({\r\n" + 
-			"  title: \"You Don't Upload Image for the course\",\r\n" + 
-			"  text: \"Please Make sure that you upload the correct course Image!\",\r\n" + 
-			"  icon: \"warning\",\r\n" + 
-			"})\r\n" + 
-			";");
-}
+			if(imageUploaded) {
+					System.out.println("Dakrory: yes play with me");
+					courseDataFacede.addCourse(courseNew);
+					courses=courseDataFacede.getAll();
+			
+					FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("mainForm");
+					PrimeFaces.current().executeScript("swal(\"Good job!\", \" "+courseNew.getName()+" has(have) been saved Successfully\", \"success\");\r\n" + 
+							"");
+					PrimeFaces.current().executeScript("dismissDialog();");
+			}else {
+				PrimeFaces.current().executeScript("swal({\r\n" + 
+						"  title: \"You Don't Upload Image for the course\",\r\n" + 
+						"  text: \"Please Make sure that you upload the correct course Image!\",\r\n" + 
+						"  icon: \"warning\",\r\n" + 
+						"})\r\n" + 
+						";");
+			}
 
 		}else {
 			PrimeFaces.current().executeScript("swal({\r\n" + 
@@ -132,6 +163,39 @@ if(imageUploaded) {
 		}
 	}
 	
+
+public void updatecourse() {
+	
+	if(selectedCourse.getIdProgram()!=0) {
+		if(imageUploadedSelected) {
+				System.out.println("Dakrory: yes play with me");
+				courseDataFacede.addCourse(selectedCourse);
+				courses=courseDataFacede.getAll();
+		
+				FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("mainForm");
+				PrimeFaces.current().executeScript("swal(\"Good job!\", \" "+selectedCourse.getName()+" has(have) been updated Successfully\", \"success\");\r\n" + 
+						"");
+				PrimeFaces.current().executeScript("dismissDialog();");
+		}else {
+			PrimeFaces.current().executeScript("swal({\r\n" + 
+					"  title: \"You Don't Upload Image for the course\",\r\n" + 
+					"  text: \"Please Make sure that you upload the correct course Image!\",\r\n" + 
+					"  icon: \"warning\",\r\n" + 
+					"})\r\n" + 
+					";");
+		}
+
+	}else {
+		PrimeFaces.current().executeScript("swal({\r\n" + 
+				"  title: \"You Don't Select Program for the course\",\r\n" + 
+				"  text: \"Please Make sure that you select the correct program !\",\r\n" + 
+				"  icon: \"warning\",\r\n" + 
+				"})\r\n" + 
+				";");
+	}
+}
+
+
 	public void addNewcourse() {
 
 				courseNew=new course();
@@ -147,7 +211,19 @@ if(imageUploaded) {
 	}
 	
 	
-	
+	public void openCourseDetails(int courseId) {
+		selectedCourse=courseDataFacede.getById(courseId);
+
+		imageUploadedSelected=true;
+		imageOfCourseSelected=new String();
+		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("dialogFormSelected");
+		
+		PrimeFaces.current().executeScript("$(\"#dialogOfSelectPhotoSelected\").removeAttr(\"style\").show();");
+		System.out.println("Add New course with id: NewNEw");	
+		setImageDependOnRegisterationImageStateSelected();
+		courses=courseDataFacede.getAll();
+		
+	}
 	public void deletecourse() {
 
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -165,6 +241,20 @@ if(imageUploaded) {
 		courses=courseDataFacede.getAll();
 	}
 
+	
+	public String imageUploadedVisibSelected(){
+		if(imageUploadedSelected){
+			return "block";
+		}
+		return "none";
+	}
+	
+	public String imageUploadedVisibNotSelected(){
+		if(!imageUploadedSelected){
+			return "block";
+		}
+		return "none";
+	}
 	
 	public String imageUploadedVisib(){
 		if(imageUploaded){
@@ -264,6 +354,38 @@ if(imageUploaded) {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public course getSelectedCourse() {
+		return selectedCourse;
+	}
+
+	public void setSelectedCourse(course selectedCourse) {
+		this.selectedCourse = selectedCourse;
+	}
+
+	public String getImageOfCourseSelected() {
+		return imageOfCourseSelected;
+	}
+
+	public void setImageOfCourseSelected(String imageOfCourseSelected) {
+		this.imageOfCourseSelected = imageOfCourseSelected;
+	}
+
+	public byte[] getImageOfCoursebyteSelected() {
+		return imageOfCoursebyteSelected;
+	}
+
+	public void setImageOfCoursebyteSelected(byte[] imageOfCoursebyteSelected) {
+		this.imageOfCoursebyteSelected = imageOfCoursebyteSelected;
+	}
+
+	public boolean isImageUploadedSelected() {
+		return imageUploadedSelected;
+	}
+
+	public void setImageUploadedSelected(boolean imageUploadedSelected) {
+		this.imageUploadedSelected = imageUploadedSelected;
 	}
 
 	

@@ -41,34 +41,7 @@
 		  
 
 					 
-   <h:form>
-			<p:remoteCommand name="makeTheActionOfDelete" actionListener="#{manageCourseBean.deletecourse()}"  />
-			</h:form>
-					  		 
-   
-		<script>
-		function deleteWithConfirm(id){
-			//alert(id);
-			swal({
-				  title: "Are you sure?",
-				  text: "Once deleted, you will not be able to recover this course data!",
-				  icon: "warning",
-				  buttons: true,
-				  dangerMode: true,
-				})
-				.then((willDelete) => {
-				  if (willDelete) {
-					 
-					  
-					  makeTheActionOfDelete([{"name":"id","value":id}]);
-				  } 
-				});
-			
-			
-		}
-			
-		</script>	
-		
+  
 		 
 	<h:form id="mainForm">
 		
@@ -115,10 +88,12 @@
 							
 							<p:column class="manageTableRow" headerText="Action" >
 					            
-								<p:commandButton  class="buttonRed" id="delete"  onclick="deleteWithConfirm(#{row.id})" value=" Delete course" 
-								  />
+								<p:commandButton style="margin-right: 7%; margin-left: 15%;" class="buttonGreen" id="modify"  action="#{manageCourseBean.openCourseDetails(row.id)}" value=" Edit course" />
+								<p:commandButton  class="buttonRed" id="delete"  onclick="deleteWithConfirm(#{row.id})" value=" Delete course" />
 						
 							</p:column>
+							
+							
 							
 						</p:dataTable>
 						
@@ -255,6 +230,148 @@
 	   
  <!-- The End of Main Content -->
  
+ 
+ 
+ <!-- The Modal of edit popUp-->
+    
+						
+            <!-- The Modal -->
+			<div id="dialogOfSelectPhotoSelected" class="modal">
+			
+			  <!-- Modal content -->
+			  <div class="modal-content">
+			    <span class="close">&times;</span>
+			   
+					
+ 
+			    <h:form enctype="multipart/form-data" role="form"  id="dialogFormSelected">
+     <div class="containeer">
+     				<div class="row">
+     				<div class="imageOfDialog">
+     					<h:form id="imageFormSelected">
+        
+						        <h:panelGroup  id="img">
+						        <label for="dialogFormSelected:imageFormSelected:file-inputSelected_input">
+						        
+									<h:graphicImage value="#{manageCourseBean.imageOfCourseSelected}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{manageCourseBean.imageUploadedVisibSelected()};"  class="circularImage" alt=""/>
+									<h:graphicImage name="images/uploadButton.png" style="   border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none; display: #{manageCourseBean.imageUploadedVisibNotSelected()};"  class="circularImage" alt=""/>
+									<h:graphicImage name="images/uploadButton.png" style="top:-30px;left:45px;position:relative;border-style: solid;border-color: #a5a1a1;border-width: 1px; width:36px;height:36px;pointer-events: none;  "  class=" circularImage" alt=""/>
+								</label>
+								</h:panelGroup>
+								
+								<p:fileUpload  style="visibility:hidden; width:0; height:0" id="file-inputSelected"  label="Update Image" fileUploadListener="#{manageCourseBean.previewImageSelected}"
+									allowTypes="/(\.|\/)(png|jfif|jpg|bmp|gif\jpeg)$/" sizeLimit="5000000" description="Attachment"
+									update="img" auto="true" mode="advanced" multiple="false" uploadLabel="Upload Attachment" />
+															 
+																   
+						        </h:form>
+						</div>		
+								
+     					
+     				</div>
+     				
+     				
+			    	<div class="row" style=" margin-top: 15%;">
+			    		<p:inputText  type="text" required="true" value="#{manageCourseBean.selectedCourse.name}" class="dialogInputField" pt:placeholder="Please Enter the course Name"/>
+					</div>
+					
+					<div class="row">
+			    		<p:inputText  type="text" required="true" value="#{manageCourseBean.selectedCourse.price}" class="dialogInputField" pt:placeholder="Please Enter the course price"/>
+					</div>
+					
+					<div class="row">
+			    		<p:inputText  type="text" required="true" value="#{manageCourseBean.selectedCourse.payLink}" class="dialogInputField" pt:placeholder="Please Enter the course payment link"/>
+					</div>
+					
+					<div class="row">
+			    		<p:inputText  type="text" required="true" value="#{manageCourseBean.selectedCourse.categories}" class="dialogInputField" pt:placeholder="Please Enter the course categories"/>
+					</div>
+					
+					<div class="row">
+						<p:selectOneMenu id="program" class="styled-select slate" value="#{manageCourseBean.selectedCourse.idProgram}">
+				            <f:selectItem itemLabel="Select One" itemValue="0" />
+				            <f:selectItems value="#{manageProgramBean.programs}" var="var" itemLabel="#{var.name}" itemValue="#{var.id}"/>
+				        </p:selectOneMenu>
+						
+			    	</div>
+					
+					
+					<div class="row" >
+					<p:inputTextarea maxlength="510" counter="displaySelected" counterTemplate="{0} characters remaining." autoResize="false" style="height: 134px;margin-top: 1%;padding: 6px;" value="#{manageCourseBean.selectedCourse.description}"  height="100" class="dialogInputField" pt:placeholder="Please Enter the course Description">
+				        <f:facet name="toolbar">
+				             <span class="ql-formats">
+				            </span>
+				            <span class="ql-formats">
+				            </span>
+				        </f:facet>
+				    </p:inputTextarea>  
+				    <br />
+   					 <h:outputText class="dialogInputField" id="displaySelected" /> 
+					
+			    	</div>
+					
+					
+					<div class="row" style="    margin-top: 3%;">
+					<div class="col-md-2" style="margin-left: 10%;">
+						<h:commandButton style="width: 90px; height: 40px; " class="buttonDialogComfirm"   value="oK" 
+												 action="#{manageCourseBean.updatecourse()}">
+												 
+												 
+												<f:ajax execute="@form" render=":dialogForm" />
+												</h:commandButton>
+		 			</div>
+					<div class="col-md-2" style="margin-left: 43%;">
+					<h:commandButton style="width: 90px; height: 40px; " class="buttonDialogComfirm"   value="Cancel" 
+												action="#{manageCourseBean.closeDialog()}">
+												
+												<f:ajax execute="@form" render=":dialogFormSelected" />
+												</h:commandButton>
+		 			
+					</div>
+						
+		 			</div>
+			    </div>
+ 
+			   
+			    	</h:form>
+			  </div>
+			
+			</div>
+	   
+ <!-- The End of Main Content -->
+ 
+ 
+ 
+ 
+  <h:form>
+			<p:remoteCommand name="makeTheActionOfDelete" actionListener="#{manageCourseBean.deletecourse()}"  />
+			</h:form>
+					  		 
+   
+		<script>
+		function deleteWithConfirm(id){
+			//alert(id);
+			swal({
+				  title: "Are you sure?",
+				  text: "Once deleted, you will not be able to recover this course data!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if (willDelete) {
+					 
+					  
+					  makeTheActionOfDelete([{"name":"id","value":id}]);
+				  } 
+				});
+			
+			
+		}
+			
+		</script>	
+		
+		
 <h:outputScript name="js/popUpDialog.js"/>  
 
 <link rel="stylesheet" href="#{resource['css:popUpDialog.css']}" /> 

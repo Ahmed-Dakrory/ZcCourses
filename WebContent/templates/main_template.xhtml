@@ -176,6 +176,7 @@
 </h:head>
 
 <h:body> 
+
 <div align="center" id="header">
     <ui:insert name="header">
     
@@ -314,6 +315,33 @@
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
+    function showDim(){
+        $(document).ready(function() { 
+        	  $.blockUI({ css: { 
+                    border: 'none', 
+                    padding: '15px', 
+                    backgroundColor: '#fff', 
+                    '-webkit-border-radius': '10px', 
+                    '-moz-border-radius': '10px', 
+                    opacity: .5, 
+                    color: '#fff' 
+                },message: '<h1><img style="width: 140px;margin-left: -91px;" src="/resources/images/load.gif" /> Just a moment...</h1>' }); 
+         
+               
+        }); 
+        }
+        
+        function stopDim(){
+        	 $(document).ready(function() { 
+                
+
+                 setTimeout($.unblockUI, 20);
+                
+         }); 
+        }
+        
+    
+    
   </script>
 <!--end::Global Theme Bundle -->
 
@@ -323,6 +351,7 @@
 <!-- Date Picker and input hover -->
 <h:outputScript name="js/jquery.fancybox.js"/>
 <h:outputScript name="js/jquery.fancybox-media.js"/>
+<h:outputScript name="js/uiBlock.js"/>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

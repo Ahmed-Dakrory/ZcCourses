@@ -115,4 +115,14 @@ public class courseRegRepositoryImpl implements courseRegRepository{
 				}
 	}
 
+	@Override
+	public courseReg getByMerchantOrderId(String marchantId) {
+		// TODO Auto-generated method stub
+				 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("courseReg.getByMerchantOrderId").setString("merchant_Order_ID",marchantId);
+
+				 @SuppressWarnings("unchecked")
+				List<courseReg> results=query.list();
+				   return results.get(results.size()-1);
+	}
+
 }

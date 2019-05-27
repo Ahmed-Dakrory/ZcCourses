@@ -83,7 +83,14 @@
 							<p:outputLabel>Please note that your registration is not confirmed until you pay the deposit on the following link</p:outputLabel>
 							<br></br>
 							<br></br>
-							<a class="paybutn" href="#{courseBean.thecourseSelected.payLink}">Pay now</a>
+							<a class="paybutn" onclick="payNow();" >Pay now</a>
+							
+							<h:form>
+							<p:remoteCommand  name="makeThePayment" action="#{courseBean.payForthisCourse()}" />
+							</h:form>
+						<!-- 	
+							<p:commandLink style="background-color: #e06b6b;"  onclick="payNow();"  class="btn btn-default btn-dark btn-medium btn-square">Done the enrollment</p:commandLink>
+							 -->
 							</div>
 							
 							<p:commandLink style="background-color: #e06b6b;display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}"  action="#{courseBean.cancelTheEnroll(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Cancel the enrollment</p:commandLink>
@@ -100,6 +107,18 @@
 					</div>
 				</div>
 				
+				<script>
+				function payNow(){
+					showDim();
+					var delayInMilliseconds = 500; //0.5 second
+
+					setTimeout(function() {
+					  makeThePayment();
+					}, delayInMilliseconds);
+					
+				}
+				
+				</script>
 
  
 				<div class="clearfix verticalTab item" data-aos="flip-right" data-aos-duration="1000" id="target">

@@ -122,6 +122,21 @@ public class courseRegAppServiceImpl implements IcourseRegAppService{
 				return null;
 			}
 	}
+
+	@Override
+	public courseReg getByMerchantOrderId(String marchantId) {
+		// TODO Auto-generated method stub
+				try{
+					courseReg so=courseRegRepository.getByMerchantOrderId(marchantId);
+					
+					return so;
+					}
+					catch(Exception ex)
+					{
+						ex.printStackTrace();
+						return null;
+					}
+	}
 	
 }
 		

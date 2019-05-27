@@ -43,6 +43,10 @@ import main.com.zc.services.domain.courses.course;
 	@NamedQuery(name="courseReg.getBycourseId",
 	query = "from courseReg d where d.courseId = :courseId"
 			)
+	,
+	@NamedQuery(name="courseReg.getByMerchantOrderId",
+	query = "from courseReg d where d.merchant_Order_ID = :merchant_Order_ID"
+			)
 	
 	,
 	@NamedQuery(name="courseReg.getBystudentAndCourseId",
@@ -74,6 +78,13 @@ public class courseReg {
 	@Column(name = "date")
 	private Calendar date;
 
+
+	public static int Register_but_NotPay_the_Fees=0;
+	public static int pay_the_First_Fees=1;
+	public static int pay_the_Final_Fees=2;
+	public static int Take_the_Course_And_Finish=3;
+	public static int cancell_the_Enrollement=4;
+	
 	/*
 	 * 0 register but not pay the first fees
 	 * 1 pay the first fees
@@ -83,6 +94,12 @@ public class courseReg {
 	 */
 	@Column(name = "state")
 	private Integer state;
+	
+	@Column(name = "amount_cents")
+	private Integer amount_cents;
+	
+	@Column(name = "merchant_Order_ID")
+	private String merchant_Order_ID;
 	
 	public Integer getId() {
 		return id;
@@ -125,6 +142,16 @@ public class courseReg {
 		this.state = state;
 	}
 	
+	
+	
+	public String getMerchant_Order_ID() {
+		return merchant_Order_ID;
+	}
+
+	public void setMerchant_Order_ID(String merchant_Order_ID) {
+		this.merchant_Order_ID = merchant_Order_ID;
+	}
+
 	public String getTheStatuesOfForm() {
 		String statueString="";
 		
@@ -134,11 +161,11 @@ public class courseReg {
 			break;
 			
 		case 1:
-			statueString="Pay the deposite fees";
+			statueString="Payed the deposite fees";
 			break;
 			
 		case 2:
-			statueString="Pay the total Fees";
+			statueString="Payed the total Fees";
 			break;
 			
 		case 3:
@@ -157,5 +184,15 @@ public class courseReg {
 		return statueString;
 		
 	}
+
+	public Integer getAmount_cents() {
+		return amount_cents;
+	}
+
+	public void setAmount_cents(Integer amount_cents) {
+		this.amount_cents = amount_cents;
+	}
+	
+	
 	
 }

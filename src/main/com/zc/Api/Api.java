@@ -8,11 +8,14 @@ import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
 import flexjson.JSONSerializer;
+import helpers.retrofit.Models.Inputs.TransactionDao;
 import main.com.zc.allRegisterations.courseReg;
 import main.com.zc.allRegisterations.courseRegAppServiceImpl;
 import main.com.zc.allRegisterations.courseRegDao;
@@ -26,7 +29,7 @@ import main.com.zc.services.domain.courses.CourseAppServiceImpl;
 import main.com.zc.services.domain.courses.CourseDao;
 import main.com.zc.services.domain.courses.course;
 import main.com.zc.tools.ConverterToEntity;
-@RestController
+@Controller
 @RequestMapping("/Api")
 public class Api {
  
@@ -67,6 +70,8 @@ public class Api {
 
         	return new ResponseEntity<>(" ", HttpStatus.OK);
     	}
+    	
+    	System.out.println("Hi: "+name);
     	return new ResponseEntity<>(" Hi : "+name, HttpStatus.OK);
     }
     
@@ -176,6 +181,31 @@ public class Api {
     	courseRegFacade.addcourseReg(courseReg);
     	
     	return new ResponseEntity<>("{\"statue\":\"Ok\"}", HttpStatus.CREATED); 
+    }
+    
+    
+    @RequestMapping(value = "/comfirmPayment", method = RequestMethod.POST , produces = "application/json",consumes = "application/json")
+    public ResponseEntity<String> setComfirmPayment(@RequestBody TransactionDao TRANSACTION) {
+    	
+       String MarchentId=TRANSACTION.getObj().getOrder().getMerchant_order_id();
+       int price = TRANSACTION.getObj().getOrder().getAmount_cents();
+       System.out.println("MarchId: "+MarchentId);
+       courseReg courseRegObj = courseRegFacade.getByMerchantOrderId(MarchentId);
+       if(courseRegObj!=null) {
+    	   if(courseRegObj.getAmount_cents()==null) {
+
+    	       courseRegObj.setAmount_cents(price);
+    	   }else {
+
+    	       courseRegObj.setAmount_cents(courseRegObj.getAmount_cents()+price);
+    	   }
+       courseRegObj.setState(courseReg.pay_the_Final_Fees);
+
+       courseRegFacade.addcourseReg(courseRegObj);
+       return new ResponseEntity<>("{\"statue\":\"Ok\"}", HttpStatus.CREATED); 
+       }else {
+       	return new ResponseEntity<>("{\"statue\":\"False\"}", HttpStatus.CREATED);    
+       }
     }
     
     @RequestMapping(value = "/courseRegData",method = RequestMethod.POST)

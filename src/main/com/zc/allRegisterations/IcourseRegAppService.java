@@ -17,5 +17,6 @@ public interface IcourseRegAppService {
 	public courseReg getByIdStudentandCourseId(int idstudent,int idcourse);
 	public courseReg addcourseReg(courseReg clo);
 	public courseReg getById(int id);
+	public courseReg getByMerchantOrderId(String marchantId);
 	public boolean delete(courseReg so);
 }

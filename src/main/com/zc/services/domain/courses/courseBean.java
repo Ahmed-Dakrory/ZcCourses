@@ -1,16 +1,17 @@
 package main.com.zc.services.domain.courses;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
-
+import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
-
 import org.primefaces.PrimeFaces;
 
 import main.com.zc.allRegisterations.courseReg;
@@ -18,8 +19,16 @@ import main.com.zc.allRegisterations.courseRegAppServiceImpl;
 import main.com.zc.loginNeeds.loginBean;
 import main.com.zc.services.domain.courses.CourseAppServiceImpl;
 import main.com.zc.services.domain.courses.course;
-
-
+import main.com.zc.tools.Constants;
+import retrofit2.Call;
+import helpers.retrofit.Models.Inputs.Apikey;
+import helpers.retrofit.Models.Inputs.OrderDetails;
+import helpers.retrofit.Models.Inputs.paymentKey;
+import helpers.retrofit.Models.Outputs.Authentication;
+import helpers.retrofit.Models.Outputs.OrderOutDetails;
+import helpers.retrofit.Models.Outputs.TokenForgenerateFrame;
+import helpers.retrofit.mainFiles.APIClient;
+import helpers.retrofit.mainFiles.APIInterface;
 
 
 @ManagedBean(name = "courseBean")
@@ -50,10 +59,21 @@ public class courseBean implements Serializable{
 	@ManagedProperty(value = "#{courseRegFacadeImpl}")
 	private courseRegAppServiceImpl registerCourseFasade;
 	 
+	APIInterface apiInterface;
+
+	private String tokenString;
+	
+	
+	FacesContext cs;
+	ExternalContext xCx;
+	
+	
 	@PostConstruct
 	public void init() {
 		refreshPage();
-		
+		 apiInterface = APIClient.getClient().create(APIInterface.class);
+			cs = FacesContext.getCurrentInstance();
+			xCx=cs.getExternalContext();
 	}
 	
 	public void dismissDialog(){
@@ -149,8 +169,135 @@ public class courseBean implements Serializable{
 	}
 	
 	
+	public void payForthisCourse() {
+		courseReg theRegCourse=registerCourseFasade.getByIdStudentandCourseId(loginBean.getTheUserOfThisAccount().getId(), thecourseSelected.getId());
+	
+		try {
+			
+			String uniqueID = UUID.randomUUID().toString();
+			sendGet(uniqueID,theRegCourse.getCourseId().getPrice());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
+	// HTTP GET request
+	public void sendGet(String merchant_Order_ID,int price) throws Exception {
+		courseReg theRegCourse=registerCourseFasade.getByIdStudentandCourseId(loginBean.getTheUserOfThisAccount().getId(), thecourseSelected.getId());
+		
+		theRegCourse.setMerchant_Order_ID(merchant_Order_ID);
+		registerCourseFasade.addcourseReg(theRegCourse);
+					MakePurchase(merchant_Order_ID,price);
 
-	public void refreshPage(){
+			
+
+		}
+		
+
+		public void MakePurchase(String courseRegID,int price){
+
+			Apikey key=new Apikey(Constants.api_key);
+
+		
+		       
+	        Call<Authentication> call = apiInterface.performAuthenticationToGetToken(key);
+	        try {
+				Authentication resource= call.execute().body();
+				
+				boolean active = resource.profile.active;
+                String token = resource.token;
+                Integer merchant_id = resource.profile.merchant_id;
+                String courseReg_ID = String.valueOf(courseRegID);
+               if(active) {
+            	   callOrder(token, merchant_id, price, "EGP", courseReg_ID);
+               }else {
+            	   System.out.println("Account Deactive");   
+               }
+                
+                
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	       
+		}
+
+		public void callOrder(String auth_token, Integer merchant_id, Integer amount_cents, String currency,
+				String merchant_order_id) {
+			OrderDetails order=new OrderDetails(auth_token, merchant_id, amount_cents, currency, merchant_order_id);
+
+		       
+	        Call<OrderOutDetails> call = apiInterface.performOrder(order);
+	        try {
+				OrderOutDetails resource =call.execute().body();
+				if(resource!=null) {
+            		String dateString = resource.created_at;
+            		Integer orderId = resource.order_id;
+
+	            	   System.out.println("dateString: "+dateString);
+	            	   System.out.println("orderId: "+orderId);   
+                
+	            	   getTokenForFrame(auth_token, amount_cents, orderId, currency, Constants.INTEGRATION_ID1);  
+            	}
+                
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	       
+		}
+
+		public void getTokenForFrame(String auth_token, Integer amount_cents, Integer order_id, String currency,
+				Integer integration_id) {
+			
+			String apartment="Empty";
+			String email=loginBean.getTheUserOfThisAccount().getEmail();
+			String floor="Empty";
+			String first_name=loginBean.getTheUserOfThisAccount().getFullName();
+			String street="Empty";
+			String building="Empty";
+			String phone_number=loginBean.getTheUserOfThisAccount().getMobile();
+			String shipping_method="Empty";
+			String postal_code="Empty";
+			String city="Empty";
+			String country="Empty";
+			String last_name=".";
+			String state="Empty";
+			paymentKey paymentKey=new paymentKey(auth_token, amount_cents, order_id, currency, integration_id, apartment, email, floor, first_name, street, building, phone_number, shipping_method, postal_code, city, country, last_name, state);
+
+		       
+	        Call<TokenForgenerateFrame> call = apiInterface.paymentKeyRequest(paymentKey);
+	        
+	        
+			try {
+				TokenForgenerateFrame resource = call.execute().body();
+				if(resource!=null) {
+	        		 tokenString = resource.token;
+	        		
+	        		 try {
+	     				xCx.redirect("/pages/public/pay.jsf");
+	     				PrimeFaces.current().executeScript("stopDim();");
+	     			} catch (IOException e) {
+	     				// TODO Auto-generated catch block
+	     				e.printStackTrace();
+	     			}	
+	        	}
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        	
+	        
+	        
+		}
+	
+		public void refreshPage(){
 		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("enrollmentPanel");
 		HttpServletRequest origRequest = (HttpServletRequest)FacesContext
 				.getCurrentInstance()
@@ -221,6 +368,14 @@ public class courseBean implements Serializable{
 
 	public void setSelectedCourseId(int selectedCourseId) {
 		this.selectedCourseId = selectedCourseId;
+	}
+
+	public String getTokenString() {
+		return tokenString;
+	}
+
+	public void setTokenString(String tokenString) {
+		this.tokenString = tokenString;
 	}
 
 	

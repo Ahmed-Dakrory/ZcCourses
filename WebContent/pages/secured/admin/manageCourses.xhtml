@@ -83,7 +83,7 @@
 							
 							<p:column class="manageTableRow" id="image" headerText="course Image" >
 							
-								<h:graphicImage value="#{row.getphoto()}" style="margin-left:35%;"  class="circularImage" alt=""/>
+								<h:graphicImage value="/images/?file=#{row.getImage()}" style="margin-left:35%;"  class="circularImage" alt=""/>
 							</p:column>
 							
 							<p:column class="manageTableRow" headerText="Action" >
@@ -143,7 +143,7 @@
 						        <h:panelGroup  id="img">
 						        <label for="dialogForm:imageForm:file-input_input">
 						        
-									<h:graphicImage value="#{manageCourseBean.imageOfCourse}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{manageCourseBean.imageUploadedVisib()};"  class="circularImage" alt=""/>
+									<h:graphicImage value="/images/?file=#{manageCourseBean.imageOfCourse}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{manageCourseBean.imageUploadedVisib()};"  class="circularImage" alt=""/>
 									<h:graphicImage name="images/uploadButton.png" style="   border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none; display: #{manageCourseBean.imageUploadedVisibNot()};"  class="circularImage" alt=""/>
 									<h:graphicImage name="images/uploadButton.png" style="top:-30px;left:45px;position:relative;border-style: solid;border-color: #a5a1a1;border-width: 1px; width:36px;height:36px;pointer-events: none;  "  class=" circularImage" alt=""/>
 								</label>
@@ -253,7 +253,7 @@
 						        <h:panelGroup  id="img">
 						        <label for="dialogFormSelected:imageFormSelected:file-inputSelected_input">
 						        
-									<h:graphicImage value="#{manageCourseBean.imageOfCourseSelected}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{manageCourseBean.imageUploadedVisibSelected()};"  class="circularImage" alt=""/>
+									<h:graphicImage value="/images/?file=#{manageCourseBean.imageOfCourseSelected}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{manageCourseBean.imageUploadedVisibSelected()};"  class="circularImage" alt=""/>
 									<h:graphicImage name="images/uploadButton.png" style="   border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none; display: #{manageCourseBean.imageUploadedVisibNotSelected()};"  class="circularImage" alt=""/>
 									<h:graphicImage name="images/uploadButton.png" style="top:-30px;left:45px;position:relative;border-style: solid;border-color: #a5a1a1;border-width: 1px; width:36px;height:36px;pointer-events: none;  "  class=" circularImage" alt=""/>
 								</label>

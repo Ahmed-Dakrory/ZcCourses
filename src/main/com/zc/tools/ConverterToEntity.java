@@ -44,7 +44,7 @@ public class ConverterToEntity {
 		dao.setCategories(course.getCategories());
 		dao.setDescription(course.getDescription());	
 		dao.setIdProgram(course.getIdProgram());
-		dao.setImage(course.getphoto());
+		dao.setImage(course.getImage());
 		dao.setName(course.getName());
 		dao.setPrice(course.getPrice());
 		
@@ -55,7 +55,7 @@ public class ConverterToEntity {
 		ProgramDao dao=new ProgramDao();
 		dao.setId(program.getId());
 		dao.setDescription(program.getDescription());
-		dao.setImage(program.getphoto());
+		dao.setImage(program.getImg());
 		dao.setName(program.getName());
 		return dao;
 	}

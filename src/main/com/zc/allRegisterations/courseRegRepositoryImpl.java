@@ -122,7 +122,15 @@ public class courseRegRepositoryImpl implements courseRegRepository{
 
 				 @SuppressWarnings("unchecked")
 				List<courseReg> results=query.list();
-				   return results.get(results.size()-1);
+				if(results!=null) {
+					if(results.size()!=0) {
+						return results.get(results.size()-1);
+					}else {
+						return null;
+					}
+				}else {
+					return null;
+				}
 	}
 
 }

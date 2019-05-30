@@ -7,10 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import org.apache.commons.codec.binary.Base64;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
@@ -57,8 +55,7 @@ public class course {
 	private Integer price;
 	
 	@Column(name="image")
-	@Lob
-	private byte[] image;
+	private String image;
 	
 	@Column(name = "idProgram")
 	private Integer idProgram;
@@ -94,15 +91,16 @@ public class course {
 		this.description = description;
 	}
 
-	public byte[] getImage() {
+	
+	
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
-	
 	public Integer getPrice() {
 		return price;
 	}
@@ -138,18 +136,6 @@ public class course {
 		this.payLink = payLink;
 	}
 
-	public String getphoto() {
-		if(image!=null){
-
-			String imageString= new String(Base64.encodeBase64(image));
-
-			return "data:image/png;base64, "+imageString;
-		}else{
-			
-			String imageString="images/comment-img.jpg";
-			return imageString;
-		}
-		
-	}
+	
 	
 }

@@ -1,5 +1,9 @@
 package main.com.zc.admin.AddCourse;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
+import javax.imageio.ImageIO;
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.FileUploadEvent;
 
@@ -75,16 +79,44 @@ public class manageCourseBean implements Serializable{
 		System.out.println("All list = "+courses.size());
 	}
 	
+	public String saveImageToDirectory(byte[] image,String directory) {
+		String fileName="";
+		try {
+			File file=File.createTempFile("img", ".png", new File(directory));
+		      byte [] data = image;
+		      ByteArrayInputStream bis = new ByteArrayInputStream(data);
+		      BufferedImage bImage2;
+			bImage2 = ImageIO.read(bis);
+			ImageIO.write(bImage2, "png", file );
+			fileName=file.getName();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return fileName;
+	      
+	}
 	
 	public void previewImage(FileUploadEvent event) {
 
-		System.out.println("Dakrory    :File");
+		
 		/* FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 		*/
+	
+		
+		
 		this.imageOfCoursebyte = event.getFile().getContents();
+		
+		
+		
+		
+		//and then forward to your JSP
+		String fileName = saveImageToDirectory(this.imageOfCoursebyte,System.getProperty("catalina.base")+"/images/");
+		System.out.println("FileName: "+fileName);
 //Set The image to the object
-		courseNew.setImage(imageOfCoursebyte);
+		courseNew.setImage(fileName);
 		
 		imageUploaded=true;
 		setImageDependOnRegisterationImageState();
@@ -99,8 +131,11 @@ public class manageCourseBean implements Serializable{
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 		*/
 		this.imageOfCoursebyteSelected = event.getFile().getContents();
+		//and then forward to your JSP
+				String fileName = saveImageToDirectory(this.imageOfCoursebyteSelected,System.getProperty("catalina.base")+"/images/");
+				
 //Set The image to the object
-		selectedCourse.setImage(imageOfCoursebyteSelected);
+		selectedCourse.setImage(fileName);
 		
 		imageUploadedSelected=true;
 		setImageDependOnRegisterationImageStateSelected();
@@ -110,19 +145,20 @@ public class manageCourseBean implements Serializable{
 	
 	void setImageDependOnRegisterationImageState(){
 		if(imageUploaded){
-			imageOfCourse=courseNew.getphoto();
+			imageOfCourse=courseNew.getImage();
+			System.out.println(imageOfCourse);
 		}else{
 			
-			imageOfCourse="images/uploadButton.png";
+			imageOfCourse="uploadButton.png";
 		}
 	}
 	
 	void setImageDependOnRegisterationImageStateSelected(){
 		if(imageUploadedSelected){
-			imageOfCourseSelected=selectedCourse.getphoto();
+			imageOfCourseSelected=selectedCourse.getImage();
 		}else{
 			
-			imageOfCourseSelected="images/uploadButton.png";
+			imageOfCourseSelected="uploadButton.png";
 		}
 	}
 	

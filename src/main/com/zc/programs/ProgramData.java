@@ -4,10 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import org.apache.commons.codec.binary.Base64;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
@@ -50,8 +48,7 @@ public class ProgramData {
 	
 	
 	@Column(name="img")
-	@Lob
-	private byte[] img;
+	private String img;
 
 	public Integer getId() {
 		return id;
@@ -77,20 +74,14 @@ public class ProgramData {
 		this.description = description;
 	}
 
-	public byte[] getImg() {
+	public String getImg() {
 		return img;
 	}
 
-	public void setImg(byte[] img) {
+	public void setImg(String img) {
 		this.img = img;
 	}
 
 	
-	public String getphoto() {
-		String imageString= new String(Base64.encodeBase64(img));
-
-		return "data:image/png;base64, "+imageString;
-		
-	}
-
+	
 }

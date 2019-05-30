@@ -200,10 +200,11 @@ public class Api {
     	       courseRegObj.setAmount_cents(courseRegObj.getAmount_cents()+price);
     	   }
        courseRegObj.setState(courseReg.pay_the_Final_Fees);
-
+       System.out.println("Done Ahmed: Comfirmed");
        courseRegFacade.addcourseReg(courseRegObj);
        return new ResponseEntity<>("{\"statue\":\"Ok\"}", HttpStatus.CREATED); 
        }else {
+           System.out.println("Done Ahmed: Not Comfirmed");
        	return new ResponseEntity<>("{\"statue\":\"False\"}", HttpStatus.CREATED);    
        }
     }

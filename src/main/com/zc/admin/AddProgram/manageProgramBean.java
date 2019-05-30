@@ -1,5 +1,9 @@
 package main.com.zc.admin.AddProgram;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.imageio.ImageIO;
 
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.FileUploadEvent;
@@ -68,6 +73,27 @@ public class manageProgramBean implements Serializable{
 	}
 	
 	
+	
+	public String saveImageToDirectory(byte[] image,String directory) {
+		String fileName="";
+		try {
+			File file=File.createTempFile("img", ".png", new File(directory));
+		      byte [] data = image;
+		      ByteArrayInputStream bis = new ByteArrayInputStream(data);
+		      BufferedImage bImage2;
+			bImage2 = ImageIO.read(bis);
+			ImageIO.write(bImage2, "png", file );
+			fileName=file.getName();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return fileName;
+	      
+	}
+	
+	
 	public void previewImage(FileUploadEvent event) {
 
 		System.out.println("Dakrory    :File");
@@ -75,8 +101,11 @@ public class manageProgramBean implements Serializable{
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 		*/
 		this.imageOfProgrambyte = event.getFile().getContents();
+		
+
+		String fileName = saveImageToDirectory(this.imageOfProgrambyte,System.getProperty("catalina.base")+"/images/");
 //Set The image to the object
-		programNew.setImg(imageOfProgrambyte);
+		programNew.setImg(fileName);
 		
 		imageUploaded=true;
 		setImageDependOnRegisterationImageState();
@@ -86,10 +115,10 @@ public class manageProgramBean implements Serializable{
 	
 	void setImageDependOnRegisterationImageState(){
 		if(imageUploaded){
-			imageOfProgram=programNew.getphoto();
+			imageOfProgram=programNew.getImg();
 		}else{
 			
-			imageOfProgram="images/uploadButton.png";
+			imageOfProgram="uploadButton.png";
 		}
 	}
 	

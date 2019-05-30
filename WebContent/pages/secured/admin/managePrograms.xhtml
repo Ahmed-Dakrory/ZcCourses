@@ -110,7 +110,7 @@
 							
 							<p:column class="manageTableRow" id="image" headerText="Program Image" >
 							
-								<h:graphicImage value="#{row.getphoto()}" style="margin-left:35%;"  class="circularImage" alt=""/>
+								<h:graphicImage value="/images/?file=#{row.getImg()}" style="margin-left:35%;"  class="circularImage" alt=""/>
 							</p:column>
 							
 							<p:column class="manageTableRow" headerText="Action" >
@@ -168,7 +168,7 @@
 						        <h:panelGroup  id="img">
 						        <label for="dialogForm:imageForm:file-input_input">
 						        
-									<h:graphicImage value="#{manageProgramBean.imageOfProgram}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{manageProgramBean.imageUploadedVisib()};"  class="circularImage" alt=""/>
+									<h:graphicImage value="/images/?file=#{manageProgramBean.imageOfProgram}" style="border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none;display: #{manageProgramBean.imageUploadedVisib()};"  class="circularImage" alt=""/>
 									<h:graphicImage name="images/uploadButton.png" style="   border-style: solid;border-color: #a5a1a1;border-width: 1px; width:120px;height:120px;pointer-events: none; display: #{manageProgramBean.imageUploadedVisibNot()};"  class="circularImage" alt=""/>
 									<h:graphicImage name="images/uploadButton.png" style="top:-30px;left:45px;position:relative;border-style: solid;border-color: #a5a1a1;border-width: 1px; width:36px;height:36px;pointer-events: none;  "  class=" circularImage" alt=""/>
 								</label>

@@ -58,6 +58,7 @@ public class TransactionDao {
 		private boolean is_refund;
 		private data data;
 		private boolean is_hidden;
+		private payment_key_claims payment_key_claims;
 		private boolean error_occured;
 		private boolean is_live;
 		private String other_endpoint_reference;
@@ -684,6 +685,242 @@ public class TransactionDao {
 		
 		}
 	
+		public class payment_key_claims{
+
+			private boolean lock_order_when_paid;
+			private Integer order_id;
+			private Integer integration_id;
+			private String currency;
+			private String pmk_ip;
+			private Integer amount_cents;
+			private Integer exp;
+			
+			private billing_data billing_data;
+			//private order2 order;
+			private Integer user_id;
+			
+			
+			public class billing_data{
+
+				private String state;
+				private String postal_code;
+				private String floor;
+				private String building;
+				private String extra_description;
+				private String country;
+				private String last_name;
+				private String street;
+				private String first_name;
+				
+				private String apartment;
+				private String city;
+				private String email;
+				private String phone_number;
+				public String getApartment() {
+					return apartment;
+				}
+				public void setApartment(String apartment) {
+					this.apartment = apartment;
+				}
+				public String getBuilding() {
+					return building;
+				}
+				public void setBuilding(String building) {
+					this.building = building;
+				}
+				public String getCity() {
+					return city;
+				}
+				public void setCity(String city) {
+					this.city = city;
+				}
+				public String getCountry() {
+					return country;
+				}
+				public void setCountry(String country) {
+					this.country = country;
+				}
+				public String getEmail() {
+					return email;
+				}
+				public void setEmail(String email) {
+					this.email = email;
+				}
+				public String getExtra_description() {
+					return extra_description;
+				}
+				public void setExtra_description(String extra_description) {
+					this.extra_description = extra_description;
+				}
+				public String getFirst_name() {
+					return first_name;
+				}
+				public void setFirst_name(String first_name) {
+					this.first_name = first_name;
+				}
+				public String getFloor() {
+					return floor;
+				}
+				public void setFloor(String floor) {
+					this.floor = floor;
+				}
+				public String getLast_name() {
+					return last_name;
+				}
+				public void setLast_name(String last_name) {
+					this.last_name = last_name;
+				}
+				public String getPhone_number() {
+					return phone_number;
+				}
+				public void setPhone_number(String phone_number) {
+					this.phone_number = phone_number;
+				}
+				public String getPostal_code() {
+					return postal_code;
+				}
+				public void setPostal_code(String postal_code) {
+					this.postal_code = postal_code;
+				}
+				public String getState() {
+					return state;
+				}
+				public void setState(String state) {
+					this.state = state;
+				}
+				public String getStreet() {
+					return street;
+				}
+				public void setStreet(String street) {
+					this.street = street;
+				}
+				
+				
+			}
+			
+			public class order2{
+				private Integer amount_cents;
+				private String currency;
+				private boolean delivery_needed;
+				private List<String> items;
+				private String merchant_order_id;
+				public Integer getAmount_cents() {
+					return amount_cents;
+				}
+				public void setAmount_cents(Integer amount_cents) {
+					this.amount_cents = amount_cents;
+				}
+				public String getCurrency() {
+					return currency;
+				}
+				public void setCurrency(String currency) {
+					this.currency = currency;
+				}
+				public boolean isDelivery_needed() {
+					return delivery_needed;
+				}
+				public void setDelivery_needed(boolean delivery_needed) {
+					this.delivery_needed = delivery_needed;
+				}
+				public List<String> getItems() {
+					return items;
+				}
+				public void setItems(List<String> items) {
+					this.items = items;
+				}
+				public String getMerchant_order_id() {
+					return merchant_order_id;
+				}
+				public void setMerchant_order_id(String merchant_order_id) {
+					this.merchant_order_id = merchant_order_id;
+				}
+			
+				
+				
+				
+			}
+
+			public Integer getAmount_cents() {
+				return amount_cents;
+			}
+
+			public void setAmount_cents(Integer amount_cents) {
+				this.amount_cents = amount_cents;
+			}
+
+			public billing_data getBilling_data() {
+				return billing_data;
+			}
+
+			public void setBilling_data(billing_data billing_data) {
+				this.billing_data = billing_data;
+			}
+
+			public String getCurrency() {
+				return currency;
+			}
+
+			public void setCurrency(String currency) {
+				this.currency = currency;
+			}
+
+			public Integer getIntegration_id() {
+				return integration_id;
+			}
+
+			public void setIntegration_id(Integer integration_id) {
+				this.integration_id = integration_id;
+			}
+
+			
+
+			public Integer getUser_id() {
+				return user_id;
+			}
+
+			public void setUser_id(Integer user_id) {
+				this.user_id = user_id;
+			}
+
+			public boolean isLock_order_when_paid() {
+				return lock_order_when_paid;
+			}
+
+			public void setLock_order_when_paid(boolean lock_order_when_paid) {
+				this.lock_order_when_paid = lock_order_when_paid;
+			}
+
+			public Integer getOrder_id() {
+				return order_id;
+			}
+
+			public void setOrder_id(Integer order_id) {
+				this.order_id = order_id;
+			}
+
+			public String getPmk_ip() {
+				return pmk_ip;
+			}
+
+			public void setPmk_ip(String pmk_ip) {
+				this.pmk_ip = pmk_ip;
+			}
+
+			public Integer getExp() {
+				return exp;
+			}
+
+			public void setExp(Integer exp) {
+				this.exp = exp;
+			}
+			
+			
+			
+			
+		}
+
+		
+		
 		
 		
 		
@@ -873,7 +1110,16 @@ public class TransactionDao {
 		public void setIs_hidden(boolean is_hidden) {
 			this.is_hidden = is_hidden;
 		}
-public boolean isError_occured() {
+
+		public payment_key_claims getPayment_key_claims() {
+			return payment_key_claims;
+		}
+
+		public void setPayment_key_claims(payment_key_claims payment_key_claims) {
+			this.payment_key_claims = payment_key_claims;
+		}
+
+		public boolean isError_occured() {
 			return error_occured;
 		}
 

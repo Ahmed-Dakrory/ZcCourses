@@ -197,7 +197,7 @@ public class Api {
     	       courseRegObj.setAmount_cents(price);
     	   }else {
 
-    	       courseRegObj.setAmount_cents(courseRegObj.getAmount_cents()+price);
+    	       courseRegObj.setAmount_cents(courseRegObj.getAmount_cents()+price/100);
     	   }
        courseRegObj.setState(courseReg.pay_the_Final_Fees);
        System.out.println("Done Ahmed: Comfirmed");

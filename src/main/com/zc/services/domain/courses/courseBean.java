@@ -62,7 +62,7 @@ public class courseBean implements Serializable{
 	APIInterface apiInterface;
 
 	private String tokenString;
-	
+	private courseReg courseRegSelected;
 	
 	FacesContext cs;
 	ExternalContext xCx;
@@ -105,16 +105,16 @@ public class courseBean implements Serializable{
 		if(loginBean.isLoggedIn()){
 			
 			
-			courseReg courseReg = registerCourseFasade.getByIdStudentandCourseId(loginBean.getTheUserOfThisAccount().getId(), courseId);
+			courseRegSelected = registerCourseFasade.getByIdStudentandCourseId(loginBean.getTheUserOfThisAccount().getId(), courseId);
 			if(state==0){
-				if(courseReg!=null&&courseReg.getState()!=4){
+				if(courseRegSelected!=null&&courseRegSelected.getState()!=4){
 					//He is registered
 					return "none";
 				}else{
 					return "block";
 				}
 			}else if(state == 1){
-				if(courseReg!=null&&courseReg.getState()!=4){
+				if(courseRegSelected!=null&&courseRegSelected.getState()!=4){
 					//He is registered
 					return "block";
 				}else{
@@ -170,12 +170,11 @@ public class courseBean implements Serializable{
 	
 	
 	public void payForthisCourse() {
-		courseReg theRegCourse=registerCourseFasade.getByIdStudentandCourseId(loginBean.getTheUserOfThisAccount().getId(), thecourseSelected.getId());
-	
+		
 		try {
 			
 			String uniqueID = UUID.randomUUID().toString();
-			sendGet(uniqueID,theRegCourse.getCourseId().getPrice());
+			sendGet(uniqueID,courseRegSelected.getCourseId().getPrice()*100);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -189,10 +188,9 @@ public class courseBean implements Serializable{
 	
 	// HTTP GET request
 	public void sendGet(String merchant_Order_ID,int price) throws Exception {
-		courseReg theRegCourse=registerCourseFasade.getByIdStudentandCourseId(loginBean.getTheUserOfThisAccount().getId(), thecourseSelected.getId());
 		
-		theRegCourse.setMerchant_Order_ID(merchant_Order_ID);
-		registerCourseFasade.addcourseReg(theRegCourse);
+		courseRegSelected.setMerchant_Order_ID(merchant_Order_ID);
+		registerCourseFasade.addcourseReg(courseRegSelected);
 					MakePurchase(merchant_Order_ID,price);
 
 			
@@ -310,7 +308,10 @@ public class courseBean implements Serializable{
 					thecourseSelected=courseFasade.getById(id);
 			  		selectedCourseId=thecourseSelected.getId();
 			  		getCoursesRelatedToprogram(thecourseSelected.getIdProgram());
-					
+					if(loginBean.isLoggedIn()) {
+						courseRegSelected = registerCourseFasade.getByIdStudentandCourseId(loginBean.getTheUserOfThisAccount().getId(), selectedCourseId);
+						
+					}
 				}
 			}
 		catch(Exception ex){
@@ -376,6 +377,18 @@ public class courseBean implements Serializable{
 
 	public void setTokenString(String tokenString) {
 		this.tokenString = tokenString;
+	}
+
+	public courseReg getCourseRegSelected() {
+		return courseRegSelected;
+	}
+
+	public void setCourseRegSelected(courseReg courseRegSelected) {
+		this.courseRegSelected = courseRegSelected;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	

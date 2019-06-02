@@ -13,6 +13,7 @@
 
 
 	<ui:define name="content">
+	
 	#{courseBean.refreshPage()} 
 <style>
 .boxOFChoose{
@@ -74,17 +75,18 @@
 							
 							<p class="price big dark">#{courseBean.thecourseSelected.price} LE</p>
 							<p:outputPanel id="enrollmentPanel">
+							
 							<p:commandLink style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,0)}"  action="#{courseBean.enrollInCourse(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Enroll me in the course</p:commandLink>
 							
-							<p:outputLabel style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}">You are Enrolled</p:outputLabel>
+							<p:outputLabel rendered="#{courseBean.courseRegSelected.state==2?false:true}" style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}">You are Enrolled</p:outputLabel>
 							
 							
+							<h:panelGroup rendered="#{courseBean.courseRegSelected.state==2?false:true}">
 							<div class="boxOFChoose" style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}">
 							<p:outputLabel>Please note that your registration is not confirmed until you pay the deposit on the following link</p:outputLabel>
 							<br></br>
 							<br></br>
-							<a class="paybutn" onclick="payNow();" >Pay now</a>
-							
+							<img onclick="payNow();" src="/resources/images/payonline.jpg" style="    width: 144px;    border-radius: 10px;" alt="payonline"></img>
 							<h:form>
 							<p:remoteCommand  name="makeThePayment" action="#{courseBean.payForthisCourse()}" />
 							</h:form>
@@ -92,8 +94,14 @@
 							<p:commandLink style="background-color: #e06b6b;"  onclick="payNow();"  class="btn btn-default btn-dark btn-medium btn-square">Done the enrollment</p:commandLink>
 							 -->
 							</div>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{courseBean.courseRegSelected.state==2?true:false}">
+								<img src="/resources/images/done.png" alt="done" style="    width: 119px;"/><br></br>
+								<p:outputLabel >You pay #{courseBean.courseRegSelected.amount_cents} LE and you are Enrolled</p:outputLabel>
 							
-							<p:commandLink style="background-color: #e06b6b;display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}"  action="#{courseBean.cancelTheEnroll(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Cancel the enrollment</p:commandLink>
+							</h:panelGroup>
+							
+							<p:commandLink rendered="#{courseBean.courseRegSelected.state==2?false:true}" style="background-color: #e06b6b;display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}"  action="#{courseBean.cancelTheEnroll(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Cancel the enrollment</p:commandLink>
 							
 							
 							</p:outputPanel>

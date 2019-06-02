@@ -194,7 +194,7 @@ public class Api {
        if(courseRegObj!=null) {
     	   if(courseRegObj.getAmount_cents()==null) {
 
-    	       courseRegObj.setAmount_cents(price);
+    	       courseRegObj.setAmount_cents(price/100);
     	   }else {
 
     	       courseRegObj.setAmount_cents(courseRegObj.getAmount_cents()+price/100);

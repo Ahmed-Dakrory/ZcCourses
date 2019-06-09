@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -12,23 +13,25 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+
 import org.primefaces.PrimeFaces;
 
+import helpers.retrofit.Models.Inputs.Apikey;
+import helpers.retrofit.Models.Inputs.OrderDetails;
+import helpers.retrofit.Models.Inputs.payKiosk;
+import helpers.retrofit.Models.Inputs.paymentKey;
+import helpers.retrofit.Models.Outputs.Authentication;
+import helpers.retrofit.Models.Outputs.KioskOutput;
+import helpers.retrofit.Models.Outputs.OrderOutDetails;
+import helpers.retrofit.Models.Outputs.TokenForgenerateFrame;
+import helpers.retrofit.Models.Outputs.WalletOutput;
+import helpers.retrofit.mainFiles.APIClient;
+import helpers.retrofit.mainFiles.APIInterface;
 import main.com.zc.allRegisterations.courseReg;
 import main.com.zc.allRegisterations.courseRegAppServiceImpl;
 import main.com.zc.loginNeeds.loginBean;
-import main.com.zc.services.domain.courses.CourseAppServiceImpl;
-import main.com.zc.services.domain.courses.course;
 import main.com.zc.tools.Constants;
 import retrofit2.Call;
-import helpers.retrofit.Models.Inputs.Apikey;
-import helpers.retrofit.Models.Inputs.OrderDetails;
-import helpers.retrofit.Models.Inputs.paymentKey;
-import helpers.retrofit.Models.Outputs.Authentication;
-import helpers.retrofit.Models.Outputs.OrderOutDetails;
-import helpers.retrofit.Models.Outputs.TokenForgenerateFrame;
-import helpers.retrofit.mainFiles.APIClient;
-import helpers.retrofit.mainFiles.APIInterface;
 
 
 @ManagedBean(name = "courseBean")
@@ -64,6 +67,7 @@ public class courseBean implements Serializable{
 	private String tokenString;
 	private courseReg courseRegSelected;
 	
+	private String phoneNumberPayment;
 	FacesContext cs;
 	ExternalContext xCx;
 	
@@ -169,36 +173,46 @@ public class courseBean implements Serializable{
 	}
 	
 	
-	public void payForthisCourse() {
-		
+	public void payForthisCourseTypeOnline(int type) {
+		if(!phoneNumberPayment.equals("")) {
 		try {
 			
 			String uniqueID = UUID.randomUUID().toString();
-			sendGet(uniqueID,courseRegSelected.getCourseId().getPrice()*100);
+			sendGet(type,uniqueID,courseRegSelected.getCourseId().getPrice()*100);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		}else {
+
+				PrimeFaces.current().executeScript("stopDim();");
+			//Please enter a valid phone number for the payment
+			PrimeFaces.current().executeScript("swal({\r\n" + 
+					"  title: \"Data Missing!\",\r\n" + 
+					"  text: \"Please enter a valid Mobile number!\",\r\n" + 
+					"  icon: \"warning\",\r\n" + 
+					"})\r\n" + 
+					";");
+		}
 	}
-	
-	
+
+
 	
 	
 	
 	// HTTP GET request
-	public void sendGet(String merchant_Order_ID,int price) throws Exception {
+	public void sendGet(int type, String merchant_Order_ID,int price) throws Exception {
 		
 		courseRegSelected.setMerchant_Order_ID(merchant_Order_ID);
 		registerCourseFasade.addcourseReg(courseRegSelected);
-					MakePurchase(merchant_Order_ID,price);
+					MakePurchase(type,merchant_Order_ID,price);
 
 			
 
 		}
 		
 
-		public void MakePurchase(String courseRegID,int price){
+		public void MakePurchase(int type, String courseRegID,int price){
 
 			Apikey key=new Apikey(Constants.api_key);
 
@@ -213,7 +227,7 @@ public class courseBean implements Serializable{
                 Integer merchant_id = resource.profile.merchant_id;
                 String courseReg_ID = String.valueOf(courseRegID);
                if(active) {
-            	   callOrder(token, merchant_id, price, "EGP", courseReg_ID);
+            	   callOrder(type, token, merchant_id, price, "EGP", courseReg_ID);
                }else {
             	   System.out.println("Account Deactive");   
                }
@@ -226,7 +240,7 @@ public class courseBean implements Serializable{
 	       
 		}
 
-		public void callOrder(String auth_token, Integer merchant_id, Integer amount_cents, String currency,
+		public void callOrder(int type,String auth_token, Integer merchant_id, Integer amount_cents, String currency,
 				String merchant_order_id) {
 			OrderDetails order=new OrderDetails(auth_token, merchant_id, amount_cents, currency, merchant_order_id);
 
@@ -240,8 +254,18 @@ public class courseBean implements Serializable{
 
 	            	   System.out.println("dateString: "+dateString);
 	            	   System.out.println("orderId: "+orderId);   
+                if(type==Constants.MethodOnline) {
+
+	            	   getTokenForFrame(type,auth_token, amount_cents, orderId, currency, Constants.INTEGRATION_ID_OnlineMethod);  
+                }else if(type==Constants.MethodKiosk) {
+
+	            	   getTokenForFrame(type,auth_token, amount_cents, orderId, currency, Constants.INTEGRATION_ID_Kiosk_Method);  
+                }else if(type==Constants.MethodWallet) {
+
+	            	   getTokenForFrame(type,auth_token, amount_cents, orderId, currency, Constants.INTEGRATION_ID_Wallet_Method);  
+                }
                 
-	            	   getTokenForFrame(auth_token, amount_cents, orderId, currency, Constants.INTEGRATION_ID1);  
+                
             	}
                 
 			} catch (IOException e) {
@@ -251,7 +275,7 @@ public class courseBean implements Serializable{
 	       
 		}
 
-		public void getTokenForFrame(String auth_token, Integer amount_cents, Integer order_id, String currency,
+		public void getTokenForFrame(int type, String auth_token, Integer amount_cents, Integer order_id, String currency,
 				Integer integration_id) {
 			
 			String apartment="Empty";
@@ -278,13 +302,32 @@ public class courseBean implements Serializable{
 				if(resource!=null) {
 	        		 tokenString = resource.token;
 	        		
-	        		 try {
-	     				xCx.redirect("/pages/public/pay.jsf");
-	     				PrimeFaces.current().executeScript("stopDim();");
-	     			} catch (IOException e) {
-	     				// TODO Auto-generated catch block
-	     				e.printStackTrace();
-	     			}	
+	        		 if(type==Constants.MethodOnline) {
+	        			 try {
+	 	     				xCx.redirect("/pages/public/pay.jsf");
+	 	     				PrimeFaces.current().executeScript("stopDim();");
+	 	     			} catch (IOException e) {
+	 	     				// TODO Auto-generated catch block
+	 	     				e.printStackTrace();
+	 	     			}
+	        		 }else if(type==Constants.MethodKiosk) {
+	        			 payKiosk kiosk=new payKiosk(Constants.Identifier,Constants.Identifier,tokenString);
+	        			 Call<KioskOutput> callKiosk = apiInterface.payKioskRequest(kiosk);
+	        			 KioskOutput outputKiosk=callKiosk.execute().body();
+	        			 System.out.println("callkiosk : "+outputKiosk.data.bill_reference);
+	 	     				PrimeFaces.current().executeScript("stopDim();");
+	 	     				
+	 	     				PrimeFaces.current().executeScript("swal(\"Check your email and Payment Details!\", \"your reference number: "+outputKiosk.data.bill_reference+"\", \"success\")");
+	        		 }else if(type==Constants.MethodWallet) {
+	        			 payKiosk wallet=new payKiosk(phoneNumberPayment,"WALLET",tokenString);
+	        			 Call<WalletOutput> callKiosk = apiInterface.payWalletRequest(wallet);
+	        			 WalletOutput outPutWallet=callKiosk.execute().body();
+	        			 System.out.println("call Wallet: "+outPutWallet.source_data.phone_number);
+	 	     				PrimeFaces.current().executeScript("stopDim();");
+	 	     				PrimeFaces.current().executeScript("swal(\"Payment Details!\", \"your phone number: "+outPutWallet.source_data.phone_number+"\", \"success\")");
+	 		        		 
+	        		 }
+	        		 
 	        	}
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -385,6 +428,15 @@ public class courseBean implements Serializable{
 
 	public void setCourseRegSelected(courseReg courseRegSelected) {
 		this.courseRegSelected = courseRegSelected;
+	}
+
+	
+	public String getPhoneNumberPayment() {
+		return phoneNumberPayment;
+	}
+
+	public void setPhoneNumberPayment(String phoneNumberPayment) {
+		this.phoneNumberPayment = phoneNumberPayment;
 	}
 
 	public static long getSerialversionuid() {

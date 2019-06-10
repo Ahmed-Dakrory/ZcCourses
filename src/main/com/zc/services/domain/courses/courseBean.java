@@ -174,7 +174,7 @@ public class courseBean implements Serializable{
 	
 	
 	public void payForthisCourseTypeOnline(int type) {
-		if(!phoneNumberPayment.equals("")) {
+		if(!phoneNumberPayment.equals("")||type==Constants.MethodOnline||type==Constants.MethodKiosk) {
 		try {
 			
 			String uniqueID = UUID.randomUUID().toString();

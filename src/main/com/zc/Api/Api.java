@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import flexjson.JSONSerializer;
 import helpers.retrofit.Models.Inputs.TransactionDao;
+import helpers.retrofit.Models.Inputs.TransactionDaoKiosk;
 import main.com.zc.allRegisterations.courseReg;
 import main.com.zc.allRegisterations.courseRegAppServiceImpl;
 import main.com.zc.allRegisterations.courseRegDao;
@@ -183,6 +184,31 @@ public class Api {
     	return new ResponseEntity<>("{\"statue\":\"Ok\"}", HttpStatus.CREATED); 
     }
     
+    @RequestMapping(value = "/comfirmPaymentKiosk", method = RequestMethod.POST , produces = "application/json",consumes = "application/json")
+    public ResponseEntity<String> setComfirmPaymentKiosk(@RequestBody TransactionDaoKiosk TRANSACTION) {
+    	
+       String MarchentId=TRANSACTION.getObj().getOrder().getMerchant_order_id();
+       int price = TRANSACTION.getObj().getOrder().getAmount_cents();
+       System.out.println("MarchId: "+MarchentId);
+       courseReg courseRegObj = courseRegFacade.getByMerchantOrderId(MarchentId);
+       if(courseRegObj!=null) {
+    	   if(courseRegObj.getAmount_cents()==null) {
+
+    	       courseRegObj.setAmount_cents(price/100);
+    	   }else {
+
+    	       courseRegObj.setAmount_cents(courseRegObj.getAmount_cents()+price/100);
+    	   }
+       courseRegObj.setState(courseReg.pay_the_Final_Fees);
+       System.out.println("Done Ahmed: Comfirmed");
+       courseRegFacade.addcourseReg(courseRegObj);
+       return new ResponseEntity<>("{\"statue\":\"Ok\"}", HttpStatus.CREATED); 
+       }else {
+           System.out.println("Done Ahmed: Not Comfirmed");
+       	return new ResponseEntity<>("{\"statue\":\"False\"}", HttpStatus.CREATED);    
+       }
+    }
+     
     
     @RequestMapping(value = "/comfirmPayment", method = RequestMethod.POST , produces = "application/json",consumes = "application/json")
     public ResponseEntity<String> setComfirmPayment(@RequestBody TransactionDao TRANSACTION) {

@@ -14,6 +14,7 @@
 
 	<ui:define name="content">
 	
+    <link rel="stylesheet" href="#{resource['css:styleTable.css']}" />
 	#{courseBean.refreshPage()} 
 <style>
 .boxOFChoose{
@@ -49,6 +50,10 @@
   background-image: linear-gradient(to bottom, #b6cddb, #3498db);
   text-decoration: none;
 }
+
+
+
+
 </style>
 
    <!--Start Content-->
@@ -81,27 +86,7 @@
 							<p:outputLabel rendered="#{courseBean.courseRegSelected.state==2?false:true}" style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}">You are Enrolled</p:outputLabel>
 							
 							
-							<h:panelGroup rendered="#{courseBean.courseRegSelected.state==2?false:true}">
-							<div class="boxOFChoose" style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}">
-							<p:outputLabel>Please note that your registration is not confirmed until you pay the deposit on the following link.<br></br><br></br>
-							Please enter your phone number</p:outputLabel>
-							<h:form>
-							<p:inputText value="#{courseBean.phoneNumberPayment}" id="phoneNumber"></p:inputText>
-							<br></br>
-							<br></br>
-							<img onclick="payNowOnline();" src="/resources/images/payonline.jpg" style="height: 74px;    width: 144px;    border-radius: 10px;" alt="payonline"/>
-							<img onclick="payNowKiosk();" src="/resources/images/kiosk.jpg" style=" height: 74px;   width: 144px;    border-radius: 10px;" alt="payonline1"/>
-							<img onclick="payNowWallet();" src="/resources/images/wallet.jpg" style=" height: 74px;   width: 144px;    border-radius: 10px;" alt="payonline2"/>
 							
-							<p:remoteCommand  name="makeThePaymentOnline" action="#{courseBean.payForthisCourseTypeOnline(1)}" />
-							<p:remoteCommand  name="makeThePaymentKiosk" action="#{courseBean.payForthisCourseTypeOnline(2)}" />
-							<p:remoteCommand  name="makeThePaymentWallet" action="#{courseBean.payForthisCourseTypeOnline(3)}" />
-							</h:form>
-						<!-- 	
-							<p:commandLink style="background-color: #e06b6b;"  onclick="payNow();"  class="btn btn-default btn-dark btn-medium btn-square">Done the enrollment</p:commandLink>
-							 -->
-							</div>
-							</h:panelGroup>
 							<h:panelGroup rendered="#{courseBean.courseRegSelected.state==2?true:false}">
 								<img src="/resources/images/done.png" alt="done" style="    width: 119px;"/><br></br>
 								<p:outputLabel >You pay #{courseBean.courseRegSelected.amount_cents} LE and you are Enrolled</p:outputLabel>
@@ -170,6 +155,132 @@
 					</div>
 				</div>
 				
+							<h:form>
+				
+				
+							<!-- Panel group start  for payment -->
+				<h:panelGroup rendered="#{courseBean.courseRegSelected.state==2?false:true}">
+							<div style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}">
+							
+							
+							
+							
+		
+		<div class="fl-builder-content fl-builder-content-7979 fl-builder-content-primary fl-builder-global-templates-locked" data-post-id="7979">
+		
+		
+<div class="fl-row fl-row-fixed-width fl-row-bg-none fl-node-5864d464aa7b5 fl-row-full-height fl-row-align-center" data-node="5864d464aa7b5">
+	<div class="fl-row-content-wrap">
+						<div class="fl-row-content fl-row-full-width fl-node-content">
+		
+<div class="fl-col-group fl-node-5864d464aa800" data-node="5864d464aa800">
+			<div class="fl-col fl-node-5864d464aa84b" data-node="5864d464aa84b">
+	<div class="fl-col-content fl-node-content">
+	<div class="fl-module fl-module-heading fl-node-586614529556a" data-node="586614529556a">
+	<div class="fl-module-content fl-node-content">
+		<h2 class="fl-heading">
+		<span class="fl-heading-text">Payments </span>
+	</h2>
+	</div>
+</div>
+<div class="fl-module fl-module-pricing-table fl-node-5864d464aa898 pricing-table-style-5" data-node="5864d464aa898">
+	<div class="fl-module-content fl-node-content">
+		
+<div class="fl-pricing-table fl-pricing-table-spacing-none fl-pricing-table-border-small fl-pricing-table-straight">
+		<div class="fl-pricing-table-col-3">
+		<div class="fl-pricing-table-column fl-pricing-table-column-0">
+			<div class="fl-pricing-table-inner-wrap">
+				<h2 class="fl-pricing-table-title">Online Payments</h2>
+				
+					<img src="/resources/images/payonline%20(1).jpg"/>
+				
+				<ul class="fl-pricing-table-features">
+										<li>Description</li>
+																<li>The online payment conatins credit and visa and most of the electronic cards.</li>
+															<li>Please note that your registration is not confirmed until you pay the deposit on the following link.</li>
+															
+															</ul>
+
+				<div onclick="payNowOnline();"  class="fl-button-wrap fl-button-width-auto fl-button-center">
+			<a class="fl-button" >
+							<span class="fl-button-text">Sign up</span>
+					</a>
+</div>
+
+				<br />
+
+			</div>
+		</div>
+	</div>
+		<div class="fl-pricing-table-col-3">
+		<div class="fl-pricing-table-column fl-pricing-table-column-1">
+			<div class="fl-pricing-table-inner-wrap">
+				<h2 class="fl-pricing-table-title">Wallet</h2>
+				<img src="/resources/images/wallet (1).jpg"/>
+				<ul class="fl-pricing-table-features">
+										<li>Description</li>
+																<li> Wallent is most of the wallet payments method such as vodafone cash</li>
+															<li>Please note that your registration is not confirmed until you pay the deposit on the following link.</li>
+															<li>Please enter your phone number</li>
+															<li><p:inputText style="color: black;" value="#{courseBean.phoneNumberPayment}" id="phoneNumber"></p:inputText></li>
+															</ul>
+
+				<div  onclick="payNowWallet();" class="fl-button-wrap fl-button-width-auto fl-button-center">
+			<a  class="fl-button">
+							<span class="fl-button-text">Sign up</span>
+					</a>
+</div>
+
+				<br />
+
+			</div>
+		</div>
+		</div>
+		<div class="fl-pricing-table-col-3">
+		<div class="fl-pricing-table-column fl-pricing-table-column-2">
+			<div class="fl-pricing-table-inner-wrap">
+				<h2 class="fl-pricing-table-title">Kiosk</h2>
+				<img src="/resources/images/kiosk (1).jpg"/>
+				<ul class="fl-pricing-table-features">
+										<li>Description</li>
+																<li>kiosk like Aman and Masary outlet, so you have to see the nearst one to you to pay</li>
+															<li>Please note that your registration is not confirmed until you pay the deposit on the following link.</li>
+															
+															</ul>
+
+				<div  onclick="payNowKiosk();" class="fl-button-wrap fl-button-width-auto fl-button-center">
+			<a class="fl-button" >
+							<span class="fl-button-text">Sign up</span>
+					</a>
+</div>
+
+				<br />
+
+			</div>
+		</div>
+	</div>
+		</div>
+	</div>
+</div>
+	</div>
+</div>
+	</div>
+		</div>
+	</div>
+</div>
+</div>
+
+	
+							</div>
+							</h:panelGroup>
+							
+							<p:remoteCommand  name="makeThePaymentOnline" action="#{courseBean.payForthisCourseTypeOnline(1)}" />
+							<p:remoteCommand  name="makeThePaymentKiosk" action="#{courseBean.payForthisCourseTypeOnline(2)}" />
+							<p:remoteCommand  name="makeThePaymentWallet" action="#{courseBean.payForthisCourseTypeOnline(3)}" />
+							</h:form>
+							
+							
+							<!-- Panel group end for payment -->
 				
 				<div class="shop item" data-aos="zoom-out" data-aos-duration="1000">
 					<h2 class="light"><strong>Related</strong> Courses</h2>

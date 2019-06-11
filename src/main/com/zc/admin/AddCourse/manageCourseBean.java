@@ -3,8 +3,11 @@ package main.com.zc.admin.AddCourse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +16,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.ImageOutputStream;
+
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.FileUploadEvent;
 
@@ -82,12 +90,48 @@ public class manageCourseBean implements Serializable{
 	public String saveImageToDirectory(byte[] image,String directory) {
 		String fileName="";
 		try {
-			File file=File.createTempFile("img", ".png", new File(directory));
+			File file=File.createTempFile("img", ".jpg", new File(directory));
 		      byte [] data = image;
 		      ByteArrayInputStream bis = new ByteArrayInputStream(data);
 		      BufferedImage bImage2;
 			bImage2 = ImageIO.read(bis);
-			ImageIO.write(bImage2, "png", file );
+			
+			
+			 
+		        OutputStream os = new FileOutputStream(file);
+			
+			// create a BufferedImage as the result of decoding the supplied InputStream
+	        BufferedImage image2 = bImage2;
+	        
+			// get all image writers for JPG format
+	        Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpg");
+	 
+	        float quality = 0.5f;
+	        ImageWriter writer = (ImageWriter) writers.next();
+	        ImageOutputStream ios = ImageIO.createImageOutputStream(os);
+	        writer.setOutput(ios);
+	 
+	        ImageWriteParam param = writer.getDefaultWriteParam();
+	 
+	        // compress to a given quality
+	        param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+	        param.setCompressionQuality(quality);
+	 
+	        // appends a complete image stream containing a single image and
+	        //associated stream and image metadata and thumbnails to the output
+	        writer.write(null, new IIOImage(image2, null, null), param);
+	 
+	     // close all streams
+	        os.close();
+	        ios.close();
+	        writer.dispose();
+			
+			/*int type = bImage2.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : bImage2.getType();
+
+			BufferedImage resizeImageJpg = resizeImage(bImage2, type, 800, 434);
+	        ImageIO.write(resizeImageJpg, "jpg", file); //change path where you want it saved
+
+	        */
 			fileName=file.getName();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -98,6 +142,15 @@ public class manageCourseBean implements Serializable{
 	      
 	}
 	
+	/*
+	private static BufferedImage resizeImage(BufferedImage originalImage, int type, int IMG_WIDTH, int IMG_HEIGHT) {
+	    BufferedImage resizedImage = new BufferedImage(IMG_WIDTH, IMG_HEIGHT, type);
+	    Graphics2D g = resizedImage.createGraphics();
+	    g.drawImage(originalImage, 0, 0, IMG_WIDTH, IMG_HEIGHT, null);
+	    g.dispose();
+
+	    return resizedImage;
+	}*/
 	public void previewImage(FileUploadEvent event) {
 
 		

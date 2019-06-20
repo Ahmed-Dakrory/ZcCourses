@@ -810,19 +810,19 @@ a .img-layer-slide-left-right .layer{transition:all .4s ease-in-out;-webkit-tran
 .shop h2{font-size:32px;}
 .shop li{display: inline-block; margin: 0 0 27px; padding: 0 10px; width: 33%;}
 .shop.full-width li{width: 24.7%;}
-.product{border:1px solid #dadada;display: inline-table;width: 100%;}
+.product{border:1px solid #dadada;/* display: inline-table; */width: 100%;}
 .product-thumb{position:relative;margin:-1px;}
 .product-thumb img { width: 100%;}
 .product-thumb label{  border-radius: 100%; color: #fff; display: block; height: 59px; left: 16px; line-height: 61px; position: absolute; text-align: center; top: 16px; width: 59px;}
-.product-description{padding:25px 20px 17px;}
+.product-description{padding:25px 20px 17px;height: 210px;}
 .product-description h3{font-size:20px;}
 .product-description h3 a:hover{color:#222;}
-.price{font-size:20px;}
+.price{font-size:20px;position: absolute;bottom: 24%;right: 36%;}
 .price.big {font-size:32px;font-weight:600;}
 .price.dark {color:#222222;}
 .price u{color:#797979;font-size:16px;text-decoration:line-through;}
 .product-description .double-border{margin-bottom:17px;}
-.product-description .product-cart-btn, .product-description .product-detail-btn{color:#222222;font-weight:400;font-size:16px;line-height:33px; margin:14px 0 0 0;}
+.product-description .product-cart-btn, .product-description .product-detail-btn{color:#222222;font-weight:400;font-size:16px;position: absolute;bottom: 12%;}
 .product-cart-btn i{ font-size: 22px; float: left; margin-right: 7px; margin-top: 3px;}
 .product-detail-btn i{font-size:22px;float:left;margin: 5px 9px 0 0;}
 .showing-result{margin:0 0 40px 0;}
@@ -1048,7 +1048,7 @@ h2.resp-tab-title:last-child {border-bottom: 12px solid #c1c1c1 !important; back
 /*-----------Vertical tabs-----------*/
 .resp-vtabs{ padding:23px 0 75px !important;}
 .resp-vtabs ul.resp-tabs-list { float: left;width: 30%;border: 1px solid #d2d2d2;border-right:0;}
-.resp-vtabs .resp-tabs-list li { display: block; padding: 19px 29px 19px !important; margin: 0; cursor: pointer;float: none;font-family: 'Raleway', sans-serif;border-bottom: 1px solid #d2d2d2;}
+.resp-vtabs .resp-tabs-list li {display: block;padding: 19px 29px 19px !important;margin: 0;cursor: pointer;background: #ffffff9c;float: none;font-family: 'Raleway', sans-serif;border-bottom: 1px solid #d2d2d2;}
 .resp-vtabs .resp-tabs-container { padding: 0px; background-color: #fff; border: 1px solid #d2d2d2; float: left; width: 68%; min-height: 250px; clear: none;}
 .resp-vtabs .resp-tab-content { border: none;padding:26px 38px;}
 .resp-tab-content.resp-tab-content-active p{ margin:15px 0 0 0;}

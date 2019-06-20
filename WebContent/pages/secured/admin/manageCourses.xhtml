@@ -88,7 +88,7 @@
 							
 							<p:column class="manageTableRow" headerText="Action" >
 					            
-								<p:commandButton style="margin-right: 7%; margin-left: 15%;" class="buttonGreen" id="modify"  action="#{manageCourseBean.openCourseDetails(row.id)}" value=" Edit course" />
+								<p:commandButton style="margin-right: 2%; margin-left: 6%;" class="buttonGreen" id="modify"  action="#{manageCourseBean.openCourseDetails(row.id)}" value=" Edit course" />
 								<p:commandButton  class="buttonRed" id="delete"  onclick="deleteWithConfirm(#{row.id})" value=" Delete course" />
 						
 							</p:column>
@@ -170,7 +170,7 @@
 					</div>
 					
 					<div class="row">
-			    		<p:inputText  type="text" required="true" value="#{manageCourseBean.courseNew.payLink}" class="dialogInputField" pt:placeholder="Please Enter the course payment link"/>
+			    		<p:inputText  type="text" required="true" value="#{manageCourseBean.selectedCourse.instructor}" class="dialogInputField" pt:placeholder="Please Enter the course instructors"/>
 					</div>
 					
 					<div class="row">
@@ -197,6 +197,21 @@
 				    </p:inputTextarea>  
 				    <br />
    					 <h:outputText class="dialogInputField" id="display" /> 
+					
+			    	</div>
+					
+					
+					<div class="row" >
+					<p:inputTextarea maxlength="510" counter="display2" counterTemplate="{0} characters remaining." autoResize="false" style="height: 134px;margin-top: 1%;padding: 6px;" value="#{manageCourseBean.courseNew.outlines}"  height="100" class="dialogInputField" pt:placeholder="Please Enter the course outlines">
+				        <f:facet name="toolbar">
+				             <span class="ql-formats">
+				            </span>
+				            <span class="ql-formats">
+				            </span>
+				        </f:facet>
+				    </p:inputTextarea>  
+				    <br />
+   					 <h:outputText class="dialogInputField" id="display2" /> 
 					
 			    	</div>
 					
@@ -280,7 +295,7 @@
 					</div>
 					
 					<div class="row">
-			    		<p:inputText  type="text" required="true" value="#{manageCourseBean.selectedCourse.payLink}" class="dialogInputField" pt:placeholder="Please Enter the course payment link"/>
+			    		<p:inputText  type="text" required="true" value="#{manageCourseBean.selectedCourse.instructor}" class="dialogInputField" pt:placeholder="Please Enter the course instructors"/>
 					</div>
 					
 					<div class="row">
@@ -307,6 +322,20 @@
 				    </p:inputTextarea>  
 				    <br />
    					 <h:outputText class="dialogInputField" id="displaySelected" /> 
+					
+			    	</div>
+			    	
+			    	<div class="row" >
+					<p:inputTextarea maxlength="510" counter="displaySelected1" counterTemplate="{0} characters remaining." autoResize="false" style="height: 134px;margin-top: 1%;padding: 6px;" value="#{manageCourseBean.selectedCourse.outlines}"  height="100" class="dialogInputField" pt:placeholder="Please Enter the course outlines">
+				        <f:facet name="toolbar">
+				             <span class="ql-formats">
+				            </span>
+				            <span class="ql-formats">
+				            </span>
+				        </f:facet>
+				    </p:inputTextarea>  
+				    <br />
+   					 <h:outputText class="dialogInputField" id="displaySelected1" /> 
 					
 			    	</div>
 					

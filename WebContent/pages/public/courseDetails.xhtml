@@ -78,7 +78,7 @@
 						
 							<h2>#{courseBean.thecourseSelected.name}</h2>
 							
-							<p class="price big dark">#{courseBean.thecourseSelected.price} LE</p>
+							<p class=" big dark" style="    font-size: xx-large;    font-family: -webkit-body;    font-weight: 550;">#{courseBean.thecourseSelected.price} LE</p>
 							<p:outputPanel id="enrollmentPanel">
 							
 							<p:commandLink style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,0)}"  action="#{courseBean.enrollInCourse(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Enroll me in the course</p:commandLink>
@@ -99,6 +99,7 @@
 							</p:outputPanel>
 							<div class="clearfix"></div>
 							<br/>
+							<p><strong>Instructors:</strong>  #{courseBean.thecourseSelected.instructor}</p>
 							<p><strong>Categories:</strong>  #{courseBean.thecourseSelected.categories}</p>
 							<ul class="boxed-social clearfix">
 								<li style="float: none;"><a href="https://www.facebook.com/sharer/sharer.php?u=http://outreach.zclt.info/pages/public/courseDetails.xhtml?id=#{courseBean.thecourseSelected.id}" class="facebook"><i class="icon-euro"></i><p style="width: 135%;">Share On Facebook</p></a></li>
@@ -146,20 +147,26 @@
 				<div class="clearfix verticalTab item" data-aos="flip-right" data-aos-duration="1000" id="target">
 					<ul class="resp-tabs-list">
 						<li>Description</li>
+						<li>OutLines</li>
 					</ul>
 					<div class="resp-tabs-container">
 						<div>
 							<h3>Description</h3>
 							<p>#{courseBean.thecourseSelected.description}</p>
 						</div>
+						
+						<div>
+							<h3>OutLines</h3>
+							<p>#{courseBean.thecourseSelected.outlines}</p>
+						</div>
 					</div>
 				</div>
 				
-							<h:form>
+							<h:form id="paymentForm">
 				
 				
 							<!-- Panel group start  for payment -->
-				<h:panelGroup rendered="#{courseBean.courseRegSelected.state==2?false:true}">
+				<h:panelGroup id="paymentPanel" rendered="#{courseBean.courseRegSelected.state==2?false:true}">
 							<div style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}">
 							
 							
@@ -298,7 +305,7 @@
 													<p class="price"> #{o.price} LE</p>
 													<span class="double-border"></span>
 													<p:outputPanel id="enrollmentPanel">
-														<p:outputLabel style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(o.id,1)}" class="product-cart-btn pull-left">You are Enrolled</p:outputLabel>
+														<p:outputLabel style="display:#{programsBean.getTheStateOfViewOfSelectedCourse(o.id,1)}" class="product-cart-btn pull-left">Enrolled</p:outputLabel>
 													</p:outputPanel>
 													<a href="courseDetails.xhtml?id=#{o.id}" class="product-detail-btn pull-right"><i class="icon-browser"></i>Details</a>
 												</div>

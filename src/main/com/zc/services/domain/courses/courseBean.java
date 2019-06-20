@@ -155,6 +155,7 @@ public class courseBean implements Serializable{
 		registerCourseFasade.addcourseReg(courseReg);
 		dismissDialog();
 		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("enrollmentPanel");
+		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("paymentForm:paymentPanel");
 		
 	}
 	

@@ -66,6 +66,12 @@ public class course {
 	@Column(name = "payLink")
 	private String payLink;
 	
+	@Column(name = "outlines")
+	private String outlines;
+	
+	@Column(name = "instructor")
+	private String instructor;
+	
 	
 	public Integer getId() {
 		return id;
@@ -136,6 +142,23 @@ public class course {
 		this.payLink = payLink;
 	}
 
+	public String getOutlines() {
+		return outlines;
+	}
+
+	public void setOutlines(String outlines) {
+		this.outlines = outlines;
+	}
+
+	public String getInstructor() {
+		return instructor;
+	}
+
+	public void setInstructor(String instructor) {
+		this.instructor = instructor;
+	}
+
+	
 	
 	
 }

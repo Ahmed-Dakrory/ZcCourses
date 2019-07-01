@@ -278,11 +278,15 @@ public class courseBean implements Serializable{
 
 		public void getTokenForFrame(int type, String auth_token, Integer amount_cents, Integer order_id, String currency,
 				Integer integration_id) {
+			int firstSpace = loginBean.getTheUserOfThisAccount().getFullName().indexOf(" "); // detect the first space character
+			String firstName = loginBean.getTheUserOfThisAccount().getFullName().substring(0, firstSpace);  // get everything up to the first space character
+			String lastName = loginBean.getTheUserOfThisAccount().getFullName().substring(firstSpace).trim(); // get everything after the first space, trimming the spaces off
+			
 			
 			String apartment="Empty";
 			String email=loginBean.getTheUserOfThisAccount().getEmail();
 			String floor="Empty";
-			String first_name=loginBean.getTheUserOfThisAccount().getFullName();
+			String first_name=firstName;
 			String street="Empty";
 			String building="Empty";
 			String phone_number=loginBean.getTheUserOfThisAccount().getMobile();
@@ -290,8 +294,9 @@ public class courseBean implements Serializable{
 			String postal_code="Empty";
 			String city="Empty";
 			String country="Empty";
-			String last_name=".";
+			String last_name=lastName;
 			String state="Empty";
+			
 			paymentKey paymentKey=new paymentKey(auth_token, amount_cents, order_id, currency, integration_id, apartment, email, floor, first_name, street, building, phone_number, shipping_method, postal_code, city, country, last_name, state);
 
 		       

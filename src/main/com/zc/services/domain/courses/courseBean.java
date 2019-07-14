@@ -283,19 +283,19 @@ public class courseBean implements Serializable{
 			String lastName = loginBean.getTheUserOfThisAccount().getFullName().substring(firstSpace).trim(); // get everything after the first space, trimming the spaces off
 			
 			
-			String apartment="Empty";
+			String apartment="NA";
 			String email=loginBean.getTheUserOfThisAccount().getEmail();
-			String floor="Empty";
+			String floor="NA";
 			String first_name=firstName;
-			String street="Empty";
-			String building="Empty";
+			String street="NA";
+			String building="NA";
 			String phone_number=loginBean.getTheUserOfThisAccount().getMobile();
-			String shipping_method="Empty";
-			String postal_code="Empty";
-			String city="Empty";
-			String country="Empty";
+			String shipping_method="NA";
+			String postal_code="NA";
+			String city="NA";
+			String country="NA";
 			String last_name=lastName;
-			String state="Empty";
+			String state="NA";
 			
 			paymentKey paymentKey=new paymentKey(auth_token, amount_cents, order_id, currency, integration_id, apartment, email, floor, first_name, street, building, phone_number, shipping_method, postal_code, city, country, last_name, state);
 

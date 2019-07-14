@@ -35,44 +35,44 @@ public class paymentKey {
 	 public class billing_data {
 
 	        @SerializedName("apartment")
-	        public String apartment="000";
+	        public String apartment="NA";
 	        
 	        @SerializedName("email")
-	        public String email="claudette09@exa.com";
+	        public String email="NA";
 	        
 	        @SerializedName("floor")
-	        public String floor="42";
+	        public String floor="NA";
 	        
 	        @SerializedName("first_name")
-	        public String first_name="Clifford";
+	        public String first_name="NA";
 	        
 	        @SerializedName("street")
-	        public String street="Ethan Land";
+	        public String street="NA";
 	        
 	        @SerializedName("building")
-	        public String building="8028";
+	        public String building="NA";
 	        
 	        @SerializedName("phone_number")
-	        public String phone_number="+86(8)9135210487";
+	        public String phone_number="NA";
 	        
 	        @SerializedName("shipping_method")
-	        public String shipping_method="PKG";
+	        public String shipping_method="NA";
 	        
 
 	        @SerializedName("postal_code")
-	        public String postal_code="01898";
+	        public String postal_code="NA";
 
 	        @SerializedName("city")
-	        public String city="Jaskolskiburgh";
+	        public String city="NA";
 
 	        @SerializedName("country")
-	        public String country="CR";
+	        public String country="NA";
 
 	        @SerializedName("last_name")
-	        public String last_name="Nicolas";
+	        public String last_name="NA";
 	        
 	        @SerializedName("state")
-	        public String state="Utah";
+	        public String state="NA";
 
 			public billing_data(String apartment, String email, String floor, String first_name, String street,
 					String building, String phone_number, String shipping_method, String postal_code, String city,

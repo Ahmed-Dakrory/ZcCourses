@@ -2,6 +2,7 @@ package main.com.zc.services.domain.courses;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
@@ -71,6 +72,9 @@ public class courseBean implements Serializable{
 	FacesContext cs;
 	ExternalContext xCx;
 	
+	private List<course> allCourses;
+	private List<String> allCoursesString;
+	private String selectedCourseSearchName;
 	
 	@PostConstruct
 	public void init() {
@@ -345,6 +349,9 @@ public class courseBean implements Serializable{
 		}
 	
 		public void refreshPage(){
+			
+			allCourses = courseFasade.getAll();
+			
 		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("enrollmentPanel");
 		HttpServletRequest origRequest = (HttpServletRequest)FacesContext
 				.getCurrentInstance()
@@ -368,8 +375,34 @@ public class courseBean implements Serializable{
 		}
 	}
 
+		public List<String> completeText(String query) {
+			allCoursesString =new ArrayList<String>();
+			for(int i=0;i<allCourses.size();i++) {
+				if((allCourses.get(i).getName().toLowerCase()).contains(query.toLowerCase())) {
+					allCoursesString.add(allCourses.get(i).getName());
+				}
+			}
+			
+	        return allCoursesString;
+	    }
 	
-	
+		public void onCourseSelect() {
+			for(int i=0;i<allCourses.size();i++) {
+				if(selectedCourseSearchName.equalsIgnoreCase(allCourses.get(i).getName())) {
+					
+					HttpServletRequest origRequest = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		    		origRequest.getRequestURL();
+		    			try {
+							FacesContext.getCurrentInstance().getExternalContext().redirect
+							("/pages/public/courseDetails.xhtml?id="+allCourses.get(i).getId());
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		    			break;
+				}
+			}
+		}
 	public CourseAppServiceImpl getCourseFasade() {
 		return courseFasade;
 	}
@@ -447,6 +480,30 @@ public class courseBean implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public List<course> getAllCourses() {
+		return allCourses;
+	}
+
+	public void setAllCourses(List<course> allCourses) {
+		this.allCourses = allCourses;
+	}
+
+	public List<String> getAllCoursesString() {
+		return allCoursesString;
+	}
+
+	public void setAllCoursesString(List<String> allCoursesString) {
+		this.allCoursesString = allCoursesString;
+	}
+
+	public String getSelectedCourseSearchName() {
+		return selectedCourseSearchName;
+	}
+
+	public void setSelectedCourseSearchName(String selectedCourseSearchName) {
+		this.selectedCourseSearchName = selectedCourseSearchName;
 	}
 
 	

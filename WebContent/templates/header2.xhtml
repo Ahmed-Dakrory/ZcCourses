@@ -15,19 +15,52 @@
 	
    <!--Start Header-->
    
-   <div id="header-2">
+   <div>
    
    <header class="header header2">
-		<div class="container">
+		<div class="container" style="
+    width: 100%;
+    max-width: 100%;
+">
    		
    		
         <div class="row">
         	
-            <div class="col-md-1" style="align-self:center;">
+            <div class="col-md-1" style="align-self:center;margin-left: 3%;">
             	<a href="/" class="logo"><h:graphicImage name="images/logoZc.png" alt=""/></a>
             </div>
             
-            <div class="col-md-9" style="align-self:center;">
+            
+            <style>
+            
+            #acSimpleForm\:acSimple{
+                width: 100%;
+            }
+            
+            #acSimpleForm\:acSimple_input{
+                width: 100%;
+    background: #ffffffe0;
+            }
+            
+            #acSimpleForm\:acSimple{
+                width: 100%;
+            }
+            #acSimpleForm\:acSimple_panel{
+	            z-index: 99999!important;
+	    		background: white;
+            }
+            </style>
+            <div class="col-md-2" style="width: 158%;align-self: center;">	
+                <h:form id="acSimpleForm" >
+                <div class="d-none d-lg-block d-xl-block" >
+            <p:autoComplete id="acSimple" value="#{courseBean.selectedCourseSearchName}"  completeMethod="#{courseBean.completeText}">
+            <p:ajax event="itemSelect" listener="#{courseBean.onCourseSelect()}"  />
+            </p:autoComplete>
+            </div>
+                </h:form>
+                </div>
+                
+            <div class="col-md-6" style="align-self:center;">
             	
                 <h:form>
                 <nav class="menu-2">
@@ -67,11 +100,17 @@
 					
                 </ul>
                 </nav>
-                </h:form>	
-            </div>	
+              
+               
+                </h:form>
+                
+            </div>
             
             
-            <div class="d-none d-lg-block d-xl-block" style="align-self:center;">
+            	
+            
+            
+            <div class="col-md-1 d-none d-lg-block d-xl-block" style="align-self:center;">
             	
             			<li class="m-nav__item m-topbar__user-profile m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click" aria-expanded="true" >
 					        <h:form style="margin-left: 100px;">   
@@ -176,7 +215,8 @@
    <!--End Header-->
    
    
-   
+                
+                
 	<!-- Mobile Menu Start -->
 	<div class="container">
     <div id="page">

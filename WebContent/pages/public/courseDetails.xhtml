@@ -78,7 +78,6 @@
 						
 							<h2>#{courseBean.thecourseSelected.name}</h2>
 							
-							<p class=" big dark" style="    font-size: xx-large;    font-family: -webkit-body;    font-weight: 550;">#{courseBean.thecourseSelected.price} LE</p>
 							<p:outputPanel id="enrollmentPanel">
 							
 							<p:commandLink style="display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,0)}"  action="#{courseBean.enrollInCourse(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Enroll me in the course</p:commandLink>
@@ -161,7 +160,11 @@
 						</div>
 					</div>
 				</div>
-				
+				<h2 class="fl-heading">
+		<span class="fl-heading-text">Price </span>
+	</h2>
+							<p class=" big dark" style="font-size: xx-large;font-family: -webkit-body;font-weight: 550;width: 18%;box-shadow: 2px 0px 1px #b9b9b9, 0 0 21px #ffffff, 0 0 3px #733838;text-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 5px #cacaca;padding: 1%;border-radius: 23px;">#{courseBean.thecourseSelected.price} LE</p>
+							
 							<h:form id="paymentForm">
 				
 				
@@ -275,6 +278,8 @@
 		</div>
 	</div>
 		</div>
+		
+		
 	</div>
 </div>
 	</div>
@@ -293,7 +298,6 @@
 							<p:remoteCommand  name="makeThePaymentKiosk" action="#{courseBean.payForthisCourseTypeOnline(2)}" />
 							<p:remoteCommand  name="makeThePaymentWallet" action="#{courseBean.payForthisCourseTypeOnline(3)}" />
 							</h:form>
-							
 							
 							<!-- Panel group end for payment -->
 				

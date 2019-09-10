@@ -157,7 +157,7 @@ public class examAdminBean implements Serializable {
 	private void sendEmailToTheStudent(UserData userdata, int theTotalForThisStudent2, int theTotalCorrect2) {
 		// TODO Auto-generated method stub
 		 String from = "learningtechnologies@zewailcity.edu.eg";
-	        String pass = "zcltinfo";
+	        String pass = "learningtechnologies@zc";
 	        String[] to = { userdata.getEmail() }; // list of recipient email addresses
 	        String subject = "English Exam Grade";
 	        String htmlText = "<div style=width:700px;margin:0 auto;font:normal 13px/30px Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana, sans-serif !important;>"

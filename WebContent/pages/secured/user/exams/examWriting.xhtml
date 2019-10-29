@@ -18,7 +18,7 @@
 
 
 	<ui:define name="content">
-	<div class="container">
+	<div class="container" style="    width: 100%;">
 	<div class="time-table-sec">
 	<ul id="accordion2" class="accordion2">
 	<li>
@@ -268,7 +268,7 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 4px 18px rgba(0, 0, 0, 0.24);
 							<p class="c8 c13"><span class="c3 c21 c38"></span></p>
 							
 							<ui:repeat var="o" value="#{examBean.listOfWritingQuestions}" varStatus="status">
-							<div class="container">
+							<div class="container" style="    width: 100%;">
 							 
 							  <p:textEditor value="#{o.question}" readonly="true">
 							  	 <f:facet name="toolbar">

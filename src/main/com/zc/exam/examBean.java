@@ -248,7 +248,7 @@ public class examBean implements Serializable {
         if(minutes<1) minutes=0;
         timeInString=String.valueOf(minutes)+" : "+String.valueOf(seconds);
         
-        if(minutes==59) {
+        if(minutes==75) {
         	if(examState==0) {
         		presubmitChooseAndProceed();
             	presubmitListAndProceed();

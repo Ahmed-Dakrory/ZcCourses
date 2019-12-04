@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
+<meta name="theme-color" content="#000000"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto|Tajawal" rel="stylesheet"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,500,600,700&amp;display=swap" rel="stylesheet"/>
+<link rel="shortcut icon" href="logo-icon.png"/>
+<title>Zewail City
+</title>
+    <link rel="stylesheet" href="#{resource['css:chunk-vendors.28f1bd7b.chunk.css']}" />
+    
+    <link rel="stylesheet" href="#{resource['css:index.79b58561.chunk.css']}" />
+<style data-jss="" data-meta="makeStyles">
+/* style sheet for "A4" printing */
+ 
+.jss1 {
+  display: flex;
+}
+.jss2 {
+  z-index: 1201;
+  transition: width 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms,margin 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+.jss3 {
+  width: calc(100% - 300px);
+  transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms,margin 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+  margin-left: 300px;
+}
+.jss4 {
+  margin-right: 36px;
+}
+.jss5 {
+  display: none;
+}
+.jss6 {
+  width: 300px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.jss7 {
+  width: 300px;
+  transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+.jss8 {
+  width: 57px;
+  overflow-x: hidden;
+  transition: width 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+@media (min-width:600px) {
+  .jss8 {
+    width: 73px;
+  }
+}
+.jss9 {
+  display: flex;
+  padding: 0 8px;
+  min-height: 56px;
+  align-items: center;
+  justify-content: flex-end;
+}
+@media (min-width:0px) and (orientation: landscape) {
+  .jss9 {
+    min-height: 48px;
+  }
+}
+@media (min-width:600px) {
+  .jss9 {
+    min-height: 64px;
+  }
+}
+.jss10 {
+  padding: 24px;
+  flex-grow: 1;
+}
+ /* style sheet for "letter" printing */
+ @media print and (width: 8.5in) and (height: 11in) {
+    @page {
+        margin: 1in;
+    }
+ }
+ 
+ @media print {  
+    @page {  
+      size:297mm 270mm;  
+    }  
+}
+</style>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.
+</noscript>
+<div id="root">
+<div class="App-module_App_3ozGZ">
+<div style="font-size: 2rem;">
+<div id="notification-wrapper">
+</div>
+</div>
+<div class="App-module_mainSection_3Z4dQ">
+<div class="App-module_secondarySection_3VAqL">
+<div>
+<div class="bodyShap">
+<section class="c-wrap">
+<div class="c-content">
+<div class="c-head">
+<div class="c-logo">
+<img src="/javax.faces.resource/images/zewail-logo.f03c67a8.svg.xhtml" alt=""/>
+</div>
+<div class="c-head-title">
+<div class="c-logo" style="    float: right;">
+<img src="/javax.faces.resource/images/orLogo.png.xhtml" alt=""/>
+</div>
+</div>
+</div>
+<div class="c-body">
+<h1>Certificate of Completion
+</h1>
+<br></br>
+<p style="color: black; font-weight: normal; font-size: 14px;">This certificate is proudly presented to
+</p>
+<h2 style="font-weight: bold;">#{courseBean.courseRegSelected.studentId.fullName}
+</h2>
+<br></br>
+<p style="color: black; font-weight: normal; font-size: 14px;">For Successfully Completing and Attending The Course 
+<br></br>
+<span style="font-weight: bold;">#{courseBean.courseRegSelected.courseId.name}
+</span>
+<br></br>#{courseBean.courseRegSelected.courseId.categories}
+<br></br>
+<span style="font-weight: bold;"> ( #{courseBean.courseRegSelected.courseId.hours} Hours Training )
+</span> - Grade 
+<span style="font-weight: bold; color: rgb(2, 130, 140);">( #{courseBean.courseRegSelected.grade} )
+</span>
+</p>
+</div>
+</div>
+<div class="c-footer">
+<div class="c-footer-box">
+<h3>Digital Signature
+</h3>
+<div class="c-signed">
+<span>Signed Digitally By
+</span>
+<br></br>
+<b style="font-size: 12px;">Ashraf Badawi
+</b>
+<p>Dean of Outreach &amp; Engagement
+
+</p>
+</div>
+<div class="c-edited">
+<span>Issued to
+</span>
+<br></br>
+<b style="font-size: 12px;">#{courseBean.courseRegSelected.studentId.fullName}
+</b>
+<p>
+
+</p>
+</div>
+</div>
+<div class="c-footer-box">
+<h3>Digital Info
+</h3>
+<div class="c-signed">
+<span>Transaction ID
+</span>
+<br></br>
+<b>#{courseBean.courseRegSelected.certID}
+</b>
+<br></br>
+<span>Transaction Time stamp (Issuing Date)
+</span>
+<br></br>
+<b>11 / 12/ 2019
+</b>
+<br></br>
+<span>Verification
+</span>
+<br></br>
+<b>http://outreach.zclt.info/my_certificate/#{courseBean.courseRegSelected.certID}
+</b>
+</div>
+<div class="c-edited" style="display: flex;">
+<canvas height="128" width="128" style="height: 64px; width: 64px; margin: 0px 0px 0px auto;">
+</canvas>
+</div>
+</div>
+</div>
+<br></br>
+<br></br>
+<p class="c-copyright">
+<img src="/javax.faces.resource/images/zewail-logo.f03c67a8.svg.xhtml" alt=""/>
+<span style="vertical-align: bottom;">All certificate content, assets and metadata are provided by the issuer (Zewail City) of this certificate.
+</span>
+</p>
+<a download="Certification.pdf" href="blob:https://zewail.blockcred.io/8a69ca5b-1bcb-436a-99d0-f5a102e4be28">Download as PDF
+</a>
+</section>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

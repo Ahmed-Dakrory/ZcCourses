@@ -97,9 +97,23 @@ public class courseReg {
 	
 	@Column(name = "amount_cents")
 	private Integer amount_cents;
-	
+
 	@Column(name = "merchant_Order_ID")
 	private String merchant_Order_ID;
+	
+
+	@Column(name = "grade")
+	private String grade;
+	
+	
+
+
+	@Column(name = "certDate")
+	private Calendar certDate;
+	
+
+	@Column(name = "certID")
+	private String certID;
 	
 	public Integer getId() {
 		return id;
@@ -144,6 +158,30 @@ public class courseReg {
 	
 	
 	
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+	public Calendar getCertDate() {
+		return certDate;
+	}
+
+	public void setCertDate(Calendar certDate) {
+		this.certDate = certDate;
+	}
+
+	public String getCertID() {
+		return certID;
+	}
+
+	public void setCertID(String certID) {
+		this.certID = certID;
+	}
+
 	public String getMerchant_Order_ID() {
 		return merchant_Order_ID;
 	}

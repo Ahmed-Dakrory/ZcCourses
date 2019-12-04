@@ -57,6 +57,9 @@ public class course {
 	@Column(name="image")
 	private String image;
 	
+	@Column(name="hours")
+	private String hours;
+	
 	@Column(name = "idProgram")
 	private Integer idProgram;
 	
@@ -99,6 +102,14 @@ public class course {
 
 	
 	
+	public String getHours() {
+		return hours;
+	}
+
+	public void setHours(String hours) {
+		this.hours = hours;
+	}
+
 	public String getImage() {
 		return image;
 	}

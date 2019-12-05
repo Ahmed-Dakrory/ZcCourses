@@ -137,6 +137,20 @@ public class courseRegAppServiceImpl implements IcourseRegAppService{
 						return null;
 					}
 	}
+
+	@Override
+	public courseReg getBystudentAndCourseIdAndCertId(int idstudent, int idcourse, String certId) {
+		try{
+			courseReg course=courseRegRepository.getBystudentAndCourseIdAndCertId(idstudent, idcourse,certId);				
+			
+			return course;
+			}
+			catch(Exception ex)
+			{
+				ex.printStackTrace();
+				return null;
+			}
+	}
 	
 }
 		

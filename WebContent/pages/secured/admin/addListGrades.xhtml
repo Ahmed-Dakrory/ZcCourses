@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/dashboard.xhtml">
+
+	<ui:define name="title">Zewail Courses</ui:define>
+
+
+	<ui:define name="content">
+	<h:form enctype="multipart/form-data"  id="mainForm">
+		#{manageRegisterationCoursesBean.refreshPage()}
+	
+	
+            
+   <!-- The start of Main Content -->
+   <div class="content">
+   
+   
+  <h:form>
+  
+  </h:form>
+  <div class="gallery" style="padding: 10px 0;">
+   		<div class="container" style="    width: 100%;">
+            <div class="pannelWrapper">
+				<p:panel class="attendance">
+				
+			    	<div>
+  Select the Course
+  </div>
+  <div class="row">
+						<h:selectOneMenu id="course" class="styled-select slate" value="#{manageRegisterationCoursesBean.selectedCourseId}">
+				            <f:ajax listener="#{manageRegisterationCoursesBean.selectCourseForUploading()}" />
+															
+							<f:selectItem itemLabel="Select One" itemValue="0" />
+				            <f:selectItems value="#{manageRegisterationCoursesBean.courses}" var="var" itemLabel="#{var.name}" itemValue="#{var.id}"/>
+				        </h:selectOneMenu>
+						
+			    	</div>
+			    	
+			    	<br></br>
+			    	<br></br>
+			    	<br></br>
+					<table>
+						<tr>
+							<td colspan="3"><h4>Import File</h4></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel value="Select File"/> &nbsp;&nbsp;</td>
+							<td>
+									<p:fileUpload  style="font-size: 11px;" mode="simple" skinSimple="true" value="#{manageRegisterationCoursesBean.file}" />
+									<h:message for="file" />
+								
+									<h:commandButton  id="submit" class="download"  action="#{manageRegisterationCoursesBean.parseFile}" value="Upload File"
+									   process="@form"/>
+									<h:outputText value="#{manageRegisterationCoursesBean.statusMessage}" rendered="#{not empty manageRegisterationCoursesBean.statusMessage}"/>
+								
+							</td>
+						</tr>
+					</table>
+					<h:outputLabel rendered="#{manageRegisterationCoursesBean.resultText}" id="resultText"
+					value="Result : #{manageRegisterationCoursesBean.listOfCourseRegisterations.size()} new user(s) of parsed file size #{manageRegisterationCoursesBean.listOfCourseRegisterations.size()} "/>
+					
+					<p:panel><h3>Imported Users  Grades </h3><br/></p:panel>
+					<h:form id="dataTable">
+						<p:dataTable var="row" value="#{manageRegisterationCoursesBean.listOfCourseRegisterations}"  rowKey="#{row.id}" sortMode="multiple" widgetVar="studentCourse" id="userDataTable" resizableColumns="true" rows="10" paginator="true"
+					 	paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="5,10,20,40,60,80,100" paginatorPosition="top" currentPageReportTemplate="Total No. Of Records : {totalRecords} | Page: {currentPage}/{totalPages}">
+							<p:column  id="fullName" sortBy="#{row.studentId.fullName}" filterBy="#{row.studentId.fullName}">
+								<h:outputText value="#{row.studentId.fullName}" />
+								<p:watermark value="User" for=":mainForm:dataTable:userDataTable:fullName"/>
+							</p:column>
+							<p:column  id="email" sortBy="#{row.studentId.email}" filterBy="#{row.studentId.email}">
+								<h:outputText value="#{row.studentId.email}" />
+								<p:watermark  for=":mainForm:dataTable:userDataTable:email"/>
+							</p:column>
+							<p:column  id="grade" sortBy="#{row.grade}" filterBy="#{row.grade}">
+								<h:outputText value="#{row.grade}" />
+								<p:watermark  for=":mainForm:dataTable:userDataTable:grade"/>
+							</p:column>
+							
+						</p:dataTable>
+								<p:commandButton id="save" class="download" actionListener="#{manageRegisterationCoursesBean.saveGrade}" value="Save New Grades" 
+						update=":mainForm:dataTable:userDataTable" ajax="true" process="@form" rendered="#{manageRegisterationCoursesBean.resultText}">
+						
+      
+    
+						</p:commandButton>
+					</h:form>
+					
+					
+					</p:panel>
+				
+					
+			</div>
+		
+            
+        </div>
+   </div>
+  
+   
+   </div>
+   <!-- The End of Main Content -->     
+      
+<h:outputScript name="js/jquery.js"/>  
+  
+</h:form>
+<h:form>     
+         
+</h:form>
+
+	</ui:define>
+	
+	
+</ui:composition>
+
+</html>

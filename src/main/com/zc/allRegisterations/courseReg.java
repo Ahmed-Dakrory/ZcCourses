@@ -52,6 +52,10 @@ import main.com.zc.services.domain.courses.course;
 	@NamedQuery(name="courseReg.getBystudentAndCourseId",
 	query = "from courseReg d where d.studentId = :studentId and d.courseId = :courseId"
 			)
+	,
+	@NamedQuery(name="courseReg.getBystudentAndCourseIdAndCertId",
+	query = "from courseReg d where d.studentId = :studentId and d.courseId = :courseId and d.certID = :certId"
+			)
 	
 })
 
@@ -84,6 +88,7 @@ public class courseReg {
 	public static int pay_the_Final_Fees=2;
 	public static int Take_the_Course_And_Finish=3;
 	public static int cancell_the_Enrollement=4;
+	public static int finished_the_Course=5;
 	
 	/*
 	 * 0 register but not pay the first fees
@@ -212,6 +217,10 @@ public class courseReg {
 			
 		case 4:
 			statueString="Cancel the enrollment";
+			break;
+			
+		case 5:
+			statueString="Finished the Course";
 			break;
 			
 		default:

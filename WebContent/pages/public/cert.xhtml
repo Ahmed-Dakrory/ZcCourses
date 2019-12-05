@@ -17,12 +17,12 @@
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,500,600,700&amp;display=swap" rel="stylesheet"/>
-<link rel="shortcut icon" href="logo-icon.png"/>
-<title>Zewail City
+<link rel="shortcut icon" href="logo-icon.png"/><title>Zewail City
 </title>
     <link rel="stylesheet" href="#{resource['css:chunk-vendors.28f1bd7b.chunk.css']}" />
     
     <link rel="stylesheet" href="#{resource['css:index.79b58561.chunk.css']}" />
+		<h:outputScript name="js/qrcode.js"/>
 <style data-jss="" data-meta="makeStyles">
 /* style sheet for "A4" printing */
  
@@ -84,23 +84,15 @@
   padding: 24px;
   flex-grow: 1;
 }
- /* style sheet for "letter" printing */
- @media print and (width: 8.5in) and (height: 11in) {
-    @page {
-        margin: 1in;
-    }
- }
- 
+
  @media print {  
     @page {  
-      size:297mm 270mm;  
+      size:210mm 290mm;  
     }  
 }
 </style>
 </head>
-<body>
-<noscript>You need to enable JavaScript to run this app.
-</noscript>
+<body id="bodyOfHtmnlm">
 <div id="root">
 <div class="App-module_App_3ozGZ">
 <div style="font-size: 2rem;">
@@ -118,8 +110,8 @@
 <img src="/javax.faces.resource/images/zewail-logo.f03c67a8.svg.xhtml" alt=""/>
 </div>
 <div class="c-head-title">
-<div class="c-logo" style="    float: right;">
-<img src="/javax.faces.resource/images/orLogo.png.xhtml" alt=""/>
+<div class="c-logo" style="float: right;padding-right: 0%;width: 43%;">
+<img src="/javax.faces.resource/images/orLogo.png.xhtml" style="    width: 234px;" alt=""/>
 </div>
 </div>
 </div>
@@ -127,12 +119,14 @@
 <h1>Certificate of Completion
 </h1>
 <br></br>
-<p style="color: black; font-weight: normal; font-size: 14px;">This certificate is proudly presented to
+<p style="color: black;font-weight: normal;font-size: 20px;">This certificate is proudly presented to
 </p>
+
+<br></br>
 <h2 style="font-weight: bold;">#{courseBean.courseRegSelected.studentId.fullName}
 </h2>
 <br></br>
-<p style="color: black; font-weight: normal; font-size: 14px;">For Successfully Completing and Attending The Course 
+<p style="color: black;font-weight: normal;font-size: 20px;">For Successfully Completing and Attending The Course 
 <br></br>
 <span style="font-weight: bold;">#{courseBean.courseRegSelected.courseId.name}
 </span>
@@ -145,15 +139,22 @@
 </p>
 </div>
 </div>
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
 <div class="c-footer">
 <div class="c-footer-box">
-<h3>Digital Signature
+<h3>Signature
 </h3>
 <div class="c-signed">
 <span>Signed Digitally By
 </span>
 <br></br>
-<b style="font-size: 12px;">Ashraf Badawi
+<b style="font-size: 16px;">Ashraf Badawi
 </b>
 <p>Dean of Outreach &amp; Engagement
 
@@ -163,13 +164,18 @@
 <span>Issued to
 </span>
 <br></br>
-<b style="font-size: 12px;">#{courseBean.courseRegSelected.studentId.fullName}
+<b style="font-size: 16px;">#{courseBean.courseRegSelected.studentId.fullName}
 </b>
 <p>
 
 </p>
 </div>
 </div>
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
 <div class="c-footer-box">
 <h3>Digital Info
 </h3>
@@ -177,27 +183,29 @@
 <span>Transaction ID
 </span>
 <br></br>
-<b>#{courseBean.courseRegSelected.certID}
+<b style=" font-size: 12px;">#{courseBean.courseRegSelected.certID}
 </b>
 <br></br>
 <span>Transaction Time stamp (Issuing Date)
 </span>
 <br></br>
-<b>11 / 12/ 2019
+<b style=" font-size: 12px;">#{courseBean.getDateCalendar(courseBean.courseRegSelected.certDate)}
 </b>
 <br></br>
 <span>Verification
 </span>
 <br></br>
-<b>http://outreach.zclt.info/my_certificate/#{courseBean.courseRegSelected.certID}
+<b style=" font-size: 12px;">http://outreach.zclt.info/pages/public/validateCert.xhtml?cerId=#{courseBean.courseRegSelected.certID}&amp;tParameter=#{courseBean.courseRegSelected.studentId.id}&amp;kParameter=#{courseBean.courseRegSelected.courseId.id}
 </b>
 </div>
 <div class="c-edited" style="display: flex;">
-<canvas height="128" width="128" style="height: 64px; width: 64px; margin: 0px 0px 0px auto;">
-</canvas>
+<div id="qrcode" height="130" width="130" style="margin: 1px 50% 0px auto;"></div>
+
 </div>
 </div>
 </div>
+<br></br>
+<br></br>
 <br></br>
 <br></br>
 <p class="c-copyright">
@@ -205,8 +213,6 @@
 <span style="vertical-align: bottom;">All certificate content, assets and metadata are provided by the issuer (Zewail City) of this certificate.
 </span>
 </p>
-<a download="Certification.pdf" href="blob:https://zewail.blockcred.io/8a69ca5b-1bcb-436a-99d0-f5a102e4be28">Download as PDF
-</a>
 </section>
 </div>
 </div>
@@ -215,6 +221,13 @@
 </div>
 </div>
 </div>
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 130,
+	height : 130
+});
 
+qrcode.makeCode("http://outreach.zclt.info/pages/public/validateCert.xhtml?cerId=#{courseBean.courseRegSelected.certID}&amp;tParameter=#{courseBean.courseRegSelected.studentId.id}&amp;kParameter=#{courseBean.courseRegSelected.courseId.id}");
+</script>
 </body>
 </html>

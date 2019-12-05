@@ -86,13 +86,13 @@
 							
 							
 							
-							<h:panelGroup rendered="#{courseBean.courseRegSelected.state==2?true:false}">
+							<h:panelGroup rendered="#{courseBean.courseRegSelected.state==2||courseBean.courseRegSelected.state==5?true:false}">
 								<img src="/resources/images/done.png" alt="done" style="    width: 119px;"/><br></br>
 								<p:outputLabel >You pay #{courseBean.courseRegSelected.amount_cents} LE and you are Enrolled</p:outputLabel>
 							
 							</h:panelGroup>
 							
-							<p:commandLink rendered="#{courseBean.courseRegSelected.state==2?false:true}" style="background-color: #e06b6b;display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}"  action="#{courseBean.cancelTheEnroll(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Cancel the enrollment</p:commandLink>
+							<p:commandLink rendered="#{courseBean.courseRegSelected.state==2 || courseBean.courseRegSelected.state==5?false:true}" style="background-color: #e06b6b;display:#{courseBean.getTheStateOfViewOfSelectedCourse(courseBean.thecourseSelected.id,1)}"  action="#{courseBean.cancelTheEnroll(courseBean.thecourseSelected.id)}"  class="btn btn-default btn-dark btn-medium btn-square">Cancel the enrollment</p:commandLink>
 							
 							
 							</p:outputPanel>
@@ -147,7 +147,7 @@
 					<ul class="resp-tabs-list">
 						<li>Description</li>
 						<li>OutLines</li>
-						<li>My Data</li>
+						<li style="display:#{courseBean.courseRegSelected.state==5?'block':'none'}">My Data</li>
 					</ul>
 					<div class="resp-tabs-container">
 						<div>
@@ -160,9 +160,11 @@
 							<p>#{courseBean.thecourseSelected.outlines}</p>
 						</div>
 						
-						<div>
+						<div >
+						<h:form rendered="#{courseBean.courseRegSelected.state==5?'true':'false'}">
 							<h3>My Data</h3>
-							<div>My Certificate :<a href="/pages/public/cert.xhtml">Link</a></div>
+							<div>My Certificate :<a href="/pages/public/validateCert.xhtml?cerId=#{courseBean.courseRegSelected.certID}&amp;tParameter=#{courseBean.courseRegSelected.studentId.id}&amp;kParameter=#{courseBean.courseRegSelected.courseId.id}">Link</a></div>
+						</h:form>
 						</div>
 					</div>
 				</div>

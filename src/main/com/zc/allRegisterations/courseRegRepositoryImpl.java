@@ -133,4 +133,20 @@ public class courseRegRepositoryImpl implements courseRegRepository{
 				}
 	}
 
+	@Override
+	public courseReg getBystudentAndCourseIdAndCertId(int idstudent, int idcourse, String certId) {
+		// TODO Auto-generated method stub
+		 Query query 	=sessionFactory.getCurrentSession().getNamedQuery("courseReg.getBystudentAndCourseIdAndCertId").setInteger("studentId",idstudent).setInteger("courseId", idcourse)
+				 .setString("certId", certId);
+
+		 @SuppressWarnings("unchecked")
+		List<courseReg> results=query.list();
+		if(results.size()==0){
+			return null;
+		}else{
+
+			   return results.get(results.size()-1);
+		}
+	}
+
 }

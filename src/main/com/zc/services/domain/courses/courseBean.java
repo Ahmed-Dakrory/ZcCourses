@@ -89,6 +89,8 @@ public class courseBean implements Serializable{
 		PrimeFaces.current().executeScript("dismiss();");
 	}
 	
+	
+	
 	public void enrollInCourse(int id){
 		selectedCourseId=id;
 		if(loginBean.isLoggedIn()){
@@ -347,7 +349,12 @@ public class courseBean implements Serializable{
 	        
 	        
 		}
-	
+	public String getDateCalendar(Calendar c) {
+		String date=String.valueOf(c.get(Calendar.DAY_OF_MONTH))+"/"
+				+String.valueOf(c.get(Calendar.MONTH)+1)+"/"
+				+String.valueOf(c.get(Calendar.YEAR));
+		return date;
+	}
 		public void refreshPage(){
 			
 			allCourses = courseFasade.getAll();
@@ -369,6 +376,37 @@ public class courseBean implements Serializable{
 						
 					}
 				}
+			}
+		catch(Exception ex){
+			 
+		}
+		
+		try{
+			String certId=origRequest.getParameterValues("cerId")[0];
+			Integer id=Integer.parseInt(origRequest.getParameterValues("tParameter")[0]);
+			Integer idCourse=Integer.parseInt(origRequest.getParameterValues("kParameter")[0]);
+				
+					thecourseSelected=courseFasade.getById(idCourse);
+			  		selectedCourseId=thecourseSelected.getId();
+					courseRegSelected = registerCourseFasade.getBystudentAndCourseIdAndCertId(id, idCourse, certId);
+					if(courseRegSelected!=null) {
+					try {
+						FacesContext.getCurrentInstance().getExternalContext().redirect
+						("/pages/public/cert.xhtml");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					}else {
+						try {
+							FacesContext.getCurrentInstance().getExternalContext().redirect
+							("/pages/errors/notFoundCert.xhtml");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				
 			}
 		catch(Exception ex){
 			 

@@ -325,7 +325,7 @@ public class loginBean implements Serializable{
 		
 		
 		 String from = "learningtechnologies@zewailcity.edu.eg";
-	        String pass = "learningtechnologies@zc";
+	        String pass = "DELF-651984@dr";
 	        String[] to = { theUserOfThisRegisteration.getEmail() }; // list of recipient email addresses
 	        String subject = "A Comfirmation Email for your Account";
 	        String htmlText = "<div style=width:700px;margin:0 auto;font:normal 13px/30px Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana, sans-serif !important;>"
